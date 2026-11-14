@@ -604,3 +604,41 @@ Calibration impact under the robust check (Figure 6): M2-4T 231/600 trace decisi
 Real-runtime trace (9d): replaying its logged estimator states (runtime/replay_trace_decisions.py) reproduces all 270
 logged decisions with the mean check and gives the same 270 decisions with the robust check (M2-4T, A = 64, prompts
 ≤ 512), so the trace was NOT rerun; its MEASURED results stand.
+
+### 9i. Feasibility analysis of the privacy limits (15 Nov 2026; MODELLED; robust check; no new runs)
+
+step5_per_request/feasibility_analysis.py -> feasibility_grid.csv, feasibility_min_prompt_leak.csv,
+feasibility_relax.json; Figure 8. Grid: ε_p ∈ {60, 70, 80, 90, 100}%, ε_a ∈ {20, 30, 40, 50, 100}%,
+Q ∈ {60, 65, 70, 75, 80, 85}% (150 combinations) x memory budgets 2 / 3 / 4 / 8 GB x profiles M2-4T / M2-2T / M2-1T
+(FITTED from MEASURED; budget overridden). Fastest option and calibrated latency: 256-token prompt, nominal 4G,
+A = 128, server share 1. Feasibility depends only on the budget (calibrated memory does not depend on the profile).
+
+Feasible combinations: 2 GB 48/150; 3, 4 and 8 GB 150/150 (all on client, 2.88 GB, fits and leaks nothing). Every
+server-using option needs ≤ 2.21 GB ((8,2)), so the server-option map is identical for 3, 4 and 8 GB. At 2 GB a
+combination is feasible iff ε_p ≥ the minimum robust prompt leakage of Figure 8a for its (ε_a, Q); no server-using
+option reaches agreement ≥ 80% with ε_a ≤ 50%, or agreement ≥ 65% with ε_a ≤ 30%.
+
+Class limits (fastest option, latency in s; M2-4T / M2-2T / M2-1T):
+
+| Class | 2 GB | 3, 4 and 8 GB |
+|---|---|---|
+| Open (Q 95%) | all on server 4.2 / 4.2 / 4.2 | all on server 4.2 / 4.2 / 4.2 |
+| Private answer (ε_a 40%) | (1,1) λa = 0.1: 15.8 / 16.1 / 17.0 | all on client 9.7 / 12.2; M2-1T (1,1) λa = 0.1 17.0 |
+| Private prompt (ε_p 80%) | H=4 secret head λp = 0.2: 16.6 / 17.2 / 18.7 | all on client 9.7 / 12.2 / 17.6 |
+| Private prompt+answer (80 / 50%) | INFEASIBLE | all on client 9.7 / 12.2 / 17.6 |
+
+Why private prompt+answer is infeasible on 2 GB (SENSITIVITY ANALYSIS — the class definitions are NOT changed):
+memory excludes the only option that meets all limits trivially (all on client, 2.88 GB > 2 GB), and among the
+server-using options that fit, the leakage and quality limits cannot be met together. Every option with robust
+prompt leakage ≤ 80% and robust answer leakage ≤ 50% has agreement ≤ 72.4%; every option with agreement ≥ 75% and
+answer ≤ 50% leaks ≥ 83.4% of the prompt. The binding constraint is therefore the joint prompt-leakage / quality
+trade-off of the secret head + tail at λp = 0.1, given the 2 GB memory limit; neither quality nor leakage alone
+explains it. Smallest single-limit relaxation that makes the class feasible (others unchanged):
+- prompt limit ε_p 80% -> 83.4% (+3.4 points): (4,2) λa = 0.03 (robust = seed 0; answer 40.9%, agreement 76.7%);
+- quality Q 75% -> 72.4% (−2.6 points): (6,2) λa = 0.03 (1 seed; robust prompt 62.0%, answer 42.4%);
+- answer limit ε_a 50% -> 77.3% (+27.3 points): (6,2) λa = 0.01 (robust prompt 77.3%, agreement 79.4%);
+- memory 2 GB -> 2.88 GB: all on client.
+The two smallest relaxations (+3.4 points prompt, −2.6 points quality) are smaller than the measured seed spread
+of prompt leakage (±6.3 points), so whether the class is feasible near these limits is not resolved by the current
+seeds; with the earlier mean-based check the class was feasible on 2 GB ((4,2) λa = 0.03, mean 78.9%).
+

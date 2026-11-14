@@ -1,5 +1,5 @@
 """
-Thesis figures 1-7 from EXISTING results only (no new runs). Sized for A4 text width (16 cm), 300 dpi PNG.
+Thesis figures 1-8 from EXISTING results only (no new runs). Sized for A4 text width (16 cm), 300 dpi PNG.
 
   fig1_latency_model.png     predicted vs measured end-to-end time under emulated Wi-Fi / 4G / poor coverage:
                              calibrated model (step5_per_request/calibrated_model.latency_cal) and the assumed
@@ -14,6 +14,8 @@ Thesis figures 1-7 from EXISTING results only (no new runs). Sized for A4 text w
                              profile (step5_per_request/task4_calibration_impact.csv; MODELLED decisions)
   fig7_multisplit_leakage.png MEASURED prompt and answer leakage vs quality, secret head + tail, all 7 splits
                              (results/multisplit/measured_multisplit.txt; current script only; seed half-ranges)
+  fig8_feasibility.png       minimum robust prompt leakage of server-using options per (answer limit, quality limit)
+                             and memory budget (step5_per_request/feasibility_min_prompt_leak.csv; MODELLED)
 
 Run:  python docs/figures/make_figures.py
 """
@@ -306,7 +308,50 @@ def fig7():
     return tab, seeds, spread
 
 
+def fig8():
+    from matplotlib.colors import LinearSegmentedColormap
+    from matplotlib.patches import Rectangle
+    rows = list(csv.DictReader(open(os.path.join(ROOT, "step5_per_request", "feasibility_min_prompt_leak.csv"))))
+    eas = sorted({float(r["eps_a"]) for r in rows}); qs = sorted({float(r["q"]) for r in rows})
+    def mat(gb):
+        M = np.full((len(eas), len(qs)), np.nan)
+        for r in rows:
+            if float(r["budget_gb"]) == gb and r["min_prompt_leak_server"]:
+                M[eas.index(float(r["eps_a"])), qs.index(float(r["q"]))] = 100 * float(r["min_prompt_leak_server"])
+        return M
+    big = [mat(g) for g in (3.0, 4.0, 8.0)]
+    assert all(np.array_equal(big[0], m, equal_nan=True) for m in big[1:])      # server options fit in 3 GB
+    cmap = LinearSegmentedColormap.from_list("blue", ["#cde2fb", "#86b6ef", "#3987e5", "#1c5cab", "#0d366b"])
+    cmap.set_bad("#f0efec")
+    classes = [(0.40, 0.75, 1.00, "A"), (1.00, 0.75, 0.80, "P"), (0.50, 0.75, 0.80, "P+A")]
+    fig, axes = plt.subplots(1, 2, figsize=(W, W * 0.5), sharey=True)
+    for ax, M, title in [(axes[0], mat(2.0), "(a) 2 GB\nall on client does not fit (needs 2.88 GB)"),
+                         (axes[1], big[0], "(b) 3, 4 and 8 GB (identical)\nall on client (0 % leakage) also fits")]:
+        im = ax.imshow(M, origin="lower", cmap=cmap, vmin=50, vmax=100, aspect="auto")
+        for i in range(len(eas)):
+            for j in range(len(qs)):
+                v = M[i, j]
+                ax.text(j, i - 0.12, "none" if np.isnan(v) else f"{v:.0f}", ha="center", va="center", fontsize=7,
+                        color=INK2 if np.isnan(v) else ("white" if v > 75 else INK))
+        for ea, q, ep, lab in classes:
+            i, j = eas.index(ea), qs.index(q); v = M[i, j]
+            ok = (not np.isnan(v)) and v <= 100 * ep + 1e-9
+            ax.add_patch(Rectangle((j - 0.5, i - 0.5), 1, 1, fill=False, ec=ORANGE, lw=2.2, zorder=3))
+            ax.text(j, i + 0.27, f"{lab} {'✓' if ok else '✗'}", ha="center", va="center", fontsize=6.5, zorder=4,
+                    color="white" if v > 75 else INK, fontweight="bold")
+        ax.set_xticks(range(len(qs))); ax.set_xticklabels([f"{100 * q:.0f}" for q in qs])
+        ax.set_yticks(range(len(eas))); ax.set_yticklabels([f"{100 * e:.0f}" for e in eas])
+        ax.set_xlabel("Quality limit Q: agreement ≥ [%]"); ax.set_title(title, loc="left", fontsize=8.5)
+        ax.grid(False)
+        for sp in ax.spines.values():
+            sp.set_visible(False)
+    axes[0].set_ylabel("Answer leakage limit ε_a [%]")
+    cb = fig.colorbar(im, ax=axes, fraction=0.025, pad=0.02)
+    cb.set_label("Min. robust prompt leakage,\nserver-using options [%]", fontsize=7.5); cb.outline.set_visible(False)
+    save(fig, "fig8_feasibility.png")
+
+
 if __name__ == "__main__":
-    fig1(); c = fig2(); fig3(); fig4(); s = fig5(); fig6(); fig7()
+    fig1(); c = fig2(); fig3(); fig4(); s = fig5(); fig6(); fig7(); fig8()
     print({k: {kk: round(vv, 1) for kk, vv in v.items()} for k, v in c.items()})
     print({k: {kk: round(float(vv), 1) for kk, vv in v.items()} for k, v in s.items()})
