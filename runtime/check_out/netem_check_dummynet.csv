@@ -1,0 +1,2 @@
+mode,scenario,rate_mbit,rtt_ms,expected_rtt_ms,measured_rtt_ms,rtt_p10_ms,rtt_p90_ms,rtt_err_pct,measured_mbit,measured_mbit_sd,thr_err_pct,payload_bytes
+dummynet,4g,10.0,60.0,60.0832,63.9074370265007,61.64583296049386,63.99749999400228,6.364902379534888,9.98128050429329,0.03633589268392161,-0.18719495706710965,625000

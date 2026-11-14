@@ -1,0 +1,166 @@
+{
+ "split_1_1": {
+  "client": {
+   "footprint": 1173571096,
+   "peak_footprint": 1173571096,
+   "rss": 1150992384,
+   "mps_alloc": 0,
+   "mps_driver": 393216,
+   "sys_available": 1705852928,
+   "swap_used": 1246887936
+  },
+  "server": {
+   "footprint": 2574910544,
+   "peak_footprint": 2584478800,
+   "rss": 252755968,
+   "mps_alloc": 1742422528,
+   "mps_driver": 2223636480,
+   "sys_available": 1706164224,
+   "swap_used": 1246887936
+  }
+ },
+ "split_2_2": {
+  "client": {
+   "footprint": 1422444248,
+   "peak_footprint": 1422444248,
+   "rss": 1209778176,
+   "mps_alloc": 0,
+   "mps_driver": 393216,
+   "sys_available": 1513832448,
+   "swap_used": 1137836032
+  },
+  "server": {
+   "footprint": 2565473360,
+   "peak_footprint": 2573829200,
+   "rss": 217235456,
+   "mps_alloc": 1495073280,
+   "mps_driver": 2215247872,
+   "sys_available": 1514078208,
+   "swap_used": 1137836032
+  }
+ },
+ "split_4_1": {
+  "client": {
+   "footprint": 1545062152,
+   "peak_footprint": 1545062152,
+   "rss": 1405321216,
+   "mps_alloc": 0,
+   "mps_driver": 393216,
+   "sys_available": 1848344576,
+   "swap_used": 1258029056
+  },
+  "server": {
+   "footprint": 2574091416,
+   "peak_footprint": 2580481176,
+   "rss": 244039680,
+   "mps_alloc": 1370382848,
+   "mps_driver": 2223636480,
+   "sys_available": 1847410688,
+   "swap_used": 1258029056
+  }
+ },
+ "split_4_2": {
+  "client": {
+   "footprint": 1794049968,
+   "peak_footprint": 1794082736,
+   "rss": 1558233088,
+   "mps_alloc": 0,
+   "mps_driver": 393216,
+   "sys_available": 1497415680,
+   "swap_used": 1020723200
+  },
+  "server": {
+   "footprint": 2565555304,
+   "peak_footprint": 2572780648,
+   "rss": 61128704,
+   "mps_alloc": 1245725184,
+   "mps_driver": 2215247872,
+   "sys_available": 1498169344,
+   "swap_used": 1020723200
+  }
+ },
+ "split_6_2": {
+  "client": {
+   "footprint": 1921746960,
+   "peak_footprint": 1921746960,
+   "rss": 1899806720,
+   "mps_alloc": 0,
+   "mps_driver": 393216,
+   "sys_available": 2149056512,
+   "swap_used": 1020723200
+  },
+  "server": {
+   "footprint": 1483211856,
+   "peak_footprint": 1489880144,
+   "rss": 253362176,
+   "mps_alloc": 999293440,
+   "mps_driver": 1133117440,
+   "sys_available": 2149777408,
+   "swap_used": 1020723200
+  }
+ },
+ "split_8_2": {
+  "client": {
+   "footprint": 2171324648,
+   "peak_footprint": 2171324648,
+   "rss": 2149564416,
+   "mps_alloc": 0,
+   "mps_driver": 393216,
+   "sys_available": 2133999616,
+   "swap_used": 1012334592
+  },
+  "server": {
+   "footprint": 1449231464,
+   "peak_footprint": 1454720104,
+   "rss": 252428288,
+   "mps_alloc": 749683200,
+   "mps_driver": 1099563008,
+   "sys_available": 2133999616,
+   "swap_used": 1012334592
+  }
+ },
+ "split_4_0": {
+  "client": {
+   "footprint": 1418036952,
+   "peak_footprint": 1418036952,
+   "rss": 1224458240,
+   "mps_alloc": 0,
+   "mps_driver": 393216,
+   "sys_available": 1518174208,
+   "swap_used": 1012334592
+  },
+  "server": {
+   "footprint": 2574402640,
+   "peak_footprint": 2582742096,
+   "rss": 244678656,
+   "mps_alloc": 1495073280,
+   "mps_driver": 2223636480,
+   "sys_available": 1520369664,
+   "swap_used": 1012334592
+  }
+ },
+ "all_on_client": {
+  "process": {
+   "footprint": 2915257056,
+   "peak_footprint": 2915257056,
+   "rss": 2890137600,
+   "mps_alloc": 0,
+   "mps_driver": 393216,
+   "sys_available": 2879930368,
+   "swap_used": 1012334592
+  },
+  "device": "cpu"
+ },
+ "all_on_server": {
+  "process": {
+   "footprint": 3601318992,
+   "peak_footprint": 4083598776,
+   "rss": 388759552,
+   "mps_alloc": 2474775040,
+   "mps_driver": 3272212480,
+   "sys_available": 1179795456,
+   "swap_used": 1189543936
+  },
+  "device": "mps"
+ }
+}

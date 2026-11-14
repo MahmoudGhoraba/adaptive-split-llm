@@ -1,0 +1,51 @@
+  prompt 0: 46 tokens -> 48 generated, min margin 0.078
+  prompt 1: 57 tokens -> 48 generated, min margin 0.203
+  prompt 2: 52 tokens -> 48 generated, min margin 0.031
+  H= 1 T= 1 public   prompt 0: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 1 T= 1 public   prompt 1: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 1 T= 1 public   prompt 2: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 2 T= 2 public   prompt 0: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 2 T= 2 public   prompt 1: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 2 T= 2 public   prompt 2: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 4 T= 1 public   prompt 0: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 4 T= 1 public   prompt 1: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 4 T= 1 public   prompt 2: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 4 T= 2 public   prompt 0: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 4 T= 2 public   prompt 1: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 4 T= 2 public   prompt 2: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 6 T= 2 public   prompt 0: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 6 T= 2 public   prompt 1: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 6 T= 2 public   prompt 2: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 8 T= 2 public   prompt 0: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 8 T= 2 public   prompt 1: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 8 T= 2 public   prompt 2: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 1 T= 0 public   prompt 0: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 1 T= 0 public   prompt 1: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 1 T= 0 public   prompt 2: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 4 T= 0 public   prompt 0: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 4 T= 0 public   prompt 1: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 4 T= 0 public   prompt 2: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H=15 T= 0 public   prompt 0: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H=15 T= 0 public   prompt 1: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H=15 T= 0 public   prompt 2: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 1 T=14 public   prompt 0: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 1 T=14 public   prompt 1: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 1 T=14 public   prompt 2: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00
+  H= 1 T= 1 adapters prompt 0: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00 | vs public: tokens differ=True, layer-H state change 1.80
+  H= 1 T= 1 adapters prompt 1: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00 | vs public: tokens differ=True, layer-H state change 1.78
+  H= 1 T= 1 adapters prompt 2: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00 | vs public: tokens differ=True, layer-H state change 1.32
+  H= 2 T= 2 adapters prompt 0: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00 | vs public: tokens differ=True, layer-H state change 1.50
+  H= 2 T= 2 adapters prompt 1: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00 | vs public: tokens differ=True, layer-H state change 1.46
+  H= 2 T= 2 adapters prompt 2: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00 | vs public: tokens differ=True, layer-H state change 1.69
+  H= 4 T= 2 adapters prompt 0: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00 | vs public: tokens differ=True, layer-H state change 1.46
+  H= 4 T= 2 adapters prompt 1: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00 | vs public: tokens differ=True, layer-H state change 1.36
+  H= 4 T= 2 adapters prompt 2: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00 | vs public: tokens differ=True, layer-H state change 1.55
+  H= 8 T= 2 adapters prompt 0: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00 | vs public: tokens differ=True, layer-H state change 1.31
+  H= 8 T= 2 adapters prompt 1: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00 | vs public: tokens differ=True, layer-H state change 1.39
+  H= 8 T= 2 adapters prompt 2: PASS tokens 48/48 equal=True rel err H/N-T/N 0.0e+00/0.0e+00/0.0e+00 | vs public: tokens differ=True, layer-H state change 1.17
+{"side": "client", "H": 1, "T": 1, "P": 512, "A": 128, "snaps": {"start": {"footprint": 276775776, "peak_footprint": 276775776, "rss": 335642624, "mps_alloc": 0, "mps_driver": 393216, "sys_available": 4367400960, "swap_used": 2933194752}, "loaded": {"footprint": 1928480088, "peak_footprint": 1928857496, "rss": 909803520, "mps_alloc": 771772928, "mps_driver": 1082523648, "sys_available": 2582773760, "swap_used": 2924806144}, "prefill": {"footprint": 1938802104, "peak_footprint": 1938802104, "rss": 1052016640, "mps_alloc": 775967232, "mps_driver": 1082785792, "sys_available": 2274803712, "swap_used": 2924806144}, "decode": {"footprint": 1938900408, "peak_footprint": 1938900408, "rss": 1052164096, "mps_alloc": 774398464, "mps_driver": 1082785792, "sys_available": 2279833600, "swap_used": 2916417536}}}
+{"side": "server", "H": 1, "T": 1, "P": 512, "A": 128, "snaps": {"start": {"footprint": 276874056, "peak_footprint": 276874056, "rss": 335757312, "mps_alloc": 0, "mps_driver": 393216, "sys_available": 3505143808, "swap_used": 2790522880}, "loaded": {"footprint": 2510898088, "peak_footprint": 2511751328, "rss": 79560704, "mps_alloc": 1703002624, "mps_driver": 2189819904, "sys_available": 1706262528, "swap_used": 2765357056}, "prefill": {"footprint": 2549023800, "peak_footprint": 2549023800, "rss": 192233472, "mps_alloc": 1717682688, "mps_driver": 2206859264, "sys_available": 1466417152, "swap_used": 2756968448}, "decode": {"footprint": 2557838392, "peak_footprint": 2565964856, "rss": 192643072, "mps_alloc": 1721352704, "mps_driver": 2223636480, "sys_available": 1424195584, "swap_used": 2748579840}}}
+{"side": "client", "H": 4, "T": 2, "P": 512, "A": 128, "snaps": {"start": {"footprint": 276530064, "peak_footprint": 276530064, "rss": 335364096, "mps_alloc": 0, "mps_driver": 393216, "sys_available": 3558703104, "swap_used": 2673082368}, "loaded": {"footprint": 3002189168, "peak_footprint": 3002829104, "rss": 114606080, "mps_alloc": 1258344960, "mps_driver": 2156265472, "sys_available": 1168113664, "swap_used": 2664693760}, "prefill": {"footprint": 3022800360, "peak_footprint": 3022800360, "rss": 220119040, "mps_alloc": 1266733568, "mps_driver": 2164916224, "sys_available": 1065205760, "swap_used": 2664693760}, "decode": {"footprint": 3027895784, "peak_footprint": 3027895784, "rss": 221233152, "mps_alloc": 1266213376, "mps_driver": 2173304832, "sys_available": 1128873984, "swap_used": 2664693760}}}
+{"side": "server", "H": 4, "T": 2, "P": 512, "A": 128, "snaps": {"start": {"footprint": 276824928, "peak_footprint": 276824928, "rss": 335691776, "mps_alloc": 0, "mps_driver": 393216, "sys_available": 4026646528, "swap_used": 2664693760}, "loaded": {"footprint": 2510488512, "peak_footprint": 2511128424, "rss": 124141568, "mps_alloc": 1216430592, "mps_driver": 2189819904, "sys_available": 1428750336, "swap_used": 2656305152}, "prefill": {"footprint": 2537669688, "peak_footprint": 2537669688, "rss": 261390336, "mps_alloc": 1226916352, "mps_driver": 2198470656, "sys_available": 1321975808, "swap_used": 2656305152}, "decode": {"footprint": 2548827192, "peak_footprint": 2554659896, "rss": 252084224, "mps_alloc": 1229537792, "mps_driver": 2215247872, "sys_available": 1312112640, "swap_used": 2656305152}}}
+{"side": "client", "H": 8, "T": 2, "P": 512, "A": 128, "snaps": {"start": {"footprint": 276644704, "peak_footprint": 276644704, "rss": 335511552, "mps_alloc": 0, "mps_driver": 393216, "sys_available": 3798745088, "swap_used": 2656305152}, "loaded": {"footprint": 3002516800, "peak_footprint": 3003419240, "rss": 114917376, "mps_alloc": 1744916992, "mps_driver": 2156265472, "sys_available": 1742536704, "swap_used": 2656305152}, "prefill": {"footprint": 3025864120, "peak_footprint": 3025864120, "rss": 270663680, "mps_alloc": 1757499904, "mps_driver": 2164916224, "sys_available": 1742831616, "swap_used": 2656305152}, "decode": {"footprint": 3036923320, "peak_footprint": 3042756024, "rss": 222134272, "mps_alloc": 1758028288, "mps_driver": 2181693440, "sys_available": 1126514688, "swap_used": 2656305152}}}
+{"side": "server", "H": 8, "T": 2, "P": 512, "A": 128, "snaps": {"start": {"footprint": 276546424, "peak_footprint": 276546424, "rss": 335396864, "mps_alloc": 0, "mps_driver": 393216, "sys_available": 4059856896, "swap_used": 2647916544}, "loaded": {"footprint": 1402930136, "peak_footprint": 1403323928, "rss": 384352256, "mps_alloc": 729858560, "mps_driver": 1082540032, "sys_available": 2572845056, "swap_used": 2647916544}, "prefill": {"footprint": 1427965008, "peak_footprint": 1427965008, "rss": 530841600, "mps_alloc": 736150016, "mps_driver": 1091174400, "sys_available": 2352480256, "swap_used": 2647916544}, "decode": {"footprint": 1436517456, "peak_footprint": 1436517456, "rss": 531169280, "mps_alloc": 737722880, "mps_driver": 1099563008, "sys_available": 2336997376, "swap_used": 2639527936}}}

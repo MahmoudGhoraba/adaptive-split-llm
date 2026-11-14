@@ -1,0 +1,375 @@
+{
+ "rows": [
+  {
+   "side": "client",
+   "config": "(6, 2)",
+   "L": 8,
+   "ends": true,
+   "rep": 2,
+   "cold": true,
+   "load_s": 4.251490416005254
+  },
+  {
+   "side": "client",
+   "config": "(6, 2)",
+   "L": 8,
+   "ends": true,
+   "rep": 0,
+   "cold": false,
+   "load_s": 0.7825866671046242
+  },
+  {
+   "side": "client",
+   "config": "(1, 1)",
+   "L": 2,
+   "ends": true,
+   "rep": 0,
+   "cold": false,
+   "load_s": 0.12263391609303653
+  },
+  {
+   "side": "client",
+   "config": "all",
+   "L": 16,
+   "ends": true,
+   "rep": 1,
+   "cold": false,
+   "load_s": 3.5454582910751924
+  },
+  {
+   "side": "client",
+   "config": "(1, 1)",
+   "L": 2,
+   "ends": true,
+   "rep": 2,
+   "cold": false,
+   "load_s": 1.2674720000941306
+  },
+  {
+   "side": "client",
+   "config": "all",
+   "L": 16,
+   "ends": true,
+   "rep": 0,
+   "cold": false,
+   "load_s": 5.8778411250095814
+  },
+  {
+   "side": "client",
+   "config": "(6, 2)",
+   "L": 8,
+   "ends": true,
+   "rep": 1,
+   "cold": false,
+   "load_s": 2.864206708036363
+  },
+  {
+   "side": "client",
+   "config": "(2, 2)",
+   "L": 4,
+   "ends": true,
+   "rep": 0,
+   "cold": false,
+   "load_s": 0.17755633301567286
+  },
+  {
+   "side": "client",
+   "config": "(2, 2)",
+   "L": 4,
+   "ends": true,
+   "rep": 2,
+   "cold": false,
+   "load_s": 0.14292366697918624
+  },
+  {
+   "side": "client",
+   "config": "all",
+   "L": 16,
+   "ends": true,
+   "rep": 2,
+   "cold": false,
+   "load_s": 4.160976917017251
+  },
+  {
+   "side": "client",
+   "config": "(8, 2)",
+   "L": 10,
+   "ends": true,
+   "rep": 2,
+   "cold": false,
+   "load_s": 2.3674937080359086
+  },
+  {
+   "side": "client",
+   "config": "(4, 2)",
+   "L": 6,
+   "ends": true,
+   "rep": 0,
+   "cold": false,
+   "load_s": 0.5902532079489902
+  },
+  {
+   "side": "client",
+   "config": "(4, 2)",
+   "L": 6,
+   "ends": true,
+   "rep": 1,
+   "cold": false,
+   "load_s": 0.2724654170451686
+  },
+  {
+   "side": "client",
+   "config": "(4, 2)",
+   "L": 6,
+   "ends": true,
+   "rep": 2,
+   "cold": false,
+   "load_s": 0.175035291002132
+  },
+  {
+   "side": "client",
+   "config": "(2, 2)",
+   "L": 4,
+   "ends": true,
+   "rep": 1,
+   "cold": false,
+   "load_s": 0.1254300830187276
+  },
+  {
+   "side": "client",
+   "config": "(1, 1)",
+   "L": 2,
+   "ends": true,
+   "rep": 1,
+   "cold": false,
+   "load_s": 0.10499300004448742
+  },
+  {
+   "side": "client",
+   "config": "(8, 2)",
+   "L": 10,
+   "ends": true,
+   "rep": 1,
+   "cold": false,
+   "load_s": 0.2951419169548899
+  },
+  {
+   "side": "client",
+   "config": "(8, 2)",
+   "L": 10,
+   "ends": true,
+   "rep": 0,
+   "cold": false,
+   "load_s": 0.19960674992762506
+  },
+  {
+   "side": "server",
+   "config": "(6, 2)",
+   "L": 8,
+   "ends": false,
+   "rep": 1,
+   "cold": true,
+   "load_s": 1.7185745000606403
+  },
+  {
+   "side": "server",
+   "config": "all",
+   "L": 16,
+   "ends": true,
+   "rep": 1,
+   "cold": false,
+   "load_s": 5.289233917021193
+  },
+  {
+   "side": "server",
+   "config": "(10, 2)",
+   "L": 4,
+   "ends": false,
+   "rep": 2,
+   "cold": false,
+   "load_s": 0.7510097920894623
+  },
+  {
+   "side": "server",
+   "config": "(8, 2)",
+   "L": 6,
+   "ends": false,
+   "rep": 2,
+   "cold": false,
+   "load_s": 0.1830735420808196
+  },
+  {
+   "side": "server",
+   "config": "(1, 1)",
+   "L": 14,
+   "ends": false,
+   "rep": 0,
+   "cold": false,
+   "load_s": 2.684897332917899
+  },
+  {
+   "side": "server",
+   "config": "all",
+   "L": 16,
+   "ends": true,
+   "rep": 0,
+   "cold": false,
+   "load_s": 5.961042082984932
+  },
+  {
+   "side": "server",
+   "config": "(6, 2)",
+   "L": 8,
+   "ends": false,
+   "rep": 2,
+   "cold": false,
+   "load_s": 0.8372215420240536
+  },
+  {
+   "side": "server",
+   "config": "(1, 1)",
+   "L": 14,
+   "ends": false,
+   "rep": 2,
+   "cold": false,
+   "load_s": 1.5338737089186907
+  },
+  {
+   "side": "server",
+   "config": "(2, 2)",
+   "L": 12,
+   "ends": false,
+   "rep": 0,
+   "cold": false,
+   "load_s": 0.32381808408536017
+  },
+  {
+   "side": "server",
+   "config": "(6, 2)",
+   "L": 8,
+   "ends": false,
+   "rep": 0,
+   "cold": false,
+   "load_s": 0.23363520798739046
+  },
+  {
+   "side": "server",
+   "config": "(2, 2)",
+   "L": 12,
+   "ends": false,
+   "rep": 2,
+   "cold": false,
+   "load_s": 0.30627499998081475
+  },
+  {
+   "side": "server",
+   "config": "(4, 2)",
+   "L": 10,
+   "ends": false,
+   "rep": 1,
+   "cold": false,
+   "load_s": 0.28723858296871185
+  },
+  {
+   "side": "server",
+   "config": "(2, 2)",
+   "L": 12,
+   "ends": false,
+   "rep": 1,
+   "cold": false,
+   "load_s": 0.3252447920385748
+  },
+  {
+   "side": "server",
+   "config": "all",
+   "L": 16,
+   "ends": true,
+   "rep": 2,
+   "cold": false,
+   "load_s": 4.136152374907397
+  },
+  {
+   "side": "server",
+   "config": "(4, 2)",
+   "L": 10,
+   "ends": false,
+   "rep": 0,
+   "cold": false,
+   "load_s": 1.0743286249926314
+  },
+  {
+   "side": "server",
+   "config": "(10, 2)",
+   "L": 4,
+   "ends": false,
+   "rep": 0,
+   "cold": false,
+   "load_s": 0.16964466602075845
+  },
+  {
+   "side": "server",
+   "config": "(10, 2)",
+   "L": 4,
+   "ends": false,
+   "rep": 1,
+   "cold": false,
+   "load_s": 0.14489604195114225
+  },
+  {
+   "side": "server",
+   "config": "(4, 2)",
+   "L": 10,
+   "ends": false,
+   "rep": 2,
+   "cold": false,
+   "load_s": 0.26475983299314976
+  },
+  {
+   "side": "server",
+   "config": "(1, 1)",
+   "L": 14,
+   "ends": false,
+   "rep": 1,
+   "cold": false,
+   "load_s": 0.8515275840181857
+  },
+  {
+   "side": "server",
+   "config": "(8, 2)",
+   "L": 6,
+   "ends": false,
+   "rep": 1,
+   "cold": false,
+   "load_s": 0.20524420798756182
+  },
+  {
+   "side": "server",
+   "config": "(8, 2)",
+   "L": 6,
+   "ends": false,
+   "rep": 0,
+   "cold": false,
+   "load_s": 0.18213950004428625
+  }
+ ],
+ "fits": {
+  "client": {
+   "params": [
+    -0.9110387545221934,
+    0.2966133371175404
+   ],
+   "mape_pct": 208.36177415892837,
+   "max_abs_err_s": 2.0430664856511287
+  },
+  "server": {
+   "params": [
+    -0.30652838329921395,
+    0.10110266596874115,
+    3.817695186103862
+   ],
+   "mape_pct": 77.49091381742758,
+   "max_abs_err_s": 1.575988392654737
+  }
+ },
+ "label": "MEASURED rows, FITTED params [a, b(, c)]"
+}

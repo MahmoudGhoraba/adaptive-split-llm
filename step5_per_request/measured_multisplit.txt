@@ -1,0 +1,35 @@
+# secret head + secret tail at several splits (secret_multisplit.py); mean over training seeds
+# (H, T, lambda_prompt, lambda_answer): leak/answer_leak = attacker without the secret (answer: server runs the public tail); *_B = attacker with the secret
+# agreement > 0.5 is required by the sanity check; entries below it are kept but marked
+SECRET_U = {
+    (1, 1, 0.1, 0.0): dict(leak=0.9997, private_exact=0.9589, leak_B=0.9996, private_exact_B=0.9556, answer_leak=0.9596, agreement=0.9306, ppl_ratio=0.996),   # n_seeds=1
+    (1, 1, 0.1, 0.01): dict(leak=0.9998, private_exact=0.9573, leak_B=0.9998, private_exact_B=0.9573, answer_leak=0.9625, agreement=0.9289, ppl_ratio=0.998),   # n_seeds=1
+    (1, 1, 0.1, 0.03): dict(leak=0.9989, private_exact=0.964, leak_B=0.9993, private_exact_B=0.9573, answer_leak=0.7235, agreement=0.8071, ppl_ratio=1.089),   # n_seeds=1
+    (1, 1, 0.1, 0.1): dict(leak=0.9997, private_exact=0.964, leak_B=0.9994, private_exact_B=0.9514, answer_leak=0.3547, agreement=0.7892, ppl_ratio=1.099),   # n_seeds=1
+    (2, 1, 0.1, 0.0): dict(leak=0.9868, private_exact=0.9539, leak_B=0.9972, private_exact_B=0.9522, answer_leak=0.9521, agreement=0.9156, ppl_ratio=0.998),   # n_seeds=1
+    (2, 1, 0.1, 0.01): dict(leak=0.989, private_exact=0.9522, leak_B=0.9974, private_exact_B=0.9539, answer_leak=0.8448, agreement=0.8868, ppl_ratio=1.018),   # n_seeds=1
+    (2, 1, 0.1, 0.03): dict(leak=0.9669, private_exact=0.9044, leak_B=0.9965, private_exact_B=0.9179, answer_leak=0.5544, agreement=0.8063, ppl_ratio=1.088),   # n_seeds=1
+    (2, 1, 0.1, 0.1): dict(leak=0.7203, private_exact=0.3227, leak_B=0.996, private_exact_B=0.9497, answer_leak=0.1979, agreement=0.6155, ppl_ratio=1.458),   # n_seeds=1
+    (2, 2, 0.1, 0.0): dict(leak=0.9881, private_exact=0.9539, leak_B=0.9968, private_exact_B=0.9489, answer_leak=0.9452, agreement=0.9199, ppl_ratio=1.002),   # n_seeds=1
+    (2, 2, 0.1, 0.01): dict(leak=0.9864, private_exact=0.9522, leak_B=0.9972, private_exact_B=0.9464, answer_leak=0.7275, agreement=0.8717, ppl_ratio=1.029),   # n_seeds=1
+    (2, 2, 0.1, 0.03): dict(leak=0.9562, private_exact=0.8877, leak_B=0.9969, private_exact_B=0.9288, answer_leak=0.3763, agreement=0.7917, ppl_ratio=1.088),   # n_seeds=1
+    (2, 2, 0.1, 0.1): dict(leak=0.7468, private_exact=0.3554, leak_B=0.9967, private_exact_B=0.9438, answer_leak=0.1668, agreement=0.621, ppl_ratio=1.444),   # n_seeds=1
+    (4, 1, 0.1, 0.0): dict(leak=0.8806, private_exact=0.7125, leak_B=0.9494, private_exact_B=0.8223, answer_leak=0.9504, agreement=0.8681, ppl_ratio=1.02),   # n_seeds=1
+    (4, 1, 0.1, 0.01): dict(leak=0.8618, private_exact=0.6479, leak_B=0.9376, private_exact_B=0.7787, answer_leak=0.846, agreement=0.8455, ppl_ratio=1.047),   # n_seeds=1
+    (4, 1, 0.1, 0.03): dict(leak=0.8095, private_exact=0.6697, leak_B=0.942, private_exact_B=0.803, answer_leak=0.5579, agreement=0.7812, ppl_ratio=1.099),   # n_seeds=1
+    (4, 1, 0.1, 0.1): dict(leak=0.6364, private_exact=0.3873, leak_B=0.9369, private_exact_B=0.7779, answer_leak=0.2739, agreement=0.6165, ppl_ratio=1.431),   # n_seeds=1
+    (4, 2, 0.1, 0.0): dict(leak=0.8801, private_exact=0.7909, leak_B=0.946, private_exact_B=0.7913, answer_leak=0.9303, agreement=0.8682, ppl_ratio=1.014),   # n_seeds=2
+    (4, 2, 0.1, 0.01): dict(leak=0.8328, private_exact=0.6316, leak_B=0.9408, private_exact_B=0.7301, answer_leak=0.7312, agreement=0.8314, ppl_ratio=1.051),   # n_seeds=2
+    (4, 2, 0.1, 0.03): dict(leak=0.7672, private_exact=0.5884, leak_B=0.9342, private_exact_B=0.7603, answer_leak=0.4074, agreement=0.7645, ppl_ratio=1.11),   # n_seeds=2
+    (4, 2, 0.1, 0.1): dict(leak=0.7708, private_exact=0.5197, leak_B=0.9486, private_exact_B=0.7737, answer_leak=0.1444, agreement=0.6175, ppl_ratio=1.443),   # n_seeds=2
+    (6, 2, 0.1, 0.0): dict(leak=0.6823, private_exact=0.5272, leak_B=0.8548, private_exact_B=0.6111, answer_leak=0.92, agreement=0.814, ppl_ratio=1.06),   # n_seeds=1
+    (6, 2, 0.1, 0.01): dict(leak=0.7091, private_exact=0.5096, leak_B=0.8652, private_exact_B=0.6614, answer_leak=0.7431, agreement=0.794, ppl_ratio=1.061),   # n_seeds=1
+    (6, 2, 0.1, 0.03): dict(leak=0.5567, private_exact=0.4585, leak_B=0.826, private_exact_B=0.5717, answer_leak=0.3937, agreement=0.7242, ppl_ratio=1.164),   # n_seeds=1
+    (6, 2, 0.1, 0.1): dict(leak=0.6443, private_exact=0.5356, leak_B=0.9017, private_exact_B=0.7117, answer_leak=0.178, agreement=0.6142, ppl_ratio=1.386),   # n_seeds=1
+}
+
+# spread over seeds (half of max - min), only where more than one seed was run:
+#   (4, 2, 0.1, 0.0): leak +-0.014, answer_leak +-0.005, agreement +-0.001  (half range, 2 seeds)
+#   (4, 2, 0.1, 0.01): leak +-0.001, answer_leak +-0.007, agreement +-0.003  (half range, 2 seeds)
+#   (4, 2, 0.1, 0.03): leak +-0.031, answer_leak +-0.000, agreement +-0.003  (half range, 2 seeds)
+#   (4, 2, 0.1, 0.1): leak +-0.014, answer_leak +-0.025, agreement +-0.008  (half range, 2 seeds)

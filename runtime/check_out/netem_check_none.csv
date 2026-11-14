@@ -1,0 +1,2 @@
+mode,scenario,rate_mbit,rtt_ms,expected_rtt_ms,measured_rtt_ms,rtt_p10_ms,rtt_p90_ms,rtt_err_pct,measured_mbit,measured_mbit_sd,thr_err_pct,payload_bytes
+none,none,0.0,0.0,0.0,0.09404204320162535,0.09208405390381813,0.10904204100370407,,21033.927599706076,8292.22152218904,,4000000

@@ -1,0 +1,22 @@
+{
+ "split_4_1": {
+  "client": {
+   "footprint": 1561249592,
+   "peak_footprint": 1561249592,
+   "rss": 1299218432,
+   "mps_alloc": 0,
+   "mps_driver": 393216,
+   "sys_available": 1536196608,
+   "swap_used": 1121386496
+  },
+  "server": {
+   "footprint": 2565948544,
+   "peak_footprint": 2573763712,
+   "rss": 172802048,
+   "mps_alloc": 1370382848,
+   "mps_driver": 2215247872,
+   "sys_available": 1538375680,
+   "swap_used": 1121386496
+  }
+ }
+}

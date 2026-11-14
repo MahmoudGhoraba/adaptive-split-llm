@@ -1,0 +1,179 @@
+{
+ "config": {
+  "model_id": "meta-llama/Llama-3.2-1B-Instruct",
+  "H": 4,
+  "lam_list": [
+   0.05,
+   0.1,
+   0.2,
+   0.3
+  ],
+  "lora_rank": 32,
+  "lora_alpha": 32,
+  "secret_init": 0.02,
+  "def_steps": 1200,
+  "def_batch": 4,
+  "def_lr": 0.0002,
+  "inv_lr": 0.001,
+  "train_tokens": 400000,
+  "test_tokens": 40000,
+  "n_sensitive": 400,
+  "seq_len": 128,
+  "batch_seqs": 8,
+  "positions_per_step": 384,
+  "epochs": 2,
+  "hidden_mlp": 2048,
+  "bootstrap": 300,
+  "seed": 0,
+  "out_dir": "secret_results"
+ },
+ "smoke": false,
+ "rows": [
+  {
+   "defence": "none (public model)",
+   "lam": null,
+   "attacker_A": {
+    "content_leak": [
+     0.9869086414203843,
+     0.9846918421164421,
+     0.9887518451198718
+    ],
+    "weighted_top1": 0.9859674158717416,
+    "sensitive_top1": 0.9526081424936387,
+    "sensitive_exact": 0.9002514668901928
+   },
+   "attacker_B": null,
+   "agreement": 1.0,
+   "ppl_ratio": 1.0
+  },
+  {
+   "defence": "secret adapters",
+   "lam": 0.05,
+   "attacker_A": {
+    "content_leak": [
+     0.9506686144510619,
+     0.9469599247730147,
+     0.9546305144530639
+    ],
+    "weighted_top1": 0.9525462321788807,
+    "sensitive_top1": 0.9029898218829516,
+    "sensitive_exact": 0.7820620284995808
+   },
+   "attacker_B": {
+    "content_leak": [
+     0.9805596134397123,
+     0.9781409612987544,
+     0.9830443819637028
+    ],
+    "weighted_top1": 0.98001405726805,
+    "sensitive_top1": 0.9535623409669212,
+    "sensitive_exact": 0.8994132439228835
+   },
+   "agreement": 0.9016222357749939,
+   "ppl": 33.524515554313744,
+   "ppl_clean": 33.69079122527314,
+   "ppl_ratio": 0.9950646552095618
+  },
+  {
+   "defence": "secret adapters",
+   "lam": 0.1,
+   "attacker_A": {
+    "content_leak": [
+     0.8770648387459266,
+     0.8710840384585901,
+     0.8825100162623469
+    ],
+    "weighted_top1": 0.897558244002634,
+    "sensitive_top1": 0.861323155216285,
+    "sensitive_exact": 0.6965632858340318
+   },
+   "attacker_B": {
+    "content_leak": [
+     0.9496572648612204,
+     0.9459178271372375,
+     0.9533996010751061
+    ],
+    "weighted_top1": 0.9540166517716281,
+    "sensitive_top1": 0.9335241730279898,
+    "sensitive_exact": 0.8424140821458508
+   },
+   "agreement": 0.8730095624923706,
+   "ppl": 34.20900741089936,
+   "ppl_clean": 33.69079122527314,
+   "ppl_ratio": 1.0153815380042925
+  },
+  {
+   "defence": "secret adapters",
+   "lam": 0.2,
+   "attacker_A": {
+    "content_leak": [
+     0.6486122036183841,
+     0.6426407433224579,
+     0.6550910880334154
+    ],
+    "weighted_top1": 0.748884306340345,
+    "sensitive_top1": 0.7643129770992366,
+    "sensitive_exact": 0.5607711651299245
+   },
+   "attacker_B": {
+    "content_leak": [
+     0.8927407573884707,
+     0.88852089532677,
+     0.8978647510325782
+    ],
+    "weighted_top1": 0.9135513310666128,
+    "sensitive_top1": 0.8829516539440203,
+    "sensitive_exact": 0.7829002514668902
+   },
+   "agreement": 0.7857533693313599,
+   "ppl": 36.92955613991683,
+   "ppl_clean": 33.69079122527314,
+   "ppl_ratio": 1.0961320526130636
+  },
+  {
+   "defence": "secret adapters",
+   "lam": 0.3,
+   "attacker_A": {
+    "content_leak": [
+     0.34251039442634,
+     0.33511742543102113,
+     0.34941850288126114
+    ],
+    "weighted_top1": 0.5450550191264921,
+    "sensitive_top1": 0.638676844783715,
+    "sensitive_exact": 0.43671416596814755
+   },
+   "attacker_B": {
+    "content_leak": [
+     0.8672884593774581,
+     0.8618591676861871,
+     0.8735578860011776
+    ],
+    "weighted_top1": 0.887098480749425,
+    "sensitive_top1": 0.7344147582697201,
+    "sensitive_exact": 0.548197820620285
+   },
+   "agreement": 0.659136176109314,
+   "ppl": 46.6410404766038,
+   "ppl_clean": 33.69079122527314,
+   "ppl_ratio": 1.3843854293815467
+  }
+ ],
+ "sanity_checks": [
+  {
+   "name": "no defence: attacker A leaks > 0.9 (matches the first attack)",
+   "passed": true,
+   "info": "0.987"
+  },
+  {
+   "name": "every defended model keeps agreement > 0.5",
+   "passed": true,
+   "info": "lambda=0.05: 0.902, lambda=0.1: 0.873, lambda=0.2: 0.786, lambda=0.3: 0.659"
+  },
+  {
+   "name": "attacker B (knows weights) leaks at least as much as attacker A",
+   "passed": true,
+   "info": ""
+  }
+ ]
+}

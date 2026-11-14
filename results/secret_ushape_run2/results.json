@@ -1,0 +1,227 @@
+{
+ "config": {
+  "model_id": "meta-llama/Llama-3.2-1B-Instruct",
+  "H": 4,
+  "T": 2,
+  "configs": [
+   [
+    0.1,
+    0.01
+   ],
+   [
+    0.1,
+    0.03
+   ],
+   [
+    0.1,
+    0.1
+   ]
+  ],
+  "lora_rank": 32,
+  "lora_alpha": 32,
+  "secret_init": 0.02,
+  "def_steps": 1200,
+  "def_batch": 4,
+  "def_lr": 0.0002,
+  "inv_lr": 0.001,
+  "train_tokens": 400000,
+  "test_tokens": 40000,
+  "n_sensitive": 400,
+  "seq_len": 128,
+  "batch_seqs": 8,
+  "positions_per_step": 384,
+  "epochs": 2,
+  "hidden_mlp": 2048,
+  "bootstrap": 300,
+  "seed": 0,
+  "out_dir": "secret_ushape_results"
+ },
+ "smoke": false,
+ "rows": [
+  {
+   "config": "none",
+   "lam_p": null,
+   "lam_a": null,
+   "agreement": 1.0,
+   "ppl_ratio": 1.0,
+   "prompt_A": {
+    "content_leak": 0.9870210135970333,
+    "ci": [
+     0.9848310887218661,
+     0.9888827783470993
+    ],
+    "private_exact": 0.9002514668901928
+   },
+   "prompt_B": null,
+   "answer_server_tail": {
+    "content_leak": 1.0,
+    "ci": [
+     1.0,
+     1.0
+    ]
+   },
+   "answer_A": {
+    "content_leak": 0.3496498549904506,
+    "ci": [
+     0.3396317929853198,
+     0.36066740750268483
+    ]
+   },
+   "answer_B": null
+  },
+  {
+   "config": "\u03bbp=0.1, \u03bba=0.01",
+   "lam_p": 0.1,
+   "lam_a": 0.01,
+   "agreement": 0.835614025592804,
+   "ppl_ratio": 1.0452327274311872,
+   "prompt_A": {
+    "content_leak": 0.8894257781773233,
+    "ci": [
+     0.8852139552931096,
+     0.8940813466170972
+    ],
+    "private_exact": 0.6781223805532272
+   },
+   "prompt_B": {
+    "content_leak": 0.9504438700977638,
+    "ci": [
+     0.9468511041912904,
+     0.9535482444227562
+    ],
+    "private_exact": 0.8013411567476949
+   },
+   "answer_server_tail": {
+    "content_leak": 0.7292793767582775,
+    "ci": [
+     0.7211727195939247,
+     0.7358881409449689
+    ]
+   },
+   "answer_A": {
+    "content_leak": 0.34855370410445075,
+    "ci": [
+     0.33776764143057625,
+     0.35832840889863904
+    ]
+   },
+   "answer_B": {
+    "content_leak": 0.3370121907235086,
+    "ci": [
+     0.3264747384672888,
+     0.3480873888332757
+    ]
+   }
+  },
+  {
+   "config": "\u03bbp=0.1, \u03bba=0.03",
+   "lam_p": 0.1,
+   "lam_a": 0.03,
+   "agreement": 0.7676900625228882,
+   "ppl_ratio": 1.1031475031369595,
+   "prompt_A": {
+    "content_leak": 0.7906506349027981,
+    "ci": [
+     0.7832404483977826,
+     0.7969930903478782
+    ],
+    "private_exact": 0.5808885163453479
+   },
+   "prompt_B": {
+    "content_leak": 0.9448814473536352,
+    "ci": [
+     0.9413550432873437,
+     0.9489128025327322
+    ],
+    "private_exact": 0.8063704945515507
+   },
+   "answer_server_tail": {
+    "content_leak": 0.4103896103896104,
+    "ci": [
+     0.400564562867657,
+     0.42150324551364654
+    ]
+   },
+   "answer_A": {
+    "content_leak": 0.18694083694083696,
+    "ci": [
+     0.1777533558835586,
+     0.1959036208415314
+    ]
+   },
+   "answer_B": {
+    "content_leak": 0.3191919191919192,
+    "ci": [
+     0.3091727937287447,
+     0.3279710299745539
+    ]
+   }
+  },
+  {
+   "config": "\u03bbp=0.1, \u03bba=0.1",
+   "lam_p": 0.1,
+   "lam_a": 0.1,
+   "agreement": 0.6110668778419495,
+   "ppl_ratio": 1.4717476837104007,
+   "prompt_A": {
+    "content_leak": 0.6547364872457581,
+    "ci": [
+     0.6477978044960091,
+     0.6625604374837383
+    ],
+    "private_exact": 0.48113998323554064
+   },
+   "prompt_B": {
+    "content_leak": 0.936284975839982,
+    "ci": [
+     0.9326332440420656,
+     0.9396045320457932
+    ],
+    "private_exact": 0.7284157585917854
+   },
+   "answer_server_tail": {
+    "content_leak": 0.12233585760012491,
+    "ci": [
+     0.11644014525223713,
+     0.13055220870369347
+    ]
+   },
+   "answer_A": {
+    "content_leak": 0.019595596845967674,
+    "ci": [
+     0.014177644920731031,
+     0.02443674449899007
+    ]
+   },
+   "answer_B": {
+    "content_leak": 0.2658287141853385,
+    "ci": [
+     0.256590340133798,
+     0.2766340557615756
+    ]
+   }
+  }
+ ],
+ "sanity_checks": [
+  {
+   "name": "no defence: prompt attacker A > 0.9",
+   "passed": true,
+   "info": "0.987"
+  },
+  {
+   "name": "no defence: server running the public tail recovers the answer (> 0.99)",
+   "passed": true,
+   "info": "1.000"
+  },
+  {
+   "name": "every defended model keeps agreement > 0.5",
+   "passed": true,
+   "info": "\u03bbp=0.1, \u03bba=0.01: 0.836, \u03bbp=0.1, \u03bba=0.03: 0.768, \u03bbp=0.1, \u03bba=0.1: 0.611"
+  },
+  {
+   "name": "attackers with the secret leak at least as much as without (prompt and answer)",
+   "passed": true,
+   "info": ""
+  }
+ ]
+}

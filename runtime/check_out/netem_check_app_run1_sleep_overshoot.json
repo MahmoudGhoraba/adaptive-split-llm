@@ -1,0 +1,67 @@
+{
+ "rows": [
+  {
+   "mode": "app",
+   "scenario": "wifi",
+   "rate_mbit": 50.0,
+   "rtt_ms": 20.0,
+   "expected_rtt_ms": 20.01664,
+   "measured_rtt_ms": 26.55362553196028,
+   "rtt_p10_ms": 23.932166979648173,
+   "rtt_p90_ms": 27.52458304166794,
+   "rtt_err_pct": 32.657756406471215,
+   "measured_mbit": 49.24598896176932,
+   "measured_mbit_sd": 0.12885747991195828,
+   "thr_err_pct": -1.5080220764613599,
+   "payload_bytes": 3125000
+  },
+  {
+   "mode": "app",
+   "scenario": "4g",
+   "rate_mbit": 10.0,
+   "rtt_ms": 60.0,
+   "expected_rtt_ms": 60.0832,
+   "measured_rtt_ms": 73.28514603432268,
+   "rtt_p10_ms": 69.20408306177706,
+   "rtt_p90_ms": 78.62374989781529,
+   "rtt_err_pct": 21.972774476596925,
+   "measured_mbit": 9.98714039036254,
+   "measured_mbit_sd": 0.06203528087170073,
+   "thr_err_pct": -0.1285960963745974,
+   "payload_bytes": 625000
+  },
+  {
+   "mode": "app",
+   "scenario": "poor",
+   "rate_mbit": 1.0,
+   "rtt_ms": 250.0,
+   "expected_rtt_ms": 250.832,
+   "measured_rtt_ms": 263.2344795274548,
+   "rtt_p10_ms": 257.47620803304017,
+   "rtt_p90_ms": 268.6498330440372,
+   "rtt_err_pct": 4.944536393863153,
+   "measured_mbit": 0.9997564213558173,
+   "measured_mbit_sd": 0.0022237046221179925,
+   "thr_err_pct": -0.024357864418264943,
+   "payload_bytes": 62500
+  }
+ ],
+ "system_start": {
+  "footprint": 157713056,
+  "peak_footprint": 157713056,
+  "rss": 214286336,
+  "mps_alloc": 0,
+  "mps_driver": 393216,
+  "sys_available": 4756783104,
+  "swap_used": 1501822976
+ },
+ "system_end": {
+  "footprint": 176177944,
+  "peak_footprint": 176227120,
+  "rss": 231899136,
+  "mps_alloc": 0,
+  "mps_driver": 393216,
+  "sys_available": 4189601792,
+  "swap_used": 1485045760
+ }
+}

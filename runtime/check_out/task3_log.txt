@@ -1,0 +1,116 @@
+
+=== task 3 run 2026-11-14 17:22:37 parts ['compute', 'gaps', 'compose']
+{'chip': 'Apple M2', 'memory_gb': 8.0, 'macos': '26.6.2', 'python': '3.12.13', 'torch': '2.15.0', 'transformers': '5.23.0', 'safetensors': '0.8.0', 'git': '9476ca1'}
+CFG {"splits": [[1, 1], [2, 2], [4, 1], [4, 2], [6, 2], [8, 2], [4, 0]], "buckets": [32, 128, 256, 512, 1024], "A": 64, "repeats": 5, "adapter_split": [4, 2], "adapter_seeds": [2000, 2001], "gaps": [0.0, 0.02, 0.06, 0.25], "gap_P": 128, "gap_repeats": 3, "compose_splits": [[4, 2], [2, 2]], "compose_scenarios": ["wifi", "4g", "poor"], "compose_P": 256, "compose_repeats": 3, "client_device": "cpu", "client_dtype": "fp16", "server_device": "mps", "server_dtype": "fp16"}
+system available 4.97 GB, swap 1.27 GB
+  split (1,1) public   P=  32: TTFT      92 ms, decode   35.9 ms/step (last repeat), swap grew: False
+  split (1,1) public   P= 128: TTFT     339 ms, decode   36.1 ms/step (last repeat), swap grew: False
+  split (1,1) public   P= 256: TTFT     605 ms, decode   36.3 ms/step (last repeat), swap grew: False
+  split (1,1) public   P= 512: TTFT    1322 ms, decode   37.1 ms/step (last repeat), swap grew: False
+  split (1,1) public   P=1024: TTFT    2840 ms, decode   37.9 ms/step (last repeat), swap grew: False
+
+split (1,1) [109 s]
+  split (2,2) public   P=  32: TTFT     130 ms, decode   37.1 ms/step (last repeat), swap grew: False
+  split (2,2) public   P= 128: TTFT     566 ms, decode   37.4 ms/step (last repeat), swap grew: False
+  split (2,2) public   P= 256: TTFT    1133 ms, decode   37.7 ms/step (last repeat), swap grew: False
+  split (2,2) public   P= 512: TTFT    2531 ms, decode   38.2 ms/step (last repeat), swap grew: False
+  split (2,2) public   P=1024: TTFT    5280 ms, decode   39.9 ms/step (last repeat), swap grew: False
+
+split (2,2) [140 s]
+  split (4,1) public   P=  32: TTFT     166 ms, decode   37.8 ms/step (last repeat), swap grew: False
+  split (4,1) public   P= 128: TTFT     696 ms, decode   38.2 ms/step (last repeat), swap grew: False
+  split (4,1) public   P= 256: TTFT    2200 ms, decode   39.0 ms/step (last repeat), swap grew: False
+  split (4,1) public   P= 512: TTFT    5738 ms, decode   41.7 ms/step (last repeat), swap grew: False
+  split (4,1) public   P=1024: TTFT    9068 ms, decode   41.0 ms/step (last repeat), swap grew: False
+
+split (4,1) [195 s]
+  split (4,2) public   P=  32: TTFT     178 ms, decode   38.8 ms/step (last repeat), swap grew: False
+  split (4,2) public   P= 128: TTFT     747 ms, decode   39.2 ms/step (last repeat), swap grew: False
+  split (4,2) public   P= 256: TTFT    1566 ms, decode   40.1 ms/step (last repeat), swap grew: False
+  split (4,2) public   P= 512: TTFT    3264 ms, decode   40.5 ms/step (last repeat), swap grew: False
+  split (4,2) public   P=1024: TTFT    7034 ms, decode   42.3 ms/step (last repeat), swap grew: False
+  split (4,2) adapters P=  32: TTFT     187 ms, decode   40.9 ms/step (last repeat), swap grew: False
+  split (4,2) adapters P= 128: TTFT     789 ms, decode   41.6 ms/step (last repeat), swap grew: False
+  split (4,2) adapters P= 256: TTFT    1627 ms, decode   43.0 ms/step (last repeat), swap grew: False
+  split (4,2) adapters P= 512: TTFT    3446 ms, decode   42.5 ms/step (last repeat), swap grew: False
+  split (4,2) adapters P=1024: TTFT    7036 ms, decode   44.9 ms/step (last repeat), swap grew: False
+
+split (4,2) [328 s]
+  split (6,2) public   P=  32: TTFT     220 ms, decode   41.8 ms/step (last repeat), swap grew: False
+  split (6,2) public   P= 128: TTFT     984 ms, decode   42.4 ms/step (last repeat), swap grew: False
+  split (6,2) public   P= 256: TTFT    2045 ms, decode   42.9 ms/step (last repeat), swap grew: False
+  split (6,2) public   P= 512: TTFT    4239 ms, decode   44.0 ms/step (last repeat), swap grew: False
+  split (6,2) public   P=1024: TTFT    9191 ms, decode   46.1 ms/step (last repeat), swap grew: False
+
+split (6,2) [191 s]
+  split (8,2) public   P=  32: TTFT     260 ms, decode   43.1 ms/step (last repeat), swap grew: False
+  split (8,2) public   P= 128: TTFT    1185 ms, decode   43.8 ms/step (last repeat), swap grew: False
+  split (8,2) public   P= 256: TTFT    2451 ms, decode   44.3 ms/step (last repeat), swap grew: False
+  split (8,2) public   P= 512: TTFT    5241 ms, decode   45.5 ms/step (last repeat), swap grew: False
+  split (8,2) public   P=1024: TTFT   11114 ms, decode   48.4 ms/step (last repeat), swap grew: False
+
+split (8,2) [217 s]
+  split (4,0) public   P=  32: TTFT     128 ms, decode   37.1 ms/step (last repeat), swap grew: False
+  split (4,0) public   P= 128: TTFT     555 ms, decode   37.6 ms/step (last repeat), swap grew: False
+  split (4,0) public   P= 256: TTFT    1131 ms, decode   37.6 ms/step (last repeat), swap grew: False
+  split (4,0) public   P= 512: TTFT    2326 ms, decode   38.2 ms/step (last repeat), swap grew: False
+  split (4,0) public   P=1024: TTFT    4876 ms, decode   39.8 ms/step (last repeat), swap grew: False
+
+split (4,0) [137 s]
+  all on client (cpu) P=  32: TTFT     382 ms, decode   44.8 ms/step, swap grew: False
+  all on client (cpu) P= 128: TTFT    1831 ms, decode   45.6 ms/step, swap grew: False
+  all on client (cpu) P= 256: TTFT    3860 ms, decode   46.3 ms/step, swap grew: False
+  all on client (cpu) P= 512: TTFT    8258 ms, decode   47.7 ms/step, swap grew: False
+  all on client (cpu) P=1024: TTFT   18050 ms, decode   50.5 ms/step, swap grew: False
+all on client [291 s]
+  all on server (mps) P=  32: TTFT      49 ms, decode   30.1 ms/step, swap grew: False
+  all on server (mps) P= 128: TTFT     117 ms, decode   30.3 ms/step, swap grew: False
+  all on server (mps) P= 256: TTFT     205 ms, decode   30.5 ms/step, swap grew: False
+  all on server (mps) P= 512: TTFT     388 ms, decode   31.0 ms/step, swap grew: False
+  all on server (mps) P=1024: TTFT     769 ms, decode   32.1 ms/step, swap grew: False
+all on server [78 s]
+  gap     0 ms rep 0: server compute median 16.19 ms, client head 9.51 ms, tail layers 4.77 ms, output 8.33 ms, swap grew: False
+  gap     0 ms rep 1: server compute median 16.17 ms, client head 9.52 ms, tail layers 4.78 ms, output 8.35 ms, swap grew: False
+  gap     0 ms rep 2: server compute median 16.18 ms, client head 9.53 ms, tail layers 4.78 ms, output 8.33 ms, swap grew: False
+  gap    20 ms rep 0: server compute median 18.95 ms, client head 9.50 ms, tail layers 5.06 ms, output 8.40 ms, swap grew: False
+  gap    20 ms rep 1: server compute median 18.96 ms, client head 9.53 ms, tail layers 5.06 ms, output 8.40 ms, swap grew: False
+  gap    20 ms rep 2: server compute median 18.97 ms, client head 9.52 ms, tail layers 5.05 ms, output 8.40 ms, swap grew: False
+  gap    60 ms rep 0: server compute median 20.51 ms, client head 10.13 ms, tail layers 5.87 ms, output 8.60 ms, swap grew: False
+  gap    60 ms rep 1: server compute median 20.91 ms, client head 10.15 ms, tail layers 5.89 ms, output 8.60 ms, swap grew: False
+  gap    60 ms rep 2: server compute median 20.96 ms, client head 10.14 ms, tail layers 5.85 ms, output 8.59 ms, swap grew: False
+  gap   250 ms rep 0: server compute median 26.78 ms, client head 10.40 ms, tail layers 11.11 ms, output 10.45 ms, swap grew: False
+  gap   250 ms rep 1: server compute median 27.38 ms, client head 10.24 ms, tail layers 10.36 ms, output 9.86 ms, swap grew: False
+  gap   250 ms rep 2: server compute median 27.00 ms, client head 10.20 ms, tail layers 9.76 ms, output 9.22 ms, swap grew: False
+
+gaps [120 s]
+  compose (4,2) wifi rep 0: total 5.97 s, TTFT 1.952 s, swap grew: False
+  compose (4,2) wifi rep 1: total 5.97 s, TTFT 1.960 s, swap grew: False
+  compose (4,2) wifi rep 2: total 6.02 s, TTFT 2.013 s, swap grew: False
+  compose (4,2) 4g   rep 0: total 10.54 s, TTFT 3.401 s, swap grew: False
+  compose (4,2) 4g   rep 1: total 10.55 s, TTFT 3.397 s, swap grew: False
+  compose (4,2) 4g   rep 2: total 10.52 s, TTFT 3.390 s, swap grew: False
+  compose (4,2) poor rep 0: total 42.62 s, TTFT 18.690 s, swap grew: False
+  compose (4,2) poor rep 1: total 42.62 s, TTFT 18.686 s, swap grew: False
+  compose (4,2) poor rep 2: total 42.61 s, TTFT 18.697 s, swap grew: False
+
+compose (4,2) [269 s]
+  compose (2,2) wifi rep 0: total 5.41 s, TTFT 1.469 s, swap grew: False
+  compose (2,2) wifi rep 1: total 5.40 s, TTFT 1.476 s, swap grew: False
+  compose (2,2) wifi rep 2: total 5.42 s, TTFT 1.478 s, swap grew: False
+  compose (2,2) 4g   rep 0: total 10.18 s, TTFT 2.912 s, swap grew: False
+  compose (2,2) 4g   rep 1: total 10.16 s, TTFT 2.945 s, swap grew: False
+  compose (2,2) 4g   rep 2: total 10.19 s, TTFT 2.933 s, swap grew: False
+  compose (2,2) poor rep 0: total 42.08 s, TTFT 18.254 s, swap grew: False
+  compose (2,2) poor rep 1: total 42.07 s, TTFT 18.236 s, swap grew: False
+  compose (2,2) poor rep 2: total 42.10 s, TTFT 18.266 s, swap grew: False
+
+compose (2,2) [260 s]
+
+system swap 1.27 -> 1.91 GB; done 18:01:34
+
+=== rerun split (4,1) 2026-11-14 18:02:27: first run set aside as perturbed (task3_*_split41_run1_perturbed.*)
+  split (4,1) public   P=  32: TTFT     159 ms, decode   38.2 ms/step (last repeat), swap grew: False
+  split (4,1) public   P= 128: TTFT     604 ms, decode   38.7 ms/step (last repeat), swap grew: False
+  split (4,1) public   P= 256: TTFT    1181 ms, decode   39.1 ms/step (last repeat), swap grew: False
+  split (4,1) public   P= 512: TTFT    2486 ms, decode   39.8 ms/step (last repeat), swap grew: False
+  split (4,1) public   P=1024: TTFT    5639 ms, decode   41.4 ms/step (last repeat), swap grew: False

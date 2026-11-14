@@ -1,0 +1,57 @@
+{
+ "env": {
+  "chip": "Apple M2",
+  "memory_gb": 8.0,
+  "macos": "26.6.2",
+  "python": "3.12.13",
+  "torch": "2.15.0",
+  "transformers": "5.23.0",
+  "safetensors": "0.8.0",
+  "git": "9476ca1"
+ },
+ "profile": "M2-4T",
+ "A": 64,
+ "n": 30,
+ "summary": {
+  "adaptive": {
+   "measured_total_s": 137.69007040421278,
+   "predicted_total_s": 133.74161548131397,
+   "reload_total_s": 95.72021191380918,
+   "decision_changes": 21,
+   "mape_all_pct": 5.397514004913227,
+   "mape_warm_pct": 5.185415790159683,
+   "n_warm": 21,
+   "swap_grew": 0,
+   "total_err_pct": -2.8676395554940446
+  },
+  "fixed_per_class": {
+   "measured_total_s": 149.63694603911628,
+   "predicted_total_s": 145.0611761320586,
+   "reload_total_s": 63.37831387424376,
+   "decision_changes": 16,
+   "mape_all_pct": 4.7219705378870716,
+   "mape_warm_pct": 3.716148524463195,
+   "n_warm": 23,
+   "swap_grew": 0,
+   "total_err_pct": -3.057914524573061
+  }
+ },
+ "system_start": {
+  "footprint": 277971808,
+  "peak_footprint": 277971808,
+  "rss": 337772544,
+  "mps_alloc": 0,
+  "mps_driver": 393216,
+  "sys_available": 4801282048,
+  "swap_used": 1813118976
+ },
+ "system_end": {
+  "footprint": 2413791848,
+  "peak_footprint": 2830142152,
+  "rss": 2342715392,
+  "mps_alloc": 0,
+  "mps_driver": 393216,
+  "sys_available": 3709730816,
+  "swap_used": 1444151296
+ }
+}

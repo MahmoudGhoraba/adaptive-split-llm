@@ -1,0 +1,37 @@
+{
+ "rows": [
+  {
+   "mode": "dummynet",
+   "scenario": "4g",
+   "rate_mbit": 10.0,
+   "rtt_ms": 60.0,
+   "expected_rtt_ms": 60.0832,
+   "measured_rtt_ms": 63.9074370265007,
+   "rtt_p10_ms": 61.64583296049386,
+   "rtt_p90_ms": 63.99749999400228,
+   "rtt_err_pct": 6.364902379534888,
+   "measured_mbit": 9.98128050429329,
+   "measured_mbit_sd": 0.03633589268392161,
+   "thr_err_pct": -0.18719495706710965,
+   "payload_bytes": 625000
+  }
+ ],
+ "system_start": {
+  "footprint": 157614800,
+  "peak_footprint": 157614800,
+  "rss": 214220800,
+  "mps_alloc": 0,
+  "mps_driver": 393216,
+  "sys_available": 3046801408,
+  "swap_used": 1037762560
+ },
+ "system_end": {
+  "footprint": 161694560,
+  "peak_footprint": 161694560,
+  "rss": 217366528,
+  "mps_alloc": 0,
+  "mps_driver": 393216,
+  "sys_available": 3156672512,
+  "swap_used": 1037762560
+ }
+}

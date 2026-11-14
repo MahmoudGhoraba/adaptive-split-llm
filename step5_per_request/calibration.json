@@ -1,0 +1,182 @@
+{
+ "model_id": "meta-llama/Llama-3.2-1B-Instruct",
+ "source": "runtime/check_out (task 3 + measure_profiles), 14 Nov 2026",
+ "prefill_model": "t = L*(FLOPs_layer(P)/f + c) + o  -> params [1/f, c, o]",
+ "decode_model": "t = L*(d0 + d1*k) + o, k = context incl. new token -> params [d0, d1, o]",
+ "client": {
+  "M2-4T": {
+   "prefill": [
+    7.64111843652956e-12,
+    -0.00765881872974772,
+    -0.0005668956076688456
+   ],
+   "decode": [
+    0.0022831089360205547,
+    3.510638907962842e-07,
+    0.00013530300775363522
+   ],
+   "out_s": 0.008385372696953126,
+   "mem_budget_gb": 4.0,
+   "threads": 4,
+   "label": "FITTED from MEASURED (task 3); memory budget ASSUMED"
+  },
+  "M2-2T": {
+   "prefill": [
+    1.244049037108675e-11,
+    -0.007824212612652915,
+    0.0008528062318782875
+   ],
+   "decode": [
+    0.00228012669622085,
+    5.605603627238666e-07,
+    7.70248135748195e-05
+   ],
+   "out_s": 0.008220192656862746,
+   "mem_budget_gb": 2.0,
+   "threads": 2,
+   "label": "FITTED from MEASURED (measure_profiles.py); memory budget ASSUMED"
+  },
+  "M2-1T": {
+   "prefill": [
+    2.100933773688014e-11,
+    -0.01119774697477246,
+    -0.002473427349992614
+   ],
+   "decode": [
+    0.002552731288578827,
+    1.1354151795162004e-06,
+    5.5700510764350084e-05
+   ],
+   "out_s": 0.01004777963235294,
+   "mem_budget_gb": 2.0,
+   "threads": 1,
+   "label": "FITTED from MEASURED (measure_profiles.py); memory budget ASSUMED"
+  },
+  "assumed-phone": {
+   "prefill": [
+    2.0000000000000003e-10,
+    -0.20046329063906512,
+    -0.014838026981985062
+   ],
+   "decode": [
+    0.059758501454598476,
+    9.188809039209979e-06,
+    0.0035414451137623535
+   ],
+   "out_s": 0.21948024406651104,
+   "mem_budget_gb": 2.0,
+   "scale": 26.17417877517364,
+   "label": "MODELLED sensitivity case: M2-4T times x 26.17 (assumed 5 GFLOP/s)"
+  },
+  "assumed-edge": {
+   "prefill": [
+    1e-11,
+    -0.010023164531953255,
+    -0.000741901349099253
+   ],
+   "decode": [
+    0.0029879250727299234,
+    4.5944045196049887e-07,
+    0.00017707225568811767
+   ],
+   "out_s": 0.01097401220332555,
+   "mem_budget_gb": 8.0,
+   "scale": 1.3087089387586819,
+   "label": "MODELLED sensitivity case: M2-4T times x 1.31 (assumed 100 GFLOP/s)"
+  }
+ },
+ "server": {
+  "prefill": [
+   3.9556396857054715e-13,
+   -0.0008797417547907564,
+   0.030936976361003992
+  ],
+  "decode": [
+   0.0012835983492400322,
+   1.355696158569756e-07,
+   0.003735633252965406
+  ],
+  "out_s": 0.00571092547375,
+  "label": "FITTED from MEASURED (task 3), MPS fp16"
+ },
+ "overhead": {
+  "m0_s": 0.00023199743169091113,
+  "m1_s_per_byte": 5.798463153668217e-10,
+  "label": "FITTED (loopback: serialisation + transport + server handling)"
+ },
+ "wire": {
+  "bytes_per_token": 4096,
+  "header_bytes": 52,
+  "text_bytes_per_token": 4
+ },
+ "gap": {
+  "gaps_s": [
+   0.0,
+   0.02,
+   0.06,
+   0.25
+  ],
+  "server_factor": [
+   1.0,
+   1.1719729228486646,
+   1.2875299208704254,
+   1.6694022007912959
+  ],
+  "client_factor": [
+   1.0,
+   1.0149613403775861,
+   1.087207289962612,
+   1.3481460981414475
+  ],
+  "label": "MEASURED (task 3, 8c): (4,2), P=128; beyond the largest gap the last factor is used"
+ },
+ "adapters": {
+  "prefill_s_per_layer_token": 1.801207298828122e-05,
+  "decode_s_per_layer": 0.0003598042333333333,
+  "per_P_prefill": [
+   3.610342812500001e-05,
+   1.8161077864583316e-05,
+   1.740518098958327e-05,
+   1.4459337044270762e-05,
+   3.931340917968755e-06
+  ],
+  "per_P_decode": [
+   0.0003398333333333332,
+   0.00036293066666666694,
+   0.0003680348333333332,
+   0.00036473616666666636,
+   0.00036348616666666685
+  ],
+  "label": "MEASURED (task 3, (4,2) adapters - public)"
+ },
+ "reload": {
+  "client": {
+   "a": 1.411565419381562,
+   "b_per_layer": 0.09852324865739016,
+   "n": [
+    3,
+    20
+   ]
+  },
+  "server": {
+   "free_s": 0.08494050436849265,
+   "u14_s": 3.014259236321474,
+   "all_s": 5.2380282394442474,
+   "n": [
+    19,
+    3,
+    16
+   ]
+  },
+  "label": "FITTED from MEASURED in-situ reloads (task4_real_trace.csv; few samples); setting b MODELLED"
+ },
+ "ping": {
+  "overhead_s": 0.0002,
+  "label": "MEASURED: PING + JSON reply on loopback 0.06-0.2 ms; cost = RTT + overhead"
+ },
+ "memory": {
+  "client_overhead_gb": 0.4,
+  "cloud_client_gb": 0.29,
+  "label": "MEASURED: CPU client footprint - memory_gb() = 0.40-0.41 GB (8e); empty process 0.29 GB (7a)"
+ }
+}

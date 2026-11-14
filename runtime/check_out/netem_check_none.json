@@ -1,0 +1,37 @@
+{
+ "rows": [
+  {
+   "mode": "none",
+   "scenario": "none",
+   "rate_mbit": 0.0,
+   "rtt_ms": 0.0,
+   "expected_rtt_ms": 0.0,
+   "measured_rtt_ms": 0.09404204320162535,
+   "rtt_p10_ms": 0.09208405390381813,
+   "rtt_p90_ms": 0.10904204100370407,
+   "rtt_err_pct": null,
+   "measured_mbit": 21033.927599706076,
+   "measured_mbit_sd": 8292.22152218904,
+   "thr_err_pct": null,
+   "payload_bytes": 4000000
+  }
+ ],
+ "system_start": {
+  "footprint": 157893304,
+  "peak_footprint": 157893304,
+  "rss": 214515712,
+  "mps_alloc": 0,
+  "mps_driver": 393216,
+  "sys_available": 4187750400,
+  "swap_used": 1485045760
+ },
+ "system_end": {
+  "footprint": 176177968,
+  "peak_footprint": 176177968,
+  "rss": 231833600,
+  "mps_alloc": 0,
+  "mps_driver": 393216,
+  "sys_available": 4171595776,
+  "swap_used": 1485045760
+ }
+}

@@ -1,0 +1,2 @@
+W1114 14:47:39.945000 10591 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+W1114 14:48:07.986000 10611 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
