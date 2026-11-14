@@ -46,7 +46,7 @@ after idle gaps (not in the model); only one machine (no real network link); dev
 | Prompt reconstruction | IMPLEMENTED AND VERIFIED (one attacker type) |
 | Generated-answer reconstruction | PARTIALLY IMPLEMENTED (teacher-forced proxy) |
 | Gaussian noise | IMPLEMENTED AND VERIFIED |
-| Secret LoRA | IMPLEMENTED AND VERIFIED at 5 splits; H=6/8 missing; seeds only at (4,2) |
+| Secret LoRA | IMPLEMENTED AND VERIFIED at 7 splits (H=1..8, current script); seeds: (4,2) 3, (2,2) 2, others 1 |
 | Stronger attackers (known pairs, optimisation-based) | NOT IMPLEMENTED |
 | Task-level quality | NOT IMPLEMENTED |
 
@@ -74,6 +74,16 @@ Files: results/multisplit/, step_secret_multisplit/, step5_per_request/per_reque
 Work: obtain or run batch C (H=6,T=2; H=8,T=2); rerun (4,2) seed 0 with the CURRENT script and drop or label the old
 run; add seeds 1, 2 at the splits the controller selects ((1,1), (2,2), (4,1)); record seed count + script per entry.
 Done when: every SECRET_U entry has ≥ 3 seeds from the same script, a reported spread, and step5 loads only that table.
+**Status (14 Nov 2026): DONE except the seed criterion.** Done: batch C complete ((6,2) and (8,2), seed 0); (4,2) seed 0
+rerun with the current script, (2,2) seed 1 added; step5 `load_multisplit()` now REPLACES SECRET_U by the current-script
+table (28 entries, 7 splits) — the older-script (4,2) runs are no longer merged (kept as `SECRET_U_OLD_SCRIPT` and in
+RESULTS_SUMMARY 5a as an older script version; their 65.5% prompt leakage at λa = 0.1 lies outside the new seeds'
+74.3–78.5%); seed count per entry recorded (n_seeds in measured_multisplit.txt, `SECRET_U_SEEDS`) and spread reported
+(`SECRET_U_SPREAD`, RESULTS_SUMMARY 5b). NOT met: ≥ 3 seeds per entry — only (4,2) has 3 seeds, (2,2) has 2, the other
+five splits 1. Measured spread: prompt leak up to ±4.9–6.3 points, answer leak ≤ ±3.0, agreement ≤ ±1.2, so
+prompt-leak differences under ~10 points between splits are not reliable. Task 4 rerun with the new table:
+outputs unchanged, (8,2) never chosen (RESULTS_SUMMARY 9g). Open (optional, Colab): seeds 1–2 at (1,1), (4,1), and the
+splits the controller selects with fragile margins ((2,2) λa = 0.03, (4,2) λa = 0.03; see 9g).
 
 ### Task 2 — Real client–server split runtime (runtime/)
 Objective: execute head+tail and middle layers in separate processes exchanging hidden states.

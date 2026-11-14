@@ -51,6 +51,12 @@ Run 2 (1200 steps):
 
 ### 5a. Older single-split runs at H=4, T=2 (results/secret_ushape_run1, run2; older script version)
 
+OLDER SCRIPT VERSION (pre-multisplit secret_ushape.py). Kept for documentation only; since task 1 (14 Nov 2026) these
+values are NOT used by the controller (`load_multisplit()` replaces them; table kept in per_request_controller.py as
+`SECRET_U_OLD_SCRIPT`). Not comparable with the current script: at λa = 0.1 the old prompt leakage 65.5% lies outside
+the three current-script seeds at (4,2) (74.3, 75.7, 78.5%). The λa = 0.3 and λp = 0.2 entries exist only here and
+are therefore no longer controller options (both failed the quality limit of every class, so no decision changes).
+
 | λa | Agreement | Answer leak | Prompt leak A | Prompt leak B |
 |---|---|---|---|---|
 | 0 | 87.0% | 92.8% | 86.9% | 94.7% |
@@ -61,29 +67,47 @@ Run 2 (1200 steps):
 
 λp=0.2, λa=0.3 collapsed the model (agreement 16.7%).
 
-### 5b. Multi-split runs (results/multisplit; current script) — prompt leak A / answer leak / agreement
+### 5b. Multi-split runs (results/multisplit; current script only) — prompt leak A / answer leak / agreement (%)
+
+MEASURED; mean over training seeds; λp = 0.1. This is the complete SECRET_U table of the controller (28 entries,
+7 splits; task 1, 14 Nov 2026).
 
 | Split | λa=0 | λa=0.01 | λa=0.03 | λa=0.1 | seeds |
 |---|---|---|---|---|---|
-| H=1,T=1 | 99.97 / 96.0 / 93.1 | 99.98 / 96.3 / 92.9 | 99.89 / 72.4 / 80.7 | 99.97 / 35.5 / 78.9 | 1 |
-| H=2,T=1 | 98.7 / 95.2 / 91.6 | 98.9 / 84.5 / 88.7 | 96.7 / 55.4 / 80.6 | 72.0 / 19.8 / 61.6 | 1 |
-| H=2,T=2 | 98.8 / 94.5 / 92.0 | 98.6 / 72.8 / 87.2 | 95.6 / 37.6 / 79.2 | 74.7 / 16.7 / 62.1 | 1 |
-| H=4,T=1 | 88.1 / 95.0 / 86.8 | 86.2 / 84.6 / 84.6 | 81.0 / 55.8 / 78.1 | 63.6 / 27.4 / 61.7 | 1 |
-| H=4,T=2 | 88.0 / 93.0 / 86.8 | 83.3 / 73.1 / 83.1 | 76.7 / 40.7 / 76.5 | 77.1 / 14.4 / 61.8 | 2 (seeds 1, 2) |
-| H=6,T=2 / H=8,T=2 | missing (batch C) | | | | |
+| H=1,T=1 | 99.97 / 96.0 / 93.1 | 99.98 / 96.2 / 92.9 | 99.89 / 72.4 / 80.7 | 99.97 / 35.5 / 78.9 | 1 (seed 0) |
+| H=2,T=1 | 98.7 / 95.2 / 91.6 | 98.9 / 84.5 / 88.7 | 96.7 / 55.4 / 80.6 | 72.0 / 19.8 / 61.6 | 1 (seed 0) |
+| H=2,T=2 | 98.4 / 94.5 / 91.5 | 98.4 / 72.4 / 86.6 | 96.2 / 39.4 / 79.1 | 81.0 / 15.2 / 63.3 | 2 (seeds 0, 1) |
+| H=4,T=1 | 88.1 / 95.0 / 86.8 | 86.2 / 84.6 / 84.5 | 81.0 / 55.8 / 78.1 | 63.6 / 27.4 / 61.7 | 1 (seed 0) |
+| H=4,T=2 | 89.3 / 93.2 / 86.7 | 82.3 / 73.6 / 83.1 | 78.9 / 40.8 / 76.7 | 76.2 / 13.3 / 61.3 | 3 (seeds 0, 1, 2) |
+| H=6,T=2 | 68.2 / 92.0 / 81.4 | 70.9 / 74.3 / 79.4 | 55.7 / 39.4 / 72.4 | 64.4 / 17.8 / 61.4 | 1 (seed 0) |
+| H=8,T=2 | 67.2 / 91.7 / 80.2 | 57.6 / 74.2 / 77.3 | 55.5 / 38.5 / 72.8 | 58.9 / 17.0 / 61.4 | 1 (seed 0) |
 
-Seed spread at (4,2), half-range: prompt leak ±0.1–3.1 points, answer leak ±0–2.5, agreement ±0.1–0.8.
-Attacker B (with secret): 99.6–100% at H ≤ 2; 93–95% at H = 4.
-Consistency check "B ≥ A" fails at (2,2) and (4,2) on the ANSWER side only (learned answer inverter).
+Seed spread (half of max − min over seeds; prompt leak A / answer leak / agreement, percentage points):
 
-Findings: prompt hiding needs H ≥ 4 (H=1 hides nothing); answer hiding works at every split; T=2 hides the
-answer better than T=1 at equal quality. Differences below ~5 points are within seed variation.
+| Split | λa=0 | λa=0.01 | λa=0.03 | λa=0.1 |
+|---|---|---|---|---|
+| H=2,T=2 (2 seeds) | ±0.4 / ±0.0 / ±0.5 | ±0.3 / ±0.4 / ±0.6 | ±0.6 / ±1.8 / ±0.1 | ±6.3 / ±1.5 / ±1.2 |
+| H=4,T=2 (3 seeds) | ±2.6 / ±0.5 / ±0.2 | ±1.5 / ±1.0 / ±0.3 | ±4.9 / ±0.1 / ±0.6 | ±2.1 / ±3.0 / ±1.1 |
+
+Prompt-leak spread reaches ±4.9–6.3 points while answer-leak spread is ≤ 3.0 points and agreement ≤ 1.2 points.
+Prompt-leakage differences below ~10 points between splits are therefore NOT reliable (the other five splits have one
+seed and no spread estimate). Example: (4,2) λa = 0.03, seeds 0/1/2: 83.4 / 73.6 / 79.9%.
+New runs (14 Nov 2026, current script, adapters saved on Drive): (4,2) seed 0, (2,2) seed 1, (8,2) seed 0 — all three
+pass every sanity check. The runs (2,2) seed 0, (4,2) seeds 1–2 and (6,2) seed 0 fail "B ≥ A" on the ANSWER side only
+(learned answer inverter, known issue); the prompt side B ≥ A holds in every run.
+Attacker B (with secret): 99.6–100% at H ≤ 2; 93–95% at H = 4; 83–90% at H = 6; 79–85% at H = 8.
+Unprotected prompt leakage (no adapters): 99.98 / 99.79 / 98.7 / 97.8 / 97.6% at H = 1 / 2 / 4 / 6 / 8.
+
+Findings: prompt hiding needs H ≥ 4 (H = 1 hides nothing); H = 6 and H = 8 reach 55–71% (attacker A) but at most
+81% agreement; λa raises answer hiding at every split while prompt leakage does not fall monotonically with λa
+(within the seed spread). Answer leakage at equal λa is similar across splits (λa = 0.03: 38.5–40.8% for T = 2,
+55–72% for T = 1), so T = 2 hides the answer better than T = 1 at similar quality.
 
 ## 6. Controllers (modelled latency)
 
 Step 3c (20 tasks, 2 GB): prompt ≤ 80%, answer ≤ 50%, quality ≥ 75% → H=4, T=2, λa=0.03, 15.5 min (old (4,2) data).
 
-Step 5 per request (256-token prompt, 4G), with all 5 measured splits loaded:
+Step 5 per request (256-token prompt, 4G), ASSUMED model; rechecked after task 1 with the current-script table (7 splits): unchanged.
 
 | Device (assumed) | Open | Private answer | Private prompt | Prompt + answer |
 |---|---|---|---|---|
@@ -92,7 +116,7 @@ Step 5 per request (256-token prompt, 4G), with all 5 measured splits loaded:
 | Edge 8 GB | server 0.9 s | all on client 8.2 s | all on client 8.2 s | all on client 8.2 s |
 
 Earlier stream result (batch A data only): laptop on a mobile trace 55.8 min (per request) vs 66.9 min
-(fixed per class) for 200 requests; equal on a stable network; phone gains nothing. Must be rerun after task 1.
+(fixed per class) for 200 requests; equal on a stable network; phone gains nothing. Superseded by §9 (calibrated model) and §9g (rerun after task 1).
 
 ## 7. Split runtime: memory per side (MEASURED, 14 Nov 2026; C3 calibration)
 
@@ -334,6 +358,7 @@ Data merge first: results/multisplit/runs/ collected (secret_multisplit.py --col
 / 39.4 / 17.8%, agreement 81.4 / 79.4 / 72.4 / 61.4%. The (6,2) job FAILS the "B >= A" check on the answer side
 (learned answer inverter, λa = 0.01: B 33.1% < A 35.1%; known issue); prompt side B >= A holds. (8,2) pending.
 step5 now loads 24 SECRET_U entries at 6 splits. The previous tables were read-only; backed up before replacing.
+(Superseded by task 1, §9g: since 14 Nov 2026 step5 loads ONLY the current-script table, 28 entries at 7 splits.)
 
 Code (latency()/memory_gb() of step 5 unchanged, for comparison):
 step5_per_request/calibrated_model.py (latency_cal, memory_cal, Estimator), calibration.json (built by
@@ -506,3 +531,24 @@ time varies between repeats), so it is not a demonstrated improvement with 3 rep
 larger than both spreads (± 2.3 / ± 16.3 s). Without
 reloads it is slowest, because it keeps open requests on the client (2.2–6.9 s instead of 2.2–3.1 s on the server)
 to avoid 5.2 s server reloads (8 of 30 requests differ from adaptive). Predicted request time −2.2 to −2.8%.
+
+### 9g. Rerun after task 1 (14 Nov 2026; MODELLED decisions, same calibration and traces)
+
+SECRET_U now comes ONLY from the current multisplit script (5b: 28 entries, 7 splits, incl. (8,2); the older-script
+(4,2) entries of 5a are dropped). New table copied to step5_per_request/measured_multisplit.txt; adaptive_eval.py
+rerun (policies x 3 traces x 5 profiles, 20 seeds; calibration impact; memory-budget sensitivity 2/3/4 GB).
+Result: task4_summary.csv, task4_decisions.csv, task4_calibration_impact.csv and task4_budget_sensitivity.csv are
+BYTE-IDENTICAL to the previous run; every number in 9c, 9e and 9f stands. No decision uses (8,2).
+Reason: the controller only tests each option against the class limits and then picks the fastest, and every
+option's pass/fail is unchanged. Per class, the set of secret head + tail options that pass the privacy and quality
+limits is identical, except that (8,2) λa = 0 and 0.01 newly pass for "private prompt". (8,2) needs 2.21 GB (calibrated
+memory, P = 256), so it is infeasible under the 2 GB budgets; under 4 GB (M2-4T) and 8 GB (assumed edge) all on client
+is faster (M2-4T, 4G, P = 256: 9.7 s vs 18.9 s). The dropped older-script λa = 0.3 / λp = 0.2 entries failed every
+class's quality limit. The step-5 assumed-model decision table (§6) is also unchanged. The real-runtime trace (9d)
+was not rerun; because the passing option sets are unchanged and (8,2) is never fastest in the modelled traces, its
+decisions are not expected to change (not verified on the runtime).
+Fragile margins (relevant for the seed-spread rule in 5b): the selected entries pass their limits by less than their
+seed spread. (4,2) λa = 0.03 (chosen for "private prompt+answer") has prompt leak 78.9% vs the 80% limit (±4.9; seed 0
+alone, 83.4%, would fail); (2,2) λa = 0.03 (chosen for "private answer" on 2 GB profiles when the server is slow) has
+answer leak 39.4% vs 40% (±1.8; seed 1 alone, 41.2%, would fail). The decisions therefore rest on seed means, not on
+a margin that the seed variation clears.

@@ -1,5 +1,5 @@
 """
-Thesis figures 1-5 from EXISTING results only (no new runs). Sized for A4 text width (16 cm), 300 dpi PNG.
+Thesis figures 1-7 from EXISTING results only (no new runs). Sized for A4 text width (16 cm), 300 dpi PNG.
 
   fig1_latency_model.png     predicted vs measured end-to-end time under emulated Wi-Fi / 4G / poor coverage:
                              calibrated model (step5_per_request/calibrated_model.latency_cal) and the assumed
@@ -10,6 +10,10 @@ Thesis figures 1-5 from EXISTING results only (no new runs). Sized for A4 text w
   fig3_idle_gap.png          MEASURED slowdown vs idle gap (task3_steps.jsonl, part gaps; (4,2), P = 128)
   fig4_memory.png            MEASURED footprint vs MODELLED memory_gb() per split and side (task3_fit.json, P = 1024 + A = 64)
   fig5_policies_runtime.png  MEASURED real-runtime policy comparison (task4_real_trace.csv, 3 repeats x 30 requests)
+  fig6_calibration_impact.png share of decisions that change between the assumed and the calibrated model per device
+                             profile (step5_per_request/task4_calibration_impact.csv; MODELLED decisions)
+  fig7_multisplit_leakage.png MEASURED prompt and answer leakage vs quality, secret head + tail, all 7 splits
+                             (results/multisplit/measured_multisplit.txt; current script only; seed half-ranges)
 
 Run:  python docs/figures/make_figures.py
 """
@@ -208,7 +212,101 @@ def fig5():
     return stats
 
 
+PROFILE_LABEL = {"M2-4T": "M2, 4 threads, 4 GB\n(vs assumed laptop)", "M2-2T": "M2, 2 threads, 2 GB\n(vs assumed phone)",
+                 "M2-1T": "M2, 1 thread, 2 GB\n(vs assumed phone)", "assumed-phone": "Assumed phone, 2 GB\n(vs assumed phone)",
+                 "assumed-edge": "Assumed edge, 8 GB\n(vs assumed edge)"}
+
+
+def fig6():
+    rows = list(csv.DictReader(open(os.path.join(ROOT, "step5_per_request", "task4_calibration_impact.csv"))))
+    profs = list(dict.fromkeys(r["profile"] for r in rows))
+    classes = list(dict.fromkeys(r["cls"] for r in rows))
+    agg = {p: [sum(int(r[k]) for r in rows if r["profile"] == p) for k in ("grid_changed", "grid_points",
+                                                                           "trace_changed", "trace_requests")]
+           for p in profs}
+    fig, (a1, a2) = plt.subplots(2, 1, figsize=(W, W * 0.78))
+    x = np.arange(len(profs)); bw = 0.36
+    for j, (lab, ic, inn, col) in enumerate([("Grid (5 prompts × 3 networks × 2 loads)", 0, 1, BLUE),
+                                             ("Traces (stable, mobile, server load)", 2, 3, ORANGE)]):
+        v = [100 * agg[p][ic] / agg[p][inn] for p in profs]
+        xx = x + (j - 0.5) * (bw + 0.04)
+        a1.bar(xx, v, bw, color=col, label=lab, edgecolor="white", lw=1.0)
+        for xi, vi, p in zip(xx, v, profs):
+            a1.text(xi, vi + 1.5, f"{agg[p][ic]}/{agg[p][inn]}", ha="center", va="bottom", fontsize=7, color=INK2)
+    a1.set_xticks(x); a1.set_xticklabels([PROFILE_LABEL[p] for p in profs], fontsize=6.6)
+    a1.set_ylabel("Decisions that change [%]"); a1.set_ylim(0, 100); a1.grid(axis="x", visible=False)
+    a1.set_title("(a) All privacy classes", loc="left")
+    a1.legend(loc="upper right", frameon=False, fontsize=7)
+    cc = [BLUE, ORANGE, AQUA, YELLOW]; bw2 = 0.19
+    for j, c in enumerate(classes):
+        v = [100 * sum(int(r["trace_changed"]) for r in rows if r["profile"] == p and r["cls"] == c) /
+             max(1, sum(int(r["trace_requests"]) for r in rows if r["profile"] == p and r["cls"] == c)) for p in profs]
+        a2.bar(x + (j - 1.5) * (bw2 + 0.02), v, bw2, color=cc[j], label=c, edgecolor="white", lw=1.0)
+    a2.set_xticks(x); a2.set_xticklabels([PROFILE_LABEL[p] for p in profs], fontsize=6.6)
+    a2.set_ylim(0, 100); a2.grid(axis="x", visible=False); a2.set_ylabel("Decisions that change [%]")
+    a2.set_title("(b) Traces, per privacy class", loc="left")
+    a2.legend(loc="upper right", frameon=False, fontsize=7)
+    fig.tight_layout()
+    save(fig, "fig6_calibration_impact.png")
+    return agg
+
+
+def fig7():
+    import re
+    path = os.path.join(ROOT, "results", "multisplit", "measured_multisplit.txt")
+    src = open(path).read(); ns = {}
+    exec(src.split("\n# spread")[0], {}, ns); tab = ns["SECRET_U"]
+    seeds, spread = {}, {}
+    for line in src.splitlines():
+        m = re.match(r"\s*(\(.*?\)):.*n_seeds=(\d+)", line)
+        if m:
+            seeds[eval(m.group(1))] = int(m.group(2))
+        m = re.match(r"#\s*(\(.*?\)):\s*(.*?)\s*\(half range", line)
+        if m:
+            spread[eval(m.group(1))] = {f: float(v) for f, v in re.findall(r"(\w+) \+-([0-9.]+)", m.group(2))}
+    splits = sorted({k[:2] for k in tab}, key=lambda s: (s[1], s[0]))
+    ramp = {1: "#86b6ef", 2: "#5598e7", 4: "#2a78d6", 6: "#1c5cab", 8: "#0d366b"}   # blue ordinal ramp, H
+    fig, axes = plt.subplots(1, 2, figsize=(W, W * 0.5), sharex=True)
+    for ax, field, title in [(axes[0], "leak", "(a) Prompt leakage, attacker A"),
+                             (axes[1], "answer_leak", "(b) Answer leakage, server runs the public tail")]:
+        for (H, T) in splits:
+            ks = sorted((k for k in tab if k[:2] == (H, T)), key=lambda k: k[3])
+            xs = [100 * tab[k]["agreement"] for k in ks]; ys = [100 * tab[k][field] for k in ks]
+            n = seeds.get(ks[0], 1)
+            style = dict(color=ramp[H], ls="-" if T == 2 else "--", lw=1.6, marker="o" if T == 2 else "s", ms=5.5,
+                         mfc=ramp[H] if T == 2 else "white", mew=1.4)
+            ax.plot(xs, ys, label=f"H={H}, T={T}" + (f" ({n} seeds)" if n > 1 else ""), zorder=3, **style)
+            if n > 1:
+                ax.errorbar(xs, ys, xerr=[100 * spread[k]["agreement"] for k in ks],
+                            yerr=[100 * spread[k][field] for k in ks], fmt="none", ecolor=ramp[H], elinewidth=1.0,
+                            capsize=2.5, zorder=2)
+        ax.axvline(75, color=INK2, ls=":", lw=1.0)
+        ax.set_title(title, loc="left")
+        ax.set_ylim(0, 105)
+    axes[0].axhline(80, color=INK2, ls=":", lw=1.0)
+    axes[0].text(94.7, 78, "80 %", fontsize=6.5, color=INK2, ha="right", va="top")
+    axes[0].text(94.7, 4, "Dotted: limits\nquality 75 %\nprompt 80 %", fontsize=6.5, color=INK2,
+                 ha="right", va="bottom")
+    for yv in (40, 50):
+        axes[1].axhline(yv, color=INK2, ls=":", lw=1.0)
+    axes[1].text(94.7, 51, "50 %", fontsize=6.5, color=INK2, ha="right", va="bottom")
+    axes[1].text(94.7, 39, "40 %", fontsize=6.5, color=INK2, ha="right", va="top")
+    axes[1].text(94.7, 4, "Dotted: limits\nquality 75 %\nanswer 50 % (prompt+answer)\nanswer 40 % (private answer)",
+                 fontsize=6.5, color=INK2, ha="right", va="bottom")
+    axes[0].set_ylabel("Leakage [%]"); axes[0].set_xlim(58, 95)
+    h, l = axes[0].get_legend_handles_labels()
+    hl = dict(zip(l, h)); t1 = [k for k in l if k.split("T=")[1][0] == "1"]; t2 = [k for k in l if k not in t1]
+    t1 += [""] * (len(t2) - len(t1)); hl[""] = Line2D([], [], ls="", marker="")
+    order = [k for pair in zip(t1, t2) for k in pair]               # legend fills column-major: row 1 T=1, row 2 T=2
+    fig.supxlabel("Quality: next-token agreement with the public model [%]", fontsize=9, y=0.105)
+    fig.tight_layout(rect=(0, 0.1, 1, 1))
+    fig.legend([hl[k] for k in order], order, loc="lower center", ncol=len(t2), frameon=False, fontsize=7,
+               bbox_to_anchor=(0.5, -0.03))
+    save(fig, "fig7_multisplit_leakage.png")
+    return tab, seeds, spread
+
+
 if __name__ == "__main__":
-    fig1(); c = fig2(); fig3(); fig4(); s = fig5()
+    fig1(); c = fig2(); fig3(); fig4(); s = fig5(); fig6(); fig7()
     print({k: {kk: round(vv, 1) for kk, vv in v.items()} for k, v in c.items()})
     print({k: {kk: round(float(vv), 1) for kk, vv in v.items()} for k, v in s.items()})

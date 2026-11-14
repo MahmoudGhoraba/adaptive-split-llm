@@ -107,6 +107,9 @@ SECRET = {
 }
 # secret head + secret tail (secret_ushape.py, two runs, 1200 steps): (H, T, lambda_prompt, lambda_answer)
 # leak/answer_leak = attacker without the secret (answer: server runs the public tail); *_B = attacker with the secret
+# OLDER SCRIPT VERSION (pre-multisplit secret_ushape.py, results/secret_ushape_run1/run2). Kept for documentation and
+# as a fallback only: load_multisplit() REPLACES this table with the current-script runs (task 1). Not comparable
+# with the current script: at lambda_a = 0.1 its prompt leakage 65.5% lies outside the new seeds' 74.3-78.5%.
 SECRET_U = {
     (4, 2, 0.1, 0.0): dict(leak=0.869, private_exact=0.6421, leak_B=0.9467, private_exact_B=0.803, answer_leak=0.9281, agreement=0.8704, ppl_ratio=1.012),
     (4, 2, 0.1, 0.01): dict(leak=0.8894, private_exact=0.6781, leak_B=0.9504, private_exact_B=0.8013, answer_leak=0.7293, agreement=0.8356, ppl_ratio=1.045),
@@ -249,27 +252,33 @@ FAMILY_NAME = dict(local="All on client", cloud="All on server", split="Split on
 
 # ================================================================================== Step 5
 # --------------------------------------------------------------------------- new measurements (multi-split)
+SECRET_U_OLD_SCRIPT = dict(SECRET_U)   # the older-script table above, untouched (documentation)
+SECRET_U_SEEDS = {}                      # key -> number of training seeds (current script), set by load_multisplit()
+SECRET_U_SPREAD = {}                     # key -> {field: half range over seeds}, only where n_seeds > 1
+
+
 def load_multisplit(path):
-    """Merge SECRET_U from measured_multisplit.txt (secret_multisplit.py) into the table above.
-    A key present in both is averaged, weighting each source by its number of training seeds."""
+    """REPLACE SECRET_U by the table in measured_multisplit.txt (secret_multisplit.py --collect; current script only).
+    The older-script entries above are NOT merged (task 1: different script version, not comparable).
+    Also fills SECRET_U_SEEDS and SECRET_U_SPREAD. Without the file the older table stays (with a warning)."""
     if not path or not os.path.exists(path):
-        print(f"(no {os.path.basename(path or 'measured_multisplit.txt')} found: using the H=4, T=2 measurements only)")
+        print(f"WARNING: no {os.path.basename(path or 'measured_multisplit.txt')} found: using the OLDER-SCRIPT "
+              f"H=4, T=2 table (not comparable with the current script)")
         return 0
     ns = {}
     src = open(path).read()
     exec(src.split("\n# spread")[0], {}, ns)
     new = ns["SECRET_U"]
-    seeds = {}
+    SECRET_U.clear(); SECRET_U_SEEDS.clear(); SECRET_U_SPREAD.clear()
     for line in src.splitlines():
         m = re.match(r"\s*(\(.*?\)):.*n_seeds=(\d+)", line)
         if m:
-            seeds[eval(m.group(1))] = int(m.group(2))
+            SECRET_U_SEEDS[eval(m.group(1))] = int(m.group(2))
+        m = re.match(r"#\s*(\(.*?\)):\s*(.*?)\s*\(half range", line)
+        if m:
+            SECRET_U_SPREAD[eval(m.group(1))] = {f: float(v) for f, v in re.findall(r"(\w+) \+-([0-9.]+)", m.group(2))}
     for k, v in new.items():
-        if k in SECRET_U:
-            n_old, n_new = 1, seeds.get(k, 1)
-            SECRET_U[k] = {f: (SECRET_U[k][f] * n_old + v[f] * n_new) / (n_old + n_new) for f in v}
-        else:
-            SECRET_U[k] = dict(v)
+        SECRET_U[k] = dict(v)
     return len(new)
 
 
