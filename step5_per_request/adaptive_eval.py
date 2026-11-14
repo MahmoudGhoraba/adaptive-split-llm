@@ -32,8 +32,12 @@ Device profiles: M2-4T, M2-2T, M2-1T (FITTED from MEASURED; budgets ASSUMED 4/2/
 assumed-phone / assumed-edge (MODELLED). Assumed-model counterpart by memory budget:
   M2-4T <-> laptop, M2-2T / M2-1T <-> phone, assumed-phone <-> phone, assumed-edge <-> edge.
 
-Run:  python adaptive_eval.py   ->  task4_summary.csv, task4_decisions.csv, task4_calibration_impact.csv,
-                                   task4_budget_sensitivity.csv, task4_policies.png, task4_mobile_timeline.png
+Privacy check: --leak-check robust (default; per_request_controller.LEAK_CHECK: max over seeds, or mean + largest
+observed seed half range) or mean (earlier check on the seed mean; outputs get the suffix _meancheck).
+
+Run:  python adaptive_eval.py [--leak-check robust|mean]
+        ->  task4_summary.csv, task4_decisions.csv, task4_calibration_impact.csv,
+            task4_budget_sensitivity.csv, task4_policies.png, task4_mobile_timeline.png
 """
 import collections
 import copy
@@ -42,10 +46,15 @@ import os
 
 import numpy as np
 
+import argparse
+
 import per_request_controller as pr
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 pr.load_multisplit(os.path.join(HERE, "measured_multisplit.txt"))
+_ap = argparse.ArgumentParser(); _ap.add_argument("--leak-check", choices=["robust", "mean"], default="robust")
+pr.LEAK_CHECK = _ap.parse_known_args()[0].leak_check
+SUFFIX = "" if pr.LEAK_CHECK == "robust" else "_meancheck"
 import calibrated_model as cm                                    # noqa: E402  (after the multisplit merge)
 
 OPTS = pr.options()
@@ -242,9 +251,9 @@ def main():
             s, d = evaluate(trace, prof, keep_rows=True)
             summary += s; dec += d
     keys = sorted({k for s in summary for k in s}, key=lambda k: (k not in ("trace", "profile", "policy"), k))
-    with open(os.path.join(HERE, "task4_summary.csv"), "w", newline="") as f:
+    with open(os.path.join(HERE, "task4_summary" + SUFFIX + ".csv"), "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=keys); w.writeheader(); w.writerows(summary)
-    with open(os.path.join(HERE, "task4_decisions.csv"), "w", newline="") as f:
+    with open(os.path.join(HERE, "task4_decisions" + SUFFIX + ".csv"), "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=list(dec[0])); w.writeheader(); w.writerows(dec)
     fmt = lambda v: f"{v:+6.2f}%" if v is not None else "   -   "
     for s in summary:
@@ -254,14 +263,14 @@ def main():
               f"+reload a {s['total_a']:6.2f} ({fmt(s['gap_a'])}) | +reload b {s['total_b']:6.2f} ({fmt(s['gap_b'])}) | "
               f"changes {s['ch']:5.1f} in class {s['chc']:5.1f} | viol {s['viol']:4.1f}" + (f" | {s['fixed_choice']}" if s["fixed_choice"] else ""))
     imp = calibration_impact()
-    with open(os.path.join(HERE, "task4_calibration_impact.csv"), "w", newline="") as f:
+    with open(os.path.join(HERE, "task4_calibration_impact" + SUFFIX + ".csv"), "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=list(imp[0])); w.writeheader(); w.writerows(imp)
     print("\ncalibration impact (assumed vs calibrated decisions):")
     for r in imp:
         print(f"  {r['profile']:13s} ({r['assumed_counterpart']:6s}) {r['cls']:22s} grid {r['grid_changed']:2d}/{r['grid_points']} "
               f"| traces {r['trace_changed']:3d}/{r['trace_requests']:3d} | {r['main_changes']}")
     bs = budget_sensitivity()
-    with open(os.path.join(HERE, "task4_budget_sensitivity.csv"), "w", newline="") as f:
+    with open(os.path.join(HERE, "task4_budget_sensitivity" + SUFFIX + ".csv"), "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=list(bs[0])); w.writeheader(); w.writerows(bs)
     print("\nmemory-budget sensitivity (5 seeds):")
     for r in bs:
@@ -294,7 +303,7 @@ def plots(summary, dec):
     axs[0][0].legend(frameon=False, fontsize=7.5)
     fig.suptitle("Task 4: policies in the calibrated model (MODELLED from FITTED/MEASURED parameters), A = 128; "
                  "missing bar = infeasible (all on client does not fit the budget)", fontsize=10.5)
-    fig.tight_layout(); fig.savefig(os.path.join(HERE, "task4_policies.png"), dpi=200); plt.close(fig)
+    fig.tight_layout(); fig.savefig(os.path.join(HERE, "task4_policies" + SUFFIX + ".png"), dpi=200); plt.close(fig)
 
     rows = [r for r in dec if r["trace"] == "mobile" and r["profile"] == "M2-4T"]
     by = collections.defaultdict(list)
@@ -327,7 +336,7 @@ def plots(summary, dec):
     for a_ in ax:
         a_.grid(alpha=.3)
     fig.suptitle("Mobile trace, client M2-4T (calibrated model; MODELLED)", fontsize=11)
-    fig.tight_layout(); fig.savefig(os.path.join(HERE, "task4_mobile_timeline.png"), dpi=200); plt.close(fig)
+    fig.tight_layout(); fig.savefig(os.path.join(HERE, "task4_mobile_timeline" + SUFFIX + ".png"), dpi=200); plt.close(fig)
 
 
 if __name__ == "__main__":

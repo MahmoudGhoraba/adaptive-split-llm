@@ -153,6 +153,58 @@ def workload(p):
                 ROUND_TRIPS=float(len(tasks) * (1 + A)), P_MAX=int(max(tasks)))
 
 
+SECRET_U_SEEDVALS = {}                   # key -> {field: [value per seed]} (multisplit_results.csv next to the table)
+
+# ---- privacy check robust to training variance (decided 15 Nov 2026) -----------------------------------------------
+# LEAK_CHECK = "robust": an option passes a leakage limit only if its ROBUST leakage <= limit:
+#   >= 2 training seeds: max over seeds;  otherwise: mean + ROBUST_MARGIN[field] (the largest half range over seeds
+#   observed for that metric over all multi-seed entries; prompt and answer separately), capped at 1.0.
+#   The margin is also applied to the single-run split / noise / secret-head options (borrowed from the head+tail
+#   seeds). Values that hold BY CONSTRUCTION get no margin: all on client (0), all on server (1), public tail answer (1).
+# LEAK_CHECK = "mean": the earlier check on the seed mean (kept for comparison).
+LEAK_CHECK = "robust"
+LEAK_FIELDS = ("leak", "answer_leak")
+ROBUST_MARGIN = {f: 0.0 for f in LEAK_FIELDS}
+
+
+def load_seed_values(path):
+    """Per-seed leak/answer_leak of the current-script runs (secret_multisplit.py --collect csv); sets ROBUST_MARGIN."""
+    import csv
+    SECRET_U_SEEDVALS.clear()
+    if not path or not os.path.exists(path):
+        print(f"WARNING: no per-seed file {path}: robust check = mean + 0 for every option")
+        return 0
+    for r in csv.DictReader(open(path)):
+        if r["lam_a"] == "" or r.get("smoke", "False") == "True":
+            continue
+        k = (int(r["H"]), int(r["T"]), float(r["lam_p"]), float(r["lam_a"]))
+        d = SECRET_U_SEEDVALS.setdefault(k, {f: [] for f in LEAK_FIELDS})
+        for f in LEAK_FIELDS:
+            d[f].append(float(r[f]))
+    for f in LEAK_FIELDS:
+        ROBUST_MARGIN[f] = max([(max(v[f]) - min(v[f])) / 2 for v in SECRET_U_SEEDVALS.values() if len(v[f]) > 1],
+                               default=0.0)
+    return len(SECRET_U_SEEDVALS)
+
+
+def robust_value(o, f):
+    """Robust leakage of option o for field f (see LEAK_CHECK)."""
+    if o["kind"] in ("local", "cloud") or (f == "answer_leak" and o.get("answer_by_construction")):
+        return o[f]
+    if o["kind"] == "secret_u":
+        v = SECRET_U_SEEDVALS.get((o["H"], o["T"], o["lam"], o["lam_a"]), {}).get(f, [])
+        if len(v) >= 2:
+            return max(v)
+    return min(1.0, o[f] + ROBUST_MARGIN[f])
+
+
+def leak_ok(o, eps, eps_a, mode=None):
+    """Prompt leakage <= eps and answer leakage <= eps_a under LEAK_CHECK ("robust" or "mean")."""
+    if (mode or LEAK_CHECK) == "mean":
+        return o["leak"] <= eps + 1e-12 and o["answer_leak"] <= eps_a + 1e-12
+    return o["leak_r"] <= eps + 1e-12 and o["answer_leak_r"] <= eps_a + 1e-12
+
+
 def options():
     """Every scheme the controller can choose. kind: local, cloud, split, noise, secret."""
     out = [dict(kind="local"), dict(kind="cloud")]
@@ -175,7 +227,11 @@ def options():
         if o["kind"] == "cloud":
             o.update(leak=1.0, private_exact=1.0, agreement=1.0, answer_leak=1.0)
         o.setdefault("ppl_ratio", 1.0)
-        o.setdefault("answer_leak", 1.0)       # public tail: the server can compute every answer word
+        if "answer_leak" not in o:
+            o["answer_leak"] = 1.0             # public tail: the server can compute every answer word
+            o["answer_by_construction"] = True
+    for o in out:
+        o["leak_r"], o["answer_leak_r"] = robust_value(o, "leak"), robust_value(o, "answer_leak")
     return out
 
 
@@ -222,7 +278,7 @@ def best(eps, q_min, wl, p, opts=None, eps_answer=1.0):
     """Fastest option with prompt leakage <= eps, answer leakage <= eps_answer, quality ok, memory <= limit."""
     b = None
     for o in (opts or OPTIONS):
-        if (o["leak"] > eps + 1e-12 or o["answer_leak"] > eps_answer + 1e-12 or not quality_ok(o, q_min)
+        if (not leak_ok(o, eps, eps_answer) or not quality_ok(o, q_min)
                 or memory_gb(o, wl, p) > p["m_client_gb"]):
             continue
         L = latency(o, wl, p)
@@ -255,8 +311,6 @@ FAMILY_NAME = dict(local="All on client", cloud="All on server", split="Split on
 SECRET_U_OLD_SCRIPT = dict(SECRET_U)   # the older-script table above, untouched (documentation)
 SECRET_U_SEEDS = {}                      # key -> number of training seeds (current script), set by load_multisplit()
 SECRET_U_SPREAD = {}                     # key -> {field: half range over seeds}, only where n_seeds > 1
-
-
 def load_multisplit(path):
     """REPLACE SECRET_U by the table in measured_multisplit.txt (secret_multisplit.py --collect; current script only).
     The older-script entries above are NOT merged (task 1: different script version, not comparable).
@@ -279,6 +333,7 @@ def load_multisplit(path):
             SECRET_U_SPREAD[eval(m.group(1))] = {f: float(v) for f, v in re.findall(r"(\w+) \+-([0-9.]+)", m.group(2))}
     for k, v in new.items():
         SECRET_U[k] = dict(v)
+    load_seed_values(os.path.join(os.path.dirname(path), "multisplit_results.csv"))
     return len(new)
 
 
@@ -313,7 +368,7 @@ def decide_request(P, cls, p, opts):
     pp = {**p, "n_tasks": 1}
     b = None
     for o in opts:
-        if (o["leak"] > cls["eps"] + 1e-12 or o["answer_leak"] > cls["eps_a"] + 1e-12
+        if (not leak_ok(o, cls["eps"], cls["eps_a"])
                 or not quality_ok(o, cls["q"]) or memory_gb(o, wl, pp) > p["m_client_gb"]):
             continue
         L = latency(o, wl, pp)
@@ -325,7 +380,7 @@ def decide_request(P, cls, p, opts):
 def fixed_latency(o, P, cls, p):
     """Latency of a FIXED option for one request, or None if it breaks the request's limits or memory."""
     wl = request_workload(P, p["answer_len"]); pp = {**p, "n_tasks": 1}
-    if (o["leak"] > cls["eps"] + 1e-12 or o["answer_leak"] > cls["eps_a"] + 1e-12
+    if (not leak_ok(o, cls["eps"], cls["eps_a"])
             or not quality_ok(o, cls["q"]) or memory_gb(o, wl, pp) > p["m_client_gb"]):
         return None
     return latency(o, wl, pp)

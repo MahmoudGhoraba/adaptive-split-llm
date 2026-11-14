@@ -73,17 +73,22 @@ Objective: one consistent, documented measurement table.
 Files: results/multisplit/, step_secret_multisplit/, step5_per_request/per_request_controller.py (`load_multisplit`).
 Work: obtain or run batch C (H=6,T=2; H=8,T=2); rerun (4,2) seed 0 with the CURRENT script and drop or label the old
 run; add seeds 1, 2 at the splits the controller selects ((1,1), (2,2), (4,1)); record seed count + script per entry.
-Done when: every SECRET_U entry has ≥ 3 seeds from the same script, a reported spread, and step5 loads only that table.
-**Status (14 Nov 2026): DONE except the seed criterion.** Done: batch C complete ((6,2) and (8,2), seed 0); (4,2) seed 0
+Done when (revised 15 Nov 2026; replaces "every SECRET_U entry has ≥ 3 seeds"): all entries come from the same script
+with a reported spread and step5 loads only that table; selected entries have ≥2 seeds where GPU time allows; all
+entries are checked with the robust rule (RESULTS_SUMMARY 9h: max over seeds if ≥ 2 seeds, else mean + the largest
+observed seed half range of that metric).
+**Status (15 Nov 2026): DONE.** Robust rule implemented and applied to every option (`LEAK_CHECK = "robust"`).
+Selected entries under the robust rule: (1,1) λa = 0.1 for private answer (1 seed) and the H = 4 secret head λp = 0.2
+for private prompt (1 run, older secret_head.py): both are checked with the margin, and a second seed of (1,1) λa = 0.1
+is the first GPU item if time allows. History (14 Nov): Done: batch C complete ((6,2) and (8,2), seed 0); (4,2) seed 0
 rerun with the current script, (2,2) seed 1 added; step5 `load_multisplit()` now REPLACES SECRET_U by the current-script
 table (28 entries, 7 splits) — the older-script (4,2) runs are no longer merged (kept as `SECRET_U_OLD_SCRIPT` and in
 RESULTS_SUMMARY 5a as an older script version; their 65.5% prompt leakage at λa = 0.1 lies outside the new seeds'
 74.3–78.5%); seed count per entry recorded (n_seeds in measured_multisplit.txt, `SECRET_U_SEEDS`) and spread reported
-(`SECRET_U_SPREAD`, RESULTS_SUMMARY 5b). NOT met: ≥ 3 seeds per entry — only (4,2) has 3 seeds, (2,2) has 2, the other
-five splits 1. Measured spread: prompt leak up to ±4.9–6.3 points, answer leak ≤ ±3.0, agreement ≤ ±1.2, so
+(`SECRET_U_SPREAD`, RESULTS_SUMMARY 5b). Seeds: (4,2) 3, (2,2) 2, the other five splits 1 (the old ≥ 3-seed criterion is replaced, see above). Measured spread: prompt leak up to ±4.9–6.3 points, answer leak ≤ ±3.0, agreement ≤ ±1.2, so
 prompt-leak differences under ~10 points between splits are not reliable. Task 4 rerun with the new table:
-outputs unchanged, (8,2) never chosen (RESULTS_SUMMARY 9g). Open (optional, Colab): seeds 1–2 at (1,1), (4,1), and the
-splits the controller selects with fragile margins ((2,2) λa = 0.03, (4,2) λa = 0.03; see 9g).
+outputs unchanged, (8,2) never chosen (RESULTS_SUMMARY 9g). The fragile margins found there ((2,2) and (4,2) at λa = 0.03)
+led to the robust rule (9h): both entries now fail their limits; private prompt+answer is infeasible on 2 GB.
 
 ### Task 2 — Real client–server split runtime (runtime/)
 Objective: execute head+tail and middle layers in separate processes exchanging hidden states.

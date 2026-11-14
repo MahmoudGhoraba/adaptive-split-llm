@@ -393,6 +393,8 @@ all three. Memory budgets cannot be measured on one 8 GB machine and are assumpt
 
 ### 9c. Policies in the calibrated model (MODELLED; 200 requests, A = 128; 20 noise seeds for estimating policies)
 
+Mean-based privacy check (before 15 Nov 2026; files *_meancheck). Robust check: see 9h.
+
 Total latency [min] (gap to the oracle). Estimator: EWMA α = 0.3, ±3% observation noise, prior = nominal 4G.
 
 | Trace | Profile | Adaptive | Adaptive + probe | Oracle | Fixed per class | Best single fixed | All on client | Adaptive, assumed model |
@@ -446,6 +448,8 @@ adaptive policy is slower (233.4 s vs 213.0 s): on this testbed switching cost o
 client and server machines the server would not need to reload; switching cost is not in the model or controller.
 
 ### 9e. Calibration impact: assumed vs calibrated decisions (MODELLED, A = 128)
+
+Mean-based privacy check (before 15 Nov 2026; files *_meancheck). Robust check: see 9h.
 
 Grid: 5 prompt lengths x 3 networks (Wi-Fi/4G/poor) x server share {1, 0.25} = 30 points per class; traces = the
 three 200-request traces (true conditions). Assumed counterpart by memory budget.
@@ -552,3 +556,51 @@ seed spread. (4,2) λa = 0.03 (chosen for "private prompt+answer") has prompt le
 alone, 83.4%, would fail); (2,2) λa = 0.03 (chosen for "private answer" on 2 GB profiles when the server is slow) has
 answer leak 39.4% vs 40% (±1.8; seed 1 alone, 41.2%, would fail). The decisions therefore rest on seed means, not on
 a margin that the seed variation clears.
+
+### 9h. Robust privacy check (15 Nov 2026; MODELLED decisions; now the controller default)
+
+Rule (decided after the fragile margins of 9g): an option passes a leakage limit only if its ROBUST leakage ≤ limit.
+Robust leakage = max over training seeds if the entry has ≥ 2 seeds ((2,2), (4,2)); otherwise mean + the largest
+half range over seeds observed for that metric over all multi-seed entries: prompt +6.34 points ((2,2) λa = 0.1),
+answer +3.03 points ((4,2) λa = 0.1); capped at 100%. The margin is also applied to the single-run split, noise and
+secret-head options (borrowed from the head + tail seeds; no seeds exist for them). No margin on values that hold
+by construction (all on client 0; all on server and the public-tail answer leakage 1). Quality is still checked on
+the seed mean. Per-seed values: step5_per_request/multisplit_results.csv (copy of results/multisplit). The old check
+remains available (`LEAK_CHECK = "mean"`, `adaptive_eval.py --leak-check mean`; it reproduces the previous outputs
+byte for byte). Comparison: step5_per_request/compare_leak_check.py -> task4_leak_check_comparison.csv,
+task4_leak_check_transitions.csv.
+
+Entries that change pass/fail for the class they were chosen for:
+(4,2) λa = 0.03 robust prompt leak 83.4% (seed 0) > 80% -> fails private prompt+answer; (2,2) λa = 0.03 robust answer
+leak 41.2% (seed 1) > 40% -> fails private answer. (1,1) λa = 0.1 stays feasible for private answer (35.5 + 3.0 =
+38.5% ≤ 40%); H = 4 secret head λp = 0.2 stays feasible for private prompt (64.9 + 6.3 = 71.2% ≤ 80%). No secret
+head + tail entry passes private prompt+answer (prompt ≤ 80%, answer ≤ 50%, agreement ≥ 75%) any more; only all on
+client does.
+
+Decision changes (oracle policy, three 200-request traces, true conditions):
+
+| Profile | Class | Mean check -> robust check | Requests |
+|---|---|---|---|
+| M2-2T, M2-1T, assumed phone (2 GB) | Private prompt+answer | (4,2) λa = 0.03 -> INFEASIBLE (all on client needs > 2 GB) | 108/108 each |
+| M2-2T (2 GB) | Private answer | (2,2) λa = 0.03 -> (1,1) λa = 0.1 (slow-server phase) | 11/126 |
+| M2-1T (2 GB) | Private answer | (2,2) λa = 0.03 -> (1,1) λa = 0.1 | 8/126 |
+| M2-4T (4 GB) | Private prompt+answer | (4,2) λa = 0.03 -> all on client | 4/108 |
+| assumed edge (8 GB) | Private prompt+answer | (4,2) λa = 0.03 -> all on client | 14/108 |
+
+Infeasibility: on every 2 GB profile, private prompt+answer requests (36 of 200 per trace, 18%) cannot be served
+under the robust check; all other classes stay feasible on all profiles. With a 3 or 4 GB budget every class is
+feasible on every M2 profile (all on client for prompt+answer).
+Latency cost of the robust check on the requests served under both checks (oracle): M2-4T +0.32% (mobile), 0.00%
+(stable, server load); assumed edge +1.19% (mobile); 2 GB profiles +0.00 to +0.28% (the (1,1) λa = 0.1 replacement
+for private answer). Memory sensitivity (oracle, mobile, 3 GB): M2-4T +0.3%, M2-2T +1.3%, M2-1T +3.7% (28.56 -> 28.94
+and 35.46 -> 36.78 min). Totals on 2 GB profiles fall (e.g. M2-2T mobile oracle 53.67 -> 39.55 min) only because
+36 requests are no longer served; they are not a speed-up.
+Policy ranking unchanged: M2-4T mobile, gap to the oracle adaptive +1.49% (mean check +1.60%), fixed per class
++2.11% (+2.43%); the assumed-model policy improves on M2-4T (stable +54.9% -> +36.7%, server load +89.2% -> +65.7%)
+because the robust check removes the (4,2) option it misjudged, forcing all on client.
+Calibration impact under the robust check (Figure 6): M2-4T 231/600 trace decisions change (38.5%; was 327/600)
+— the private prompt+answer class no longer changes (both models now choose all on client or are infeasible);
+2 GB profiles 6–10/600 (private-answer changes vanish: both models now choose (1,1) λa = 0.1); assumed edge 22/600.
+Real-runtime trace (9d): replaying its logged estimator states (runtime/replay_trace_decisions.py) reproduces all 270
+logged decisions with the mean check and gives the same 270 decisions with the robust check (M2-4T, A = 64, prompts
+≤ 512), so the trace was NOT rerun; its MEASURED results stand.

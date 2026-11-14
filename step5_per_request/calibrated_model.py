@@ -107,7 +107,7 @@ def memory_cal(o, P, A):
 
 
 def feasible(o, cls, P, A, prof):
-    return (o["leak"] <= cls["eps"] + 1e-12 and o["answer_leak"] <= cls["eps_a"] + 1e-12 and pr.quality_ok(o, cls["q"])
+    return (pr.leak_ok(o, cls["eps"], cls["eps_a"]) and pr.quality_ok(o, cls["q"])
             and memory_cal(o, P, A) <= CAL["client"][prof]["mem_budget_gb"] + 1e-9)
 
 

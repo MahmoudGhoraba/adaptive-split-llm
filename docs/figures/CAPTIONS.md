@@ -61,11 +61,13 @@ memory budgets (4 / 2 / 2 GB) are ASSUMED; "assumed phone" and "assumed edge" ar
 (a) All four privacy classes: blue, a grid of 5 prompt lengths (32–1024 tokens) × 3 networks (Wi-Fi, 4G, poor
 coverage) × 2 server loads (share 1.0, 0.25) per class; orange, the requests of the three 200-request traces
 (stable 4G, mobile, server load) under their true conditions; labels give changed/total. (b) Traces, by privacy
-class. On the M2 with 4 threads 327 of 600 trace decisions change (54.5 %), 84–89 % in the three private classes
-(mainly split or secret options → all on client, because the assumed 20 GFLOP/s client is about 6.5 × slower in
-prefill than measured); 2.3–3.8 % on the 2 GB profiles and the assumed edge; 0 on the assumed phone, whose calibrated
-profile is scaled to the assumed speed. Answer length A = 128. SECRET_U from the current multisplit script only
-(task 1); the result is identical to the run before task 1. `step5_per_request/task4_calibration_impact.csv`.
+class. Privacy check: ROBUST (max over seeds, or mean + the largest observed seed half range). On the M2 with
+4 threads 231 of 600 trace decisions change (38.5 %), 84–85 % in the private-answer and private-prompt classes (mainly
+split or secret options → all on client, because the assumed 20 GFLOP/s client is about 6.5 × slower in prefill than
+measured); none in private prompt+answer, where both models choose all on client (4 GB) or find no feasible option
+(2 GB; counted as unchanged). 1.0–3.7 % on the 2 GB profiles and the assumed edge; 0 on the assumed phone, whose
+calibrated profile is scaled to the assumed speed. Answer length A = 128. SECRET_U from the current multisplit script
+only. With the earlier mean-based check: 327 of 600 (54.5 %) on the M2 with 4 threads (`task4_calibration_impact_meancheck.csv`). `step5_per_request/task4_calibration_impact.csv`.
 
 **Figure 7 — Leakage vs quality of the secret head + tail at all seven splits** (`fig7_multisplit_leakage.png`).
 MEASURED on a Colab T4 (Llama-3.2-1B-Instruct, `secret_multisplit.py`, current script only): secret LoRA adapters

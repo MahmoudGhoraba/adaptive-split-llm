@@ -2,13 +2,13 @@ profile,assumed_counterpart,cls,grid_points,grid_changed,trace_requests,trace_ch
 M2-4T,laptop,Open,30,12,246,23,All on server -> All on client (12)
 M2-4T,laptop,Private answer,30,18,126,106,"H=1, T=1, head+tail λa=0.1 -> All on client (18)"
 M2-4T,laptop,Private prompt,30,17,120,102,"H=4, T=0, secret head λp=0.2 -> All on client (17)"
-M2-4T,laptop,Private prompt+answer,30,18,108,96,"H=4, T=2, head+tail λa=0.03 -> All on client (18)"
+M2-4T,laptop,Private prompt+answer,30,0,108,0,
 M2-2T,phone,Open,30,1,246,0,"All on server -> H=8, T=0 (1)"
-M2-2T,phone,Private answer,30,9,126,11,"H=1, T=1, head+tail λa=0.1 -> H=2, T=2, head+tail λa=0.03 (9)"
+M2-2T,phone,Private answer,30,0,126,0,
 M2-2T,phone,Private prompt,30,10,120,10,"H=4, T=0, secret head λp=0.2 -> H=4, T=4, secret head λp=0.2 (10)"
 M2-2T,phone,Private prompt+answer,30,0,108,0,
 M2-1T,phone,Open,30,0,246,0,
-M2-1T,phone,Private answer,30,6,126,8,"H=1, T=1, head+tail λa=0.1 -> H=2, T=2, head+tail λa=0.03 (6)"
+M2-1T,phone,Private answer,30,0,126,0,
 M2-1T,phone,Private prompt,30,7,120,6,"H=4, T=0, secret head λp=0.2 -> H=4, T=4, secret head λp=0.2 (7)"
 M2-1T,phone,Private prompt+answer,30,0,108,0,
 assumed-phone,phone,Open,30,0,246,0,
@@ -18,4 +18,4 @@ assumed-phone,phone,Private prompt+answer,30,0,108,0,
 assumed-edge,edge,Open,30,9,246,21,All on server -> All on client (9)
 assumed-edge,edge,Private answer,30,2,126,1,"H=1, T=1, head+tail λa=0.1 -> All on client (2)"
 assumed-edge,edge,Private prompt,30,2,120,0,"H=4, T=0, secret head λp=0.2 -> All on client (2)"
-assumed-edge,edge,Private prompt+answer,30,1,108,1,"H=4, T=2, head+tail λa=0.03 -> All on client (1)"
+assumed-edge,edge,Private prompt+answer,30,0,108,0,
