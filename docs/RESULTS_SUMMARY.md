@@ -642,3 +642,41 @@ The two smallest relaxations (+3.4 points prompt, −2.6 points quality) are sma
 of prompt leakage (±6.3 points), so whether the class is feasible near these limits is not resolved by the current
 seeds; with the earlier mean-based check the class was feasible on 2 GB ((4,2) λa = 0.03, mean 78.9%).
 
+### 9j. Decision diversity: when the controller adapts and why (15 Nov 2026; MODELLED; robust check; no new runs)
+
+step5_per_request/decision_diversity.py -> task4_diversity.csv, task4_switch_causes.csv; Figure 9. Input: the
+decisions of 9h (three 200-request traces x five profiles; adaptive = noise seed 0, oracle). Cause of a switch:
+memory limit if the previous configuration no longer fits for the new prompt; otherwise counterfactual from the
+previous request's inputs, one factor at a time (privacy class, prompt length, network = rate + RTT, server load);
+the replay reproduces all 6000 logged adaptive/oracle decisions.
+
+| Profile (budget) | Distinct configs | Switches / 199 | Split / local / server / not served | Requests adapted to conditions (stable / mobile / server load) |
+|---|---|---|---|---|
+| M2-4T (4 GB) | 2–4 | 66–104 | 0–9% / 51–69% / 31–41% / 0% | 0 / 17 / 20 |
+| M2-2T (2 GB) | 3–4 | 143–144 | 41% / 0% / 41% / 18% | 0 / 0 / 10 |
+| M2-1T (2 GB) | 3–4 | 143–145 | 41% / 0% / 41% / 18% | 0 / 0 / 8 |
+| assumed phone (2 GB) | 3 | 143 | 41% / 0% / 41% / 18% | 0 / 0 / 0 |
+| assumed edge (8 GB) | 2–4 | 70–108 | 0–13% / 46–68% / 32–41% / 0% | 0 / 26 / 18 |
+
+(adaptive policy; "adapted" = the choice differs from the one for the same class and prompt length at nominal 4G
+and an unloaded server.) Causes of the 1826 switches (adaptive, all traces and profiles): privacy class change
+97.9%, prompt length 0.4%, several factors 1.5% (mostly class + prompt length), interaction 0.2%; network and server
+load alone never cause a switch between consecutive requests, and the memory limit causes none (memory hardly
+depends on the prompt length). Oracle: the same within 0.4 points.
+Within one class (consecutive requests of the same class) only 43 switches occur over all 15 trace/profile pairs:
+prompt length 58%, interaction 14%, network 12%, server load 9%, several 7%.
+
+When and why it adapts: the decision is driven almost entirely by the privacy class, which fixes the configuration
+family (open -> all on server; private answer -> (1,1) λa = 0.1 on 2 GB; private prompt -> H = 4 secret head on
+2 GB or all on client from 3 GB; prompt+answer -> all on client or not served). The conditions change the choice
+for 0–13% of requests: on the 4 GB / 8 GB profiles open requests leave the server during poor coverage (mobile) or
+the slow-server phase (server load), and private requests move between all on client and a secret split; on 2 GB,
+where all on client does not fit, the only condition-driven change is the private-prompt secret head moving from
+T = 0 to T = 4 during the slow-server phase, depending on the prompt length (Figure 9b); in the mobile trace the
+2 GB decisions never change with the network (Figure 9a). On the stable trace nothing adapts. The adaptive policy
+follows the oracle closely (within-class adaptation 43 vs 42 switches, adapted requests within 1–6 per pair);
+the estimator lags the true conditions by a few requests after each phase change (Figure 9). These are MODELLED
+results on synthetic traces. In the MEASURED real-runtime trace (9d, M2-4T, 30 requests x 3 repeats) the class also
+fixed most choices, except private answer, where adaptive chose (1,1) λa = 0.1 for 9 and all on client for 15 of 24
+request-repeats depending on the estimated network (counted from task4_real_trace.csv; not cause-attributed).
+

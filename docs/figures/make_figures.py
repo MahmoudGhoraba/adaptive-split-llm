@@ -1,5 +1,5 @@
 """
-Thesis figures 1-8 from EXISTING results only (no new runs). Sized for A4 text width (16 cm), 300 dpi PNG.
+Thesis figures 1-9 from EXISTING results only (no new runs). Sized for A4 text width (16 cm), 300 dpi PNG.
 
   fig1_latency_model.png     predicted vs measured end-to-end time under emulated Wi-Fi / 4G / poor coverage:
                              calibrated model (step5_per_request/calibrated_model.latency_cal) and the assumed
@@ -14,6 +14,8 @@ Thesis figures 1-8 from EXISTING results only (no new runs). Sized for A4 text w
                              profile (step5_per_request/task4_calibration_impact.csv; MODELLED decisions)
   fig7_multisplit_leakage.png MEASURED prompt and answer leakage vs quality, secret head + tail, all 7 splits
                              (results/multisplit/measured_multisplit.txt; current script only; seed half-ranges)
+  fig9_decision_timeline.png chosen configuration per request (adaptive policy, M2 1 thread, 2 GB) with network and
+                             server load, mobile and server-load traces (step5_per_request/task4_decisions.csv; MODELLED)
   fig8_feasibility.png       minimum robust prompt leakage of server-using options per (answer limit, quality limit)
                              and memory budget (step5_per_request/feasibility_min_prompt_leak.csv; MODELLED)
 
@@ -351,7 +353,59 @@ def fig8():
     save(fig, "fig8_feasibility.png")
 
 
+def fig9():
+    rows = [r for r in csv.DictReader(open(os.path.join(ROOT, "step5_per_request", "task4_decisions.csv")))
+            if r["profile"] == "M2-1T" and r["policy"] == "adaptive" and r["trace"] in ("mobile", "server_load")]
+    order = ["infeasible", "All on server", "H=4, T=0, secret head λp=0.2", "H=4, T=4, secret head λp=0.2",
+             "H=1, T=1, head+tail λa=0.1"]
+    labels = {"infeasible": "not served (infeasible)", "All on server": "all on server",
+              "H=4, T=0, secret head λp=0.2": "(4,0) secret head λp=0.2", "H=4, T=4, secret head λp=0.2":
+              "(4,4) secret head λp=0.2", "H=1, T=1, head+tail λa=0.1": "(1,1) head+tail λa=0.1"}
+    assert {r["choice"] for r in rows} <= set(order)
+    ccol = {"open": BLUE, "answer": ORANGE, "prompt": AQUA, "both": YELLOW}
+    ctit = {c["key"]: c["title"] for c in __import__("per_request_controller").CLASSES}
+    fig, axes = plt.subplots(4, 2, figsize=(W, W * 0.95), sharex=True,
+                             gridspec_kw=dict(height_ratios=[2.2, 1, 1, 1], hspace=0.12, wspace=0.08))
+    for col, (tr, title) in enumerate([("mobile", "(a) Mobile trace"), ("server_load", "(b) Server-load trace")]):
+        rr = sorted((r for r in rows if r["trace"] == tr), key=lambda r: int(r["i"]))
+        i = np.array([int(r["i"]) for r in rr])
+        ax = axes[0, col]
+        for c in ccol:
+            sel = [k for k, r in enumerate(rr) if r["cls"] == c]
+            ax.scatter(i[sel], [order.index(rr[k]["choice"]) for k in sel], s=14, color=ccol[c], label=ctit[c],
+                       marker="x" if c == "both" else "o", lw=1.2 if c == "both" else 0.6,
+                       edgecolor="white" if c != "both" else None, zorder=3)
+        ax.set_yticks(range(len(order))); ax.set_title(title, loc="left")
+        ax.set_yticklabels([labels[o] for o in order] if col == 0 else [], fontsize=7)
+        ax.set_ylim(-0.6, len(order) - 0.4); ax.grid(axis="x", visible=False)
+        a = axes[1, col]
+        a.plot(i, [2 / (1 / float(r["rate_up"]) + 1 / (2.5 * float(r["rate_up"]))) / 1e6 for r in rr], color=INK2,
+               lw=1.0, label="true")                         # effective rate 2/(1/up + 1/down), down = 2.5 x up
+        a.plot(i, [float(r["est_rate"]) / 1e6 for r in rr], color=BLUE, lw=1.0, ls="--", label="estimated")
+        a.set_yscale("log"); a.set_ylabel("Eff. rate\n[Mbit/s]" if col == 0 else "", fontsize=7.5)
+        a = axes[2, col]
+        a.plot(i, [1e3 * float(r["rtt"]) for r in rr], color=INK2, lw=1.0)
+        a.plot(i, [1e3 * float(r["est_rtt"]) for r in rr], color=BLUE, lw=1.0, ls="--")
+        a.set_ylabel("RTT [ms]" if col == 0 else "", fontsize=7.5)
+        a = axes[3, col]
+        a.plot(i, [float(r["server_share"]) for r in rr], color=INK2, lw=1.0, label="true")
+        a.plot(i, [min(float(r["est_share"]), 1.0) for r in rr], color=BLUE, lw=1.0, ls="--", label="estimated")
+        a.set_ylim(0, 1.1); a.set_ylabel("Server\nshare" if col == 0 else "", fontsize=7.5)
+        a.set_xlabel("Request"); a.set_xlim(-2, 201)
+        for a in axes[1:, col]:
+            a.tick_params(labelsize=7)
+        if col == 1:
+            for a in axes[:, 1]:
+                a.tick_params(labelleft=False)
+            for k in (1, 2, 3):
+                axes[k, 1].sharey(axes[k, 0])
+    h, l = axes[0, 0].get_legend_handles_labels(); h2, l2 = axes[3, 0].get_legend_handles_labels()
+    fig.legend(h + h2, l + ["true condition", "estimated by the controller"], loc="lower center", ncol=3,
+               frameon=False, fontsize=7, bbox_to_anchor=(0.5, -0.05))
+    save(fig, "fig9_decision_timeline.png")
+
+
 if __name__ == "__main__":
-    fig1(); c = fig2(); fig3(); fig4(); s = fig5(); fig6(); fig7(); fig8()
+    fig1(); c = fig2(); fig3(); fig4(); s = fig5(); fig6(); fig7(); fig8(); fig9()
     print({k: {kk: round(vv, 1) for kk, vv in v.items()} for k, v in c.items()})
     print({k: {kk: round(float(vv), 1) for kk, vv in v.items()} for k, v in s.items()})
