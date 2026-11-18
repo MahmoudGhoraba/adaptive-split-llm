@@ -34,6 +34,10 @@ Statuses: IMPLEMENTED AND VERIFIED · IMPLEMENTED BUT NOT VALIDATED · PARTIALLY
 
 Controller verdict: per-request re-optimisation over a measured configuration table (like ILLCO in Zamzam et al.),
 not a fixed rule — but inputs are given, not observed; no switching cost; no robustness-to-estimation-error test.
+18 Nov 2026 (RESULTS_SUMMARY 9l): all on client removed from the candidates (reference baseline only); answer leakage
+= robust proxy + generated-answer gap (5a). Result: only open and private prompt are servable at any budget (2–8 GB);
+private answer and private prompt+answer are infeasible; decisions are class-driven, the network changes none, server
+load changes 7–15 of 200 per trace. Attacker-B sensitivity: private prompt also infeasible.
 
 ### C2 Session-level leakage — IMPLEMENTED AND MEASURED (18 Nov 2026; RESULTS_SUMMARY §10c): pre-registered main result
 (realistic session vote − realistic per-turn, attacker A) +0.0 to +0.1 points at (4,2) and (2,2), λa 0 / 0.03, upper CI ≤ +0.3

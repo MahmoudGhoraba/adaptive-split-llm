@@ -114,7 +114,7 @@ def feasible(o, cls, P, A, prof):
 def decide_cal(P, A, cls, cond, prof, opts):
     """Fastest feasible option under the CALIBRATED model and the given (true or estimated) conditions."""
     b = None
-    for o in opts:
+    for o in pr.candidates(opts):                     # all on client is not a candidate (pr.LOCAL_AS_CANDIDATE)
         if not feasible(o, cls, P, A, prof):
             continue
         L = latency_cal(o, P, A, cond, prof)
@@ -207,7 +207,7 @@ def decide_switch(P, A, cls, cond, prof, opts, state, setting):
     """Switching-aware: fastest feasible option counting the predicted reload from the resident state
     (switch only when the predicted saving exceeds the predicted reload cost; myopic, one request ahead)."""
     b = None
-    for o in opts:
+    for o in pr.candidates(opts):                     # all on client is not a candidate (pr.LOCAL_AS_CANDIDATE)
         if not feasible(o, cls, P, A, prof):
             continue
         L = latency_cal(o, P, A, cond, prof) + transition(state, o, setting)[0]

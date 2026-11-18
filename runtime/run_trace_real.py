@@ -19,7 +19,11 @@ PING time is COUNTED in the request latency of these policies (fixed_per_class s
 --repeats R runs every policy R times, interleaved (A, S, F, A, S, F, ...), each run with a fresh server.
 Secret adapters are the untrained ones (seeds 2000/2001): latency only; leakage/quality come from the tables.
 
-Run:  python run_trace_real.py [--n 30]   ->  check_out/task4_real_trace.csv, task4_real_trace.json
+18 Nov 2026: all on client is no longer a candidate and answer leakage includes the generated-answer gap
+(per_request_controller); a request no candidate can serve is logged as "infeasible" and not run (no PING, no
+observation). --tag writes check_out/task4_real_trace<tag>.csv/json, so earlier MEASURED runs are kept.
+
+Run:  python run_trace_real.py [--n 30] [--repeats R] [--tag _x]  ->  check_out/task4_real_trace<tag>.csv, .json
 """
 import argparse
 import csv
@@ -135,18 +139,24 @@ def run_policy(policy, trace, log, rep=0):
                            stdout=subprocess.PIPE, stderr=log, text=True)
     port = int(srv.stdout.readline().split()[1])
     rc, est, rows, state = ReconfigClient(port), cm.Estimator(), [], cm.EMPTY
-    fixed = {k: cm.decide_cal(256, A, c, NOMINAL, PROF, OPTS)[0] for k, c in CL.items()}
+    fixed = {k: (cm.decide_cal(256, A, c, NOMINAL, PROF, OPTS) or (None,))[0] for k, c in CL.items()}
     for r in trace:
         cls, true = CL[r["cls"]], {k: r[k] for k in ("rate_up", "rate_down", "rtt", "server_share")}
         P = r["Pb"]; ids = torch.randint(0, 128000, (1, P), generator=torch.Generator().manual_seed(r["i"]))
         estimating = policy in ("adaptive", "switch_aware")
         cond_used = est.cond() if estimating else NOMINAL
         if policy == "adaptive":
-            o = cm.decide_cal(P, A, cls, est.cond(), PROF, OPTS)[0]
+            o = (cm.decide_cal(P, A, cls, est.cond(), PROF, OPTS) or (None,))[0]
         elif policy == "switch_aware":
-            o = cm.decide_switch(P, A, cls, est.cond(), PROF, OPTS, state, "a")[0]
+            o = (cm.decide_switch(P, A, cls, est.cond(), PROF, OPTS, state, "a") or (None,))[0]
         else:
             o = fixed[r["cls"]]
+        if o is None:                                             # no candidate meets the class limits: not served
+            rows.append(dict(policy=policy, rep=rep, i=r["i"], phase=r["phase"], cls=r["cls"], P=P, choice="infeasible",
+                             served=False, rate_up_mbit=true["rate_up"] / 1e6, rtt_ms=true["rtt"] * 1e3,
+                             est_rtt_ms=est.rtt * 1e3, est_rate_mbit=est.rate / 1e6, est_share=est.share))
+            print(f"  {policy:15s} r{rep} {r['i']:2d} {r['phase']:5s} {r['cls']:6s} P={P:3d} infeasible: not served", flush=True)
+            continue
         pred_reload, state = cm.transition(state, o, "a")
         c_load, s_load = rc.configure(o, true)                    # emulation follows the TRUE trace
         rtt_obs = share_rep = None; ping_s = 0.0
@@ -175,7 +185,8 @@ def run_policy(policy, trace, log, rep=0):
         if estimating:
             est.observe(rate=rate_obs)
         meas = res["total"] + ping_s
-        row = dict(policy=policy, rep=rep, i=r["i"], phase=r["phase"], cls=r["cls"], P=P, choice=prc.short2(o), cold=cold,
+        row = dict(policy=policy, rep=rep, i=r["i"], phase=r["phase"], cls=r["cls"], P=P, choice=prc.short2(o), served=True,
+                   cold=cold,
                    rate_up_mbit=true["rate_up"] / 1e6, rtt_ms=true["rtt"] * 1e3, measured_s=meas, ping_s=ping_s,
                    predicted_reload_s=pred_reload,
                    measured_ttft_s=res["ttft"], predicted_true_s=pred_true, err_pct=100 * (pred_true - meas) / meas,
@@ -196,6 +207,7 @@ def run_policy(policy, trace, log, rep=0):
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--n", type=int, default=30); ap.add_argument("--repeats", type=int, default=1)
+    ap.add_argument("--tag", default="")
     a = ap.parse_args()
     trace = prc.make_stream(a.n, prc.NETWORKS[1])
     phases = prc.NETWORKS[1]["phases"]
@@ -204,26 +216,28 @@ def main():
         r["phase"] = phases[min(r["i"] * len(phases) // a.n, len(phases) - 1)]
     s0 = memstat.snapshot()
     print(f"{env_info()}\nsystem available {s0['sys_available']/1e9:.2f} GB, swap {s0['swap_used']/1e9:.2f} GB")
-    log = open(os.path.join(OUT, "task4_real_server.log"), "w")
+    log = open(os.path.join(OUT, f"task4_real_server{a.tag}.log"), "w")
     rows = []
     POLS = ("adaptive", "switch_aware", "fixed_per_class")
     for rep in range(a.repeats):
         for pol in POLS:
             print(f"\n{pol}, repeat {rep}:", flush=True)
             rows += run_policy(pol, trace, log, rep)
-    with open(os.path.join(OUT, "task4_real_trace.csv"), "w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=list(rows[0])); w.writeheader(); w.writerows(rows)
+    with open(os.path.join(OUT, f"task4_real_trace{a.tag}.csv"), "w", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=list(dict.fromkeys(k for r in rows for k in r)), restval="")
+        w.writeheader(); w.writerows(rows)
     summ = {}
     for pol in POLS:
         per = []
         for rep in range(a.repeats):
-            rr = [r for r in rows if r["policy"] == pol and r["rep"] == rep]
+            rr = [r for r in rows if r["policy"] == pol and r["rep"] == rep and r["served"]]
             meas, pred = sum(r["measured_s"] for r in rr), sum(r["predicted_true_s"] for r in rr)
             rel = sum(r["client_load_s"] + r["server_load_s"] for r in rr); prel = sum(r["predicted_reload_s"] for r in rr)
             per.append(dict(measured=meas, predicted=pred, reload=rel, predicted_reload=prel, total=meas + rel,
                             predicted_total=pred + prel, ping=sum(r["ping_s"] for r in rr),
                             changes=sum(rr[i]["choice"] != rr[i - 1]["choice"] for i in range(1, len(rr))),
-                            mape=st.mean(abs(r["err_pct"]) for r in rr), swap=sum(r["swap_grew"] for r in rr)))
+                            mape=st.mean(abs(r["err_pct"]) for r in rr), swap=sum(r["swap_grew"] for r in rr),
+                            served=len(rr)))
         m = lambda k: st.mean(x[k] for x in per)
         sd = lambda k: st.stdev(x[k] for x in per) if len(per) > 1 else 0.0
         summ[pol] = dict(per_repeat=per, **{f"{k}_mean": m(k) for k in per[0]}, **{f"{k}_sd": sd(k) for k in per[0]})
@@ -235,7 +249,7 @@ def main():
               f"per-request MAPE {s['mape_mean']:.1f}% | requests with swap growth {s['swap_mean']:.1f}")
     s1 = memstat.snapshot()
     json.dump(dict(env=env_info(), profile=PROF, A=A, n=a.n, summary=summ, system_start=s0, system_end=s1),
-              open(os.path.join(OUT, "task4_real_trace.json"), "w"), indent=1, default=str)
+              open(os.path.join(OUT, f"task4_real_trace{a.tag}.json"), "w"), indent=1, default=str)
 
 
 if __name__ == "__main__":

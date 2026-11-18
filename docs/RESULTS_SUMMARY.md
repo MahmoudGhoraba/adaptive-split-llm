@@ -741,6 +741,71 @@ because (1,1) λa = 0.1 now fails the quality limit. The MEASURED trace was run 
 rerun. Its measured timings stay valid as measurements of the decisions it made, but 12 of those 270 decisions are
 not what the current controller would choose.
 
+### 9l. Protected split inference only + generated-answer leakage (18 Nov 2026; MODELLED decisions; no new runs)
+
+Decisions (18 Nov 2026): (1) all on client is NOT a candidate for any privacy class; it is kept only as the
+reference baseline policy all_on_client (the thesis is protected split inference, not avoiding the server);
+(2) answer leakage in the controller = robust teacher-forced value (9h) + the gap generated − teacher-forced
+MEASURED in task 5a (§10a), applied like the seed check: the 8 entries 5a measured ((4,2), (2,2), λa 0–0.1) get their
+own gap (+1.2 to +30.0 points); every other head + tail entry gets the largest observed gap, +40.8 points ((2,2)
+λa = 0.1); capped at 100%; no gap on by-construction values (public tail = 100%). Objective (latency) and constraints
+C1–C4 unchanged; prompt leakage still attacker A. Code: per_request_controller.candidates(), ANSWER_CHECK = "generated",
+GEN_GAP (read from results/task5/5a_*/answer_generation.csv). Measured tables unchanged.
+Resulting smallest answer leakage of any candidate: 46.2% ((4,2) λa = 0.1, agreement 61.3%); with agreement ≥ 75%:
+68.1% ((2,2) λa = 0.03).
+
+Servable privacy classes (fastest option at P = 256, nominal 4G, A = 128; latency M2-4T / M2-2T / M2-1T, MODELLED;
+feasibility_classes.csv) — identical at 2, 3, 4 and 8 GB:
+
+| Class (limits) | Attacker A (controller) | Attacker B (sensitivity) |
+|---|---|---|
+| Open (Q 95%) | all on server, 4.2 / 4.2 / 4.2 s | all on server |
+| Private prompt (ε_p 80%, Q 75%) | H = 4 secret head λp = 0.2, T = 0: 16.6 / 17.2 / 18.7 s | INFEASIBLE |
+| Private answer (ε_a 40%, Q 75%) | INFEASIBLE | INFEASIBLE |
+| Private prompt+answer (80 / 50 / 75%) | INFEASIBLE | INFEASIBLE |
+
+Smallest single-limit relaxation per infeasible class (SENSITIVITY ANALYSIS; class limits NOT changed; same at every
+budget unless stated; memory never helps: every candidate needs ≤ 2.21 GB):
+- private answer: ε_a 40% -> 68.1% ((2,2) λa = 0.03, agreement 79.1%); no relaxation of ε_p or Q alone helps (no
+  candidate reaches ε_a 40% at any quality).
+- private prompt+answer: Q 75% -> 61.3% ((4,2) λa = 0.1: prompt 78.5% max over seeds, answer 46.2%); or ε_a -> 100%
+  (= the private-prompt option); no relaxation of ε_p alone helps.
+- attacker B, private prompt: ε_p 80% -> 82.0% ((8,2) λa = 0.01, B 82.0%, agreement 77.3%; needs ≥ 3 GB) or 86.4% at
+  2 GB ((6,2) λa = 0, 1 seed); a Q relaxation helps only down to 6.1% (noise σ = 2), i.e. not usefully.
+- attacker B, private answer: as for A (ε_a -> 68.1%); private prompt+answer: no single relaxation helps.
+Grid (Figure 8): attacker A 24/150 limit combinations feasible at 2 GB, 25/150 at 3–8 GB; attacker B 12/150 at every
+budget (was 45/150 at 2 GB and 150/150 at ≥ 3 GB with all on client and the proxy, 9k).
+
+Policy comparison (MODELLED, calibrated model, 3 traces x 5 profiles, adaptive policies 20 noise seeds): every profile
+serves 122 of 200 requests per trace (open 82, private prompt 40); private answer (42) and private prompt+answer (36)
+are not served on any profile. best_fixed is infeasible on every profile (no single candidate serves both open and
+private prompt). Gap to the oracle (compute time, requests served by both):
+
+| Profile | adaptive (stable / mobile / server load) | fixed per class | all on client (reference, 200 served) |
+|---|---|---|---|
+| M2-4T | +0.72 / +0.76 / +0.64% | +0.00 / +0.00 / +3.81% | +20.1 / +0.4 / −11.4% |
+| M2-2T | +0.70 / +0.74 / +0.57% | +0.00 / +0.00 / +0.79% | does not fit (2 GB) |
+| M2-1T | +0.65 / +0.70 / +0.56% | +0.00 / +0.00 / +0.37% | does not fit |
+| assumed edge | +0.69 / +0.73 / +0.77% | +0.00 / +0.00 / +1.93% | +50.6 / +26.8 / +10.5% |
+
+The adaptive gap on the stable and mobile traces is the PING cost (≈ 0.7%): the decisions equal the oracle's. Fixed
+per class equals the oracle except under server load, where adaptive is better on M2-4T, M2-2T and the assumed edge
+and fixed per class on M2-1T (+0.37 vs +0.56%). On M2-4T under server load all on client would be 11.4% faster than the
+best protected split option on the same requests (reference only, not a candidate).
+Decision diversity (adaptive): 2–3 configurations per profile and trace (all on server; H = 4 secret head T = 0, and
+under the slow server T = 4 (2 GB) or T = 11 (4 / 8 GB)); switches 128–129 per trace, 99.1% caused by the privacy class;
+the network changes no decision on any profile (mobile trace: 0 requests adapted); server load adapts 7–15 requests
+(M2-4T 15, M2-2T 10, M2-1T 7, assumed edge 11, assumed phone 0).
+Calibration impact (Figure 6): trace decisions that change between the assumed and the calibrated model: M2-4T 14/600
+(2.3%; was 125/600), M2-2T 10, M2-1T 6, assumed edge 11, assumed phone 0 — all in private prompt (secret head T = 0 ->
+T = 4 or T = 11). The robust and the mean-based check now give the same calibration impact.
+Mean-based check (proxy, no gap, raw seed means; comparison only): private answer -> (2,2) λa = 0.03 and private
+prompt+answer -> (4,2) λa = 0.03 on every profile (126 and 108 requests over 3 traces).
+Real-runtime trace under these rules (9d setup: M2-4T, 30-request mobile trace, A = 64, 3 repeats x 3 policies): a
+run started 18 Nov 2026 15:07 was ABORTED at 15:18 by decision (in repeat 3, adaptive policy, request 20; 201 of 270
+request lines logged). Its partial logs are NOT used as data; they are kept only in
+runtime/check_out/aborted_2026-11-18/ (console log and server log; no csv/json was written). To be rerun (README.md, Split runtime).
+
 ## 10. Task 5: privacy on generated answers, known pairs and sessions (MEASURED, Colab T4, 16–18 Nov 2026)
 
 Saved adapters of the current multisplit script: (4,2) seed 0 and (2,2) seed 1 (one training seed per split; no
@@ -794,6 +859,11 @@ exceeds B in full detail recovery (84.0 vs 80.3%); 10 pairs slightly lower leaka
 attacker holds few known pairs. Answer side (learned answer inverter; known issue, NOT used for reported answer
 leakage): (4,2) 20.0 -> 36.6% at k = 1000, B 31.7%; (2,2) 20.7 -> 35.9%, B 31.1%; in these runs B ≥ A holds on the
 answer side, but A + 1000 pairs exceeds B.
+LIMITATION (18 Nov 2026): the secret adapters protect the prompt against a server WITHOUT known data; a server that
+collects known prompt–state pairs from the same user (same secret adapters) largely undoes the prompt protection
+(1000 pairs: 83.4 -> 93.1% at (4,2), close to the 94.7% of attacker B, which holds the secret). Changing the secret
+seed periodically (re-keying) would bound the number of pairs per secret; it is future work, NOT implemented. The
+controller keeps attacker A; Figure 8c–d and §9l give the attacker-B sensitivity check.
 
 ### 10c. Session-level leakage, C2 (step_task5_privacy/session_attack.py; PRE-REGISTERED analysis, AUDIT §4)
 

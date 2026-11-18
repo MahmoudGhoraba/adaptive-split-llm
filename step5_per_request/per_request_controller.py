@@ -164,11 +164,50 @@ SECRET_U_SEEDVALS = {}                   # key -> {field: [value per seed]} (mul
 # LEAK_CHECK = "mean": the earlier check on the seed mean (kept for comparison).
 LEAK_CHECK = "robust"
 LEAK_FIELDS = ("leak", "answer_leak")
-ROBUST_MARGIN = {f: 0.0 for f in LEAK_FIELDS}
+SEED_FIELDS = LEAK_FIELDS + ("leak_B",)  # leak_B (attacker B) only for the sensitivity check of the feasibility map
+ROBUST_MARGIN = {f: 0.0 for f in SEED_FIELDS}
+
+# ---- answer leakage on GENERATED answers (decided 18 Nov 2026) -----------------------------------------------------
+# ANSWER_CHECK = "generated": the robust answer leakage (above) + the gap between generated-answer and teacher-forced
+#   answer leakage MEASURED in task 5a (results/task5/5a_*/answer_generation.csv), applied like the seed check:
+#   an entry that 5a measured gets its own gap (generated - teacher-forced, same adapters); every other head+tail entry
+#   gets the largest gap observed over all 5a entries. Capped at 1.0; no gap on values that hold by construction.
+# ANSWER_CHECK = "proxy": the teacher-forced proxy alone (earlier behaviour). Only used when LEAK_CHECK = "robust".
+ANSWER_CHECK = "generated"
+GEN_GAP = {}                             # (H, T, lam_p, lam_a) -> generated - teacher-forced (5a, MEASURED)
+GEN_GAP_MAX = 0.0
+GEN_GAP_FROM = None                      # key of the entry with the largest gap
+
+# ---- candidate set (decided 18 Nov 2026) ---------------------------------------------------------------------------
+# All on client is NOT a candidate for any privacy class (the thesis is protected split inference); it stays in
+# options() only as a reference baseline (all_on_client policy). LOCAL_AS_CANDIDATE = True restores the earlier set.
+LOCAL_AS_CANDIDATE = False
+
+
+def candidates(opts):
+    """The options the controller may choose from (all on client excluded unless LOCAL_AS_CANDIDATE)."""
+    return [o for o in opts if LOCAL_AS_CANDIDATE or o["kind"] != "local"]
+
+
+def load_generated_gap(pattern):
+    """Gap generated - teacher-forced answer leakage per adapter entry from the task-5a csv files (glob pattern)."""
+    import csv, glob
+    global GEN_GAP_MAX, GEN_GAP_FROM
+    GEN_GAP.clear(); GEN_GAP_MAX, GEN_GAP_FROM = 0.0, None
+    for path in sorted(glob.glob(pattern)):
+        for r in csv.DictReader(open(path)):
+            k = (int(r["H"]), int(r["T"]), float(r["lam_p"]), float(r["lam_a"]))
+            GEN_GAP[k] = float(r["generated_answer_leak"]) - float(r["teacher_forced_answer_leak"])
+    if not GEN_GAP:
+        print(f"WARNING: no task-5a files {pattern}: answer leakage = teacher-forced proxy")
+        return 0
+    GEN_GAP_FROM = max(GEN_GAP, key=GEN_GAP.get); GEN_GAP_MAX = GEN_GAP[GEN_GAP_FROM]
+    return len(GEN_GAP)
 
 
 def load_seed_values(path):
-    """Per-seed leak/answer_leak of the current-script runs (secret_multisplit.py --collect csv); sets ROBUST_MARGIN."""
+    """Per-seed leak/answer_leak/leak_B of the current-script runs (secret_multisplit.py --collect csv); sets
+    ROBUST_MARGIN."""
     import csv
     SECRET_U_SEEDVALS.clear()
     if not path or not os.path.exists(path):
@@ -178,24 +217,28 @@ def load_seed_values(path):
         if r["lam_a"] == "" or r.get("smoke", "False") == "True":
             continue
         k = (int(r["H"]), int(r["T"]), float(r["lam_p"]), float(r["lam_a"]))
-        d = SECRET_U_SEEDVALS.setdefault(k, {f: [] for f in LEAK_FIELDS})
-        for f in LEAK_FIELDS:
+        d = SECRET_U_SEEDVALS.setdefault(k, {f: [] for f in SEED_FIELDS})
+        for f in SEED_FIELDS:
             d[f].append(float(r[f]))
-    for f in LEAK_FIELDS:
+    for f in SEED_FIELDS:
         ROBUST_MARGIN[f] = max([(max(v[f]) - min(v[f])) / 2 for v in SECRET_U_SEEDVALS.values() if len(v[f]) > 1],
                                default=0.0)
     return len(SECRET_U_SEEDVALS)
 
 
 def robust_value(o, f):
-    """Robust leakage of option o for field f (see LEAK_CHECK)."""
+    """Robust leakage of option o for field f (see LEAK_CHECK; answer leakage also ANSWER_CHECK)."""
+    if f == "leak_B" and "leak_B" not in o:          # no secret (local, cloud, split, noise): attacker B = attacker A
+        return robust_value(o, "leak")
     if o["kind"] in ("local", "cloud") or (f == "answer_leak" and o.get("answer_by_construction")):
         return o[f]
+    v = []
     if o["kind"] == "secret_u":
         v = SECRET_U_SEEDVALS.get((o["H"], o["T"], o["lam"], o["lam_a"]), {}).get(f, [])
-        if len(v) >= 2:
-            return max(v)
-    return min(1.0, o[f] + ROBUST_MARGIN[f])
+    r = max(v) if len(v) >= 2 else o[f] + ROBUST_MARGIN[f]
+    if f == "answer_leak" and ANSWER_CHECK == "generated" and o["kind"] == "secret_u":
+        r += GEN_GAP.get((o["H"], o["T"], o["lam"], o["lam_a"]), GEN_GAP_MAX)
+    return min(1.0, r)
 
 
 def leak_ok(o, eps, eps_a, mode=None):
@@ -232,6 +275,7 @@ def options():
             o["answer_by_construction"] = True
     for o in out:
         o["leak_r"], o["answer_leak_r"] = robust_value(o, "leak"), robust_value(o, "answer_leak")
+        o["leak_B_r"] = robust_value(o, "leak_B")      # attacker B, sensitivity check only
     return out
 
 
@@ -334,6 +378,8 @@ def load_multisplit(path):
     for k, v in new.items():
         SECRET_U[k] = dict(v)
     load_seed_values(os.path.join(os.path.dirname(path), "multisplit_results.csv"))
+    load_generated_gap(os.path.join(os.path.dirname(os.path.abspath(path)), "..", "results", "task5", "5a_*",
+                                    "answer_generation.csv"))
     return len(new)
 
 
@@ -367,7 +413,7 @@ def decide_request(P, cls, p, opts):
     wl = request_workload(P, p["answer_len"])
     pp = {**p, "n_tasks": 1}
     b = None
-    for o in opts:
+    for o in candidates(opts):
         if (not leak_ok(o, cls["eps"], cls["eps_a"])
                 or not quality_ok(o, cls["q"]) or memory_gb(o, wl, pp) > p["m_client_gb"]):
             continue

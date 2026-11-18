@@ -143,7 +143,7 @@ def simulate(trace, prof, policy, rng, fixed=None):
 
 def best_fixed_option(trace, prof):
     best = None
-    for o in OPTS:
+    for o in pr.candidates(OPTS):                                  # all on client only as the reference baseline
         if not all(cm.feasible(o, CL[r["cls"]], r["P"], A, prof) for r in trace):
             continue
         tot = sum(cm.latency_cal(o, r["P"], A, r, prof) for r in trace)

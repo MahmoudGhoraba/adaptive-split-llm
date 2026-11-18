@@ -23,6 +23,7 @@ Run:  python docs/figures/make_figures.py
 """
 import collections
 import csv
+import re
 import json
 import os
 import statistics as st
@@ -315,54 +316,62 @@ def fig8():
     from matplotlib.patches import Rectangle
     rows = list(csv.DictReader(open(os.path.join(ROOT, "step5_per_request", "feasibility_min_prompt_leak.csv"))))
     eas = sorted({float(r["eps_a"]) for r in rows}); qs = sorted({float(r["q"]) for r in rows})
-    def mat(gb):
+    def mat(att, gb):
         M = np.full((len(eas), len(qs)), np.nan)
         for r in rows:
-            if float(r["budget_gb"]) == gb and r["min_prompt_leak_server"]:
-                M[eas.index(float(r["eps_a"])), qs.index(float(r["q"]))] = 100 * float(r["min_prompt_leak_server"])
+            if r["attacker"] == att and float(r["budget_gb"]) == gb and r["min_prompt_leak"]:
+                M[eas.index(float(r["eps_a"])), qs.index(float(r["q"]))] = 100 * float(r["min_prompt_leak"])
         return M
-    big = [mat(g) for g in (3.0, 4.0, 8.0)]
-    assert all(np.array_equal(big[0], m, equal_nan=True) for m in big[1:])      # server options fit in 3 GB
+    for att in ("A", "B"):                                    # every candidate fits in 3 GB: 3 / 4 / 8 GB identical
+        assert all(np.array_equal(mat(att, 3.0), mat(att, g), equal_nan=True) for g in (4.0, 8.0))
     cmap = LinearSegmentedColormap.from_list("blue", ["#cde2fb", "#86b6ef", "#3987e5", "#1c5cab", "#0d366b"])
     cmap.set_bad("#f0efec")
     classes = [(0.40, 0.75, 1.00, "A"), (1.00, 0.75, 0.80, "P"), (0.50, 0.75, 0.80, "P+A")]
-    fig, axes = plt.subplots(1, 2, figsize=(W, W * 0.5), sharey=True)
-    for ax, M, title in [(axes[0], mat(2.0), "(a) 2 GB\nall on client does not fit (needs 2.88 GB)"),
-                         (axes[1], big[0], "(b) 3, 4 and 8 GB (identical)\nall on client (0 % leakage) also fits")]:
+    fig, axes = plt.subplots(2, 2, figsize=(W, W * 0.92), sharex=True, sharey=True)
+    panels = [(axes[0, 0], "A", 2.0, "(a) Attacker A (controller), 2 GB"),
+              (axes[0, 1], "A", 3.0, "(b) Attacker A (controller), 3–8 GB"),
+              (axes[1, 0], "B", 2.0, "(c) Attacker B (sensitivity), 2 GB"),
+              (axes[1, 1], "B", 3.0, "(d) Attacker B (sensitivity), 3–8 GB")]
+    for ax, att, gb, title in panels:
+        M = mat(att, gb)
         im = ax.imshow(M, origin="lower", cmap=cmap, vmin=50, vmax=100, aspect="auto")
         for i in range(len(eas)):
             for j in range(len(qs)):
                 v = M[i, j]
-                ax.text(j, i - 0.12, "none" if np.isnan(v) else f"{v:.0f}", ha="center", va="center", fontsize=7,
+                ax.text(j, i - 0.12, "none" if np.isnan(v) else f"{v:.0f}", ha="center", va="center", fontsize=6.5,
                         color=INK2 if np.isnan(v) else ("white" if v > 75 else INK))
         for ea, q, ep, lab in classes:
             i, j = eas.index(ea), qs.index(q); v = M[i, j]
             ok = (not np.isnan(v)) and v <= 100 * ep + 1e-9
-            ax.add_patch(Rectangle((j - 0.5, i - 0.5), 1, 1, fill=False, ec=ORANGE, lw=2.2, zorder=3))
-            ax.text(j, i + 0.27, f"{lab} {'✓' if ok else '✗'}", ha="center", va="center", fontsize=6.5, zorder=4,
+            ax.add_patch(Rectangle((j - 0.5, i - 0.5), 1, 1, fill=False, ec=ORANGE, lw=2.0, zorder=3))
+            ax.text(j, i + 0.27, f"{lab} {'✓' if ok else '✗'}", ha="center", va="center", fontsize=6, zorder=4,
                     color="white" if v > 75 else INK, fontweight="bold")
         ax.set_xticks(range(len(qs))); ax.set_xticklabels([f"{100 * q:.0f}" for q in qs])
         ax.set_yticks(range(len(eas))); ax.set_yticklabels([f"{100 * e:.0f}" for e in eas])
-        ax.set_xlabel("Quality limit Q: agreement ≥ [%]"); ax.set_title(title, loc="left", fontsize=8.5)
-        ax.grid(False)
+        ax.set_title(title, loc="left", fontsize=8); ax.grid(False)
         for sp in ax.spines.values():
             sp.set_visible(False)
-    axes[0].set_ylabel("Answer leakage limit ε_a [%]")
+    for ax in axes[1]:
+        ax.set_xlabel("Quality limit Q: agreement ≥ [%]")
+    for ax in axes[:, 0]:
+        ax.set_ylabel("Answer leakage limit ε_a [%]")
     cb = fig.colorbar(im, ax=axes, fraction=0.025, pad=0.02)
-    cb.set_label("Min. robust prompt leakage,\nserver-using options [%]", fontsize=7.5); cb.outline.set_visible(False)
+    cb.set_label("Min. robust prompt leakage over the candidates [%]", fontsize=7.5); cb.outline.set_visible(False)
     save(fig, "fig8_feasibility.png")
 
 
 def fig9():
     rows = [r for r in csv.DictReader(open(os.path.join(ROOT, "step5_per_request", "task4_decisions.csv")))
             if r["profile"] == "M2-1T" and r["policy"] == "adaptive" and r["trace"] in ("mobile", "server_load")]
-    order = ["infeasible", "All on server", "H=4, T=0, secret head λp=0.2", "H=4, T=4, secret head λp=0.2",
-             "H=1, T=1, head+tail λa=0.1"]
-    labels = {"infeasible": "not served (infeasible)", "All on server": "all on server",
-              "H=4, T=0, secret head λp=0.2": "(4,0) secret head λp=0.2", "H=4, T=4, secret head λp=0.2":
-              "(4,4) secret head λp=0.2", "H=1, T=1, head+tail λa=0.1": "(1,1) head+tail λa=0.1"}
-    assert {r["choice"] for r in rows} <= set(order)
-    order = [o for o in order if o in {r["choice"] for r in rows}]       # only configurations that are chosen
+    chosen = {r["choice"] for r in rows}
+    first = [c for c in ("infeasible", "All on server", "All on client") if c in chosen]
+    order = first + sorted(chosen - set(first))                # only configurations that are chosen
+    def label(c):
+        if c == "infeasible":
+            return "not served (infeasible)"
+        m = re.match(r"H=(\d+), T=(\d+), (.*)", c)
+        return f"({m.group(1)},{m.group(2)}) {m.group(3)}" if m else c.lower()
+    labels = {c: label(c) for c in order}
     ccol = {"open": BLUE, "answer": ORANGE, "prompt": AQUA, "both": YELLOW}
     ctit = {c["key"]: c["title"] for c in __import__("per_request_controller").CLASSES}
     fig, axes = plt.subplots(4, 2, figsize=(W, W * 0.95), sharex=True,
