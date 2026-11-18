@@ -1,8 +1,11 @@
 profile,cls,mean_choice,robust_choice,requests,of_class_requests
-M2-1T,answer,"H=2, T=2, head+tail λa=0.03","H=1, T=1, head+tail λa=0.1",8,126
+M2-1T,answer,"H=2, T=2, head+tail λa=0.03",infeasible,126,126
 M2-1T,both,"H=4, T=2, head+tail λa=0.03",infeasible,108,108
-M2-2T,answer,"H=2, T=2, head+tail λa=0.03","H=1, T=1, head+tail λa=0.1",11,126
+M2-2T,answer,"H=2, T=2, head+tail λa=0.03",infeasible,126,126
 M2-2T,both,"H=4, T=2, head+tail λa=0.03",infeasible,108,108
+M2-4T,answer,"H=2, T=2, head+tail λa=0.03",All on client,5,126
 M2-4T,both,"H=4, T=2, head+tail λa=0.03",All on client,4,108
+assumed-edge,answer,"H=2, T=2, head+tail λa=0.03",All on client,12,126
 assumed-edge,both,"H=4, T=2, head+tail λa=0.03",All on client,14,108
+assumed-phone,answer,"H=2, T=2, head+tail λa=0.03",infeasible,126,126
 assumed-phone,both,"H=4, T=2, head+tail λa=0.03",infeasible,108,108

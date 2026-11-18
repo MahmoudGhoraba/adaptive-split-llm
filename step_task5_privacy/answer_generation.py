@@ -66,10 +66,30 @@ def make_prompts(n, rng):
     return out
 
 
+def as_ids(x):
+    """Token ids as a flat list of ints, whatever apply_chat_template / a tokenizer returned in this transformers
+    version (list, dict / BatchEncoding, tokenizers.Encoding, tensor, or a batch of one of these)."""
+    if hasattr(x, "keys"):
+        x = x["input_ids"]
+    if hasattr(x, "ids") and not isinstance(x, (list, tuple)):
+        x = x.ids                                              # tokenizers.Encoding
+    if hasattr(x, "tolist"):
+        x = x.tolist()
+    x = list(x)
+    if x and not isinstance(x[0], int):                        # batch of one
+        assert len(x) == 1, f"expected one sequence, got {len(x)}"
+        return as_ids(x[0])
+    return [int(i) for i in x]
+
+
 def encode_chat(tok, text, smoke):
     if smoke:
         return [tok.bos_id] + tok.encode("User : " + text + " Assistant :")
-    return tok.tok.apply_chat_template([dict(role="user", content=text)], add_generation_prompt=True)
+    # render the template as TEXT, then tokenize (the text already holds <|begin_of_text|>): the same ids as
+    # apply_chat_template(tokenize=True), but independent of what that call returns in a given transformers version
+    hf = tok.tok
+    text = hf.apply_chat_template([dict(role="user", content=text)], add_generation_prompt=True, tokenize=False)
+    return as_ids(hf(text, add_special_tokens=False))
 
 
 def token_char_spans(tok, ids, smoke):

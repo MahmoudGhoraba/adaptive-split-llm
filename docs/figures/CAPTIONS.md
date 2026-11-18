@@ -62,12 +62,12 @@ memory budgets (4 / 2 / 2 GB) are ASSUMED; "assumed phone" and "assumed edge" ar
 coverage) × 2 server loads (share 1.0, 0.25) per class; orange, the requests of the three 200-request traces
 (stable 4G, mobile, server load) under their true conditions; labels give changed/total. (b) Traces, by privacy
 class. Privacy check: ROBUST (max over seeds, or mean + the largest observed seed half range). On the M2 with
-4 threads 231 of 600 trace decisions change (38.5 %), 84–85 % in the private-answer and private-prompt classes (mainly
-split or secret options → all on client, because the assumed 20 GFLOP/s client is about 6.5 × slower in prefill than
-measured); none in private prompt+answer, where both models choose all on client (4 GB) or find no feasible option
-(2 GB; counted as unchanged). 1.0–3.7 % on the 2 GB profiles and the assumed edge; 0 on the assumed phone, whose
-calibrated profile is scaled to the assumed speed. Answer length A = 128. SECRET_U from the current multisplit script
-only. With the earlier mean-based check: 327 of 600 (54.5 %) on the M2 with 4 threads (`task4_calibration_impact_meancheck.csv`). `step5_per_request/task4_calibration_impact.csv`.
+4 threads 125 of 600 trace decisions change (20.8 %): 102 of 120 private-prompt requests (H = 4 secret head → all on
+client, because the assumed 20 GFLOP/s client is about 6.5 × slower in prefill than measured) and 23 open requests;
+none in private answer and private prompt+answer, where both models choose all on client (4 GB) or find no feasible
+option (2 GB; counted as unchanged). 1.0–3.5 % on the 2 GB profiles and the assumed edge; 0 on the assumed phone,
+whose calibrated profile is scaled to the assumed speed. Answer length A = 128. SECRET_U from the current multisplit script
+only. Table of 18 Nov 2026 (second (1,1) seed). With the earlier mean-based check: 330 of 600 (55.0 %) on the M2 with 4 threads (`task4_calibration_impact_meancheck.csv`). `step5_per_request/task4_calibration_impact.csv`.
 
 **Figure 7 — Leakage vs quality of the secret head + tail at all seven splits** (`fig7_multisplit_leakage.png`).
 MEASURED on a Colab T4 (Llama-3.2-1B-Instruct, `secret_multisplit.py`, current script only): secret LoRA adapters
@@ -77,10 +77,11 @@ with the public model (teacher-forced, WikiText; quality proxy). (a) Content lea
 (inverter trained on the public model) from the layer-H state. (b) Answer leakage: share of the client's next content
 tokens matched when the server runs the PUBLIC tail and output layer on the state it returns (teacher-forced proxy).
 Colour: H (light → dark: 1, 2, 4, 6, 8); dashed, open squares: T = 1; solid, filled circles: T = 2. Mean over training
-seeds; error bars: half of max − min over seeds, only where more than one seed exists ((4,2): 3 seeds; (2,2): 2
-seeds; all other splits 1 seed, no spread estimate). Dotted: limits of the controller's privacy classes (quality
+seeds; error bars: half of max − min over seeds, only where more than one seed exists ((4,2): 3 seeds; (2,2) and
+(1,1): 2 seeds; all other splits 1 seed, no spread estimate). Dotted: limits of the controller's privacy classes (quality
 75 %, prompt 80 %, answer 50 % / 40 %). Without adapters the prompt leakage is 97.6–99.98 % and the answer leakage
-100 %. The prompt-leak seed spread reaches ±4.9–6.3 points against ≤ ±3.0 for answer leakage, so prompt-leakage
+100 %. The prompt-leak seed spread reaches ±4.9–6.3 points against ≤ ±3.0 for answer leakage (agreement ≤ ±1.2, except
+±4.7 at (1,1) λa = 0.1), so prompt-leakage
 differences under about 10 points between splits are not reliable. `results/multisplit/measured_multisplit.txt`.
 
 **Figure 8 — Feasibility of the privacy limits by memory budget** (`fig8_feasibility.png`). MODELLED from the
@@ -89,12 +90,14 @@ largest observed seed half range) and the calibrated memory model (256-token pro
 an answer-leakage limit ε_a (rows) and a quality limit Q (columns, next-token agreement ≥ Q), the minimum robust
 prompt leakage over all options that use the server (splits, noise, secret head, secret head + tail, all on server)
 and fit the memory budget; "none": no such option. A limit combination (ε_p, ε_a, Q) is met by a server-using option
-iff ε_p ≥ the cell value. (a) 2 GB: all on client (2.88 GB) does not fit, so the cell decides feasibility; 48 of the
+iff ε_p ≥ the cell value. (a) 2 GB: all on client (2.88 GB) does not fit, so the cell decides feasibility; 45 of the
 150 grid combinations (ε_p ∈ {60, …, 100} %) are feasible. (b) 3, 4 and 8 GB give the identical map (every
 server-using option needs ≤ 2.21 GB); all on client (0 % leakage) also fits, so all 150 combinations are feasible.
 Orange outlines: the class limits at Q = 75 %; A: private answer (ε_a 40 %, no prompt limit), P: private prompt
 (ε_p 80 %, no answer limit), P+A: private prompt+answer (ε_p 80 %, ε_a 50 %); ✓/✗: met / not met by a server-using
-option. P+A needs 83 % on the server, so it is infeasible at 2 GB and served by all on client from 3 GB. The open
+option. P+A needs 83 % on the server, so it is infeasible at 2 GB and served by all on client from 3 GB; A has no
+server-using option (the best, (4,2) λa = 0.03, has robust answer leakage 40.9 %), so it is also infeasible at 2 GB.
+Table of 18 Nov 2026 (second (1,1) seed). The open
 class (Q 95 %) lies outside the grid and is served by all on server. Values at Q = 75 %, ε_a = 100 % differ between
 the panels because (8,2) (2.21 GB) fits only from 3 GB. `step5_per_request/feasibility_min_prompt_leak.csv`.
 
@@ -103,9 +106,10 @@ MODELLED (calibrated latency and memory model, robust privacy check) for the pro
 from MEASURED) and an ASSUMED 2 GB memory budget, on (a) the mobile trace (Wi-Fi → 4G → poor coverage → 4G → Wi-Fi)
 and (b) the server-load trace (4G; server share 1.0 → 0.25 for requests 67–133 → 1.0); 200 requests each, prompts
 32–512 tokens, A = 128, adaptive policy (EWMA estimates, noise seed 0). Top: chosen configuration per request,
-coloured by privacy class; crosses: private prompt+answer requests, which no configuration can serve on 2 GB. Below:
+coloured by privacy class; private answer and private prompt+answer requests (crosses) cannot be served by any
+configuration on 2 GB (table of 18 Nov 2026, second (1,1) seed). Below:
 true conditions (solid) and the controller's estimates (dashed): effective rate 2/(1/up + 1/down), RTT and server
 share. The configuration follows the privacy class; the network changes in (a) change no decision, and the slow
-server in (b) moves 8 private-prompt requests from the secret head with T = 0 to T = 4 (more layers on the client),
+server in (b) moves 7 private-prompt requests from the secret head with T = 0 to T = 4 (more layers on the client),
 depending on the prompt length. `step5_per_request/task4_decisions.csv`, `task4_diversity.csv`.
 

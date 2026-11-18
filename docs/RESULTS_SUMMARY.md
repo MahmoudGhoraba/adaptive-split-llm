@@ -1,4 +1,4 @@
-# Results summary (as of 14 Nov 2026)
+# Results summary (as of 18 Nov 2026)
 
 All leakage/quality numbers are MEASURED on Llama-3.2-1B-Instruct (Colab T4). All latency numbers are
 MODELLED (assumed speeds). Leakage = content leakage (see README.md, Definitions). Raw files are in `results/`.
@@ -70,11 +70,11 @@ are therefore no longer controller options (both failed the quality limit of eve
 ### 5b. Multi-split runs (results/multisplit; current script only) — prompt leak A / answer leak / agreement (%)
 
 MEASURED; mean over training seeds; λp = 0.1. This is the complete SECRET_U table of the controller (28 entries,
-7 splits; task 1, 14 Nov 2026).
+7 splits; task 1, 14 Nov 2026; (1,1) seed 1 added 18 Nov 2026).
 
 | Split | λa=0 | λa=0.01 | λa=0.03 | λa=0.1 | seeds |
 |---|---|---|---|---|---|
-| H=1,T=1 | 99.97 / 96.0 / 93.1 | 99.98 / 96.2 / 92.9 | 99.89 / 72.4 / 80.7 | 99.97 / 35.5 / 78.9 | 1 (seed 0) |
+| H=1,T=1 | 99.97 / 96.1 / 93.3 | 99.97 / 96.2 / 93.1 | 99.88 / 70.3 / 80.3 | 99.86 / 38.3 / 74.2 | 2 (seeds 0, 1) |
 | H=2,T=1 | 98.7 / 95.2 / 91.6 | 98.9 / 84.5 / 88.7 | 96.7 / 55.4 / 80.6 | 72.0 / 19.8 / 61.6 | 1 (seed 0) |
 | H=2,T=2 | 98.4 / 94.5 / 91.5 | 98.4 / 72.4 / 86.6 | 96.2 / 39.4 / 79.1 | 81.0 / 15.2 / 63.3 | 2 (seeds 0, 1) |
 | H=4,T=1 | 88.1 / 95.0 / 86.8 | 86.2 / 84.6 / 84.5 | 81.0 / 55.8 / 78.1 | 63.6 / 27.4 / 61.7 | 1 (seed 0) |
@@ -86,14 +86,16 @@ Seed spread (half of max − min over seeds; prompt leak A / answer leak / agree
 
 | Split | λa=0 | λa=0.01 | λa=0.03 | λa=0.1 |
 |---|---|---|---|---|
+| H=1,T=1 (2 seeds) | ±0.0 / ±0.2 / ±0.2 | ±0.0 / ±0.0 / ±0.2 | ±0.0 / ±2.1 / ±0.4 | ±0.1 / ±2.8 / ±4.7 |
 | H=2,T=2 (2 seeds) | ±0.4 / ±0.0 / ±0.5 | ±0.3 / ±0.4 / ±0.6 | ±0.6 / ±1.8 / ±0.1 | ±6.3 / ±1.5 / ±1.2 |
 | H=4,T=2 (3 seeds) | ±2.6 / ±0.5 / ±0.2 | ±1.5 / ±1.0 / ±0.3 | ±4.9 / ±0.1 / ±0.6 | ±2.1 / ±3.0 / ±1.1 |
 
-Prompt-leak spread reaches ±4.9–6.3 points while answer-leak spread is ≤ 3.0 points and agreement ≤ 1.2 points.
-Prompt-leakage differences below ~10 points between splits are therefore NOT reliable (the other five splits have one
+Prompt-leak spread reaches ±4.9–6.3 points while answer-leak spread is ≤ 3.0 points; agreement spread is ≤ 1.2 points
+except (1,1) λa = 0.1 (±4.7: seeds 0/1 78.9 / 69.6%; answer leak 35.5 / 41.2%).
+Prompt-leakage differences below ~10 points between splits are therefore NOT reliable (the other four splits have one
 seed and no spread estimate). Example: (4,2) λa = 0.03, seeds 0/1/2: 83.4 / 73.6 / 79.9%.
 New runs (14 Nov 2026, current script, adapters saved on Drive): (4,2) seed 0, (2,2) seed 1, (8,2) seed 0 — all three
-pass every sanity check. The runs (2,2) seed 0, (4,2) seeds 1–2 and (6,2) seed 0 fail "B ≥ A" on the ANSWER side only
+pass every sanity check; (1,1) seed 1 (18 Nov 2026, adapters on Drive) also passes every sanity check. The runs (2,2) seed 0, (4,2) seeds 1–2 and (6,2) seed 0 fail "B ≥ A" on the ANSWER side only
 (learned answer inverter, known issue); the prompt side B ≥ A holds in every run.
 Attacker B (with secret): 99.6–100% at H ≤ 2; 93–95% at H = 4; 83–90% at H = 6; 79–85% at H = 8.
 Unprotected prompt leakage (no adapters): 99.98 / 99.79 / 98.7 / 97.8 / 97.6% at H = 1 / 2 / 4 / 6 / 8.
@@ -559,8 +561,10 @@ a margin that the seed variation clears.
 
 ### 9h. Robust privacy check (15 Nov 2026; MODELLED decisions; now the controller default)
 
+NUMBERS SUPERSEDED by 9k (18 Nov 2026: second (1,1) seed); kept as the record of the 15 Nov run.
+
 Rule (decided after the fragile margins of 9g): an option passes a leakage limit only if its ROBUST leakage ≤ limit.
-Robust leakage = max over training seeds if the entry has ≥ 2 seeds ((2,2), (4,2)); otherwise mean + the largest
+Robust leakage = max over training seeds if the entry has ≥ 2 seeds ((2,2), (4,2); since 18 Nov also (1,1)); otherwise mean + the largest
 half range over seeds observed for that metric over all multi-seed entries: prompt +6.34 points ((2,2) λa = 0.1),
 answer +3.03 points ((4,2) λa = 0.1); capped at 100%. The margin is also applied to the single-run split, noise and
 secret-head options (borrowed from the head + tail seeds; no seeds exist for them). No margin on values that hold
@@ -607,6 +611,8 @@ logged decisions with the mean check and gives the same 270 decisions with the r
 
 ### 9i. Feasibility analysis of the privacy limits (15 Nov 2026; MODELLED; robust check; no new runs)
 
+NUMBERS SUPERSEDED by 9k (18 Nov 2026: second (1,1) seed); kept as the record of the 15 Nov run.
+
 step5_per_request/feasibility_analysis.py -> feasibility_grid.csv, feasibility_min_prompt_leak.csv,
 feasibility_relax.json; Figure 8. Grid: ε_p ∈ {60, 70, 80, 90, 100}%, ε_a ∈ {20, 30, 40, 50, 100}%,
 Q ∈ {60, 65, 70, 75, 80, 85}% (150 combinations) x memory budgets 2 / 3 / 4 / 8 GB x profiles M2-4T / M2-2T / M2-1T
@@ -644,6 +650,8 @@ seeds; with the earlier mean-based check the class was feasible on 2 GB ((4,2) �
 
 ### 9j. Decision diversity: when the controller adapts and why (15 Nov 2026; MODELLED; robust check; no new runs)
 
+NUMBERS SUPERSEDED by 9k (18 Nov 2026: second (1,1) seed); kept as the record of the 15 Nov run.
+
 step5_per_request/decision_diversity.py -> task4_diversity.csv, task4_switch_causes.csv; Figure 9. Input: the
 decisions of 9h (three 200-request traces x five profiles; adaptive = noise seed 0, oracle). Cause of a switch:
 memory limit if the previous configuration no longer fits for the new prompt; otherwise counterfactual from the
@@ -680,3 +688,147 @@ results on synthetic traces. In the MEASURED real-runtime trace (9d, M2-4T, 30 r
 fixed most choices, except private answer, where adaptive chose (1,1) λa = 0.1 for 9 and all on client for 15 of 24
 request-repeats depending on the estimated network (counted from task4_real_trace.csv; not cause-attributed).
 
+### 9k. Rerun after the second (1,1) seed (18 Nov 2026; MODELLED decisions; robust check; same calibration and traces)
+
+New run: (1,1) seed 1 (current script, Colab T4, all sanity checks pass); (1,1) now has 2 seeds, so its robust
+leakage is the max over seeds instead of mean + margin. The largest half ranges are unchanged (prompt +6.34 points,
+answer +3.03 points), so no other entry's robust value changes. Rerun: adaptive_eval.py (robust and --leak-check
+mean), compare_leak_check.py, feasibility_analysis.py, decision_diversity.py, runtime/replay_trace_decisions.py,
+Figures 6–9.
+
+What changed: (1,1) λa = 0.1, the only private-answer option on 2 GB, now FAILS private answer twice: robust answer
+leakage 41.2% (seed 1) > 40%, and mean agreement 74.2% (seeds 78.9 / 69.6%) < 75%. It fails the quality limit also
+under the mean-based check. No other option fits 2 GB and meets ε_a 40% with Q 75%.
+
+| Profile | Class | Before (9h) -> now | Requests (oracle, 3 traces) |
+|---|---|---|---|
+| M2-2T, M2-1T, assumed phone (2 GB) | Private answer | (1,1) λa = 0.1 -> INFEASIBLE | 126/126 each |
+| M2-4T (4 GB) | Private answer | (1,1) λa = 0.1 -> all on client | 8/126 |
+| assumed edge (8 GB) | Private answer | (1,1) λa = 0.1 -> all on client | 17/126 |
+| M2-4T, adaptive only | Private prompt | H=4 secret head T=0 -> all on client | 1 |
+
+Infeasibility under the robust check, every 2 GB profile: private prompt+answer (36 of 200 requests per trace) AND
+private answer (42 of 200), i.e. 78 of 200 requests (39%) are not served; only open (all on server) and private
+prompt (H = 4 secret head) remain. With the mean-based check private answer on 2 GB is served by (2,2) λa = 0.03
+(mean answer 39.4%, seeds 37.6 / 41.2%). With a 3 GB budget every class is feasible (all on client); oracle, mobile
+trace, 3 GB: M2-4T 25.01, M2-2T 29.62, M2-1T 39.11 min (mean check 24.81 / 28.79 / 36.16 min; +0.8 / +2.9 / +8.2%).
+Latency cost of the robust check on requests served under both checks (oracle, mobile): M2-4T +0.77%, assumed edge
++2.60% (was +0.32 / +1.19%).
+Policies (M2-4T, gap to the oracle, calibrated compute time): adaptive +0.80 / +1.30 / +2.01% (stable / mobile /
+server load); fixed per class +0.00 / +1.21 / +9.96%. On the mobile trace fixed per class is now marginally better than
+adaptive (0.09 points; was +2.11 vs +1.49%); adaptive keeps its advantage on the server-load trace. Assumed-model
+policy +19.0 / +22.2 / +36.4%.
+Calibration impact (Figure 6), robust check, trace decisions that change: M2-4T 125/600 (20.8%; was 231/600), now
+only open (23) and private prompt (102), because private answer is served by all on client under both models;
+M2-2T 10/600, M2-1T 6/600 (private prompt, T = 0 -> T = 4), assumed edge 21/600, assumed phone 0. Mean check: M2-4T
+330/600 (55.0%).
+Feasibility (Figure 8): 2 GB 45/150 limit combinations feasible (was 48); 3, 4 and 8 GB 150/150. Private answer at
+2 GB (sensitivity analysis; class limits NOT changed): smallest single relaxation ε_a 40% -> 40.9% ((4,2) λa = 0.03,
+max over 3 seeds; agreement 76.7%, 1.69 GB); or Q 75% -> 63.3% ((2,2) λa = 0.1); or memory -> 2.88 GB (all on client).
+The +0.9-point relaxation is far below the answer-leak seed spread (±3.0) — and far below the gap between teacher-forced
+and generated-answer leakage (§10a) — so the 40% boundary is not resolved by the data. Private prompt+answer: the
+relaxations of 9i are unchanged (feasibility_relax.json identical).
+Decision diversity (adaptive; Figure 9): 2 GB profiles now use 2–3 configurations (all on server, H = 4 secret head
+T = 0 / T = 4) and 128–129 switches per trace; switch causes 1681: privacy class 98.4%, prompt length 0.2%, several
+1.2%, interaction 0.2%; within-class switches 34 (oracle 24): prompt length 62%, server load 12%, network 9%,
+several 9%, interaction 9%. Requests adapted to conditions: M2-4T 0 / 8 / 20, assumed edge 0 / 12 / 18, M2-2T
+0 / 0 / 10, M2-1T 0 / 0 / 7, assumed phone 0 (stable / mobile / server load). The conclusions of 9j hold: the class
+fixes the configuration family; on 2 GB the only condition-driven change is the secret head T = 0 -> T = 4 under a
+slow server.
+Real-runtime trace (9d, MEASURED, M2-4T, A = 64): replaying its logged estimator states with the new table changes
+12 of 270 logged decisions under BOTH checks (private answer, P = 256 and 512: (1,1) λa = 0.1 -> all on client),
+because (1,1) λa = 0.1 now fails the quality limit. The MEASURED trace was run with the earlier table; it was NOT
+rerun. Its measured timings stay valid as measurements of the decisions it made, but 12 of those 270 decisions are
+not what the current controller would choose.
+
+## 10. Task 5: privacy on generated answers, known pairs and sessions (MEASURED, Colab T4, 16–18 Nov 2026)
+
+Saved adapters of the current multisplit script: (4,2) seed 0 and (2,2) seed 1 (one training seed per split; no
+seed spread for any number in this section). Raw outputs: results/task5/ (5a, 5b), results/task5d/ (5d; attacker
+A checkpoints invA_H*.pt are not committed). Sanity check: the teacher-forced answer leakage recomputed by 5a and the
+prompt leakage of attacker A recomputed by 5b reproduce the multisplit per-seed values exactly (e.g. (4,2) λa = 0.03:
+40.88% and 83.38%; (2,2) λa = 0.03: 41.18%).
+
+### 10a. Generated-answer leakage vs the teacher-forced proxy (step_task5_privacy/answer_generation.py)
+
+100 chat-format prompts with planted details (name, hospital, disease, city, phone, amount); the PROTECTED client
+generates the answer (greedy, ≤ 96 tokens); the server runs the PUBLIC tail + output layer on the states it returns.
+Generated = content leakage on the generated tokens [95% CI]; teacher-forced = the proxy used by the controller
+(WikiText). Details: planted details that appear in the answer, and the share of those the server recovers fully.
+
+| Split | λa | Generated | Teacher-forced | Details appearing | Fully recovered |
+|---|---|---|---|---|---|
+| (4,2) | 0 | 94.6% [93.7, 95.6] | 93.4% | 190/323 | 94.2% |
+| (4,2) | 0.01 | 87.7% [85.8, 89.4] | 74.5% | 152/323 | 92.8% |
+| (4,2) | 0.03 | 70.8% [68.4, 73.3] | 40.9% | 203/323 | 78.3% |
+| (4,2) | 0.1 | 40.1% [37.2, 43.2] | 10.9% | 221/280 | 24.9% |
+| (2,2) | 0 | 95.9% [95.0, 96.7] | 94.5% | 176/323 | 95.5% |
+| (2,2) | 0.01 | 86.5% [84.8, 88.0] | 72.0% | 188/323 | 95.2% |
+| (2,2) | 0.03 | 68.1% [64.8, 70.9] | 41.2% | 175/323 | 69.1% |
+| (2,2) | 0.1 | 54.4% [49.5, 59.8] | 13.7% | 262/323 | 30.9% |
+
+Finding: on generated answers the server recovers much more than the teacher-forced proxy indicates: +1.2 to
++1.4 points without answer hiding, +27 to +30 points at λa = 0.03, +29 to +41 points at λa = 0.1. The
+controller's answer limits (40% / 50%) are checked on the proxy; on generated answers no secret head + tail option
+with agreement ≥ 75% (λa ≤ 0.03) is below 68%, so the feasibility of the private-answer and private prompt+answer
+classes for server-using options rests on the proxy (NOT changed in the controller; a decision for the next step).
+A possible cause (NOT tested): generated answers copy the prompt's details and follow the model's own distribution,
+which the public tail predicts more easily than WikiText continuations.
+Failed / limiting observations: at (4,2) λa = 0.1, 17 of 100 prompts produced an empty answer (EOS first) and are
+excluded (n = 83); the public model refuses some prompts (e.g. money transfers), and in its own answers 57 of 99
+planted details appear (first 30 prompts), so detail-level numbers cover only the details that appear.
+
+### 10b. Known-pairs attacker (step_task5_privacy/known_pairs_attack.py; λa = 0.03)
+
+Attacker A fine-tuned on k known (text, protected state) sequences of 64 tokens (300 steps); "scratch" = an inverter
+trained only on the pairs. Prompt side, content leakage (full private-detail recovery):
+
+| Split | k = 0 (A) | k = 10 | k = 100 | k = 1000 | scratch k = 1000 | B (secret, full data) |
+|---|---|---|---|---|---|---|
+| (4,2) | 83.4% (68.4%) | 81.8% (56.9%) | 86.5% (66.9%) | 93.1% (84.0%) | 83.9% (37.0%) | 94.7% (80.3%) |
+| (2,2) | 96.8% (95.4%) | 97.8% (92.4%) | 99.4% (93.9%) | 99.8% (94.5%) | 96.0% (63.2%) | 99.6% (93.4%) |
+
+Finding: with 1000 known sequences (64k tokens) attacker A at (4,2) closes most of the gap to B (93.1 vs 94.7%) and
+exceeds B in full detail recovery (84.0 vs 80.3%); 10 pairs slightly lower leakage (81.8%, CI 81.1–82.4 vs
+82.8–83.9; over-fitting of 300 steps on 640 tokens). The secret adapters protect against attacker A only while the
+attacker holds few known pairs. Answer side (learned answer inverter; known issue, NOT used for reported answer
+leakage): (4,2) 20.0 -> 36.6% at k = 1000, B 31.7%; (2,2) 20.7 -> 35.9%, B 31.1%; in these runs B ≥ A holds on the
+answer side, but A + 1000 pairs exceeds B.
+
+### 10c. Session-level leakage, C2 (step_task5_privacy/session_attack.py; PRE-REGISTERED analysis, AUDIT §4)
+
+600 templated sessions (sessions.py, seed 0; 5–10 turns, 190–389 tokens, mean 286.9; 55% of tokens beyond position
+128), 400 train / 200 test sessions; 1000 test details (447 repeated ≥ 2 times, 553 mentioned once). KV-cached
+capture matches the full forward pass (max relative difference 2.2e-3 at H = 2, 2.9e-3 at H = 4). 11–14 min per
+configuration.
+
+MAIN C2 RESULT (pre-registered): realistic session vote − realistic per-turn (first-mention turn), attacker A,
+paired bootstrap (1000 resamples, 95% CI), percentage points; the confidence-weighted vote is the ONE secondary variant.
+
+| Config | Per-turn | Session vote | Δ all | Δ repeated | Δ once | Linkage name+condition | Weighted Δ all (repeated) |
+|---|---|---|---|---|---|---|---|
+| (4,2) λa = 0 | 77.2% | 77.2% | +0.0 [0.0, 0.0] | +0.0 [0.0, 0.0] | +0.0 [0.0, 0.0] | 75.5 -> 75.5% | −0.4 [−0.8, −0.1] (−0.9 [−1.8, −0.2]) |
+| (4,2) λa = 0.03 | 67.8% | 67.8% | +0.0 [0.0, 0.0] | +0.0 [0.0, 0.0] | +0.0 [0.0, 0.0] | 57.5 -> 57.5% | +0.1 [0.0, +0.3] (+0.2 [0.0, +0.7]) |
+| (2,2) λa = 0 | 99.4% | 99.5% | +0.1 [0.0, +0.3] | +0.2 [0.0, +0.7] | +0.0 [0.0, 0.0] | 100 -> 100% | +0.1 [0.0, +0.4] (+0.2 [0.0, +0.7]) |
+| (2,2) λa = 0.03 | 97.9% | 97.9% | +0.0 [0.0, 0.0] | +0.0 [0.0, 0.0] | +0.0 [0.0, 0.0] | 96.5 -> 96.5% | +0.0 [0.0, 0.0] (+0.0 [0.0, 0.0]) |
+
+Answer to C2 in this setup: a server that observes whole sessions does NOT recover measurably more private details
+than per-turn analysis, protected or unprotected; the upper CI bound of the gain is ≤ 0.3 points (all details) and
+≤ 0.7 points (repeated details). The weighted vote does not change this (−0.4 to +0.1 points).
+Reference points (not the C2 test): with the mention alignment GIVEN (upper bounds), union gains at most +0.4 points
+for A ((4,2) λa = 0.03; repeated +0.7) and +1.9 [1.1, 2.8] points for attacker B ((4,2) λa = 0.03; repeated
++4.3 [2.5, 6.0]); the aligned plain vote is not better than per-turn (−0.2 to −5.1 points, repeated −0.4 to −11.4; CI excludes 0
+except (2,2) λa = 0), wrong mentions outvoting right ones. Interpretation (not tested): repeated mentions of a detail
+are decoded nearly identically, so a second mention adds little information for this attacker.
+Protection effect by absolute position (attacker A, protected − public, per mention; 0–127 / 128–255 / 256+ tokens):
+(4,2) λa = 0: −16.2 / −26.5 / −34.3 points; λa = 0.03: −28.1 / −33.8 / −38.3; (2,2) λa = 0: 0.0 / +0.1 / +0.4;
+λa = 0.03: −2.1 / −1.4 / −1.6 (unprotected control at H = 4: 94.0 / 91.0 / 94.8%). The (4,2) protection does not
+fade beyond the 128-token training length; it grows. (2,2) gives almost no prompt protection (as in §5b).
+Consistency: attacker B ≥ attacker A in every configuration (realistic per-turn: (4,2) 81.4 vs 77.2% and 76.6 vs
+67.8%; (2,2) 99.7 vs 99.4% and 98.2 vs 97.9%). Unprotected attacker A: (4,2) 94.7%, (2,2) 99.2%.
+FAILED variant (reported, not fixed): the template-token attacker (A fine-tuned on public chat-template tokens of the
+train sessions) is WORSE than plain attacker A everywhere: 25.6% / 16.0% at (4,2) λa = 0 / 0.03, 65.7% / 65.0% at
+(2,2) (realistic per-turn). In the (4,2) λa = 0 run its fine-tuning loss reached 0.000 on 22 distinct target tokens
+(Colab log): it collapses to the template vocabulary. Any fix would be EXPLORATORY under the pre-registration.
+Limits: templated sessions with fixed assistant replies; one training seed per split; no learned cross-turn model;
+attacker A decodes each token independently.

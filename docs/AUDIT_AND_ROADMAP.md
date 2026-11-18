@@ -35,7 +35,10 @@ Statuses: IMPLEMENTED AND VERIFIED · IMPLEMENTED BUT NOT VALIDATED · PARTIALLY
 Controller verdict: per-request re-optimisation over a measured configuration table (like ILLCO in Zamzam et al.),
 not a fixed rule — but inputs are given, not observed; no switching cost; no robustness-to-estimation-error test.
 
-### C2 Session-level leakage — NOT IMPLEMENTED (no data, attacker, metric).
+### C2 Session-level leakage — IMPLEMENTED AND MEASURED (18 Nov 2026; RESULTS_SUMMARY §10c): pre-registered main result
+(realistic session vote − realistic per-turn, attacker A) +0.0 to +0.1 points at (4,2) and (2,2), λa 0 / 0.03, upper CI ≤ +0.3
+(repeated ≤ +0.7): no measurable session gain in this setup. Template-token attacker FAILED (collapse). Open: templated
+sessions, one training seed per split, no learned cross-turn attacker.
 ### C3 Hardware calibration — IMPLEMENTED BUT PARTIALLY VALIDATED (14 Nov): real split runtime (runtime/), measured timing per
 phase / memory per side on the Mac (client CPU fp16, server MPS fp16), fitted per-side latency model (test MAPE 0.6–6.7%),
 composition validated under emulated Wi-Fi/4G/poor (−3.5% to −7.2%); see RESULTS_SUMMARY §7–8. Open: server/client slow down
@@ -44,10 +47,10 @@ after idle gaps (not in the model); only one machine (no real network link); dev
 | Item | Status |
 |---|---|
 | Prompt reconstruction | IMPLEMENTED AND VERIFIED (one attacker type) |
-| Generated-answer reconstruction | PARTIALLY IMPLEMENTED (teacher-forced proxy) |
+| Generated-answer reconstruction | IMPLEMENTED AND MEASURED (5a, 18 Nov; one seed per split): generated leakage 27–41 points above the teacher-forced proxy at λa ≥ 0.03; controller still uses the proxy |
 | Gaussian noise | IMPLEMENTED AND VERIFIED |
-| Secret LoRA | IMPLEMENTED AND VERIFIED at 7 splits (H=1..8, current script); seeds: (4,2) 3, (2,2) 2, others 1 |
-| Stronger attackers (known pairs, optimisation-based) | NOT IMPLEMENTED |
+| Secret LoRA | IMPLEMENTED AND VERIFIED at 7 splits (H=1..8, current script); seeds: (4,2) 3, (2,2) 2, (1,1) 2, others 1 |
+| Stronger attackers (known pairs, optimisation-based) | Known pairs IMPLEMENTED AND MEASURED (5b, λa 0.03): k = 1000 brings A at (4,2) from 83.4% to 93.1% (B 94.7%). Optimisation-based NOT IMPLEMENTED |
 | Task-level quality | NOT IMPLEMENTED |
 
 (Numbering above follows the current priority order in README.md, Research questions.)
@@ -110,6 +113,9 @@ Deferred fixes to apply here (found 14 Nov, not yet changed in the code):
 Done when: figures/tables for each scenario; decisions under assumed vs calibrated parameters compared.
 
 ### Task 5 — Strengthen privacy, then sessions
+Status 18 Nov: 5a, 5b and 5d RUN on the real model (Colab T4; (4,2) seed 0, (2,2) seed 1); results RESULTS_SUMMARY §10.
+5a needed a fix for the Colab transformers version (apply_chat_template returned a tokenizers.Encoding; encode_chat now
+tokenizes the template text). 5c and 5e NOT started.
 Status 14 Nov: 5a (step_task5_privacy/answer_generation.py) and 5b (known_pairs_attack.py) IMPLEMENTED, smoke-tested on CPU
 only (tiny random model); NOT run on the real model. Need saved adapters: secret_multisplit.py --points "4,2" --seeds 0 and
 --points "2,2" --seeds 1 with the current secret_ushape.py, then run_task5_colab.ipynb.

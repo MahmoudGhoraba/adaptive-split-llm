@@ -1,0 +1,217 @@
+{
+ "config": {
+  "ks": [
+   10,
+   100,
+   1000
+  ],
+  "pair_len": 64,
+  "ft_steps": 300,
+  "ft_lr": 0.0001,
+  "ft_batch": 16,
+  "sides": [
+   "prompt",
+   "answer"
+  ],
+  "with_B": true,
+  "seed": 0,
+  "out_dir": "/content/drive/MyDrive/multisplit/task5/5b_H2_T2_la0.03"
+ },
+ "smoke": false,
+ "adapters": "adapters_lp0.1_la0.03.pt",
+ "meta": {
+  "model_id": "meta-llama/Llama-3.2-1B-Instruct",
+  "smoke": false,
+  "H": 2,
+  "T": 2,
+  "lam_p": 0.1,
+  "lam_a": 0.03,
+  "train_seed": 1,
+  "head_seed": 2104,
+  "tail_seed": 2105,
+  "lora_rank": 32,
+  "lora_alpha": 32,
+  "secret_init": 0.02,
+  "def_steps": 1200,
+  "head_layers": [
+   0,
+   1
+  ],
+  "tail_layers": [
+   14,
+   15
+  ]
+ },
+ "rows": [
+  {
+   "side": "prompt",
+   "attacker": "A (public model)",
+   "k": 0,
+   "content_leak": 0.9677491853017193,
+   "ci": [
+    0.9647277442596868,
+    0.9706168270158924
+   ],
+   "private_exact": 0.9538977367979883
+  },
+  {
+   "side": "prompt",
+   "attacker": "A + known pairs",
+   "k": 10,
+   "content_leak": 0.9784807281717046,
+   "ci": [
+    0.9762757726373656,
+    0.9808403943595249
+   ],
+   "private_exact": 0.9237217099748533
+  },
+  {
+   "side": "prompt",
+   "attacker": "scratch on pairs",
+   "k": 10,
+   "content_leak": 0.04062254185863579,
+   "ci": [
+    0.03643494562914666,
+    0.045180462243829475
+   ],
+   "private_exact": 0.0
+  },
+  {
+   "side": "prompt",
+   "attacker": "A + known pairs",
+   "k": 100,
+   "content_leak": 0.9942690189908979,
+   "ci": [
+    0.9929984416614818,
+    0.9953757905807429
+   ],
+   "private_exact": 0.9388097233864208
+  },
+  {
+   "side": "prompt",
+   "attacker": "scratch on pairs",
+   "k": 100,
+   "content_leak": 0.37099674120687715,
+   "ci": [
+    0.36235979853958994,
+    0.3789134078833011
+   ],
+   "private_exact": 0.036881810561609385
+  },
+  {
+   "side": "prompt",
+   "attacker": "A + known pairs",
+   "k": 1000,
+   "content_leak": 0.998202045173615,
+   "ci": [
+    0.9975761175831886,
+    0.9988084402889416
+   ],
+   "private_exact": 0.9446772841575859
+  },
+  {
+   "side": "prompt",
+   "attacker": "scratch on pairs",
+   "k": 1000,
+   "content_leak": 0.9600516912012586,
+   "ci": [
+    0.9568384387030848,
+    0.9633516583280065
+   ],
+   "private_exact": 0.6320201173512154
+  },
+  {
+   "side": "prompt",
+   "attacker": "B (protected model, full data)",
+   "k": null,
+   "content_leak": 0.9960107877289583,
+   "ci": [
+    0.9951698404210153,
+    0.9968857955706087
+   ],
+   "private_exact": 0.9337803855825649
+  },
+  {
+   "side": "answer",
+   "attacker": "A (public model)",
+   "k": 0,
+   "content_leak": 0.20699750089253838,
+   "ci": [
+    0.19793293208993856,
+    0.2162151787823812
+   ]
+  },
+  {
+   "side": "answer",
+   "attacker": "A + known pairs",
+   "k": 10,
+   "content_leak": 0.21071046054980366,
+   "ci": [
+    0.20121424470070434,
+    0.21900762814905825
+   ]
+  },
+  {
+   "side": "answer",
+   "attacker": "scratch on pairs",
+   "k": 10,
+   "content_leak": 0.0,
+   "ci": [
+    0.0,
+    0.0
+   ]
+  },
+  {
+   "side": "answer",
+   "attacker": "A + known pairs",
+   "k": 100,
+   "content_leak": 0.2696179935737237,
+   "ci": [
+    0.26003353708920723,
+    0.27839999882708033
+   ]
+  },
+  {
+   "side": "answer",
+   "attacker": "scratch on pairs",
+   "k": 100,
+   "content_leak": 0.03755801499464477,
+   "ci": [
+    0.03323440583135134,
+    0.04298665876361009
+   ]
+  },
+  {
+   "side": "answer",
+   "attacker": "A + known pairs",
+   "k": 1000,
+   "content_leak": 0.3585148161370939,
+   "ci": [
+    0.3499424583975202,
+    0.36809880851067883
+   ]
+  },
+  {
+   "side": "answer",
+   "attacker": "scratch on pairs",
+   "k": 1000,
+   "content_leak": 0.1602998928953945,
+   "ci": [
+    0.15191936113496343,
+    0.16916826387792602
+   ]
+  },
+  {
+   "side": "answer",
+   "attacker": "B (protected model, full data)",
+   "k": null,
+   "content_leak": 0.31096037129596577,
+   "ci": [
+    0.2992083982748354,
+    0.32334735151598526
+   ]
+  }
+ ],
+ "minutes": 24.400424448649087,
+ "caveat": "answer side uses the learned answer inverter, which failed its B >= A check in earlier runs"
+}

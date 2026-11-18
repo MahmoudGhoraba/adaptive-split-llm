@@ -2,10 +2,10 @@
 # (H, T, lambda_prompt, lambda_answer): leak/answer_leak = attacker without the secret (answer: server runs the public tail); *_B = attacker with the secret
 # agreement > 0.5 is required by the sanity check; entries below it are kept but marked
 SECRET_U = {
-    (1, 1, 0.1, 0.0): dict(leak=0.9997, private_exact=0.9589, leak_B=0.9996, private_exact_B=0.9556, answer_leak=0.9596, agreement=0.9306, ppl_ratio=0.996),   # n_seeds=1
-    (1, 1, 0.1, 0.01): dict(leak=0.9998, private_exact=0.9573, leak_B=0.9998, private_exact_B=0.9573, answer_leak=0.9625, agreement=0.9289, ppl_ratio=0.998),   # n_seeds=1
-    (1, 1, 0.1, 0.03): dict(leak=0.9989, private_exact=0.964, leak_B=0.9993, private_exact_B=0.9573, answer_leak=0.7235, agreement=0.8071, ppl_ratio=1.089),   # n_seeds=1
-    (1, 1, 0.1, 0.1): dict(leak=0.9997, private_exact=0.964, leak_B=0.9994, private_exact_B=0.9514, answer_leak=0.3547, agreement=0.7892, ppl_ratio=1.099),   # n_seeds=1
+    (1, 1, 0.1, 0.0): dict(leak=0.9997, private_exact=0.9589, leak_B=0.9993, private_exact_B=0.9606, answer_leak=0.9612, agreement=0.9329, ppl_ratio=0.997),   # n_seeds=2
+    (1, 1, 0.1, 0.01): dict(leak=0.9997, private_exact=0.9573, leak_B=0.9996, private_exact_B=0.9564, answer_leak=0.962, agreement=0.9308, ppl_ratio=0.998),   # n_seeds=2
+    (1, 1, 0.1, 0.03): dict(leak=0.9988, private_exact=0.9614, leak_B=0.9995, private_exact_B=0.9455, answer_leak=0.7028, agreement=0.8031, ppl_ratio=1.097),   # n_seeds=2
+    (1, 1, 0.1, 0.1): dict(leak=0.9986, private_exact=0.9619, leak_B=0.9994, private_exact_B=0.9535, answer_leak=0.3832, agreement=0.7424, ppl_ratio=1.158),   # n_seeds=2
     (2, 1, 0.1, 0.0): dict(leak=0.9868, private_exact=0.9539, leak_B=0.9972, private_exact_B=0.9522, answer_leak=0.9521, agreement=0.9156, ppl_ratio=0.998),   # n_seeds=1
     (2, 1, 0.1, 0.01): dict(leak=0.989, private_exact=0.9522, leak_B=0.9974, private_exact_B=0.9539, answer_leak=0.8448, agreement=0.8868, ppl_ratio=1.018),   # n_seeds=1
     (2, 1, 0.1, 0.03): dict(leak=0.9669, private_exact=0.9044, leak_B=0.9965, private_exact_B=0.9179, answer_leak=0.5544, agreement=0.8063, ppl_ratio=1.088),   # n_seeds=1
@@ -33,6 +33,10 @@ SECRET_U = {
 }
 
 # spread over seeds (half of max - min), only where more than one seed was run:
+#   (1, 1, 0.1, 0.0): leak +-0.000, answer_leak +-0.002, agreement +-0.002  (half range, 2 seeds)
+#   (1, 1, 0.1, 0.01): leak +-0.000, answer_leak +-0.000, agreement +-0.002  (half range, 2 seeds)
+#   (1, 1, 0.1, 0.03): leak +-0.000, answer_leak +-0.021, agreement +-0.004  (half range, 2 seeds)
+#   (1, 1, 0.1, 0.1): leak +-0.001, answer_leak +-0.028, agreement +-0.047  (half range, 2 seeds)
 #   (2, 2, 0.1, 0.0): leak +-0.004, answer_leak +-0.000, agreement +-0.005  (half range, 2 seeds)
 #   (2, 2, 0.1, 0.01): leak +-0.003, answer_leak +-0.004, agreement +-0.006  (half range, 2 seeds)
 #   (2, 2, 0.1, 0.03): leak +-0.006, answer_leak +-0.018, agreement +-0.001  (half range, 2 seeds)

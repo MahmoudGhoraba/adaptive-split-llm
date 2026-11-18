@@ -362,6 +362,7 @@ def fig9():
               "H=4, T=0, secret head λp=0.2": "(4,0) secret head λp=0.2", "H=4, T=4, secret head λp=0.2":
               "(4,4) secret head λp=0.2", "H=1, T=1, head+tail λa=0.1": "(1,1) head+tail λa=0.1"}
     assert {r["choice"] for r in rows} <= set(order)
+    order = [o for o in order if o in {r["choice"] for r in rows}]       # only configurations that are chosen
     ccol = {"open": BLUE, "answer": ORANGE, "prompt": AQUA, "both": YELLOW}
     ctit = {c["key"]: c["title"] for c in __import__("per_request_controller").CLASSES}
     fig, axes = plt.subplots(4, 2, figsize=(W, W * 0.95), sharex=True,
