@@ -321,7 +321,7 @@ def quality_ok(o, q_min):
 def best(eps, q_min, wl, p, opts=None, eps_answer=1.0):
     """Fastest option with prompt leakage <= eps, answer leakage <= eps_answer, quality ok, memory <= limit."""
     b = None
-    for o in (opts or OPTIONS):
+    for o in candidates(opts or OPTIONS):                       # all on client is not a candidate (18 Nov 2026)
         if (not leak_ok(o, eps, eps_answer) or not quality_ok(o, q_min)
                 or memory_gb(o, wl, p) > p["m_client_gb"]):
             continue

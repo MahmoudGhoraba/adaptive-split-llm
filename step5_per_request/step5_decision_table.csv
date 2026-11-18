@@ -1,0 +1,13 @@
+device,cls,choice,latency_s,prompt_leak,answer_leak,agreement
+"Phone (2 GB, 5 GFLOP/s)",Open,All on server,0.88,1.0,1.0,1.0
+"Phone (2 GB, 5 GFLOP/s)",Private answer,infeasible,,,,
+"Phone (2 GB, 5 GFLOP/s)",Private prompt,"H=4, T=0, secret head λp=0.2",60.17,0.649,1.0,0.786
+"Phone (2 GB, 5 GFLOP/s)",Private prompt+answer,infeasible,,,,
+"Laptop (4 GB, 20 GFLOP/s)",Open,All on server,0.88,1.0,1.0,1.0
+"Laptop (4 GB, 20 GFLOP/s)",Private answer,infeasible,,,,
+"Laptop (4 GB, 20 GFLOP/s)",Private prompt,"H=4, T=0, secret head λp=0.2",20.97,0.649,1.0,0.786
+"Laptop (4 GB, 20 GFLOP/s)",Private prompt+answer,infeasible,,,,
+"Edge box (8 GB, 100 GFLOP/s)",Open,All on server,0.88,1.0,1.0,1.0
+"Edge box (8 GB, 100 GFLOP/s)",Private answer,infeasible,,,,
+"Edge box (8 GB, 100 GFLOP/s)",Private prompt,"H=4, T=0, secret head λp=0.2",10.51,0.649,1.0,0.786
+"Edge box (8 GB, 100 GFLOP/s)",Private prompt+answer,infeasible,,,,

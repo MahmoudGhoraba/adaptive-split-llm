@@ -1,249 +1,249 @@
-stable      M2-4T         adaptive          compute  25.49 min ( +0.80%) | +reload a  32.09 ( +0.64%) | +reload b  25.54 ( +0.80%) | changes  94.0 in class   0.0 | viol  0.0
-stable      M2-4T         adaptive_no_load  compute  25.49 min ( +0.80%) | +reload a  32.09 ( +0.64%) | +reload b  25.54 ( +0.80%) | changes  94.0 in class   0.0 | viol  0.0
-stable      M2-4T         switch_a          compute  26.82 min ( +6.04%) | +reload a  32.01 ( +0.38%) | +reload b  26.87 ( +6.03%) | changes  73.7 in class  27.1 | viol  0.0
-stable      M2-4T         switch_b          compute  25.49 min ( +0.80%) | +reload a  32.09 ( +0.64%) | +reload b  25.54 ( +0.80%) | changes  94.0 in class   0.0 | viol  0.0
-stable      M2-4T         oracle            compute  25.29 min ( +0.00%) | +reload a  31.89 ( +0.00%) | +reload b  25.34 ( +0.00%) | changes  94.0 in class   0.0 | viol  0.0
-stable      M2-4T         fixed_per_class   compute  25.29 min ( +0.00%) | +reload a  31.89 ( +0.00%) | +reload b  25.34 ( +0.00%) | changes  94.0 in class   0.0 | viol  0.0
-stable      M2-4T         best_fixed        compute  33.37 min (+31.96%) | +reload a  33.42 ( +4.81%) | +reload b  33.42 (+31.90%) | changes   0.0 in class   0.0 | viol  0.0 | All on client
-stable      M2-4T         all_on_client     compute  33.37 min (+31.96%) | +reload a  33.42 ( +4.81%) | +reload b  33.42 (+31.90%) | changes   0.0 in class   0.0 | viol  0.0
-stable      M2-4T         adaptive_assumed  compute  39.18 min (+54.92%) | +reload a  50.41 (+58.09%) | +reload b  41.51 (+63.83%) | changes 143.0 in class   0.0 | viol  0.0
-stable      M2-2T         adaptive          compute  40.41 min ( +0.50%) | +reload a  51.65 ( +0.39%) | +reload b  42.75 ( +0.48%) | changes 143.0 in class   0.0 | viol  0.0
-stable      M2-2T         adaptive_no_load  compute  40.41 min ( +0.50%) | +reload a  51.65 ( +0.39%) | +reload b  42.75 ( +0.48%) | changes 143.0 in class   0.0 | viol  0.0
-stable      M2-2T         switch_a          compute  40.68 min ( +1.18%) | +reload a  50.97 ( -0.91%) | +reload b  42.61 ( +0.17%) | changes 143.0 in class  13.0 | viol  0.0
-stable      M2-2T         switch_b          compute  40.76 min ( +1.37%) | +reload a  51.03 ( -0.80%) | +reload b  42.54 ( -0.02%) | changes 143.0 in class  11.0 | viol  0.0
-stable      M2-2T         oracle            compute  40.21 min ( +0.00%) | +reload a  51.44 ( +0.00%) | +reload b  42.54 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
-stable      M2-2T         fixed_per_class   compute  40.21 min ( +0.00%) | +reload a  51.44 ( +0.00%) | +reload b  42.54 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
+stable      M2-4T         adaptive          compute  39.71 min ( +0.51%) | +reload a  50.81 ( +0.40%) | +reload b  42.13 ( +0.48%) | changes 143.0 in class   0.0 | viol  0.0
+stable      M2-4T         adaptive_no_load  compute  39.71 min ( +0.51%) | +reload a  50.81 ( +0.40%) | +reload b  42.13 ( +0.48%) | changes 143.0 in class   0.0 | viol  0.0
+stable      M2-4T         switch_a          compute  39.89 min ( +0.97%) | +reload a  50.05 ( -1.11%) | +reload b  41.91 ( -0.05%) | changes 143.0 in class  13.0 | viol  0.0
+stable      M2-4T         switch_b          compute  39.94 min ( +1.10%) | +reload a  50.08 ( -1.04%) | +reload b  41.81 ( -0.29%) | changes 143.0 in class  11.0 | viol  0.0
+stable      M2-4T         oracle            compute  39.50 min ( +0.00%) | +reload a  50.61 ( +0.00%) | +reload b  41.93 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
+stable      M2-4T         fixed_per_class   compute  39.50 min ( +0.00%) | +reload a  50.61 ( +0.00%) | +reload b  41.93 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
+stable      M2-4T         best_fixed        infeasible
+stable      M2-4T         all_on_client     compute  33.37 min (-15.53%) | +reload a  33.42 (-33.96%) | +reload b  33.42 (-20.30%) | changes   0.0 in class   0.0 | viol  0.0
+stable      M2-4T         adaptive_assumed  compute  39.71 min ( +0.51%) | +reload a  50.81 ( +0.40%) | +reload b  42.13 ( +0.48%) | changes 143.0 in class   0.0 | viol  0.0
+stable      M2-2T         adaptive          compute  41.16 min ( +0.50%) | +reload a  52.26 ( +0.39%) | +reload b  43.58 ( +0.47%) | changes 143.0 in class   0.0 | viol  0.0
+stable      M2-2T         adaptive_no_load  compute  41.16 min ( +0.50%) | +reload a  52.26 ( +0.39%) | +reload b  43.58 ( +0.47%) | changes 143.0 in class   0.0 | viol  0.0
+stable      M2-2T         switch_a          compute  41.43 min ( +1.16%) | +reload a  51.59 ( -0.90%) | +reload b  43.45 ( +0.16%) | changes 143.0 in class  13.0 | viol  0.0
+stable      M2-2T         switch_b          compute  41.51 min ( +1.35%) | +reload a  51.65 ( -0.79%) | +reload b  43.38 ( -0.01%) | changes 143.0 in class  11.0 | viol  0.0
+stable      M2-2T         oracle            compute  40.96 min ( +0.00%) | +reload a  52.06 ( +0.00%) | +reload b  43.38 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
+stable      M2-2T         fixed_per_class   compute  40.96 min ( +0.00%) | +reload a  52.06 ( +0.00%) | +reload b  43.38 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
 stable      M2-2T         best_fixed        infeasible
 stable      M2-2T         all_on_client     infeasible
-stable      M2-2T         adaptive_assumed  compute  40.41 min ( +0.50%) | +reload a  51.65 ( +0.39%) | +reload b  42.75 ( +0.48%) | changes 143.0 in class   0.0 | viol  0.0
-stable      M2-1T         adaptive          compute  43.56 min ( +0.47%) | +reload a  54.80 ( +0.37%) | +reload b  45.90 ( +0.44%) | changes 143.0 in class   0.0 | viol  0.0
-stable      M2-1T         adaptive_no_load  compute  43.56 min ( +0.47%) | +reload a  54.80 ( +0.37%) | +reload b  45.90 ( +0.44%) | changes 143.0 in class   0.0 | viol  0.0
-stable      M2-1T         switch_a          compute  44.02 min ( +1.52%) | +reload a  54.31 ( -0.52%) | +reload b  45.95 ( +0.56%) | changes 143.0 in class  13.0 | viol  0.0
-stable      M2-1T         switch_b          compute  43.62 min ( +0.59%) | +reload a  54.70 ( +0.20%) | +reload b  45.86 ( +0.35%) | changes 144.0 in class   6.0 | viol  0.0
-stable      M2-1T         oracle            compute  43.36 min ( +0.00%) | +reload a  54.59 ( +0.00%) | +reload b  45.70 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
-stable      M2-1T         fixed_per_class   compute  43.36 min ( +0.00%) | +reload a  54.59 ( +0.00%) | +reload b  45.70 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
+stable      M2-2T         adaptive_assumed  compute  41.16 min ( +0.50%) | +reload a  52.26 ( +0.39%) | +reload b  43.58 ( +0.47%) | changes 143.0 in class   0.0 | viol  0.0
+stable      M2-1T         adaptive          compute  44.76 min ( +0.46%) | +reload a  55.86 ( +0.36%) | +reload b  47.18 ( +0.43%) | changes 143.0 in class   0.0 | viol  0.0
+stable      M2-1T         adaptive_no_load  compute  44.76 min ( +0.46%) | +reload a  55.86 ( +0.36%) | +reload b  47.18 ( +0.43%) | changes 143.0 in class   0.0 | viol  0.0
+stable      M2-1T         switch_a          compute  45.21 min ( +1.48%) | +reload a  55.38 ( -0.51%) | +reload b  47.24 ( +0.54%) | changes 143.0 in class  13.0 | viol  0.0
+stable      M2-1T         switch_b          compute  44.81 min ( +0.57%) | +reload a  55.77 ( +0.20%) | +reload b  47.14 ( +0.34%) | changes 144.0 in class   6.0 | viol  0.0
+stable      M2-1T         oracle            compute  44.55 min ( +0.00%) | +reload a  55.66 ( +0.00%) | +reload b  46.98 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
+stable      M2-1T         fixed_per_class   compute  44.55 min ( +0.00%) | +reload a  55.66 ( +0.00%) | +reload b  46.98 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
 stable      M2-1T         best_fixed        infeasible
 stable      M2-1T         all_on_client     infeasible
-stable      M2-1T         adaptive_assumed  compute  43.56 min ( +0.47%) | +reload a  54.80 ( +0.37%) | +reload b  45.90 ( +0.44%) | changes 143.0 in class   0.0 | viol  0.0
-stable      assumed-phone adaptive          compute 211.06 min ( +0.10%) | +reload a 222.29 ( +0.09%) | +reload b 213.39 ( +0.10%) | changes 143.0 in class   0.0 | viol  0.0
-stable      assumed-phone adaptive_no_load  compute 211.06 min ( +0.10%) | +reload a 222.29 ( +0.09%) | +reload b 213.39 ( +0.10%) | changes 143.0 in class   0.0 | viol  0.0
-stable      assumed-phone switch_a          compute 211.06 min ( +0.10%) | +reload a 222.29 ( +0.09%) | +reload b 213.39 ( +0.10%) | changes 143.0 in class   0.0 | viol  0.0
-stable      assumed-phone switch_b          compute 211.06 min ( +0.10%) | +reload a 222.29 ( +0.09%) | +reload b 213.39 ( +0.10%) | changes 143.0 in class   0.0 | viol  0.0
-stable      assumed-phone oracle            compute 210.86 min ( +0.00%) | +reload a 222.09 ( +0.00%) | +reload b 213.19 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
-stable      assumed-phone fixed_per_class   compute 210.86 min ( +0.00%) | +reload a 222.09 ( +0.00%) | +reload b 213.19 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
+stable      M2-1T         adaptive_assumed  compute  44.76 min ( +0.46%) | +reload a  55.86 ( +0.36%) | +reload b  47.18 ( +0.43%) | changes 143.0 in class   0.0 | viol  0.0
+stable      assumed-phone adaptive          compute 231.22 min ( +0.09%) | +reload a 242.33 ( +0.08%) | +reload b 233.65 ( +0.09%) | changes 143.0 in class   0.0 | viol  0.0
+stable      assumed-phone adaptive_no_load  compute 231.22 min ( +0.09%) | +reload a 242.33 ( +0.08%) | +reload b 233.65 ( +0.09%) | changes 143.0 in class   0.0 | viol  0.0
+stable      assumed-phone switch_a          compute 231.22 min ( +0.09%) | +reload a 242.33 ( +0.08%) | +reload b 233.65 ( +0.09%) | changes 143.0 in class   0.0 | viol  0.0
+stable      assumed-phone switch_b          compute 231.22 min ( +0.09%) | +reload a 242.33 ( +0.08%) | +reload b 233.65 ( +0.09%) | changes 143.0 in class   0.0 | viol  0.0
+stable      assumed-phone oracle            compute 231.02 min ( +0.00%) | +reload a 242.12 ( +0.00%) | +reload b 233.45 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
+stable      assumed-phone fixed_per_class   compute 231.02 min ( +0.00%) | +reload a 242.12 ( +0.00%) | +reload b 233.45 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
 stable      assumed-phone best_fixed        infeasible
 stable      assumed-phone all_on_client     infeasible
-stable      assumed-phone adaptive_assumed  compute 211.06 min ( +0.10%) | +reload a 222.29 ( +0.09%) | +reload b 213.39 ( +0.10%) | changes 143.0 in class   0.0 | viol  0.0
-stable      assumed-edge  adaptive          compute  31.50 min ( +0.68%) | +reload a  38.10 ( +0.50%) | +reload b  31.55 ( +0.44%) | changes  94.0 in class   0.0 | viol  0.0
-stable      assumed-edge  adaptive_no_load  compute  31.50 min ( +0.68%) | +reload a  38.10 ( +0.50%) | +reload b  31.55 ( +0.44%) | changes  94.0 in class   0.0 | viol  0.0
-stable      assumed-edge  switch_a          compute  32.00 min ( +2.29%) | +reload a  38.16 ( +0.65%) | +reload b  32.05 ( +2.03%) | changes  87.6 in class   8.4 | viol  0.0
-stable      assumed-edge  switch_b          compute  31.50 min ( +0.68%) | +reload a  38.10 ( +0.50%) | +reload b  31.55 ( +0.44%) | changes  94.0 in class   0.0 | viol  0.0
-stable      assumed-edge  oracle            compute  31.29 min ( +0.00%) | +reload a  37.91 ( +0.00%) | +reload b  31.41 ( +0.00%) | changes  94.0 in class   2.0 | viol  0.0
-stable      assumed-edge  fixed_per_class   compute  31.30 min ( +0.04%) | +reload a  37.90 ( -0.04%) | +reload b  31.35 ( -0.21%) | changes  94.0 in class   0.0 | viol  0.0
-stable      assumed-edge  best_fixed        compute  43.67 min (+39.58%) | +reload a  43.72 (+15.33%) | +reload b  43.72 (+39.18%) | changes   0.0 in class   0.0 | viol  0.0 | All on client
-stable      assumed-edge  all_on_client     compute  43.67 min (+39.58%) | +reload a  43.72 (+15.33%) | +reload b  43.72 (+39.18%) | changes   0.0 in class   0.0 | viol  0.0
-stable      assumed-edge  adaptive_assumed  compute  31.50 min ( +0.68%) | +reload a  38.10 ( +0.50%) | +reload b  31.55 ( +0.44%) | changes  94.0 in class   0.0 | viol  0.0
-mobile      M2-4T         adaptive          compute  25.10 min ( +1.60%) | +reload a  32.68 ( -0.08%) | +reload b  25.96 ( +0.40%) | changes 105.0 in class  15.0 | viol  0.0
-mobile      M2-4T         adaptive_no_load  compute  25.10 min ( +1.60%) | +reload a  32.68 ( -0.08%) | +reload b  25.96 ( +0.40%) | changes 105.0 in class  15.0 | viol  0.0
-mobile      M2-4T         switch_a          compute  26.93 min ( +8.98%) | +reload a  32.03 ( -2.05%) | +reload b  26.98 ( +4.33%) | changes  72.5 in class  26.3 | viol  0.0
-mobile      M2-4T         switch_b          compute  25.59 min ( +3.55%) | +reload a  32.18 ( -1.59%) | +reload b  25.64 ( -0.86%) | changes  94.0 in class   0.0 | viol  0.0
-mobile      M2-4T         oracle            compute  24.71 min ( +0.00%) | +reload a  32.70 ( +0.00%) | +reload b  25.86 ( +0.00%) | changes 112.0 in class  18.0 | viol  0.0
-mobile      M2-4T         fixed_per_class   compute  25.31 min ( +2.43%) | +reload a  31.91 ( -2.44%) | +reload b  25.36 ( -1.93%) | changes  94.0 in class   0.0 | viol  0.0
-mobile      M2-4T         best_fixed        compute  33.37 min (+35.07%) | +reload a  33.42 ( +2.19%) | +reload b  33.42 (+29.26%) | changes   0.0 in class   0.0 | viol  0.0 | All on client
-mobile      M2-4T         all_on_client     compute  33.37 min (+35.07%) | +reload a  33.42 ( +2.19%) | +reload b  33.42 (+29.26%) | changes   0.0 in class   0.0 | viol  0.0
-mobile      M2-4T         adaptive_assumed  compute  37.20 min (+50.58%) | +reload a  47.81 (+46.21%) | +reload b  39.45 (+52.56%) | changes 138.2 in class  16.2 | viol  0.0
-mobile      M2-2T         adaptive          compute  53.95 min ( +0.52%) | +reload a  65.18 ( +0.43%) | +reload b  56.28 ( +0.50%) | changes 143.0 in class   0.0 | viol  0.0
-mobile      M2-2T         adaptive_no_load  compute  53.95 min ( +0.52%) | +reload a  65.18 ( +0.43%) | +reload b  56.28 ( +0.50%) | changes 143.0 in class   0.0 | viol  0.0
-mobile      M2-2T         switch_a          compute  54.69 min ( +1.90%) | +reload a  64.72 ( -0.27%) | +reload b  56.62 ( +1.10%) | changes 143.0 in class  14.0 | viol  0.0
-mobile      M2-2T         switch_b          compute  54.30 min ( +1.17%) | +reload a  64.57 ( -0.51%) | +reload b  56.07 ( +0.13%) | changes 143.0 in class  11.0 | viol  0.0
-mobile      M2-2T         oracle            compute  53.67 min ( +0.00%) | +reload a  64.90 ( +0.00%) | +reload b  56.00 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
-mobile      M2-2T         fixed_per_class   compute  53.67 min ( +0.00%) | +reload a  64.90 ( +0.00%) | +reload b  56.00 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
+stable      assumed-phone adaptive_assumed  compute 231.22 min ( +0.09%) | +reload a 242.33 ( +0.08%) | +reload b 233.65 ( +0.09%) | changes 143.0 in class   0.0 | viol  0.0
+stable      assumed-edge  adaptive          compute  42.06 min ( +0.48%) | +reload a  53.16 ( +0.38%) | +reload b  44.48 ( +0.46%) | changes 143.0 in class   0.0 | viol  0.0
+stable      assumed-edge  adaptive_no_load  compute  42.06 min ( +0.48%) | +reload a  53.16 ( +0.38%) | +reload b  44.48 ( +0.46%) | changes 143.0 in class   0.0 | viol  0.0
+stable      assumed-edge  switch_a          compute  42.32 min ( +1.12%) | +reload a  52.48 ( -0.90%) | +reload b  44.34 ( +0.14%) | changes 143.0 in class  13.0 | viol  0.0
+stable      assumed-edge  switch_b          compute  42.40 min ( +1.31%) | +reload a  52.54 ( -0.78%) | +reload b  44.27 ( -0.02%) | changes 143.0 in class  11.0 | viol  0.0
+stable      assumed-edge  oracle            compute  41.85 min ( +0.00%) | +reload a  52.96 ( +0.00%) | +reload b  44.28 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
+stable      assumed-edge  fixed_per_class   compute  41.85 min ( +0.00%) | +reload a  52.96 ( +0.00%) | +reload b  44.28 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
+stable      assumed-edge  best_fixed        infeasible
+stable      assumed-edge  all_on_client     compute  43.67 min ( +4.35%) | +reload a  43.72 (-17.44%) | +reload b  43.72 ( -1.26%) | changes   0.0 in class   0.0 | viol  0.0
+stable      assumed-edge  adaptive_assumed  compute  42.06 min ( +0.48%) | +reload a  53.16 ( +0.38%) | +reload b  44.48 ( +0.46%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      M2-4T         adaptive          compute  53.25 min ( +0.52%) | +reload a  64.35 ( +0.43%) | +reload b  55.67 ( +0.50%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      M2-4T         adaptive_no_load  compute  53.25 min ( +0.52%) | +reload a  64.35 ( +0.43%) | +reload b  55.67 ( +0.50%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      M2-4T         switch_a          compute  53.84 min ( +1.65%) | +reload a  63.78 ( -0.47%) | +reload b  55.87 ( +0.85%) | changes 144.2 in class  19.0 | viol  0.0
+mobile      M2-4T         switch_b          compute  53.48 min ( +0.97%) | +reload a  63.63 ( -0.70%) | +reload b  55.35 ( -0.08%) | changes 143.0 in class  11.0 | viol  0.0
+mobile      M2-4T         oracle            compute  52.97 min ( +0.00%) | +reload a  64.08 ( +0.00%) | +reload b  55.40 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      M2-4T         fixed_per_class   compute  52.97 min ( +0.00%) | +reload a  64.08 ( +0.00%) | +reload b  55.40 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      M2-4T         best_fixed        infeasible
+mobile      M2-4T         all_on_client     compute  33.37 min (-37.00%) | +reload a  33.42 (-47.84%) | +reload b  33.42 (-39.67%) | changes   0.0 in class   0.0 | viol  0.0
+mobile      M2-4T         adaptive_assumed  compute  53.25 min ( +0.52%) | +reload a  64.35 ( +0.43%) | +reload b  55.67 ( +0.50%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      M2-2T         adaptive          compute  54.70 min ( +0.51%) | +reload a  65.80 ( +0.42%) | +reload b  57.12 ( +0.49%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      M2-2T         adaptive_no_load  compute  54.70 min ( +0.51%) | +reload a  65.80 ( +0.42%) | +reload b  57.12 ( +0.49%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      M2-2T         switch_a          compute  55.05 min ( +1.16%) | +reload a  65.21 ( -0.48%) | +reload b  57.07 ( +0.40%) | changes 144.0 in class  15.0 | viol  0.0
+mobile      M2-2T         switch_b          compute  55.05 min ( +1.16%) | +reload a  65.19 ( -0.51%) | +reload b  56.92 ( +0.12%) | changes 143.0 in class  11.0 | viol  0.0
+mobile      M2-2T         oracle            compute  54.42 min ( +0.00%) | +reload a  65.53 ( +0.00%) | +reload b  56.85 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      M2-2T         fixed_per_class   compute  54.42 min ( +0.00%) | +reload a  65.53 ( +0.00%) | +reload b  56.85 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
 mobile      M2-2T         best_fixed        infeasible
 mobile      M2-2T         all_on_client     infeasible
-mobile      M2-2T         adaptive_assumed  compute  53.95 min ( +0.52%) | +reload a  65.18 ( +0.43%) | +reload b  56.28 ( +0.50%) | changes 143.0 in class   0.0 | viol  0.0
-mobile      M2-1T         adaptive          compute  57.12 min ( +0.49%) | +reload a  68.35 ( +0.41%) | +reload b  59.45 ( +0.47%) | changes 143.0 in class   0.0 | viol  0.0
-mobile      M2-1T         adaptive_no_load  compute  57.12 min ( +0.49%) | +reload a  68.35 ( +0.41%) | +reload b  59.45 ( +0.47%) | changes 143.0 in class   0.0 | viol  0.0
-mobile      M2-1T         switch_a          compute  57.66 min ( +1.43%) | +reload a  67.95 ( -0.19%) | +reload b  59.59 ( +0.69%) | changes 144.0 in class  15.0 | viol  0.0
-mobile      M2-1T         switch_b          compute  57.17 min ( +0.58%) | +reload a  68.26 ( +0.27%) | +reload b  59.41 ( +0.40%) | changes 144.0 in class   6.0 | viol  0.0
-mobile      M2-1T         oracle            compute  56.84 min ( +0.00%) | +reload a  68.08 ( +0.00%) | +reload b  59.18 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
-mobile      M2-1T         fixed_per_class   compute  56.84 min ( +0.00%) | +reload a  68.08 ( +0.00%) | +reload b  59.18 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      M2-2T         adaptive_assumed  compute  54.70 min ( +0.51%) | +reload a  65.80 ( +0.42%) | +reload b  57.12 ( +0.49%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      M2-1T         adaptive          compute  58.32 min ( +0.48%) | +reload a  69.43 ( +0.40%) | +reload b  60.75 ( +0.46%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      M2-1T         adaptive_no_load  compute  58.32 min ( +0.48%) | +reload a  69.43 ( +0.40%) | +reload b  60.75 ( +0.46%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      M2-1T         switch_a          compute  58.78 min ( +1.27%) | +reload a  68.94 ( -0.30%) | +reload b  60.80 ( +0.55%) | changes 143.0 in class  13.0 | viol  0.0
+mobile      M2-1T         switch_b          compute  58.38 min ( +0.57%) | +reload a  69.34 ( +0.27%) | +reload b  60.71 ( +0.39%) | changes 144.0 in class   6.0 | viol  0.0
+mobile      M2-1T         oracle            compute  58.05 min ( +0.00%) | +reload a  69.15 ( +0.00%) | +reload b  60.47 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      M2-1T         fixed_per_class   compute  58.05 min ( +0.00%) | +reload a  69.15 ( +0.00%) | +reload b  60.47 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
 mobile      M2-1T         best_fixed        infeasible
 mobile      M2-1T         all_on_client     infeasible
-mobile      M2-1T         adaptive_assumed  compute  57.12 min ( +0.49%) | +reload a  68.35 ( +0.41%) | +reload b  59.45 ( +0.47%) | changes 143.0 in class   0.0 | viol  0.0
-mobile      assumed-phone adaptive          compute 227.64 min ( +0.12%) | +reload a 238.87 ( +0.12%) | +reload b 229.97 ( +0.12%) | changes 143.0 in class   0.0 | viol  0.0
-mobile      assumed-phone adaptive_no_load  compute 227.64 min ( +0.12%) | +reload a 238.87 ( +0.12%) | +reload b 229.97 ( +0.12%) | changes 143.0 in class   0.0 | viol  0.0
-mobile      assumed-phone switch_a          compute 227.64 min ( +0.12%) | +reload a 238.87 ( +0.12%) | +reload b 229.97 ( +0.12%) | changes 143.0 in class   0.0 | viol  0.0
-mobile      assumed-phone switch_b          compute 227.64 min ( +0.12%) | +reload a 238.87 ( +0.12%) | +reload b 229.97 ( +0.12%) | changes 143.0 in class   0.0 | viol  0.0
-mobile      assumed-phone oracle            compute 227.36 min ( +0.00%) | +reload a 238.59 ( +0.00%) | +reload b 229.70 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
-mobile      assumed-phone fixed_per_class   compute 227.36 min ( +0.00%) | +reload a 238.59 ( +0.00%) | +reload b 229.70 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      M2-1T         adaptive_assumed  compute  58.32 min ( +0.48%) | +reload a  69.43 ( +0.40%) | +reload b  60.75 ( +0.46%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      assumed-phone adaptive          compute 248.28 min ( +0.11%) | +reload a 259.39 ( +0.11%) | +reload b 250.71 ( +0.11%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      assumed-phone adaptive_no_load  compute 248.28 min ( +0.11%) | +reload a 259.39 ( +0.11%) | +reload b 250.71 ( +0.11%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      assumed-phone switch_a          compute 248.28 min ( +0.11%) | +reload a 259.39 ( +0.11%) | +reload b 250.71 ( +0.11%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      assumed-phone switch_b          compute 248.28 min ( +0.11%) | +reload a 259.39 ( +0.11%) | +reload b 250.71 ( +0.11%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      assumed-phone oracle            compute 248.00 min ( +0.00%) | +reload a 259.11 ( +0.00%) | +reload b 250.43 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      assumed-phone fixed_per_class   compute 248.00 min ( +0.00%) | +reload a 259.11 ( +0.00%) | +reload b 250.43 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
 mobile      assumed-phone best_fixed        infeasible
 mobile      assumed-phone all_on_client     infeasible
-mobile      assumed-phone adaptive_assumed  compute 227.64 min ( +0.12%) | +reload a 238.87 ( +0.12%) | +reload b 229.97 ( +0.12%) | changes 143.0 in class   0.0 | viol  0.0
-mobile      assumed-edge  adaptive          compute  30.08 min ( +2.00%) | +reload a  38.13 ( +0.86%) | +reload b  31.02 ( +1.45%) | changes 109.8 in class  14.3 | viol  0.0
-mobile      assumed-edge  adaptive_no_load  compute  30.08 min ( +1.98%) | +reload a  38.14 ( +0.87%) | +reload b  31.02 ( +1.46%) | changes 110.0 in class  14.5 | viol  0.0
-mobile      assumed-edge  switch_a          compute  31.05 min ( +5.28%) | +reload a  37.88 ( +0.19%) | +reload b  31.75 ( +3.83%) | changes  97.3 in class  27.8 | viol  0.0
-mobile      assumed-edge  switch_b          compute  30.10 min ( +2.04%) | +reload a  37.73 ( -0.21%) | +reload b  30.74 ( +0.55%) | changes 107.0 in class  13.0 | viol  0.0
-mobile      assumed-edge  oracle            compute  29.49 min ( +0.00%) | +reload a  37.81 ( +0.00%) | +reload b  30.58 ( +0.00%) | changes 113.0 in class  12.0 | viol  0.0
-mobile      assumed-edge  fixed_per_class   compute  31.32 min ( +6.19%) | +reload a  37.92 ( +0.29%) | +reload b  31.37 ( +2.59%) | changes  94.0 in class   0.0 | viol  0.0
-mobile      assumed-edge  best_fixed        compute  43.67 min (+48.07%) | +reload a  43.72 (+15.64%) | +reload b  43.72 (+43.00%) | changes   0.0 in class   0.0 | viol  0.0 | All on client
-mobile      assumed-edge  all_on_client     compute  43.67 min (+48.07%) | +reload a  43.72 (+15.64%) | +reload b  43.72 (+43.00%) | changes   0.0 in class   0.0 | viol  0.0
-mobile      assumed-edge  adaptive_assumed  compute  30.08 min ( +1.97%) | +reload a  38.12 ( +0.82%) | +reload b  31.00 ( +1.38%) | changes 109.3 in class  13.6 | viol  0.0
-server_load M2-4T         adaptive          compute  27.79 min ( +2.01%) | +reload a  32.46 ( +2.63%) | +reload b  27.84 ( +2.01%) | changes  66.1 in class   2.1 | viol  0.0
-server_load M2-4T         adaptive_no_load  compute  29.25 min ( +7.35%) | +reload a  33.69 ( +6.53%) | +reload b  29.30 ( +7.34%) | changes  63.0 in class   7.1 | viol  0.0
-server_load M2-4T         switch_a          compute  28.36 min ( +4.10%) | +reload a  32.31 ( +2.16%) | +reload b  28.41 ( +4.10%) | changes  55.7 in class  21.1 | viol  0.0
-server_load M2-4T         switch_b          compute  27.79 min ( +2.01%) | +reload a  32.46 ( +2.63%) | +reload b  27.84 ( +2.01%) | changes  66.1 in class   2.1 | viol  0.0
-server_load M2-4T         oracle            compute  27.25 min ( +0.00%) | +reload a  31.63 ( +0.00%) | +reload b  27.30 ( +0.00%) | changes  62.0 in class   2.0 | viol  0.0
-server_load M2-4T         fixed_per_class   compute  29.96 min ( +9.96%) | +reload a  36.56 (+15.59%) | +reload b  30.01 ( +9.95%) | changes  94.0 in class   0.0 | viol  0.0
-server_load M2-4T         best_fixed        compute  33.37 min (+22.48%) | +reload a  33.42 ( +5.67%) | +reload b  33.42 (+22.44%) | changes   0.0 in class   0.0 | viol  0.0 | All on client
-server_load M2-4T         all_on_client     compute  33.37 min (+22.48%) | +reload a  33.42 ( +5.67%) | +reload b  33.42 (+22.44%) | changes   0.0 in class   0.0 | viol  0.0
-server_load M2-4T         adaptive_assumed  compute  51.53 min (+89.15%) | +reload a  62.77 (+98.46%) | +reload b  53.87 (+97.36%) | changes 143.0 in class   0.0 | viol  0.0
-server_load M2-2T         adaptive          compute  52.49 min ( +0.44%) | +reload a  64.04 ( +0.53%) | +reload b  55.14 ( +0.51%) | changes 148.6 in class  20.0 | viol  0.0
-server_load M2-2T         adaptive_no_load  compute  52.49 min ( +0.44%) | +reload a  64.04 ( +0.53%) | +reload b  55.14 ( +0.51%) | changes 148.6 in class  20.0 | viol  0.0
-server_load M2-2T         switch_a          compute  52.70 min ( +0.84%) | +reload a  62.89 ( -1.28%) | +reload b  54.73 ( -0.23%) | changes 143.0 in class  18.4 | viol  0.0
-server_load M2-2T         switch_b          compute  52.80 min ( +1.04%) | +reload a  63.01 ( -1.08%) | +reload b  54.62 ( -0.43%) | changes 143.0 in class  18.0 | viol  0.0
-server_load M2-2T         oracle            compute  52.26 min ( +0.00%) | +reload a  63.70 ( +0.00%) | +reload b  54.86 ( +0.00%) | changes 147.0 in class  18.0 | viol  0.0
-server_load M2-2T         fixed_per_class   compute  52.57 min ( +0.59%) | +reload a  63.80 ( +0.15%) | +reload b  54.90 ( +0.08%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      assumed-phone adaptive_assumed  compute 248.28 min ( +0.11%) | +reload a 259.39 ( +0.11%) | +reload b 250.71 ( +0.11%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      assumed-edge  adaptive          compute  55.64 min ( +0.50%) | +reload a  66.74 ( +0.42%) | +reload b  58.07 ( +0.48%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      assumed-edge  adaptive_no_load  compute  55.64 min ( +0.50%) | +reload a  66.74 ( +0.42%) | +reload b  58.07 ( +0.48%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      assumed-edge  switch_a          compute  55.91 min ( +0.98%) | +reload a  66.07 ( -0.60%) | +reload b  57.93 ( +0.24%) | changes 143.0 in class  13.0 | viol  0.0
+mobile      assumed-edge  switch_b          compute  55.99 min ( +1.14%) | +reload a  66.13 ( -0.50%) | +reload b  57.86 ( +0.13%) | changes 143.0 in class  11.0 | viol  0.0
+mobile      assumed-edge  oracle            compute  55.36 min ( +0.00%) | +reload a  66.47 ( +0.00%) | +reload b  57.79 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      assumed-edge  fixed_per_class   compute  55.36 min ( +0.00%) | +reload a  66.47 ( +0.00%) | +reload b  57.79 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
+mobile      assumed-edge  best_fixed        infeasible
+mobile      assumed-edge  all_on_client     compute  43.67 min (-21.11%) | +reload a  43.72 (-34.22%) | +reload b  43.72 (-24.34%) | changes   0.0 in class   0.0 | viol  0.0
+mobile      assumed-edge  adaptive_assumed  compute  55.64 min ( +0.50%) | +reload a  66.74 ( +0.42%) | +reload b  58.07 ( +0.48%) | changes 143.0 in class   0.0 | viol  0.0
+server_load M2-4T         adaptive          compute  50.77 min ( +0.46%) | +reload a  61.62 ( +0.34%) | +reload b  53.38 ( +0.47%) | changes 143.0 in class   2.0 | viol  0.0
+server_load M2-4T         adaptive_no_load  compute  50.77 min ( +0.46%) | +reload a  61.62 ( +0.34%) | +reload b  53.38 ( +0.47%) | changes 143.0 in class   2.0 | viol  0.0
+server_load M2-4T         switch_a          compute  51.15 min ( +1.20%) | +reload a  61.07 ( -0.56%) | +reload b  53.42 ( +0.55%) | changes 143.0 in class  16.9 | viol  0.0
+server_load M2-4T         switch_b          compute  51.03 min ( +0.96%) | +reload a  61.11 ( -0.50%) | +reload b  53.16 ( +0.05%) | changes 143.3 in class  13.0 | viol  0.0
+server_load M2-4T         oracle            compute  50.54 min ( +0.00%) | +reload a  61.41 ( +0.00%) | +reload b  53.13 ( +0.00%) | changes 143.0 in class   2.0 | viol  0.0
+server_load M2-4T         fixed_per_class   compute  51.44 min ( +1.78%) | +reload a  62.55 ( +1.84%) | +reload b  53.87 ( +1.38%) | changes 143.0 in class   0.0 | viol  0.0
+server_load M2-4T         best_fixed        infeasible
+server_load M2-4T         all_on_client     compute  33.37 min (-33.98%) | +reload a  33.42 (-45.58%) | +reload b  33.42 (-37.10%) | changes   0.0 in class   0.0 | viol  0.0
+server_load M2-4T         adaptive_assumed  compute  51.64 min ( +2.18%) | +reload a  62.75 ( +2.18%) | +reload b  54.07 ( +1.77%) | changes 143.0 in class   0.0 | viol  0.0
+server_load M2-2T         adaptive          compute  52.92 min ( +0.42%) | +reload a  64.03 ( +0.45%) | +reload b  55.45 ( +0.46%) | changes 144.0 in class   8.0 | viol  0.0
+server_load M2-2T         adaptive_no_load  compute  52.92 min ( +0.42%) | +reload a  64.03 ( +0.45%) | +reload b  55.45 ( +0.46%) | changes 144.0 in class   8.0 | viol  0.0
+server_load M2-2T         switch_a          compute  53.12 min ( +0.80%) | +reload a  63.22 ( -0.82%) | +reload b  55.18 ( -0.02%) | changes 143.0 in class  14.4 | viol  0.0
+server_load M2-2T         switch_b          compute  53.22 min ( +0.99%) | +reload a  63.33 ( -0.65%) | +reload b  55.10 ( -0.16%) | changes 143.0 in class  12.0 | viol  0.0
+server_load M2-2T         oracle            compute  52.70 min ( +0.00%) | +reload a  63.75 ( +0.00%) | +reload b  55.19 ( +0.00%) | changes 143.0 in class   6.0 | viol  0.0
+server_load M2-2T         fixed_per_class   compute  52.89 min ( +0.37%) | +reload a  64.00 ( +0.39%) | +reload b  55.32 ( +0.23%) | changes 143.0 in class   0.0 | viol  0.0
 server_load M2-2T         best_fixed        infeasible
 server_load M2-2T         all_on_client     infeasible
-server_load M2-2T         adaptive_assumed  compute  52.77 min ( +0.98%) | +reload a  64.00 ( +0.47%) | +reload b  55.10 ( +0.45%) | changes 143.0 in class   0.0 | viol  0.0
-server_load M2-1T         adaptive          compute  55.79 min ( +0.41%) | +reload a  67.31 ( +0.30%) | +reload b  58.38 ( +0.39%) | changes 147.8 in class  17.8 | viol  0.0
-server_load M2-1T         adaptive_no_load  compute  55.79 min ( +0.41%) | +reload a  67.31 ( +0.30%) | +reload b  58.38 ( +0.39%) | changes 147.8 in class  17.8 | viol  0.0
-server_load M2-1T         switch_a          compute  56.21 min ( +1.16%) | +reload a  66.44 ( -1.00%) | +reload b  58.21 ( +0.11%) | changes 143.0 in class  21.9 | viol  0.0
-server_load M2-1T         switch_b          compute  56.05 min ( +0.87%) | +reload a  66.73 ( -0.56%) | +reload b  58.09 ( -0.10%) | changes 143.0 in class  13.0 | viol  0.0
-server_load M2-1T         oracle            compute  55.57 min ( +0.00%) | +reload a  67.11 ( +0.00%) | +reload b  58.15 ( +0.00%) | changes 148.0 in class  16.0 | viol  0.0
-server_load M2-1T         fixed_per_class   compute  55.72 min ( +0.28%) | +reload a  66.95 ( -0.23%) | +reload b  58.05 ( -0.16%) | changes 143.0 in class   0.0 | viol  0.0
+server_load M2-2T         adaptive_assumed  compute  53.10 min ( +0.76%) | +reload a  64.20 ( +0.71%) | +reload b  55.52 ( +0.60%) | changes 143.0 in class   0.0 | viol  0.0
+server_load M2-1T         adaptive          compute  56.62 min ( +0.40%) | +reload a  67.80 ( +0.29%) | +reload b  59.17 ( +0.39%) | changes 144.8 in class   9.9 | viol  0.0
+server_load M2-1T         adaptive_no_load  compute  56.62 min ( +0.40%) | +reload a  67.80 ( +0.29%) | +reload b  59.17 ( +0.39%) | changes 144.8 in class   9.9 | viol  0.0
+server_load M2-1T         switch_a          compute  56.99 min ( +1.05%) | +reload a  67.11 ( -0.73%) | +reload b  59.04 ( +0.17%) | changes 143.0 in class  15.9 | viol  0.0
+server_load M2-1T         switch_b          compute  56.81 min ( +0.73%) | +reload a  67.38 ( -0.33%) | +reload b  58.93 ( -0.02%) | changes 143.0 in class   9.0 | viol  0.0
+server_load M2-1T         oracle            compute  56.40 min ( +0.00%) | +reload a  67.61 ( +0.00%) | +reload b  58.94 ( +0.00%) | changes 145.0 in class   6.0 | viol  0.0
+server_load M2-1T         fixed_per_class   compute  56.49 min ( +0.17%) | +reload a  67.60 ( -0.02%) | +reload b  58.92 ( -0.03%) | changes 143.0 in class   0.0 | viol  0.0
 server_load M2-1T         best_fixed        infeasible
 server_load M2-1T         all_on_client     infeasible
-server_load M2-1T         adaptive_assumed  compute  55.92 min ( +0.64%) | +reload a  67.15 ( +0.07%) | +reload b  58.26 ( +0.19%) | changes 143.0 in class   0.0 | viol  0.0
-server_load assumed-phone adaptive          compute 223.42 min ( +0.09%) | +reload a 234.65 ( +0.09%) | +reload b 225.75 ( +0.09%) | changes 143.0 in class   0.0 | viol  0.0
-server_load assumed-phone adaptive_no_load  compute 223.42 min ( +0.09%) | +reload a 234.65 ( +0.09%) | +reload b 225.75 ( +0.09%) | changes 143.0 in class   0.0 | viol  0.0
-server_load assumed-phone switch_a          compute 223.42 min ( +0.09%) | +reload a 234.65 ( +0.09%) | +reload b 225.75 ( +0.09%) | changes 143.0 in class   0.0 | viol  0.0
-server_load assumed-phone switch_b          compute 223.42 min ( +0.09%) | +reload a 234.65 ( +0.09%) | +reload b 225.75 ( +0.09%) | changes 143.0 in class   0.0 | viol  0.0
-server_load assumed-phone oracle            compute 223.21 min ( +0.00%) | +reload a 234.45 ( +0.00%) | +reload b 225.55 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
-server_load assumed-phone fixed_per_class   compute 223.21 min ( +0.00%) | +reload a 234.45 ( +0.00%) | +reload b 225.55 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
+server_load M2-1T         adaptive_assumed  compute  56.69 min ( +0.53%) | +reload a  67.80 ( +0.28%) | +reload b  59.12 ( +0.31%) | changes 143.0 in class   0.0 | viol  0.0
+server_load assumed-phone adaptive          compute 243.16 min ( +0.08%) | +reload a 254.26 ( +0.08%) | +reload b 245.59 ( +0.08%) | changes 143.0 in class   0.0 | viol  0.0
+server_load assumed-phone adaptive_no_load  compute 243.16 min ( +0.08%) | +reload a 254.26 ( +0.08%) | +reload b 245.59 ( +0.08%) | changes 143.0 in class   0.0 | viol  0.0
+server_load assumed-phone switch_a          compute 243.16 min ( +0.08%) | +reload a 254.26 ( +0.08%) | +reload b 245.59 ( +0.08%) | changes 143.0 in class   0.0 | viol  0.0
+server_load assumed-phone switch_b          compute 243.16 min ( +0.08%) | +reload a 254.26 ( +0.08%) | +reload b 245.59 ( +0.08%) | changes 143.0 in class   0.0 | viol  0.0
+server_load assumed-phone oracle            compute 242.96 min ( +0.00%) | +reload a 254.06 ( +0.00%) | +reload b 245.38 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
+server_load assumed-phone fixed_per_class   compute 242.96 min ( +0.00%) | +reload a 254.06 ( +0.00%) | +reload b 245.38 ( +0.00%) | changes 143.0 in class   0.0 | viol  0.0
 server_load assumed-phone best_fixed        infeasible
 server_load assumed-phone all_on_client     infeasible
-server_load assumed-phone adaptive_assumed  compute 223.42 min ( +0.09%) | +reload a 234.65 ( +0.09%) | +reload b 225.75 ( +0.09%) | changes 143.0 in class   0.0 | viol  0.0
-server_load assumed-edge  adaptive          compute  34.75 min ( +1.21%) | +reload a  39.70 ( +1.74%) | +reload b  34.80 ( +0.98%) | changes  70.2 in class   4.2 | viol  0.0
-server_load assumed-edge  adaptive_no_load  compute  35.07 min ( +2.16%) | +reload a  40.42 ( +3.61%) | +reload b  35.12 ( +1.93%) | changes  76.0 in class   6.0 | viol  0.0
-server_load assumed-edge  switch_a          compute  34.74 min ( +1.19%) | +reload a  39.23 ( +0.55%) | +reload b  34.79 ( +0.96%) | changes  63.6 in class   6.4 | viol  0.0
-server_load assumed-edge  switch_b          compute  34.75 min ( +1.21%) | +reload a  39.70 ( +1.74%) | +reload b  34.80 ( +0.98%) | changes  70.2 in class   4.2 | viol  0.0
-server_load assumed-edge  oracle            compute  34.33 min ( +0.00%) | +reload a  39.02 ( +0.00%) | +reload b  34.46 ( +0.00%) | changes  66.0 in class   8.0 | viol  0.0
-server_load assumed-edge  fixed_per_class   compute  35.97 min ( +4.77%) | +reload a  42.57 ( +9.10%) | +reload b  36.02 ( +4.53%) | changes  94.0 in class   0.0 | viol  0.0
-server_load assumed-edge  best_fixed        compute  43.67 min (+27.20%) | +reload a  43.72 (+12.06%) | +reload b  43.72 (+26.88%) | changes   0.0 in class   0.0 | viol  0.0 | All on client
-server_load assumed-edge  all_on_client     compute  43.67 min (+27.20%) | +reload a  43.72 (+12.06%) | +reload b  43.72 (+26.88%) | changes   0.0 in class   0.0 | viol  0.0
-server_load assumed-edge  adaptive_assumed  compute  36.17 min ( +5.36%) | +reload a  42.77 ( +9.62%) | +reload b  36.22 ( +5.12%) | changes  94.0 in class   0.0 | viol  0.0
+server_load assumed-phone adaptive_assumed  compute 243.16 min ( +0.08%) | +reload a 254.26 ( +0.08%) | +reload b 245.59 ( +0.08%) | changes 143.0 in class   0.0 | viol  0.0
+server_load assumed-edge  adaptive          compute  53.58 min ( +0.51%) | +reload a  64.58 ( +0.52%) | +reload b  56.20 ( +0.55%) | changes 144.0 in class   8.0 | viol  0.0
+server_load assumed-edge  adaptive_no_load  compute  53.58 min ( +0.51%) | +reload a  64.58 ( +0.52%) | +reload b  56.20 ( +0.55%) | changes 144.0 in class   8.0 | viol  0.0
+server_load assumed-edge  switch_a          compute  53.77 min ( +0.85%) | +reload a  63.76 ( -0.77%) | +reload b  55.91 ( +0.03%) | changes 143.0 in class  15.0 | viol  0.0
+server_load assumed-edge  switch_b          compute  53.97 min ( +1.23%) | +reload a  64.02 ( -0.36%) | +reload b  56.03 ( +0.23%) | changes 143.1 in class  14.1 | viol  0.0
+server_load assumed-edge  oracle            compute  53.31 min ( +0.00%) | +reload a  64.25 ( +0.00%) | +reload b  55.90 ( +0.00%) | changes 143.0 in class   6.0 | viol  0.0
+server_load assumed-edge  fixed_per_class   compute  53.79 min ( +0.89%) | +reload a  64.89 ( +1.01%) | +reload b  56.22 ( +0.57%) | changes 143.0 in class   0.0 | viol  0.0
+server_load assumed-edge  best_fixed        infeasible
+server_load assumed-edge  all_on_client     compute  43.67 min (-18.08%) | +reload a  43.72 (-31.95%) | +reload b  43.72 (-21.78%) | changes   0.0 in class   0.0 | viol  0.0
+server_load assumed-edge  adaptive_assumed  compute  53.99 min ( +1.27%) | +reload a  65.10 ( +1.32%) | +reload b  56.42 ( +0.93%) | changes 143.0 in class   0.0 | viol  0.0
 
 calibration impact (assumed vs calibrated decisions):
-  M2-4T         (laptop) Open                   grid 12/30 | traces  23/246 | All on server -> All on client (12)
-  M2-4T         (laptop) Private answer         grid 18/30 | traces 106/126 | H=1, T=1, head+tail λa=0.1 -> All on client (18)
-  M2-4T         (laptop) Private prompt         grid 17/30 | traces 102/120 | H=4, T=0, secret head λp=0.2 -> All on client (17)
-  M2-4T         (laptop) Private prompt+answer  grid 18/30 | traces  96/108 | H=4, T=2, head+tail λa=0.03 -> All on client (18)
+  M2-4T         (laptop) Open                   grid  3/30 | traces   0/246 | All on server -> H=15, T=0 (3)
+  M2-4T         (laptop) Private answer         grid  0/30 | traces   0/126 | 
+  M2-4T         (laptop) Private prompt         grid 12/30 | traces  14/120 | H=4, T=0, secret head λp=0.2 -> H=4, T=11, secret head λp=0.2 (12)
+  M2-4T         (laptop) Private prompt+answer  grid  0/30 | traces   0/108 | 
   M2-2T         (phone ) Open                   grid  1/30 | traces   0/246 | All on server -> H=8, T=0 (1)
-  M2-2T         (phone ) Private answer         grid  9/30 | traces  11/126 | H=1, T=1, head+tail λa=0.1 -> H=2, T=2, head+tail λa=0.03 (9)
+  M2-2T         (phone ) Private answer         grid  0/30 | traces   0/126 | 
   M2-2T         (phone ) Private prompt         grid 10/30 | traces  10/120 | H=4, T=0, secret head λp=0.2 -> H=4, T=4, secret head λp=0.2 (10)
   M2-2T         (phone ) Private prompt+answer  grid  0/30 | traces   0/108 | 
   M2-1T         (phone ) Open                   grid  0/30 | traces   0/246 | 
-  M2-1T         (phone ) Private answer         grid  6/30 | traces   8/126 | H=1, T=1, head+tail λa=0.1 -> H=2, T=2, head+tail λa=0.03 (6)
+  M2-1T         (phone ) Private answer         grid  0/30 | traces   0/126 | 
   M2-1T         (phone ) Private prompt         grid  7/30 | traces   6/120 | H=4, T=0, secret head λp=0.2 -> H=4, T=4, secret head λp=0.2 (7)
   M2-1T         (phone ) Private prompt+answer  grid  0/30 | traces   0/108 | 
   assumed-phone (phone ) Open                   grid  0/30 | traces   0/246 | 
   assumed-phone (phone ) Private answer         grid  0/30 | traces   0/126 | 
   assumed-phone (phone ) Private prompt         grid  0/30 | traces   0/120 | 
   assumed-phone (phone ) Private prompt+answer  grid  0/30 | traces   0/108 | 
-  assumed-edge  (edge  ) Open                   grid  9/30 | traces  21/246 | All on server -> All on client (9)
-  assumed-edge  (edge  ) Private answer         grid  2/30 | traces   1/126 | H=1, T=1, head+tail λa=0.1 -> All on client (2)
-  assumed-edge  (edge  ) Private prompt         grid  2/30 | traces   0/120 | H=4, T=0, secret head λp=0.2 -> All on client (2)
-  assumed-edge  (edge  ) Private prompt+answer  grid  1/30 | traces   1/108 | H=4, T=2, head+tail λa=0.03 -> All on client (1)
+  assumed-edge  (edge  ) Open                   grid  2/30 | traces   0/246 | All on server -> H=15, T=0 (2)
+  assumed-edge  (edge  ) Private answer         grid  0/30 | traces   0/126 | 
+  assumed-edge  (edge  ) Private prompt         grid 10/30 | traces  11/120 | H=4, T=0, secret head λp=0.2 -> H=4, T=11, secret head λp=0.2 (10)
+  assumed-edge  (edge  ) Private prompt+answer  grid  0/30 | traces   0/108 | 
 
 memory-budget sensitivity (5 seeds):
-  M2-4T 2 GB mobile      adaptive        compute  52.71 min, +reload a  63.94, gap compute  +0.53%, gap a  +0.44%, viol 0
-  M2-4T 2 GB mobile      switch_a        compute  53.58 min, +reload a  63.29, gap compute  +2.19%, gap a  -0.59%, viol 0
-  M2-4T 2 GB mobile      oracle          compute  52.43 min, +reload a  63.67, gap compute  +0.00%, gap a  +0.00%, viol 0
-  M2-4T 2 GB mobile      fixed_per_class compute  52.43 min, +reload a  63.67, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-4T 2 GB mobile      adaptive        compute  53.25 min, +reload a  64.35, gap compute  +0.52%, gap a  +0.43%, viol 0
+  M2-4T 2 GB mobile      switch_a        compute  53.84 min, +reload a  63.78, gap compute  +1.65%, gap a  -0.47%, viol 0
+  M2-4T 2 GB mobile      oracle          compute  52.97 min, +reload a  64.08, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-4T 2 GB mobile      fixed_per_class compute  52.97 min, +reload a  64.08, gap compute  +0.00%, gap a  +0.00%, viol 0
   M2-4T 2 GB mobile      all_on_client   infeasible
-  M2-4T 2 GB server_load adaptive        compute  51.03 min, +reload a  62.12, gap compute  +0.42%, gap a  +0.33%, viol 0
-  M2-4T 2 GB server_load switch_a        compute  51.18 min, +reload a  61.35, gap compute  +0.70%, gap a  -0.91%, viol 0
-  M2-4T 2 GB server_load oracle          compute  50.82 min, +reload a  61.92, gap compute  +0.00%, gap a  +0.00%, viol 0
-  M2-4T 2 GB server_load fixed_per_class compute  51.33 min, +reload a  62.56, gap compute  +1.00%, gap a  +1.04%, viol 0
+  M2-4T 2 GB server_load adaptive        compute  51.33 min, +reload a  62.34, gap compute  +0.42%, gap a  +0.33%, viol 0
+  M2-4T 2 GB server_load switch_a        compute  51.47 min, +reload a  61.57, gap compute  +0.69%, gap a  -0.91%, viol 0
+  M2-4T 2 GB server_load oracle          compute  51.12 min, +reload a  62.14, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-4T 2 GB server_load fixed_per_class compute  51.44 min, +reload a  62.55, gap compute  +0.63%, gap a  +0.66%, viol 0
   M2-4T 2 GB server_load all_on_client   infeasible
-  M2-4T 3 GB mobile      adaptive        compute  25.10 min, +reload a  32.68, gap compute  +1.60%, gap a  -0.08%, viol 0
-  M2-4T 3 GB mobile      switch_a        compute  26.93 min, +reload a  32.04, gap compute  +9.01%, gap a  -2.04%, viol 0
-  M2-4T 3 GB mobile      oracle          compute  24.71 min, +reload a  32.70, gap compute  +0.00%, gap a  +0.00%, viol 0
-  M2-4T 3 GB mobile      fixed_per_class compute  25.31 min, +reload a  31.91, gap compute  +2.43%, gap a  -2.44%, viol 0
-  M2-4T 3 GB mobile      all_on_client   compute  33.37 min, +reload a  33.42, gap compute +35.07%, gap a  +2.19%, viol 0
-  M2-4T 3 GB server_load adaptive        compute  27.79 min, +reload a  32.45, gap compute  +2.00%, gap a  +2.60%, viol 0
-  M2-4T 3 GB server_load switch_a        compute  28.39 min, +reload a  32.35, gap compute  +4.18%, gap a  +2.29%, viol 0
-  M2-4T 3 GB server_load oracle          compute  27.25 min, +reload a  31.63, gap compute  +0.00%, gap a  +0.00%, viol 0
-  M2-4T 3 GB server_load fixed_per_class compute  29.96 min, +reload a  36.56, gap compute  +9.96%, gap a +15.59%, viol 0
-  M2-4T 3 GB server_load all_on_client   compute  33.37 min, +reload a  33.42, gap compute +22.48%, gap a  +5.67%, viol 0
-  M2-4T 4 GB mobile      adaptive        compute  25.10 min, +reload a  32.68, gap compute  +1.60%, gap a  -0.08%, viol 0
-  M2-4T 4 GB mobile      switch_a        compute  26.93 min, +reload a  32.04, gap compute  +9.01%, gap a  -2.04%, viol 0
-  M2-4T 4 GB mobile      oracle          compute  24.71 min, +reload a  32.70, gap compute  +0.00%, gap a  +0.00%, viol 0
-  M2-4T 4 GB mobile      fixed_per_class compute  25.31 min, +reload a  31.91, gap compute  +2.43%, gap a  -2.44%, viol 0
-  M2-4T 4 GB mobile      all_on_client   compute  33.37 min, +reload a  33.42, gap compute +35.07%, gap a  +2.19%, viol 0
-  M2-4T 4 GB server_load adaptive        compute  27.79 min, +reload a  32.45, gap compute  +2.00%, gap a  +2.60%, viol 0
-  M2-4T 4 GB server_load switch_a        compute  28.39 min, +reload a  32.35, gap compute  +4.18%, gap a  +2.29%, viol 0
-  M2-4T 4 GB server_load oracle          compute  27.25 min, +reload a  31.63, gap compute  +0.00%, gap a  +0.00%, viol 0
-  M2-4T 4 GB server_load fixed_per_class compute  29.96 min, +reload a  36.56, gap compute  +9.96%, gap a +15.59%, viol 0
-  M2-4T 4 GB server_load all_on_client   compute  33.37 min, +reload a  33.42, gap compute +22.48%, gap a  +5.67%, viol 0
-  M2-2T 2 GB mobile      adaptive        compute  53.95 min, +reload a  65.18, gap compute  +0.52%, gap a  +0.43%, viol 0
-  M2-2T 2 GB mobile      switch_a        compute  54.69 min, +reload a  64.72, gap compute  +1.90%, gap a  -0.27%, viol 0
-  M2-2T 2 GB mobile      oracle          compute  53.67 min, +reload a  64.90, gap compute  +0.00%, gap a  +0.00%, viol 0
-  M2-2T 2 GB mobile      fixed_per_class compute  53.67 min, +reload a  64.90, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-4T 3 GB mobile      adaptive        compute  53.25 min, +reload a  64.35, gap compute  +0.52%, gap a  +0.43%, viol 0
+  M2-4T 3 GB mobile      switch_a        compute  53.84 min, +reload a  63.78, gap compute  +1.65%, gap a  -0.47%, viol 0
+  M2-4T 3 GB mobile      oracle          compute  52.97 min, +reload a  64.08, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-4T 3 GB mobile      fixed_per_class compute  52.97 min, +reload a  64.08, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-4T 3 GB mobile      all_on_client   compute  33.37 min, +reload a  33.42, gap compute -37.00%, gap a -47.84%, viol 0
+  M2-4T 3 GB server_load adaptive        compute  50.77 min, +reload a  61.62, gap compute  +0.46%, gap a  +0.34%, viol 0
+  M2-4T 3 GB server_load switch_a        compute  51.14 min, +reload a  61.06, gap compute  +1.17%, gap a  -0.57%, viol 0
+  M2-4T 3 GB server_load oracle          compute  50.54 min, +reload a  61.41, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-4T 3 GB server_load fixed_per_class compute  51.44 min, +reload a  62.55, gap compute  +1.78%, gap a  +1.84%, viol 0
+  M2-4T 3 GB server_load all_on_client   compute  33.37 min, +reload a  33.42, gap compute -33.98%, gap a -45.58%, viol 0
+  M2-4T 4 GB mobile      adaptive        compute  53.25 min, +reload a  64.35, gap compute  +0.52%, gap a  +0.43%, viol 0
+  M2-4T 4 GB mobile      switch_a        compute  53.84 min, +reload a  63.78, gap compute  +1.65%, gap a  -0.47%, viol 0
+  M2-4T 4 GB mobile      oracle          compute  52.97 min, +reload a  64.08, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-4T 4 GB mobile      fixed_per_class compute  52.97 min, +reload a  64.08, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-4T 4 GB mobile      all_on_client   compute  33.37 min, +reload a  33.42, gap compute -37.00%, gap a -47.84%, viol 0
+  M2-4T 4 GB server_load adaptive        compute  50.77 min, +reload a  61.62, gap compute  +0.46%, gap a  +0.34%, viol 0
+  M2-4T 4 GB server_load switch_a        compute  51.14 min, +reload a  61.06, gap compute  +1.17%, gap a  -0.57%, viol 0
+  M2-4T 4 GB server_load oracle          compute  50.54 min, +reload a  61.41, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-4T 4 GB server_load fixed_per_class compute  51.44 min, +reload a  62.55, gap compute  +1.78%, gap a  +1.84%, viol 0
+  M2-4T 4 GB server_load all_on_client   compute  33.37 min, +reload a  33.42, gap compute -33.98%, gap a -45.58%, viol 0
+  M2-2T 2 GB mobile      adaptive        compute  54.70 min, +reload a  65.80, gap compute  +0.51%, gap a  +0.42%, viol 0
+  M2-2T 2 GB mobile      switch_a        compute  55.05 min, +reload a  65.21, gap compute  +1.16%, gap a  -0.48%, viol 0
+  M2-2T 2 GB mobile      oracle          compute  54.42 min, +reload a  65.53, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-2T 2 GB mobile      fixed_per_class compute  54.42 min, +reload a  65.53, gap compute  +0.00%, gap a  +0.00%, viol 0
   M2-2T 2 GB mobile      all_on_client   infeasible
-  M2-2T 2 GB server_load adaptive        compute  52.49 min, +reload a  64.05, gap compute  +0.44%, gap a  +0.54%, viol 0
-  M2-2T 2 GB server_load switch_a        compute  52.71 min, +reload a  62.90, gap compute  +0.87%, gap a  -1.26%, viol 0
-  M2-2T 2 GB server_load oracle          compute  52.26 min, +reload a  63.70, gap compute  +0.00%, gap a  +0.00%, viol 0
-  M2-2T 2 GB server_load fixed_per_class compute  52.57 min, +reload a  63.80, gap compute  +0.59%, gap a  +0.15%, viol 0
+  M2-2T 2 GB server_load adaptive        compute  52.92 min, +reload a  64.03, gap compute  +0.42%, gap a  +0.45%, viol 0
+  M2-2T 2 GB server_load switch_a        compute  53.13 min, +reload a  63.24, gap compute  +0.82%, gap a  -0.80%, viol 0
+  M2-2T 2 GB server_load oracle          compute  52.70 min, +reload a  63.75, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-2T 2 GB server_load fixed_per_class compute  52.89 min, +reload a  64.00, gap compute  +0.37%, gap a  +0.39%, viol 0
   M2-2T 2 GB server_load all_on_client   infeasible
-  M2-2T 3 GB mobile      adaptive        compute  28.98 min, +reload a  37.25, gap compute  +1.46%, gap a  +0.99%, viol 0
-  M2-2T 3 GB mobile      switch_a        compute  30.70 min, +reload a  36.82, gap compute  +7.50%, gap a  -0.17%, viol 0
-  M2-2T 3 GB mobile      oracle          compute  28.56 min, +reload a  36.88, gap compute  +0.00%, gap a  +0.00%, viol 0
-  M2-2T 3 GB mobile      fixed_per_class compute  30.53 min, +reload a  37.12, gap compute  +6.90%, gap a  +0.67%, viol 0
-  M2-2T 3 GB mobile      all_on_client   compute  42.45 min, +reload a  42.50, gap compute +48.64%, gap a +15.24%, viol 0
-  M2-2T 3 GB server_load adaptive        compute  33.66 min, +reload a  38.84, gap compute  +1.20%, gap a  +1.78%, viol 0
-  M2-2T 3 GB server_load switch_a        compute  33.90 min, +reload a  38.06, gap compute  +1.92%, gap a  -0.27%, viol 0
-  M2-2T 3 GB server_load oracle          compute  33.26 min, +reload a  38.16, gap compute  +0.00%, gap a  +0.00%, viol 0
-  M2-2T 3 GB server_load fixed_per_class compute  35.18 min, +reload a  41.78, gap compute  +5.77%, gap a  +9.48%, viol 0
-  M2-2T 3 GB server_load all_on_client   compute  42.45 min, +reload a  42.50, gap compute +27.62%, gap a +11.37%, viol 0
-  M2-2T 4 GB mobile      adaptive        compute  28.98 min, +reload a  37.25, gap compute  +1.46%, gap a  +0.99%, viol 0
-  M2-2T 4 GB mobile      switch_a        compute  30.70 min, +reload a  36.82, gap compute  +7.50%, gap a  -0.17%, viol 0
-  M2-2T 4 GB mobile      oracle          compute  28.56 min, +reload a  36.88, gap compute  +0.00%, gap a  +0.00%, viol 0
-  M2-2T 4 GB mobile      fixed_per_class compute  30.53 min, +reload a  37.12, gap compute  +6.90%, gap a  +0.67%, viol 0
-  M2-2T 4 GB mobile      all_on_client   compute  42.45 min, +reload a  42.50, gap compute +48.64%, gap a +15.24%, viol 0
-  M2-2T 4 GB server_load adaptive        compute  33.66 min, +reload a  38.84, gap compute  +1.20%, gap a  +1.78%, viol 0
-  M2-2T 4 GB server_load switch_a        compute  33.90 min, +reload a  38.06, gap compute  +1.92%, gap a  -0.27%, viol 0
-  M2-2T 4 GB server_load oracle          compute  33.26 min, +reload a  38.16, gap compute  +0.00%, gap a  +0.00%, viol 0
-  M2-2T 4 GB server_load fixed_per_class compute  35.18 min, +reload a  41.78, gap compute  +5.77%, gap a  +9.48%, viol 0
-  M2-2T 4 GB server_load all_on_client   compute  42.45 min, +reload a  42.50, gap compute +27.62%, gap a +11.37%, viol 0
-  M2-1T 2 GB mobile      adaptive        compute  57.12 min, +reload a  68.35, gap compute  +0.49%, gap a  +0.41%, viol 0
-  M2-1T 2 GB mobile      switch_a        compute  57.66 min, +reload a  67.95, gap compute  +1.43%, gap a  -0.19%, viol 0
-  M2-1T 2 GB mobile      oracle          compute  56.84 min, +reload a  68.08, gap compute  +0.00%, gap a  +0.00%, viol 0
-  M2-1T 2 GB mobile      fixed_per_class compute  56.84 min, +reload a  68.08, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-2T 3 GB mobile      adaptive        compute  54.70 min, +reload a  65.80, gap compute  +0.51%, gap a  +0.42%, viol 0
+  M2-2T 3 GB mobile      switch_a        compute  55.05 min, +reload a  65.21, gap compute  +1.16%, gap a  -0.48%, viol 0
+  M2-2T 3 GB mobile      oracle          compute  54.42 min, +reload a  65.53, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-2T 3 GB mobile      fixed_per_class compute  54.42 min, +reload a  65.53, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-2T 3 GB mobile      all_on_client   compute  42.45 min, +reload a  42.50, gap compute -22.00%, gap a -35.14%, viol 0
+  M2-2T 3 GB server_load adaptive        compute  52.60 min, +reload a  63.61, gap compute  +0.48%, gap a  +0.48%, viol 0
+  M2-2T 3 GB server_load switch_a        compute  52.94 min, +reload a  62.93, gap compute  +1.12%, gap a  -0.59%, viol 0
+  M2-2T 3 GB server_load oracle          compute  52.35 min, +reload a  63.30, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-2T 3 GB server_load fixed_per_class compute  52.89 min, +reload a  64.00, gap compute  +1.04%, gap a  +1.10%, viol 0
+  M2-2T 3 GB server_load all_on_client   compute  42.45 min, +reload a  42.50, gap compute -18.91%, gap a -32.87%, viol 0
+  M2-2T 4 GB mobile      adaptive        compute  54.70 min, +reload a  65.80, gap compute  +0.51%, gap a  +0.42%, viol 0
+  M2-2T 4 GB mobile      switch_a        compute  55.05 min, +reload a  65.21, gap compute  +1.16%, gap a  -0.48%, viol 0
+  M2-2T 4 GB mobile      oracle          compute  54.42 min, +reload a  65.53, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-2T 4 GB mobile      fixed_per_class compute  54.42 min, +reload a  65.53, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-2T 4 GB mobile      all_on_client   compute  42.45 min, +reload a  42.50, gap compute -22.00%, gap a -35.14%, viol 0
+  M2-2T 4 GB server_load adaptive        compute  52.60 min, +reload a  63.61, gap compute  +0.48%, gap a  +0.48%, viol 0
+  M2-2T 4 GB server_load switch_a        compute  52.94 min, +reload a  62.93, gap compute  +1.12%, gap a  -0.59%, viol 0
+  M2-2T 4 GB server_load oracle          compute  52.35 min, +reload a  63.30, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-2T 4 GB server_load fixed_per_class compute  52.89 min, +reload a  64.00, gap compute  +1.04%, gap a  +1.10%, viol 0
+  M2-2T 4 GB server_load all_on_client   compute  42.45 min, +reload a  42.50, gap compute -18.91%, gap a -32.87%, viol 0
+  M2-1T 2 GB mobile      adaptive        compute  58.32 min, +reload a  69.43, gap compute  +0.48%, gap a  +0.40%, viol 0
+  M2-1T 2 GB mobile      switch_a        compute  58.78 min, +reload a  68.94, gap compute  +1.27%, gap a  -0.30%, viol 0
+  M2-1T 2 GB mobile      oracle          compute  58.05 min, +reload a  69.15, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-1T 2 GB mobile      fixed_per_class compute  58.05 min, +reload a  69.15, gap compute  +0.00%, gap a  +0.00%, viol 0
   M2-1T 2 GB mobile      all_on_client   infeasible
-  M2-1T 2 GB server_load adaptive        compute  55.79 min, +reload a  67.31, gap compute  +0.41%, gap a  +0.30%, viol 0
-  M2-1T 2 GB server_load switch_a        compute  56.21 min, +reload a  66.44, gap compute  +1.16%, gap a  -1.00%, viol 0
-  M2-1T 2 GB server_load oracle          compute  55.57 min, +reload a  67.11, gap compute  +0.00%, gap a  +0.00%, viol 0
-  M2-1T 2 GB server_load fixed_per_class compute  55.72 min, +reload a  66.95, gap compute  +0.28%, gap a  -0.23%, viol 0
+  M2-1T 2 GB server_load adaptive        compute  56.62 min, +reload a  67.80, gap compute  +0.40%, gap a  +0.29%, viol 0
+  M2-1T 2 GB server_load switch_a        compute  56.99 min, +reload a  67.11, gap compute  +1.05%, gap a  -0.73%, viol 0
+  M2-1T 2 GB server_load oracle          compute  56.40 min, +reload a  67.61, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-1T 2 GB server_load fixed_per_class compute  56.49 min, +reload a  67.60, gap compute  +0.17%, gap a  -0.02%, viol 0
   M2-1T 2 GB server_load all_on_client   infeasible
-  M2-1T 3 GB mobile      adaptive        compute  36.01 min, +reload a  45.20, gap compute  +1.54%, gap a  +0.78%, viol 0
-  M2-1T 3 GB mobile      switch_a        compute  36.79 min, +reload a  44.69, gap compute  +3.74%, gap a  -0.35%, viol 0
-  M2-1T 3 GB mobile      oracle          compute  35.46 min, +reload a  44.85, gap compute  +0.00%, gap a  +0.00%, viol 0
-  M2-1T 3 GB mobile      fixed_per_class compute  48.53 min, +reload a  57.62, gap compute +36.87%, gap a +28.48%, viol 0
-  M2-1T 3 GB mobile      all_on_client   compute  61.76 min, +reload a  61.81, gap compute +74.17%, gap a +37.81%, viol 0
-  M2-1T 3 GB server_load adaptive        compute  43.96 min, +reload a  51.59, gap compute  +1.04%, gap a  +0.81%, viol 0
-  M2-1T 3 GB server_load switch_a        compute  44.60 min, +reload a  50.39, gap compute  +2.50%, gap a  -1.55%, viol 0
-  M2-1T 3 GB server_load oracle          compute  43.51 min, +reload a  51.18, gap compute  +0.00%, gap a  +0.00%, viol 0
-  M2-1T 3 GB server_load fixed_per_class compute  49.75 min, +reload a  58.84, gap compute +14.35%, gap a +14.97%, viol 0
-  M2-1T 3 GB server_load all_on_client   compute  61.76 min, +reload a  61.81, gap compute +41.94%, gap a +20.76%, viol 0
-  M2-1T 4 GB mobile      adaptive        compute  36.01 min, +reload a  45.20, gap compute  +1.54%, gap a  +0.78%, viol 0
-  M2-1T 4 GB mobile      switch_a        compute  36.79 min, +reload a  44.69, gap compute  +3.74%, gap a  -0.35%, viol 0
-  M2-1T 4 GB mobile      oracle          compute  35.46 min, +reload a  44.85, gap compute  +0.00%, gap a  +0.00%, viol 0
-  M2-1T 4 GB mobile      fixed_per_class compute  48.53 min, +reload a  57.62, gap compute +36.87%, gap a +28.48%, viol 0
-  M2-1T 4 GB mobile      all_on_client   compute  61.76 min, +reload a  61.81, gap compute +74.17%, gap a +37.81%, viol 0
-  M2-1T 4 GB server_load adaptive        compute  43.96 min, +reload a  51.59, gap compute  +1.04%, gap a  +0.81%, viol 0
-  M2-1T 4 GB server_load switch_a        compute  44.60 min, +reload a  50.39, gap compute  +2.50%, gap a  -1.55%, viol 0
-  M2-1T 4 GB server_load oracle          compute  43.51 min, +reload a  51.18, gap compute  +0.00%, gap a  +0.00%, viol 0
-  M2-1T 4 GB server_load fixed_per_class compute  49.75 min, +reload a  58.84, gap compute +14.35%, gap a +14.97%, viol 0
-  M2-1T 4 GB server_load all_on_client   compute  61.76 min, +reload a  61.81, gap compute +41.94%, gap a +20.76%, viol 0
+  M2-1T 3 GB mobile      adaptive        compute  58.32 min, +reload a  69.43, gap compute  +0.48%, gap a  +0.40%, viol 0
+  M2-1T 3 GB mobile      switch_a        compute  58.78 min, +reload a  68.94, gap compute  +1.27%, gap a  -0.30%, viol 0
+  M2-1T 3 GB mobile      oracle          compute  58.05 min, +reload a  69.15, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-1T 3 GB mobile      fixed_per_class compute  58.05 min, +reload a  69.15, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-1T 3 GB mobile      all_on_client   compute  61.76 min, +reload a  61.81, gap compute  +6.39%, gap a -10.62%, viol 0
+  M2-1T 3 GB server_load adaptive        compute  56.49 min, +reload a  67.59, gap compute  +0.46%, gap a  +0.32%, viol 0
+  M2-1T 3 GB server_load switch_a        compute  56.92 min, +reload a  66.97, gap compute  +1.23%, gap a  -0.60%, viol 0
+  M2-1T 3 GB server_load oracle          compute  56.23 min, +reload a  67.37, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-1T 3 GB server_load fixed_per_class compute  56.49 min, +reload a  67.60, gap compute  +0.47%, gap a  +0.34%, viol 0
+  M2-1T 3 GB server_load all_on_client   compute  61.76 min, +reload a  61.81, gap compute  +9.84%, gap a  -8.26%, viol 0
+  M2-1T 4 GB mobile      adaptive        compute  58.32 min, +reload a  69.43, gap compute  +0.48%, gap a  +0.40%, viol 0
+  M2-1T 4 GB mobile      switch_a        compute  58.78 min, +reload a  68.94, gap compute  +1.27%, gap a  -0.30%, viol 0
+  M2-1T 4 GB mobile      oracle          compute  58.05 min, +reload a  69.15, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-1T 4 GB mobile      fixed_per_class compute  58.05 min, +reload a  69.15, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-1T 4 GB mobile      all_on_client   compute  61.76 min, +reload a  61.81, gap compute  +6.39%, gap a -10.62%, viol 0
+  M2-1T 4 GB server_load adaptive        compute  56.49 min, +reload a  67.59, gap compute  +0.46%, gap a  +0.32%, viol 0
+  M2-1T 4 GB server_load switch_a        compute  56.92 min, +reload a  66.97, gap compute  +1.23%, gap a  -0.60%, viol 0
+  M2-1T 4 GB server_load oracle          compute  56.23 min, +reload a  67.37, gap compute  +0.00%, gap a  +0.00%, viol 0
+  M2-1T 4 GB server_load fixed_per_class compute  56.49 min, +reload a  67.60, gap compute  +0.47%, gap a  +0.34%, viol 0
+  M2-1T 4 GB server_load all_on_client   compute  61.76 min, +reload a  61.81, gap compute  +9.84%, gap a  -8.26%, viol 0

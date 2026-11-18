@@ -3,6 +3,15 @@
 All leakage/quality numbers are MEASURED on Llama-3.2-1B-Instruct (Colab T4). All latency numbers are
 MODELLED (assumed speeds). Leakage = content leakage (see README.md, Definitions). Raw files are in `results/`.
 
+RULE VERSIONS OF THE CONTROLLER (to avoid mixing them in the paper). CURRENT rule (18 Nov 2026, §9l; use this in the
+paper): all on client is not a candidate (reference baseline only); prompt leakage robust to training variance;
+answer leakage = robust teacher-forced value + generated-answer gap (task 5a). SUPERSEDED (earlier rules; kept as
+the record, NOT for the paper): §6 "earlier table", §9c–§9k (all on client a candidate; teacher-forced proxy without gap;
+mean check up to 9g, robust check from 9h), `step5_per_request/task4_summary_v1.csv` (14 Nov), and the MEASURED
+real-runtime trace of §9d / Figure 5 (`runtime/check_out/task4_real_trace.csv`, decisions taken under the 14–15 Nov
+rule; to be rerun, README.md, Split runtime). Files `*_meancheck*` (step5_per_request): EARLIER RULE (proxy without gap, seed
+means), NOT USED IN THE PAPER.
+
 ## 1. Baselines and split latency (modelled, 20 tasks, prompts 32–512, answers 128)
 
 | Configuration | Latency | Prompt leak | Answer leak |
@@ -109,13 +118,20 @@ Findings: prompt hiding needs H ≥ 4 (H = 1 hides nothing); H = 6 and H = 8 rea
 
 Step 3c (20 tasks, 2 GB): prompt ≤ 80%, answer ≤ 50%, quality ≥ 75% → H=4, T=2, λa=0.03, 15.5 min (old (4,2) data).
 
-Step 5 per request (256-token prompt, 4G), ASSUMED model; rechecked after task 1 with the current-script table (7 splits): unchanged.
+Step 5 per request (256-token prompt, 4G), ASSUMED model (MODELLED), CURRENT rule (18 Nov 2026; regenerated with
+`python per_request_controller.py` -> step5_decision_table.csv, step5_summary.csv, step5_*.png, step5_run_log.txt):
 
 | Device (assumed) | Open | Private answer | Private prompt | Prompt + answer |
 |---|---|---|---|---|
-| Phone 2 GB | server 0.9 s | H=1,T=1 λa=0.1, 40.9 s | H=4 secret head λp=0.2, 60.2 s | H=4,T=2 λa=0.03, 79.4 s |
-| Laptop 4 GB | server 0.9 s | H=1,T=1 λa=0.1, 16.2 s | H=4 secret head λp=0.2, 21.0 s | H=4,T=2 λa=0.03, 25.7 s |
-| Edge 8 GB | server 0.9 s | all on client 8.2 s | all on client 8.2 s | all on client 8.2 s |
+| Phone 2 GB | server 0.9 s | infeasible | H=4 secret head λp=0.2, 60.2 s | infeasible |
+| Laptop 4 GB | server 0.9 s | infeasible | H=4 secret head λp=0.2, 21.0 s | infeasible |
+| Edge 8 GB | server 0.9 s | infeasible | H=4 secret head λp=0.2, 10.5 s | infeasible |
+
+SUPERSEDED earlier table (all on client a candidate, teacher-forced proxy; rechecked after task 1, not for the paper):
+Phone 2 GB: server 0.9 s | H=1,T=1 λa=0.1, 40.9 s | H=4 secret head λp=0.2, 60.2 s | H=4,T=2 λa=0.03, 79.4 s;
+Laptop 4 GB: server 0.9 s | H=1,T=1 λa=0.1, 16.2 s | H=4 secret head λp=0.2, 21.0 s | H=4,T=2 λa=0.03, 25.7 s;
+Edge 8 GB: server 0.9 s | all on client 8.2 s (private answer, private prompt, prompt + answer).
+Step 3c line above: SUPERSEDED (older optimiser, older (4,2) data, all on client a candidate).
 
 Earlier stream result (batch A data only): laptop on a mobile trace 55.8 min (per request) vs 66.9 min
 (fixed per class) for 200 requests; equal on a stable network; phone gains nothing. Superseded by §9 (calibrated model) and §9g (rerun after task 1).
@@ -395,7 +411,7 @@ all three. Memory budgets cannot be measured on one 8 GB machine and are assumpt
 
 ### 9c. Policies in the calibrated model (MODELLED; 200 requests, A = 128; 20 noise seeds for estimating policies)
 
-Mean-based privacy check (before 15 Nov 2026; files *_meancheck). Robust check: see 9h.
+Mean-based privacy check (before 15 Nov 2026; files *_meancheck: earlier rule (proxy without gap), not used in the paper). Robust check: see 9h.
 
 Total latency [min] (gap to the oracle). Estimator: EWMA α = 0.3, ±3% observation noise, prior = nominal 4G.
 
@@ -451,7 +467,7 @@ client and server machines the server would not need to reload; switching cost i
 
 ### 9e. Calibration impact: assumed vs calibrated decisions (MODELLED, A = 128)
 
-Mean-based privacy check (before 15 Nov 2026; files *_meancheck). Robust check: see 9h.
+Mean-based privacy check (before 15 Nov 2026; files *_meancheck: earlier rule (proxy without gap), not used in the paper). Robust check: see 9h.
 
 Grid: 5 prompt lengths x 3 networks (Wi-Fi/4G/poor) x server share {1, 0.25} = 30 points per class; traces = the
 three 200-request traces (true conditions). Assumed counterpart by memory budget.
@@ -799,7 +815,7 @@ the network changes no decision on any profile (mobile trace: 0 requests adapted
 Calibration impact (Figure 6): trace decisions that change between the assumed and the calibrated model: M2-4T 14/600
 (2.3%; was 125/600), M2-2T 10, M2-1T 6, assumed edge 11, assumed phone 0 — all in private prompt (secret head T = 0 ->
 T = 4 or T = 11). The robust and the mean-based check now give the same calibration impact.
-Mean-based check (proxy, no gap, raw seed means; comparison only): private answer -> (2,2) λa = 0.03 and private
+Mean-based check (files *_meancheck: earlier rule (proxy without gap), not used in the paper; raw seed means; comparison only): private answer -> (2,2) λa = 0.03 and private
 prompt+answer -> (4,2) λa = 0.03 on every profile (126 and 108 requests over 3 traces).
 Real-runtime trace under these rules (9d setup: M2-4T, 30-request mobile trace, A = 64, 3 repeats x 3 policies): a
 run started 18 Nov 2026 15:07 was ABORTED at 15:18 by decision (in repeat 3, adaptive policy, request 20; 201 of 270

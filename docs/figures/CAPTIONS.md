@@ -50,7 +50,8 @@ reloading model weights when the configuration changes (on this single-machine t
 8 GB, so client and server reload). Error bars: ± 1 standard deviation of the total over the 3 repeats. Diamonds:
 predicted total (MODELLED: calibrated latency model + FITTED reload model). Switching-aware 208.4 ± 2.3 s, fixed per class
 216.6 ± 10.9 s, adaptive 238.1 ± 16.3 s; the difference between switching-aware and fixed per class lies within the
-run-to-run spread of fixed per class. `runtime/check_out/task4_real_trace.csv`.
+run-to-run spread of fixed per class. `runtime/check_out/task4_real_trace.csv`. SUPERSEDED: these decisions were taken under the earlier controller rule (all on client a candidate,
+teacher-forced answer leakage); to be replaced by the rerun under the current rule (RESULTS_SUMMARY 9l, README.md, Split runtime).
 
 **Figure 6 — Calibration impact: decisions that change between the assumed and the calibrated model**
 (`fig6_calibration_impact.png`). Share of per-request decisions (split, protection) of the controller that differ

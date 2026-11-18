@@ -1,0 +1,25 @@
+network,device,policy,total_latency_min,requests_not_served
+stable,"Phone (2 GB, 5 GFLOP/s)",adaptive,48.49,78
+stable,"Phone (2 GB, 5 GFLOP/s)",fixed_per_class,48.49,78
+stable,"Phone (2 GB, 5 GFLOP/s)",all_local,0.0,200
+stable,"Phone (2 GB, 5 GFLOP/s)",all_cloud,2.71,118
+stable,"Laptop (4 GB, 20 GFLOP/s)",adaptive,19.93,78
+stable,"Laptop (4 GB, 20 GFLOP/s)",fixed_per_class,19.93,78
+stable,"Laptop (4 GB, 20 GFLOP/s)",all_local,144.54,0
+stable,"Laptop (4 GB, 20 GFLOP/s)",all_cloud,2.71,118
+stable,"Edge box (8 GB, 100 GFLOP/s)",adaptive,12.32,78
+stable,"Edge box (8 GB, 100 GFLOP/s)",fixed_per_class,12.32,78
+stable,"Edge box (8 GB, 100 GFLOP/s)",all_local,28.91,0
+stable,"Edge box (8 GB, 100 GFLOP/s)",all_cloud,2.71,118
+mobile,"Phone (2 GB, 5 GFLOP/s)",adaptive,51.83,78
+mobile,"Phone (2 GB, 5 GFLOP/s)",fixed_per_class,51.83,78
+mobile,"Phone (2 GB, 5 GFLOP/s)",all_local,0.0,200
+mobile,"Phone (2 GB, 5 GFLOP/s)",all_cloud,2.73,118
+mobile,"Laptop (4 GB, 20 GFLOP/s)",adaptive,23.27,78
+mobile,"Laptop (4 GB, 20 GFLOP/s)",fixed_per_class,23.27,78
+mobile,"Laptop (4 GB, 20 GFLOP/s)",all_local,144.54,0
+mobile,"Laptop (4 GB, 20 GFLOP/s)",all_cloud,2.73,118
+mobile,"Edge box (8 GB, 100 GFLOP/s)",adaptive,15.65,78
+mobile,"Edge box (8 GB, 100 GFLOP/s)",fixed_per_class,15.65,78
+mobile,"Edge box (8 GB, 100 GFLOP/s)",all_local,28.91,0
+mobile,"Edge box (8 GB, 100 GFLOP/s)",all_cloud,2.73,118

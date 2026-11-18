@@ -1,0 +1,44 @@
+Secret head+tail measured at 7 split(s): [(1, 1), (2, 1), (2, 2), (4, 1), (4, 2), (6, 2), (8, 2)]  (28 new entries loaded)
+
+Decision for one request (prompt 256 tokens, answer 128) at 20/50 Mbit/s, RTT 50 ms:
+   Phone (2 GB, 5 GFLOP/s)        Open                   -> All on server                      0.9 s
+   Phone (2 GB, 5 GFLOP/s)        Private answer         -> infeasible                         -
+   Phone (2 GB, 5 GFLOP/s)        Private prompt         -> H=4, T=0, secret head λp=0.2       60.2 s
+   Phone (2 GB, 5 GFLOP/s)        Private prompt+answer  -> infeasible                         -
+   Laptop (4 GB, 20 GFLOP/s)      Open                   -> All on server                      0.9 s
+   Laptop (4 GB, 20 GFLOP/s)      Private answer         -> infeasible                         -
+   Laptop (4 GB, 20 GFLOP/s)      Private prompt         -> H=4, T=0, secret head λp=0.2       21.0 s
+   Laptop (4 GB, 20 GFLOP/s)      Private prompt+answer  -> infeasible                         -
+   Edge box (8 GB, 100 GFLOP/s)   Open                   -> All on server                      0.9 s
+   Edge box (8 GB, 100 GFLOP/s)   Private answer         -> infeasible                         -
+   Edge box (8 GB, 100 GFLOP/s)   Private prompt         -> H=4, T=0, secret head λp=0.2       10.5 s
+   Edge box (8 GB, 100 GFLOP/s)   Private prompt+answer  -> infeasible                         -
+
+Streams of 200 requests (mix {'open': 0.4, 'answer': 0.2, 'prompt': 0.2, 'both': 0.2}):
+   'not served' = the policy breaks the request's privacy/quality limit or does not fit in memory
+   stable  Phone (2 GB, 5 GFLOP/s)        adaptive         total   48.49 min, not served  78
+   stable  Phone (2 GB, 5 GFLOP/s)        fixed_per_class  total   48.49 min, not served  78
+   stable  Phone (2 GB, 5 GFLOP/s)        all_local        total    0.00 min, not served 200
+   stable  Phone (2 GB, 5 GFLOP/s)        all_cloud        total    2.71 min, not served 118
+   stable  Laptop (4 GB, 20 GFLOP/s)      adaptive         total   19.93 min, not served  78
+   stable  Laptop (4 GB, 20 GFLOP/s)      fixed_per_class  total   19.93 min, not served  78
+   stable  Laptop (4 GB, 20 GFLOP/s)      all_local        total  144.54 min, not served   0
+   stable  Laptop (4 GB, 20 GFLOP/s)      all_cloud        total    2.71 min, not served 118
+   stable  Edge box (8 GB, 100 GFLOP/s)   adaptive         total   12.32 min, not served  78
+   stable  Edge box (8 GB, 100 GFLOP/s)   fixed_per_class  total   12.32 min, not served  78
+   stable  Edge box (8 GB, 100 GFLOP/s)   all_local        total   28.91 min, not served   0
+   stable  Edge box (8 GB, 100 GFLOP/s)   all_cloud        total    2.71 min, not served 118
+   mobile  Phone (2 GB, 5 GFLOP/s)        adaptive         total   51.83 min, not served  78
+   mobile  Phone (2 GB, 5 GFLOP/s)        fixed_per_class  total   51.83 min, not served  78
+   mobile  Phone (2 GB, 5 GFLOP/s)        all_local        total    0.00 min, not served 200
+   mobile  Phone (2 GB, 5 GFLOP/s)        all_cloud        total    2.73 min, not served 118
+   mobile  Laptop (4 GB, 20 GFLOP/s)      adaptive         total   23.27 min, not served  78
+   mobile  Laptop (4 GB, 20 GFLOP/s)      fixed_per_class  total   23.27 min, not served  78
+   mobile  Laptop (4 GB, 20 GFLOP/s)      all_local        total  144.54 min, not served   0
+   mobile  Laptop (4 GB, 20 GFLOP/s)      all_cloud        total    2.73 min, not served 118
+   mobile  Edge box (8 GB, 100 GFLOP/s)   adaptive         total   15.65 min, not served  78
+   mobile  Edge box (8 GB, 100 GFLOP/s)   fixed_per_class  total   15.65 min, not served  78
+   mobile  Edge box (8 GB, 100 GFLOP/s)   all_local        total   28.91 min, not served   0
+   mobile  Edge box (8 GB, 100 GFLOP/s)   all_cloud        total    2.73 min, not served 118
+
+Saved to ~/adaptive-split-llm/step5_per_request/: step5_decision_table.csv, step5_decision_maps.png, step5_request_stream.png, step5_devices.png, step5_stream.csv, step5_summary.csv
