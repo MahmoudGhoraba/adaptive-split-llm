@@ -42,16 +42,19 @@ adapters). Right: server process on the GPU (U = 16 − H − T layers); the MPS
 1 GiB heaps, so the footprint grows in steps (2.57–2.58 GB for U ≥ 10, 1.45–1.49 GB for U ≤ 8) rather than with the
 layer count; measured is 1.49–2.08 × the model. Dotted lines: 1 GiB and 2 GiB. Task 3, `task3_fit.json`.
 
-**Figure 5 — Policies on the real runtime** (`fig5_policies_runtime.png`).
+**Figure 5 — Policies on the real runtime** (`fig5_policies_runtime.png`; regenerated 19 Nov 2026).
 MEASURED total time of the same 30-request mobile trace (Wi-Fi → 4G → poor coverage → 4G → Wi-Fi, mixed privacy
-classes, prompts 32–512 tokens, answer A = 64) for three controllers, 3 repeats each; the decisions were identical in
-all repeats. Blue: request time including the per-request PING of the estimating policies; orange: time spent
-reloading model weights when the configuration changes (on this single-machine testbed only one configuration fits in
-8 GB, so client and server reload). Error bars: ± 1 standard deviation of the total over the 3 repeats. Diamonds:
-predicted total (MODELLED: calibrated latency model + FITTED reload model). Switching-aware 208.4 ± 2.3 s, fixed per class
-216.6 ± 10.9 s, adaptive 238.1 ± 16.3 s; the difference between switching-aware and fixed per class lies within the
-run-to-run spread of fixed per class. `runtime/check_out/task4_real_trace.csv`. SUPERSEDED: these decisions were taken under the earlier controller rule (all on client a candidate,
-teacher-forced answer leakage); to be replaced by the rerun under the current rule (RESULTS_SUMMARY 9l, README.md, Split runtime).
+classes, prompts 32–512 tokens, answer A = 64; M2-4T, client and server on one Mac) for three controllers under the
+current controller rule (RESULTS_SUMMARY 9l), 3 repeats each; the decisions were identical in all repeats. Only the
+15 servable requests are run and counted (12 open, 3 private prompt); the 15 private answer and private
+prompt+answer requests are infeasible under the current rule and not served. Blue: request time including the
+per-request PING of the estimating policies; orange: time spent reloading model weights when the configuration
+changes (on this single-machine testbed only one configuration fits in 8 GB, so client and server reload). Error
+bars: ± 1 standard deviation of the total over the 3 repeats. Diamonds: predicted total (MODELLED: calibrated latency
+model + FITTED reload model). Switching-aware 78.2 ± 0.5 s, fixed per class 63.4 ± 2.3 s, adaptive 66.4 ± 4.8 s;
+adaptive and fixed per class make the same decisions (difference = PING 1.3 s + reload variation; adaptive repeat 0,
+the first run after a reboot, has 7.7 s longer reloads). `runtime/check_out/task4_real_trace_protected.csv`. The
+earlier run under the 14–15 Nov rule (`task4_real_trace.csv`, RESULTS_SUMMARY 9f) is superseded.
 
 **Figure 6 — Calibration impact: decisions that change between the assumed and the calibrated model**
 (`fig6_calibration_impact.png`). Share of per-request decisions (split, protection) of the controller that differ

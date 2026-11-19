@@ -1,0 +1,297 @@
+W1119 08:10:43.155000 3273 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+{'chip': 'Apple M2', 'memory_gb': 8.0, 'macos': '26.6.2', 'python': '3.12.13', 'torch': '2.15.0', 'transformers': '5.23.0', 'safetensors': '0.8.0', 'git': '802bb22'}
+system available 3.39 GB, swap 0.00 GB
+
+adaptive, repeat 0:
+  adaptive        r0  0 wifi  prompt P=128 H=4, T=0, secret head λp=0.2    : measured   5.34 s, predicted   4.91 s ( -8.1%) | reload client  2.7 s server  4.2 s (predicted  4.4) | swap grew False
+  adaptive        r0  1 wifi  prompt P=128 H=4, T=0, secret head λp=0.2    : measured   4.66 s, predicted   4.79 s ( +2.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0  2 wifi  answer P=512 infeasible: not served
+  adaptive        r0  3 wifi  both   P=256 infeasible: not served
+  adaptive        r0  4 wifi  answer P=256 infeasible: not served
+  adaptive        r0  5 wifi  both   P=256 infeasible: not served
+  adaptive        r0  6 lte   open   P=256 All on server                   : measured   2.58 s, predicted   2.25 s (-13.0%) | reload client  0.0 s server  6.0 s (predicted  5.2) | swap grew False
+  adaptive        r0  7 lte   answer P= 32 infeasible: not served
+  adaptive        r0  8 lte   answer P=256 infeasible: not served
+  adaptive        r0  9 lte   open   P=128 All on server                   : measured   2.19 s, predicted   2.16 s ( -1.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 10 lte   answer P=256 infeasible: not served
+  adaptive        r0 11 lte   open   P=512 All on server                   : measured   2.47 s, predicted   2.50 s ( +1.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 12 poor  both   P=256 infeasible: not served
+  adaptive        r0 13 poor  both   P= 32 infeasible: not served
+  adaptive        r0 14 poor  open   P=256 All on server                   : measured   2.76 s, predicted   2.74 s ( -0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 15 poor  answer P=128 infeasible: not served
+  adaptive        r0 16 poor  open   P=512 All on server                   : measured   2.92 s, predicted   2.92 s ( +0.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 17 poor  open   P=512 All on server                   : measured   2.94 s, predicted   2.94 s ( +0.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 18 lte   both   P=512 infeasible: not served
+  adaptive        r0 19 lte   answer P=256 infeasible: not served
+  adaptive        r0 20 lte   open   P=512 All on server                   : measured   2.54 s, predicted   2.53 s ( -0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 21 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured   9.30 s, predicted   8.87 s ( -4.6%) | reload client  2.6 s server  1.7 s (predicted  4.4) | swap grew False
+  adaptive        r0 22 lte   open   P=128 All on server                   : measured   2.43 s, predicted   2.14 s (-11.9%) | reload client  0.0 s server  5.6 s (predicted  5.2) | swap grew False
+  adaptive        r0 23 lte   both   P=256 infeasible: not served
+  adaptive        r0 24 wifi  open   P=256 All on server                   : measured   2.20 s, predicted   2.20 s ( +0.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 25 wifi  open   P=256 All on server                   : measured   2.23 s, predicted   2.19 s ( -1.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 26 wifi  open   P=512 All on server                   : measured   2.41 s, predicted   2.43 s ( +0.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 27 wifi  open   P=128 All on server                   : measured   2.11 s, predicted   2.08 s ( -1.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 28 wifi  answer P=512 infeasible: not served
+  adaptive        r0 29 wifi  both   P=128 infeasible: not served
+
+switch_aware, repeat 0:
+  switch_aware    r0  0 wifi  prompt P=128 H=4, T=0, secret head λp=0.2    : measured   5.25 s, predicted   4.91 s ( -6.4%) | reload client  2.5 s server  1.6 s (predicted  4.4) | swap grew False
+  switch_aware    r0  1 wifi  prompt P=128 H=4, T=0, secret head λp=0.2    : measured   4.66 s, predicted   4.79 s ( +2.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r0  2 wifi  answer P=512 infeasible: not served
+  switch_aware    r0  3 wifi  both   P=256 infeasible: not served
+  switch_aware    r0  4 wifi  answer P=256 infeasible: not served
+  switch_aware    r0  5 wifi  both   P=256 infeasible: not served
+  switch_aware    r0  6 lte   open   P=256 H=4, T=0                        : measured   8.47 s, predicted   8.44 s ( -0.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r0  7 lte   answer P= 32 infeasible: not served
+  switch_aware    r0  8 lte   answer P=256 infeasible: not served
+  switch_aware    r0  9 lte   open   P=128 H=4, T=0                        : measured   8.36 s, predicted   8.22 s ( -1.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r0 10 lte   answer P=256 infeasible: not served
+  switch_aware    r0 11 lte   open   P=512 All on server                   : measured   2.82 s, predicted   2.50 s (-11.2%) | reload client  0.0 s server  5.2 s (predicted  5.2) | swap grew False
+  switch_aware    r0 12 poor  both   P=256 infeasible: not served
+  switch_aware    r0 13 poor  both   P= 32 infeasible: not served
+  switch_aware    r0 14 poor  open   P=256 All on server                   : measured   2.76 s, predicted   2.74 s ( -0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r0 15 poor  answer P=128 infeasible: not served
+  switch_aware    r0 16 poor  open   P=512 All on server                   : measured   2.92 s, predicted   2.92 s ( +0.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r0 17 poor  open   P=512 All on server                   : measured   2.95 s, predicted   2.94 s ( -0.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r0 18 lte   both   P=512 infeasible: not served
+  switch_aware    r0 19 lte   answer P=256 infeasible: not served
+  switch_aware    r0 20 lte   open   P=512 All on server                   : measured   2.51 s, predicted   2.53 s ( +0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r0 21 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured   9.23 s, predicted   8.87 s ( -3.9%) | reload client  1.9 s server  1.3 s (predicted  4.4) | swap grew False
+  switch_aware    r0 22 lte   open   P=128 All on server                   : measured   2.44 s, predicted   2.14 s (-12.4%) | reload client  0.0 s server  4.8 s (predicted  5.2) | swap grew False
+  switch_aware    r0 23 lte   both   P=256 infeasible: not served
+  switch_aware    r0 24 wifi  open   P=256 All on server                   : measured   2.21 s, predicted   2.20 s ( -0.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r0 25 wifi  open   P=256 All on server                   : measured   2.19 s, predicted   2.19 s ( -0.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r0 26 wifi  open   P=512 All on server                   : measured   2.40 s, predicted   2.43 s ( +1.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r0 27 wifi  open   P=128 All on server                   : measured   2.09 s, predicted   2.08 s ( -0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r0 28 wifi  answer P=512 infeasible: not served
+  switch_aware    r0 29 wifi  both   P=128 infeasible: not served
+
+fixed_per_class, repeat 0:
+  fixed_per_class r0  0 wifi  prompt P=128 H=4, T=0, secret head λp=0.2    : measured   5.13 s, predicted   4.89 s ( -4.7%) | reload client  1.8 s server  1.3 s (predicted  4.4) | swap grew False
+  fixed_per_class r0  1 wifi  prompt P=128 H=4, T=0, secret head λp=0.2    : measured   4.61 s, predicted   4.77 s ( +3.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0  2 wifi  answer P=512 infeasible: not served
+  fixed_per_class r0  3 wifi  both   P=256 infeasible: not served
+  fixed_per_class r0  4 wifi  answer P=256 infeasible: not served
+  fixed_per_class r0  5 wifi  both   P=256 infeasible: not served
+  fixed_per_class r0  6 lte   open   P=256 All on server                   : measured   2.39 s, predicted   2.20 s ( -8.1%) | reload client  0.0 s server  4.9 s (predicted  5.2) | swap grew False
+  fixed_per_class r0  7 lte   answer P= 32 infeasible: not served
+  fixed_per_class r0  8 lte   answer P=256 infeasible: not served
+  fixed_per_class r0  9 lte   open   P=128 All on server                   : measured   2.12 s, predicted   2.10 s ( -1.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 10 lte   answer P=256 infeasible: not served
+  fixed_per_class r0 11 lte   open   P=512 All on server                   : measured   2.41 s, predicted   2.44 s ( +1.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 12 poor  both   P=256 infeasible: not served
+  fixed_per_class r0 13 poor  both   P= 32 infeasible: not served
+  fixed_per_class r0 14 poor  open   P=256 All on server                   : measured   2.47 s, predicted   2.45 s ( -0.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 15 poor  answer P=128 infeasible: not served
+  fixed_per_class r0 16 poor  open   P=512 All on server                   : measured   2.66 s, predicted   2.66 s ( +0.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 17 poor  open   P=512 All on server                   : measured   2.68 s, predicted   2.67 s ( -0.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 18 lte   both   P=512 infeasible: not served
+  fixed_per_class r0 19 lte   answer P=256 infeasible: not served
+  fixed_per_class r0 20 lte   open   P=512 All on server                   : measured   2.43 s, predicted   2.46 s ( +1.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 21 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured   9.00 s, predicted   8.81 s ( -2.1%) | reload client  1.6 s server  1.1 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 22 lte   open   P=128 All on server                   : measured   2.43 s, predicted   2.09 s (-14.3%) | reload client  0.0 s server  5.4 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 23 lte   both   P=256 infeasible: not served
+  fixed_per_class r0 24 wifi  open   P=256 All on server                   : measured   2.18 s, predicted   2.17 s ( -0.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 25 wifi  open   P=256 All on server                   : measured   2.16 s, predicted   2.17 s ( +0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 26 wifi  open   P=512 All on server                   : measured   2.37 s, predicted   2.41 s ( +1.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 27 wifi  open   P=128 All on server                   : measured   2.06 s, predicted   2.05 s ( -0.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 28 wifi  answer P=512 infeasible: not served
+  fixed_per_class r0 29 wifi  both   P=128 infeasible: not served
+
+adaptive, repeat 1:
+  adaptive        r1  0 wifi  prompt P=128 H=4, T=0, secret head λp=0.2    : measured   5.03 s, predicted   4.91 s ( -2.3%) | reload client  1.5 s server  1.0 s (predicted  4.4) | swap grew False
+  adaptive        r1  1 wifi  prompt P=128 H=4, T=0, secret head λp=0.2    : measured   4.68 s, predicted   4.79 s ( +2.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1  2 wifi  answer P=512 infeasible: not served
+  adaptive        r1  3 wifi  both   P=256 infeasible: not served
+  adaptive        r1  4 wifi  answer P=256 infeasible: not served
+  adaptive        r1  5 wifi  both   P=256 infeasible: not served
+  adaptive        r1  6 lte   open   P=256 All on server                   : measured   2.52 s, predicted   2.25 s (-10.8%) | reload client  0.0 s server  4.6 s (predicted  5.2) | swap grew False
+  adaptive        r1  7 lte   answer P= 32 infeasible: not served
+  adaptive        r1  8 lte   answer P=256 infeasible: not served
+  adaptive        r1  9 lte   open   P=128 All on server                   : measured   2.19 s, predicted   2.16 s ( -1.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 10 lte   answer P=256 infeasible: not served
+  adaptive        r1 11 lte   open   P=512 All on server                   : measured   2.49 s, predicted   2.50 s ( +0.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 12 poor  both   P=256 infeasible: not served
+  adaptive        r1 13 poor  both   P= 32 infeasible: not served
+  adaptive        r1 14 poor  open   P=256 All on server                   : measured   2.76 s, predicted   2.74 s ( -0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 15 poor  answer P=128 infeasible: not served
+  adaptive        r1 16 poor  open   P=512 All on server                   : measured   2.91 s, predicted   2.92 s ( +0.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 17 poor  open   P=512 All on server                   : measured   2.93 s, predicted   2.94 s ( +0.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 18 lte   both   P=512 infeasible: not served
+  adaptive        r1 19 lte   answer P=256 infeasible: not served
+  adaptive        r1 20 lte   open   P=512 All on server                   : measured   2.50 s, predicted   2.53 s ( +1.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 21 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured   9.17 s, predicted   8.87 s ( -3.3%) | reload client  1.9 s server  1.2 s (predicted  4.4) | swap grew False
+  adaptive        r1 22 lte   open   P=128 All on server                   : measured   2.43 s, predicted   2.14 s (-11.8%) | reload client  0.0 s server  5.0 s (predicted  5.2) | swap grew False
+  adaptive        r1 23 lte   both   P=256 infeasible: not served
+  adaptive        r1 24 wifi  open   P=256 All on server                   : measured   2.25 s, predicted   2.20 s ( -2.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 25 wifi  open   P=256 All on server                   : measured   2.20 s, predicted   2.19 s ( -0.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 26 wifi  open   P=512 All on server                   : measured   2.39 s, predicted   2.43 s ( +1.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 27 wifi  open   P=128 All on server                   : measured   2.09 s, predicted   2.08 s ( -0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 28 wifi  answer P=512 infeasible: not served
+  adaptive        r1 29 wifi  both   P=128 infeasible: not served
+
+switch_aware, repeat 1:
+  switch_aware    r1  0 wifi  prompt P=128 H=4, T=0, secret head λp=0.2    : measured   4.91 s, predicted   4.91 s ( -0.0%) | reload client  2.0 s server  1.0 s (predicted  4.4) | swap grew False
+  switch_aware    r1  1 wifi  prompt P=128 H=4, T=0, secret head λp=0.2    : measured   4.72 s, predicted   4.79 s ( +1.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r1  2 wifi  answer P=512 infeasible: not served
+  switch_aware    r1  3 wifi  both   P=256 infeasible: not served
+  switch_aware    r1  4 wifi  answer P=256 infeasible: not served
+  switch_aware    r1  5 wifi  both   P=256 infeasible: not served
+  switch_aware    r1  6 lte   open   P=256 H=4, T=0                        : measured   8.52 s, predicted   8.44 s ( -1.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r1  7 lte   answer P= 32 infeasible: not served
+  switch_aware    r1  8 lte   answer P=256 infeasible: not served
+  switch_aware    r1  9 lte   open   P=128 H=4, T=0                        : measured   8.48 s, predicted   8.22 s ( -3.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r1 10 lte   answer P=256 infeasible: not served
+  switch_aware    r1 11 lte   open   P=512 All on server                   : measured   2.80 s, predicted   2.50 s (-10.7%) | reload client  0.0 s server  6.9 s (predicted  5.2) | swap grew False
+  switch_aware    r1 12 poor  both   P=256 infeasible: not served
+  switch_aware    r1 13 poor  both   P= 32 infeasible: not served
+  switch_aware    r1 14 poor  open   P=256 All on server                   : measured   2.81 s, predicted   2.74 s ( -2.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r1 15 poor  answer P=128 infeasible: not served
+  switch_aware    r1 16 poor  open   P=512 All on server                   : measured   2.93 s, predicted   2.92 s ( -0.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r1 17 poor  open   P=512 All on server                   : measured   2.94 s, predicted   2.94 s ( +0.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r1 18 lte   both   P=512 infeasible: not served
+  switch_aware    r1 19 lte   answer P=256 infeasible: not served
+  switch_aware    r1 20 lte   open   P=512 All on server                   : measured   2.53 s, predicted   2.53 s ( +0.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r1 21 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured   9.17 s, predicted   8.87 s ( -3.3%) | reload client  1.6 s server  1.3 s (predicted  4.4) | swap grew False
+  switch_aware    r1 22 lte   open   P=128 All on server                   : measured   2.47 s, predicted   2.14 s (-13.5%) | reload client  0.0 s server  4.3 s (predicted  5.2) | swap grew False
+  switch_aware    r1 23 lte   both   P=256 infeasible: not served
+  switch_aware    r1 24 wifi  open   P=256 All on server                   : measured   2.21 s, predicted   2.20 s ( -0.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r1 25 wifi  open   P=256 All on server                   : measured   2.24 s, predicted   2.19 s ( -2.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r1 26 wifi  open   P=512 All on server                   : measured   2.40 s, predicted   2.43 s ( +1.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r1 27 wifi  open   P=128 All on server                   : measured   2.13 s, predicted   2.08 s ( -2.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r1 28 wifi  answer P=512 infeasible: not served
+  switch_aware    r1 29 wifi  both   P=128 infeasible: not served
+
+fixed_per_class, repeat 1:
+  fixed_per_class r1  0 wifi  prompt P=128 H=4, T=0, secret head λp=0.2    : measured   5.15 s, predicted   4.89 s ( -5.2%) | reload client  2.5 s server  1.6 s (predicted  4.4) | swap grew False
+  fixed_per_class r1  1 wifi  prompt P=128 H=4, T=0, secret head λp=0.2    : measured   4.70 s, predicted   4.77 s ( +1.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1  2 wifi  answer P=512 infeasible: not served
+  fixed_per_class r1  3 wifi  both   P=256 infeasible: not served
+  fixed_per_class r1  4 wifi  answer P=256 infeasible: not served
+  fixed_per_class r1  5 wifi  both   P=256 infeasible: not served
+  fixed_per_class r1  6 lte   open   P=256 All on server                   : measured   2.49 s, predicted   2.20 s (-11.6%) | reload client  0.0 s server  5.3 s (predicted  5.2) | swap grew False
+  fixed_per_class r1  7 lte   answer P= 32 infeasible: not served
+  fixed_per_class r1  8 lte   answer P=256 infeasible: not served
+  fixed_per_class r1  9 lte   open   P=128 All on server                   : measured   2.13 s, predicted   2.10 s ( -1.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 10 lte   answer P=256 infeasible: not served
+  fixed_per_class r1 11 lte   open   P=512 All on server                   : measured   2.47 s, predicted   2.44 s ( -1.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 12 poor  both   P=256 infeasible: not served
+  fixed_per_class r1 13 poor  both   P= 32 infeasible: not served
+  fixed_per_class r1 14 poor  open   P=256 All on server                   : measured   2.56 s, predicted   2.45 s ( -4.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 15 poor  answer P=128 infeasible: not served
+  fixed_per_class r1 16 poor  open   P=512 All on server                   : measured   2.66 s, predicted   2.66 s ( +0.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 17 poor  open   P=512 All on server                   : measured   2.64 s, predicted   2.67 s ( +1.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 18 lte   both   P=512 infeasible: not served
+  fixed_per_class r1 19 lte   answer P=256 infeasible: not served
+  fixed_per_class r1 20 lte   open   P=512 All on server                   : measured   2.42 s, predicted   2.46 s ( +1.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 21 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured   9.20 s, predicted   8.81 s ( -4.3%) | reload client  2.3 s server  1.6 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 22 lte   open   P=128 All on server                   : measured   2.43 s, predicted   2.09 s (-14.0%) | reload client  0.0 s server  4.9 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 23 lte   both   P=256 infeasible: not served
+  fixed_per_class r1 24 wifi  open   P=256 All on server                   : measured   2.18 s, predicted   2.17 s ( -0.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 25 wifi  open   P=256 All on server                   : measured   2.16 s, predicted   2.17 s ( +0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 26 wifi  open   P=512 All on server                   : measured   2.36 s, predicted   2.41 s ( +1.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 27 wifi  open   P=128 All on server                   : measured   2.09 s, predicted   2.05 s ( -1.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 28 wifi  answer P=512 infeasible: not served
+  fixed_per_class r1 29 wifi  both   P=128 infeasible: not served
+
+adaptive, repeat 2:
+  adaptive        r2  0 wifi  prompt P=128 H=4, T=0, secret head λp=0.2    : measured   5.19 s, predicted   4.91 s ( -5.3%) | reload client  2.3 s server  1.2 s (predicted  4.4) | swap grew False
+  adaptive        r2  1 wifi  prompt P=128 H=4, T=0, secret head λp=0.2    : measured   4.66 s, predicted   4.79 s ( +2.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2  2 wifi  answer P=512 infeasible: not served
+  adaptive        r2  3 wifi  both   P=256 infeasible: not served
+  adaptive        r2  4 wifi  answer P=256 infeasible: not served
+  adaptive        r2  5 wifi  both   P=256 infeasible: not served
+  adaptive        r2  6 lte   open   P=256 All on server                   : measured   2.49 s, predicted   2.25 s ( -9.7%) | reload client  0.0 s server  3.8 s (predicted  5.2) | swap grew False
+  adaptive        r2  7 lte   answer P= 32 infeasible: not served
+  adaptive        r2  8 lte   answer P=256 infeasible: not served
+  adaptive        r2  9 lte   open   P=128 All on server                   : measured   2.22 s, predicted   2.16 s ( -2.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 10 lte   answer P=256 infeasible: not served
+  adaptive        r2 11 lte   open   P=512 All on server                   : measured   2.47 s, predicted   2.50 s ( +1.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 12 poor  both   P=256 infeasible: not served
+  adaptive        r2 13 poor  both   P= 32 infeasible: not served
+  adaptive        r2 14 poor  open   P=256 All on server                   : measured   2.77 s, predicted   2.74 s ( -1.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 15 poor  answer P=128 infeasible: not served
+  adaptive        r2 16 poor  open   P=512 All on server                   : measured   2.90 s, predicted   2.92 s ( +0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 17 poor  open   P=512 All on server                   : measured   2.92 s, predicted   2.94 s ( +0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 18 lte   both   P=512 infeasible: not served
+  adaptive        r2 19 lte   answer P=256 infeasible: not served
+  adaptive        r2 20 lte   open   P=512 All on server                   : measured   2.49 s, predicted   2.53 s ( +1.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 21 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured   9.14 s, predicted   8.87 s ( -3.0%) | reload client  2.2 s server  1.7 s (predicted  4.4) | swap grew False
+  adaptive        r2 22 lte   open   P=128 All on server                   : measured   2.47 s, predicted   2.14 s (-13.2%) | reload client  0.0 s server  3.8 s (predicted  5.2) | swap grew False
+  adaptive        r2 23 lte   both   P=256 infeasible: not served
+  adaptive        r2 24 wifi  open   P=256 All on server                   : measured   2.21 s, predicted   2.20 s ( -0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 25 wifi  open   P=256 All on server                   : measured   2.18 s, predicted   2.19 s ( +0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 26 wifi  open   P=512 All on server                   : measured   2.40 s, predicted   2.43 s ( +1.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 27 wifi  open   P=128 All on server                   : measured   2.08 s, predicted   2.08 s ( -0.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 28 wifi  answer P=512 infeasible: not served
+  adaptive        r2 29 wifi  both   P=128 infeasible: not served
+
+switch_aware, repeat 2:
+  switch_aware    r2  0 wifi  prompt P=128 H=4, T=0, secret head λp=0.2    : measured   5.06 s, predicted   4.91 s ( -3.0%) | reload client  2.3 s server  1.1 s (predicted  4.4) | swap grew False
+  switch_aware    r2  1 wifi  prompt P=128 H=4, T=0, secret head λp=0.2    : measured   4.65 s, predicted   4.79 s ( +2.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r2  2 wifi  answer P=512 infeasible: not served
+  switch_aware    r2  3 wifi  both   P=256 infeasible: not served
+  switch_aware    r2  4 wifi  answer P=256 infeasible: not served
+  switch_aware    r2  5 wifi  both   P=256 infeasible: not served
+  switch_aware    r2  6 lte   open   P=256 H=4, T=0                        : measured   8.52 s, predicted   8.44 s ( -1.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r2  7 lte   answer P= 32 infeasible: not served
+  switch_aware    r2  8 lte   answer P=256 infeasible: not served
+  switch_aware    r2  9 lte   open   P=128 H=4, T=0                        : measured   8.46 s, predicted   8.22 s ( -2.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r2 10 lte   answer P=256 infeasible: not served
+  switch_aware    r2 11 lte   open   P=512 All on server                   : measured   2.76 s, predicted   2.50 s ( -9.3%) | reload client  0.0 s server  5.2 s (predicted  5.2) | swap grew False
+  switch_aware    r2 12 poor  both   P=256 infeasible: not served
+  switch_aware    r2 13 poor  both   P= 32 infeasible: not served
+  switch_aware    r2 14 poor  open   P=256 All on server                   : measured   2.78 s, predicted   2.74 s ( -1.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r2 15 poor  answer P=128 infeasible: not served
+  switch_aware    r2 16 poor  open   P=512 All on server                   : measured   3.97 s, predicted   2.92 s (-26.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r2 17 poor  open   P=512 All on server                   : measured   2.94 s, predicted   2.94 s ( +0.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r2 18 lte   both   P=512 infeasible: not served
+  switch_aware    r2 19 lte   answer P=256 infeasible: not served
+  switch_aware    r2 20 lte   open   P=512 All on server                   : measured   2.50 s, predicted   2.53 s ( +1.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r2 21 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured   9.44 s, predicted   8.87 s ( -6.1%) | reload client  1.4 s server  1.1 s (predicted  4.4) | swap grew False
+  switch_aware    r2 22 lte   open   P=128 All on server                   : measured   2.39 s, predicted   2.14 s (-10.5%) | reload client  0.0 s server  4.3 s (predicted  5.2) | swap grew False
+  switch_aware    r2 23 lte   both   P=256 infeasible: not served
+  switch_aware    r2 24 wifi  open   P=256 All on server                   : measured   2.21 s, predicted   2.20 s ( -0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r2 25 wifi  open   P=256 All on server                   : measured   2.17 s, predicted   2.19 s ( +0.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r2 26 wifi  open   P=512 All on server                   : measured   2.39 s, predicted   2.43 s ( +1.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r2 27 wifi  open   P=128 All on server                   : measured   2.08 s, predicted   2.08 s ( -0.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  switch_aware    r2 28 wifi  answer P=512 infeasible: not served
+  switch_aware    r2 29 wifi  both   P=128 infeasible: not served
+
+fixed_per_class, repeat 2:
+  fixed_per_class r2  0 wifi  prompt P=128 H=4, T=0, secret head λp=0.2    : measured   5.03 s, predicted   4.89 s ( -2.9%) | reload client  2.0 s server  1.4 s (predicted  4.4) | swap grew False
+  fixed_per_class r2  1 wifi  prompt P=128 H=4, T=0, secret head λp=0.2    : measured   4.64 s, predicted   4.77 s ( +2.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2  2 wifi  answer P=512 infeasible: not served
+  fixed_per_class r2  3 wifi  both   P=256 infeasible: not served
+  fixed_per_class r2  4 wifi  answer P=256 infeasible: not served
+  fixed_per_class r2  5 wifi  both   P=256 infeasible: not served
+  fixed_per_class r2  6 lte   open   P=256 All on server                   : measured   2.46 s, predicted   2.20 s (-10.5%) | reload client  0.0 s server  3.7 s (predicted  5.2) | swap grew False
+  fixed_per_class r2  7 lte   answer P= 32 infeasible: not served
+  fixed_per_class r2  8 lte   answer P=256 infeasible: not served
+  fixed_per_class r2  9 lte   open   P=128 All on server                   : measured   2.12 s, predicted   2.10 s ( -1.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 10 lte   answer P=256 infeasible: not served
+  fixed_per_class r2 11 lte   open   P=512 All on server                   : measured   2.42 s, predicted   2.44 s ( +1.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 12 poor  both   P=256 infeasible: not served
+  fixed_per_class r2 13 poor  both   P= 32 infeasible: not served
+  fixed_per_class r2 14 poor  open   P=256 All on server                   : measured   2.47 s, predicted   2.45 s ( -0.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 15 poor  answer P=128 infeasible: not served
+  fixed_per_class r2 16 poor  open   P=512 All on server                   : measured   2.65 s, predicted   2.66 s ( +0.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 17 poor  open   P=512 All on server                   : measured   2.65 s, predicted   2.67 s ( +1.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 18 lte   both   P=512 infeasible: not served
+  fixed_per_class r2 19 lte   answer P=256 infeasible: not served
+  fixed_per_class r2 20 lte   open   P=512 All on server                   : measured   2.47 s, predicted   2.46 s ( -0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 21 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured   9.34 s, predicted   8.81 s ( -5.7%) | reload client  1.7 s server  0.9 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 22 lte   open   P=128 All on server                   : measured   2.32 s, predicted   2.09 s (-10.0%) | reload client  0.0 s server  4.0 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 23 lte   both   P=256 infeasible: not served
+  fixed_per_class r2 24 wifi  open   P=256 All on server                   : measured   2.18 s, predicted   2.17 s ( -0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 25 wifi  open   P=256 All on server                   : measured   2.17 s, predicted   2.17 s ( +0.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 26 wifi  open   P=512 All on server                   : measured   2.38 s, predicted   2.41 s ( +1.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 27 wifi  open   P=128 All on server                   : measured   2.07 s, predicted   2.05 s ( -0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 28 wifi  answer P=512 infeasible: not served
+  fixed_per_class r2 29 wifi  both   P=128 infeasible: not served
+
+adaptive (3 repeats): measured 48.7 ± 0.3 s (incl. PING 1.3 s), predicted 47.6 s (-2.2%) | reload 17.7 ± 4.5 s (predicted 19.3) | total 66.4 ± 4.8 s (predicted 66.9) | changes 3.0 | per-request MAPE 2.9% | requests with swap growth 0.0
+
+switch_aware (3 repeats): measured 61.6 ± 0.6 s (incl. PING 1.3 s), predicted 59.9 s (-2.8%) | reload 16.6 ± 1.1 s (predicted 19.3) | total 78.2 ± 0.5 s (predicted 79.1) | changes 4.0 | per-request MAPE 3.4% | requests with swap growth 0.0
+
+fixed_per_class (3 repeats): measured 47.4 ± 0.3 s (incl. PING 0.0 s), predicted 46.3 s (-2.2%) | reload 16.0 ± 2.2 s (predicted 19.3) | total 63.4 ± 2.3 s (predicted 65.6) | changes 3.0 | per-request MAPE 2.9% | requests with swap growth 0.0

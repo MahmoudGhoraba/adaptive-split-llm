@@ -29,7 +29,9 @@ Statuses: IMPLEMENTED AND VERIFIED · IMPLEMENTED BUT NOT VALIDATED · PARTIALLY
 | Reacting to bandwidth/RTT/compute/load | IMPLEMENTED AND PARTIALLY VALIDATED (14 Nov): calibrated model + online EWMA estimates;
   simulated traces (stable / mobile / server load) and one 30-request real-runtime trace (measured −8.0% vs fixed per class,
   prediction error −2.9%). Switching cost modelled (in-situ fit) + switching-aware policy; 3-repeat real check: switching-
-  aware fastest incl. reloads (208.4 s vs 216.6 fixed, 238.1 adaptive). Server load: server-REPORTED in PING (timing probe
+  aware fastest incl. reloads (208.4 s vs 216.6 fixed, 238.1 adaptive; earlier rule). Rerun under the current rule
+  (19 Nov, RESULTS_SUMMARY 9m; 15 of 30 requests servable): fixed per class 63.4 s, adaptive 66.4 s (same decisions,
+  + PING), switching-aware 78.2 s; request-time prediction −2.2 to −2.8%. Server load: server-REPORTED in PING (timing probe
   fails on MPS). Open: reload model from few samples; myopic switching rule; one machine; budgets ASSUMED |
 
 Controller verdict: per-request re-optimisation over a measured configuration table (like ILLCO in Zamzam et al.),

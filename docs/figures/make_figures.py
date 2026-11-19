@@ -182,7 +182,9 @@ def fig4():
 
 
 def fig5():
-    rows = list(csv.DictReader(open(os.path.join(CO, "task4_real_trace.csv"))))
+    # 19 Nov 2026: rerun under the current controller rule (RESULTS_SUMMARY 9m); requests no candidate can serve are
+    # logged as infeasible and not run (served == False) -> excluded. Earlier run: task4_real_trace.csv (superseded).
+    rows = [r for r in csv.DictReader(open(os.path.join(CO, "task4_real_trace_protected.csv"))) if r["served"] == "True"]
     pols = [("switch_aware", "Switching-aware"), ("fixed_per_class", "Fixed per class"), ("adaptive", "Adaptive")]
     stats = {}
     for p, _ in pols:
@@ -207,11 +209,11 @@ def fig5():
             label="Predicted total (calibrated model + reload model)")
     for xi, (p, _) in zip(x, pols):
         s = stats[p]
-        ax.text(xi, s["tot"] + s["tot_sd"] + 5, f"{s['tot']:.1f} ± {s['tot_sd']:.1f} s", ha="center", va="bottom", fontsize=8, color=INK)
+        ax.text(xi, max(s["tot"] + s["tot_sd"], s["pred"]) + 2.5, f"{s['tot']:.1f} ± {s['tot_sd']:.1f} s", ha="center", va="bottom", fontsize=8, color=INK)
         ax.text(xi, s["req"] / 2, f"{s['req']:.1f}", ha="center", va="center", fontsize=7.5, color="white")
         ax.text(xi, s["req"] + s["rel"] / 2, f"{s['rel']:.1f}", ha="center", va="center", fontsize=7.5, color="white")
     ax.set_xticks(x); ax.set_xticklabels([l for _, l in pols]); ax.set_xlim(-0.5, 2.5)
-    ax.set_ylabel("Total time, 30 requests [s]"); ax.set_ylim(0, 290); ax.grid(axis="x", visible=False)
+    ax.set_ylabel("Total time, 15 served requests [s]"); ax.set_ylim(0, 95); ax.grid(axis="x", visible=False)
     ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.12), frameon=False, fontsize=7.5, ncol=2)
     save(fig, "fig5_policies_runtime.png")
     return stats

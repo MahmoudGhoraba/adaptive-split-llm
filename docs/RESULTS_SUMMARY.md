@@ -8,8 +8,8 @@ paper): all on client is not a candidate (reference baseline only); prompt leaka
 answer leakage = robust teacher-forced value + generated-answer gap (task 5a). SUPERSEDED (earlier rules; kept as
 the record, NOT for the paper): §6 "earlier table", §9c–§9k (all on client a candidate; teacher-forced proxy without gap;
 mean check up to 9g, robust check from 9h), `step5_per_request/task4_summary_v1.csv` (14 Nov), and the MEASURED
-real-runtime trace of §9d / Figure 5 (`runtime/check_out/task4_real_trace.csv`, decisions taken under the 14–15 Nov
-rule; to be rerun, README.md, Split runtime). Files `*_meancheck*` (step5_per_request): EARLIER RULE (proxy without gap, seed
+real-runtime trace of §9d / §9f (`runtime/check_out/task4_real_trace.csv`, decisions taken under the 14–15 Nov
+rule; rerun under the current rule: §9m, Figure 5). Files `*_meancheck*` (step5_per_request): EARLIER RULE (proxy without gap, seed
 means), NOT USED IN THE PAPER.
 
 ## 1. Baselines and split latency (modelled, 20 tasks, prompts 32–512, answers 128)
@@ -827,7 +827,53 @@ prompt+answer -> (4,2) λa = 0.03 on every profile (126 and 108 requests over 3 
 Real-runtime trace under these rules (9d setup: M2-4T, 30-request mobile trace, A = 64, 3 repeats x 3 policies): a
 run started 18 Nov 2026 15:07 was ABORTED at 15:18 by decision (in repeat 3, adaptive policy, request 20; 201 of 270
 request lines logged). Its partial logs are NOT used as data; they are kept only in
-runtime/check_out/aborted_2026-11-18/ (console log and server log; no csv/json was written). To be rerun (README.md, Split runtime).
+runtime/check_out/aborted_2026-11-18/ (console log and server log; no csv/json was written). Rerun: §9m.
+
+### 9m. Real-runtime trace under the current rule (MEASURED, 19 Nov 2026)
+
+Setup as 9d / 9f (M2-4T, 30-request mobile trace, A = 64, client CPU fp16 + server MPS fp16 on the same Mac, 3 repeats
+x 3 policies, application-level emulation); controller = current rule (9l; 5a data of 19 Nov). Started after a reboot
+with other apps closed; before the start: no leftover runtime processes, about 3.6 GB available (1.5 GB free +
+2.0 GB inactive of 8 GB; memory_pressure 68% free). Run order: repeat-major (adaptive, switching-aware, fixed per
+class, then the next repeat). Raw: runtime/check_out/task4_real_trace_protected.csv/.json, _console.log, server log.
+Served: 15 of 30 requests per run (12 open -> all on server; 3 private prompt -> H = 4 secret head λp = 0.2, T = 0);
+the 15 private answer (8) and private prompt+answer (7) requests are infeasible and not run (no PING, no time).
+The decisions were identical in all three repeats of each policy. Adaptive and fixed per class made the SAME 30
+decisions (they differ only by the PING); switching-aware served open requests 6 and 9 with the unprotected split
+H = 4, T = 0 (8.4 s instead of 2.4 s on the server) to avoid reloads. No request with swap growth; available memory
+during the run 0.96–2.11 GB.
+
+| Policy | Requests (incl. PING), predicted (error) | Reloads (predicted) | Total (predicted, error) | Changes | MAPE |
+|---|---|---|---|---|---|
+| Adaptive | 48.7 ± 0.3 s (PING 1.3 s), 47.6 s (−2.2%) | 17.7 ± 4.5 s (19.3) | 66.4 ± 4.8 s (66.9, +0.7%) | 3 | 2.9 ± 0.3% |
+| Switching-aware (a) | 61.6 ± 0.6 s (PING 1.3 s), 59.9 s (−2.8%) | 16.6 ± 1.1 s (19.3) | 78.2 ± 0.5 s (79.1, +1.2%) | 4 | 3.4 ± 1.0% |
+| Fixed per class | 47.4 ± 0.3 s, 46.3 s (−2.2%) | 16.0 ± 2.2 s (19.3) | 63.4 ± 2.3 s (65.6, +3.4%) | 3 | 2.9 ± 0.4% |
+
+(mean ± s.d. over 3 repeats; error = (predicted − measured) / measured; MAPE = mean |per-request error|.)
+Disturbed repeats (flagged; kept in the table):
+- adaptive repeat 0 (the FIRST run after the reboot): reloads 22.8 s vs 15.2 / 14.9 s in repeats 1 / 2, mostly the
+  first request (secret head load 6.9 s vs 2.5 / 3.5 s) and request 6 (6.0 vs 4.6 / 3.8 s); its request time is normal
+  (49.1 vs 48.5 / 48.6 s). Likely cold file cache after the reboot (NOT tested). Without it adaptive totals
+  63.7 ± 0.2 s (2 repeats).
+- switching-aware repeat 2, request 16 (open, all on server, no reload): 3.97 s vs 2.92 / 2.93 s in repeats 0 / 1
+  (−26.3% error); one-request timing disturbance (+1.1 s on the total); cause unknown.
+Comparison with the earlier run (9f, 14–15 Nov rule, 30 served requests; totals are NOT comparable because the
+decisions and the number of served requests differ):
+- Spread across repeats: request time coefficient of variation 0.6–1.0% (earlier 0.2–0.8%); total 0.6–7.2%
+  (earlier 1.1–6.9%). As before the spread is almost entirely reload time (s.d. 1.1–4.5 s vs 0.3–0.6 s for requests).
+- Measured vs predicted: request time −2.2 to −2.8% (earlier −2.2 to −2.8%: the calibrated model under-predicts by
+  the same amount); per-request MAPE 2.9–3.4% (earlier 2.8–5.3%; fewer split/client requests, whose first request
+  after a reload was the main error source). Largest per-request errors again on the first all-on-server request after
+  a server reload (requests 6 / 11 / 22: −10 to −14%). Reloads are now over-predicted (16.0–17.7 vs 19.3 s; earlier
+  under- and over-predicted, 38.8–97.8 vs 40.9–89.5 s), so the predicted totals are +0.7 to +3.4% (earlier −0.8 to
+  −5.2%).
+Policy result: fixed per class is fastest (63.4 s); adaptive is +3.0 s (+4.7%), of which 1.3 s is the PING, and the
+rest is reload variation (repeat 0; without it +0.2 s); switching-aware is slowest (+14.8 s, +23%): it kept the
+unprotected split for open requests 6 and 9 to avoid reloads (≈ +12 s of request time), yet made 4 instead of 3
+configuration changes and its reloads were not shorter (16.6 vs 16.0 s), so its one-request-ahead rule did not pay
+off on this trace. On this
+trace (mobile network, no server-load change) the network did not change any decision (as predicted, 9l), so the
+adaptive policy cannot gain over fixed per class; the gain of adaptation remains MODELLED (server-load trace, 9l).
 
 ## 10. Task 5: privacy on generated answers, known pairs and sessions (MEASURED, Colab T4, 16–18 Nov 2026)
 
