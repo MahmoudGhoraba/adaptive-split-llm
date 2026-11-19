@@ -1,6 +1,6 @@
 {
- "answer_gap_max": 0.4078576045260338,
- "answer_gap_from": "(2, 2, 0.1, 0.1)",
+ "answer_gap_max": 0.45294997486457306,
+ "answer_gap_from": "(8, 2, 0.1, 0.03)",
  "relaxations": {
   "A | 2 GB | Private answer": {
    "eps_p": null,
@@ -45,7 +45,14 @@
     "agreement": 0.7911,
     "memory_gb": 1.438
    },
-   "q": null,
+   "q": {
+    "value": 0.6144,
+    "option": "H=8, T=2, head+tail \u03bba=0.1",
+    "leak_r": 0.6521,
+    "answer_leak_r": 0.2002,
+    "agreement": 0.6144,
+    "memory_gb": 2.206
+   },
    "memory": null
   },
   "A | 3 GB | Private prompt+answer": {
@@ -59,12 +66,12 @@
     "memory_gb": 1.438
    },
    "q": {
-    "value": 0.6131,
-    "option": "H=4, T=2, head+tail \u03bba=0.1",
-    "leak_r": 0.7847,
-    "answer_leak_r": 0.462,
-    "agreement": 0.6131,
-    "memory_gb": 1.694
+    "value": 0.6144,
+    "option": "H=8, T=2, head+tail \u03bba=0.1",
+    "leak_r": 0.6521,
+    "answer_leak_r": 0.2002,
+    "agreement": 0.6144,
+    "memory_gb": 2.206
    },
    "memory": null
   },
@@ -78,7 +85,14 @@
     "agreement": 0.7911,
     "memory_gb": 1.438
    },
-   "q": null,
+   "q": {
+    "value": 0.6144,
+    "option": "H=8, T=2, head+tail \u03bba=0.1",
+    "leak_r": 0.6521,
+    "answer_leak_r": 0.2002,
+    "agreement": 0.6144,
+    "memory_gb": 2.206
+   },
    "memory": null
   },
   "A | 4 GB | Private prompt+answer": {
@@ -92,12 +106,12 @@
     "memory_gb": 1.438
    },
    "q": {
-    "value": 0.6131,
-    "option": "H=4, T=2, head+tail \u03bba=0.1",
-    "leak_r": 0.7847,
-    "answer_leak_r": 0.462,
-    "agreement": 0.6131,
-    "memory_gb": 1.694
+    "value": 0.6144,
+    "option": "H=8, T=2, head+tail \u03bba=0.1",
+    "leak_r": 0.6521,
+    "answer_leak_r": 0.2002,
+    "agreement": 0.6144,
+    "memory_gb": 2.206
    },
    "memory": null
   },
@@ -111,7 +125,14 @@
     "agreement": 0.7911,
     "memory_gb": 1.438
    },
-   "q": null,
+   "q": {
+    "value": 0.6144,
+    "option": "H=8, T=2, head+tail \u03bba=0.1",
+    "leak_r": 0.6521,
+    "answer_leak_r": 0.2002,
+    "agreement": 0.6144,
+    "memory_gb": 2.206
+   },
    "memory": null
   },
   "A | 8 GB | Private prompt+answer": {
@@ -125,12 +146,12 @@
     "memory_gb": 1.438
    },
    "q": {
-    "value": 0.6131,
-    "option": "H=4, T=2, head+tail \u03bba=0.1",
-    "leak_r": 0.7847,
-    "answer_leak_r": 0.462,
-    "agreement": 0.6131,
-    "memory_gb": 1.694
+    "value": 0.6144,
+    "option": "H=8, T=2, head+tail \u03bba=0.1",
+    "leak_r": 0.6521,
+    "answer_leak_r": 0.2002,
+    "agreement": 0.6144,
+    "memory_gb": 2.206
    },
    "memory": null
   },
@@ -183,7 +204,14 @@
     "agreement": 0.7911,
     "memory_gb": 1.438
    },
-   "q": null,
+   "q": {
+    "value": 0.6144,
+    "option": "H=8, T=2, head+tail \u03bba=0.1",
+    "leak_r": 0.8635,
+    "answer_leak_r": 0.2002,
+    "agreement": 0.6144,
+    "memory_gb": 2.206
+   },
    "memory": null
   },
   "B | 3 GB | Private prompt": {
@@ -222,7 +250,14 @@
     "agreement": 0.7911,
     "memory_gb": 1.438
    },
-   "q": null,
+   "q": {
+    "value": 0.6144,
+    "option": "H=8, T=2, head+tail \u03bba=0.1",
+    "leak_r": 0.8635,
+    "answer_leak_r": 0.2002,
+    "agreement": 0.6144,
+    "memory_gb": 2.206
+   },
    "memory": null
   },
   "B | 4 GB | Private prompt": {
@@ -261,7 +296,14 @@
     "agreement": 0.7911,
     "memory_gb": 1.438
    },
-   "q": null,
+   "q": {
+    "value": 0.6144,
+    "option": "H=8, T=2, head+tail \u03bba=0.1",
+    "leak_r": 0.8635,
+    "answer_leak_r": 0.2002,
+    "agreement": 0.6144,
+    "memory_gb": 2.206
+   },
    "memory": null
   },
   "B | 8 GB | Private prompt": {

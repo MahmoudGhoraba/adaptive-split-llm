@@ -4,30 +4,30 @@ A,2.0,Private answer,infeasible,,infeasible,,infeasible,,False,none,"0.6807 (H=2
 A,2.0,Private prompt,"H=4, T=0, secret head λp=0.2",16.55,"H=4, T=0, secret head λp=0.2",17.16,"H=4, T=0, secret head λp=0.2",18.73,True,,,,
 A,2.0,Private prompt+answer,infeasible,,infeasible,,infeasible,,False,none,"1.0 (H=4, T=0, secret head λp=0.2)","0.6131 (H=4, T=2, head+tail λa=0.1)",none
 A,3.0,Open,All on server,4.18,All on server,4.18,All on server,4.18,True,,,,
-A,3.0,Private answer,infeasible,,infeasible,,infeasible,,False,none,"0.6807 (H=2, T=2, head+tail λa=0.03)",none,none
+A,3.0,Private answer,infeasible,,infeasible,,infeasible,,False,none,"0.6807 (H=2, T=2, head+tail λa=0.03)","0.6144 (H=8, T=2, head+tail λa=0.1)",none
 A,3.0,Private prompt,"H=4, T=0, secret head λp=0.2",16.55,"H=4, T=0, secret head λp=0.2",17.16,"H=4, T=0, secret head λp=0.2",18.73,True,,,,
-A,3.0,Private prompt+answer,infeasible,,infeasible,,infeasible,,False,none,"1.0 (H=4, T=0, secret head λp=0.2)","0.6131 (H=4, T=2, head+tail λa=0.1)",none
+A,3.0,Private prompt+answer,infeasible,,infeasible,,infeasible,,False,none,"1.0 (H=4, T=0, secret head λp=0.2)","0.6144 (H=8, T=2, head+tail λa=0.1)",none
 A,4.0,Open,All on server,4.18,All on server,4.18,All on server,4.18,True,,,,
-A,4.0,Private answer,infeasible,,infeasible,,infeasible,,False,none,"0.6807 (H=2, T=2, head+tail λa=0.03)",none,none
+A,4.0,Private answer,infeasible,,infeasible,,infeasible,,False,none,"0.6807 (H=2, T=2, head+tail λa=0.03)","0.6144 (H=8, T=2, head+tail λa=0.1)",none
 A,4.0,Private prompt,"H=4, T=0, secret head λp=0.2",16.55,"H=4, T=0, secret head λp=0.2",17.16,"H=4, T=0, secret head λp=0.2",18.73,True,,,,
-A,4.0,Private prompt+answer,infeasible,,infeasible,,infeasible,,False,none,"1.0 (H=4, T=0, secret head λp=0.2)","0.6131 (H=4, T=2, head+tail λa=0.1)",none
+A,4.0,Private prompt+answer,infeasible,,infeasible,,infeasible,,False,none,"1.0 (H=4, T=0, secret head λp=0.2)","0.6144 (H=8, T=2, head+tail λa=0.1)",none
 A,8.0,Open,All on server,4.18,All on server,4.18,All on server,4.18,True,,,,
-A,8.0,Private answer,infeasible,,infeasible,,infeasible,,False,none,"0.6807 (H=2, T=2, head+tail λa=0.03)",none,none
+A,8.0,Private answer,infeasible,,infeasible,,infeasible,,False,none,"0.6807 (H=2, T=2, head+tail λa=0.03)","0.6144 (H=8, T=2, head+tail λa=0.1)",none
 A,8.0,Private prompt,"H=4, T=0, secret head λp=0.2",16.55,"H=4, T=0, secret head λp=0.2",17.16,"H=4, T=0, secret head λp=0.2",18.73,True,,,,
-A,8.0,Private prompt+answer,infeasible,,infeasible,,infeasible,,False,none,"1.0 (H=4, T=0, secret head λp=0.2)","0.6131 (H=4, T=2, head+tail λa=0.1)",none
+A,8.0,Private prompt+answer,infeasible,,infeasible,,infeasible,,False,none,"1.0 (H=4, T=0, secret head λp=0.2)","0.6144 (H=8, T=2, head+tail λa=0.1)",none
 B,2.0,Open,All on server,4.18,All on server,4.18,All on server,4.18,True,,,,
 B,2.0,Private answer,infeasible,,infeasible,,infeasible,,False,none,"0.6807 (H=2, T=2, head+tail λa=0.03)",none,none
 B,2.0,Private prompt,infeasible,,infeasible,,infeasible,,False,"0.8635 (H=6, T=2, head+tail λa=0)",none,"0.0607 (H=8, T=0, noise σ=2)",none
 B,2.0,Private prompt+answer,infeasible,,infeasible,,infeasible,,False,none,none,none,none
 B,3.0,Open,All on server,4.18,All on server,4.18,All on server,4.18,True,,,,
-B,3.0,Private answer,infeasible,,infeasible,,infeasible,,False,none,"0.6807 (H=2, T=2, head+tail λa=0.03)",none,none
+B,3.0,Private answer,infeasible,,infeasible,,infeasible,,False,none,"0.6807 (H=2, T=2, head+tail λa=0.03)","0.6144 (H=8, T=2, head+tail λa=0.1)",none
 B,3.0,Private prompt,infeasible,,infeasible,,infeasible,,False,"0.8203 (H=8, T=2, head+tail λa=0.01)",none,"0.0607 (H=8, T=0, noise σ=2)",none
 B,3.0,Private prompt+answer,infeasible,,infeasible,,infeasible,,False,none,none,none,none
 B,4.0,Open,All on server,4.18,All on server,4.18,All on server,4.18,True,,,,
-B,4.0,Private answer,infeasible,,infeasible,,infeasible,,False,none,"0.6807 (H=2, T=2, head+tail λa=0.03)",none,none
+B,4.0,Private answer,infeasible,,infeasible,,infeasible,,False,none,"0.6807 (H=2, T=2, head+tail λa=0.03)","0.6144 (H=8, T=2, head+tail λa=0.1)",none
 B,4.0,Private prompt,infeasible,,infeasible,,infeasible,,False,"0.8203 (H=8, T=2, head+tail λa=0.01)",none,"0.0607 (H=8, T=0, noise σ=2)",none
 B,4.0,Private prompt+answer,infeasible,,infeasible,,infeasible,,False,none,none,none,none
 B,8.0,Open,All on server,4.18,All on server,4.18,All on server,4.18,True,,,,
-B,8.0,Private answer,infeasible,,infeasible,,infeasible,,False,none,"0.6807 (H=2, T=2, head+tail λa=0.03)",none,none
+B,8.0,Private answer,infeasible,,infeasible,,infeasible,,False,none,"0.6807 (H=2, T=2, head+tail λa=0.03)","0.6144 (H=8, T=2, head+tail λa=0.1)",none
 B,8.0,Private prompt,infeasible,,infeasible,,infeasible,,False,"0.8203 (H=8, T=2, head+tail λa=0.01)",none,"0.0607 (H=8, T=0, noise σ=2)",none
 B,8.0,Private prompt+answer,infeasible,,infeasible,,infeasible,,False,none,none,none,none

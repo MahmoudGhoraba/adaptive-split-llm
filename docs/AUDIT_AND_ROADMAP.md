@@ -51,7 +51,7 @@ after idle gaps (not in the model); only one machine (no real network link); dev
 | Item | Status |
 |---|---|
 | Prompt reconstruction | IMPLEMENTED AND VERIFIED (one attacker type) |
-| Generated-answer reconstruction | IMPLEMENTED AND MEASURED (5a, 18 Nov; one seed per split): generated leakage 27–41 points above the teacher-forced proxy at λa ≥ 0.03; controller still uses the proxy |
+| Generated-answer reconstruction | IMPLEMENTED AND MEASURED (5a, 18 Nov; one seed per split): generated leakage 19–45 points above the teacher-forced proxy at λa ≥ 0.03 (12 entries incl. (1,1), (8,2) of 19 Nov; exception (8,2) λa 0.1, +0.05); since 18 Nov the controller adds the gap |
 | Gaussian noise | IMPLEMENTED AND VERIFIED |
 | Secret LoRA | IMPLEMENTED AND VERIFIED at 7 splits (H=1..8, current script); seeds: (4,2) 3, (2,2) 2, (1,1) 2, others 1 |
 | Stronger attackers (known pairs, optimisation-based) | Known pairs IMPLEMENTED AND MEASURED (5b, λa 0.03): k = 1000 brings A at (4,2) from 83.4% to 93.1% (B 94.7%). Optimisation-based NOT IMPLEMENTED |

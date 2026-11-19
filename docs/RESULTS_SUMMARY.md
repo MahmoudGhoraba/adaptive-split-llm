@@ -1,4 +1,4 @@
-# Results summary (as of 18 Nov 2026)
+# Results summary (as of 19 Nov 2026)
 
 All leakage/quality numbers are MEASURED on Llama-3.2-1B-Instruct (Colab T4). All latency numbers are
 MODELLED (assumed speeds). Leakage = content leakage (see README.md, Definitions). Raw files are in `results/`.
@@ -762,13 +762,17 @@ not what the current controller would choose.
 Decisions (18 Nov 2026): (1) all on client is NOT a candidate for any privacy class; it is kept only as the
 reference baseline policy all_on_client (the thesis is protected split inference, not avoiding the server);
 (2) answer leakage in the controller = robust teacher-forced value (9h) + the gap generated − teacher-forced
-MEASURED in task 5a (§10a), applied like the seed check: the 8 entries 5a measured ((4,2), (2,2), λa 0–0.1) get their
-own gap (+1.2 to +30.0 points); every other head + tail entry gets the largest observed gap, +40.8 points ((2,2)
-λa = 0.1); capped at 100%; no gap on by-construction values (public tail = 100%). Objective (latency) and constraints
+MEASURED in task 5a (§10a), applied like the seed check: the 12 entries 5a measured ((4,2), (2,2), λa 0–0.1; since
+19 Nov also (1,1) and (8,2), λa 0.03 / 0.1) get their own gap (+0.05 to +45.3 points); every other head + tail entry
+gets the largest observed gap, +45.3 points ((8,2) λa = 0.03; was +40.8 from (2,2) λa = 0.1 before 19 Nov); capped
+at 100%; no gap on by-construction values (public tail = 100%). Objective (latency) and constraints
 C1–C4 unchanged; prompt leakage still attacker A. Code: per_request_controller.candidates(), ANSWER_CHECK = "generated",
 GEN_GAP (read from results/task5/5a_*/answer_generation.csv). Measured tables unchanged.
-Resulting smallest answer leakage of any candidate: 46.2% ((4,2) λa = 0.1, agreement 61.3%); with agreement ≥ 75%:
-68.1% ((2,2) λa = 0.03).
+Resulting smallest answer leakage of any candidate: 20.0% ((8,2) λa = 0.1, own gap +0.05, agreement 61.4%, 2.21 GB;
+before 19 Nov: 46.2%, (4,2) λa = 0.1, agreement 61.3%); with agreement ≥ 75%: 68.1% ((2,2) λa = 0.03).
+UPDATE 19 Nov 2026 (5a for (1,1) seed 1 and (8,2) seed 0, §10a): every decision, the servable classes, the policy
+comparison, the calibration impact and the decision diversity below are UNCHANGED (task4_*.csv and step5_*.csv
+byte-identical to commit b804293); only the relaxations at ≥ 3 GB and the grid counts changed (marked "19 Nov").
 
 Servable privacy classes (fastest option at P = 256, nominal 4G, A = 128; latency M2-4T / M2-2T / M2-1T, MODELLED;
 feasibility_classes.csv) — identical at 2, 3, 4 and 8 GB:
@@ -782,15 +786,18 @@ feasibility_classes.csv) — identical at 2, 3, 4 and 8 GB:
 
 Smallest single-limit relaxation per infeasible class (SENSITIVITY ANALYSIS; class limits NOT changed; same at every
 budget unless stated; memory never helps: every candidate needs ≤ 2.21 GB):
-- private answer: ε_a 40% -> 68.1% ((2,2) λa = 0.03, agreement 79.1%); no relaxation of ε_p or Q alone helps (no
-  candidate reaches ε_a 40% at any quality).
-- private prompt+answer: Q 75% -> 61.3% ((4,2) λa = 0.1: prompt 78.5% max over seeds, answer 46.2%); or ε_a -> 100%
-  (= the private-prompt option); no relaxation of ε_p alone helps.
+- private answer: ε_a 40% -> 68.1% ((2,2) λa = 0.03, agreement 79.1%); no relaxation of ε_p alone helps; 19 Nov: at
+  ≥ 3 GB also Q 75% -> 61.4% ((8,2) λa = 0.1: prompt 65.2%, answer 20.0%; 2.21 GB), at 2 GB no Q relaxation helps.
+- private prompt+answer: Q 75% -> 61.3% at 2 GB ((4,2) λa = 0.1: prompt 78.5% max over seeds, answer 46.2%) and
+  (19 Nov) 61.4% at ≥ 3 GB ((8,2) λa = 0.1); or ε_a -> 100% (= the private-prompt option); no relaxation of ε_p alone
+  helps.
 - attacker B, private prompt: ε_p 80% -> 82.0% ((8,2) λa = 0.01, B 82.0%, agreement 77.3%; needs ≥ 3 GB) or 86.4% at
   2 GB ((6,2) λa = 0, 1 seed); a Q relaxation helps only down to 6.1% (noise σ = 2), i.e. not usefully.
-- attacker B, private answer: as for A (ε_a -> 68.1%); private prompt+answer: no single relaxation helps.
-Grid (Figure 8): attacker A 24/150 limit combinations feasible at 2 GB, 25/150 at 3–8 GB; attacker B 12/150 at every
-budget (was 45/150 at 2 GB and 150/150 at ≥ 3 GB with all on client and the proxy, 9k).
+- attacker B, private answer: as for A (ε_a -> 68.1%; 19 Nov: at ≥ 3 GB also Q -> 61.4%, (8,2) λa = 0.1, B 86.3%);
+  private prompt+answer: no single relaxation helps.
+Grid (Figure 8): attacker A 24/150 limit combinations feasible at 2 GB, 34/150 at 3–8 GB (25/150 before 19 Nov);
+attacker B 12/150 at 2 GB, 17/150 at 3–8 GB (12/150 before 19 Nov); all added combinations have Q = 60% ((8,2)
+λa = 0.1). (Was 45/150 at 2 GB and 150/150 at ≥ 3 GB with all on client and the proxy, 9k.)
 
 Policy comparison (MODELLED, calibrated model, 3 traces x 5 profiles, adaptive policies 20 noise seeds): every profile
 serves 122 of 200 requests per trace (open 82, private prompt 40); private answer (42) and private prompt+answer (36)
@@ -858,6 +865,24 @@ which the public tail predicts more easily than WikiText continuations.
 Failed / limiting observations: at (4,2) λa = 0.1, 17 of 100 prompts produced an empty answer (EOS first) and are
 excluded (n = 83); the public model refuses some prompts (e.g. money transfers), and in its own answers 57 of 99
 planted details appear (first 30 prompts), so detail-level numbers cover only the details that appear.
+
+Additional entries (19 Nov 2026; Colab T4; saved adapters (1,1) seed 1 and (8,2) seed 0, λa = 0.03 / 0.1; raw:
+results/task5/5a_H1_T1/, 5a_H8_T2/; run with a temporary notebook, not committed). Sanity check: the recomputed
+teacher-forced values reproduce the multisplit per-seed values ((1,1) seed 1: 68.20 / 41.17%; (8,2) seed 0: 38.52 /
+16.95%; table: 68.20 / 41.17 / 38.52 / 16.95%). No empty answers (n = 100 in all four).
+
+| Split (seed) | λa | Generated | Teacher-forced | Gap | Details appearing | Fully recovered |
+|---|---|---|---|---|---|---|
+| (1,1) (seed 1) | 0.03 | 87.6% [86.5, 89.0] | 68.2% | +19.4 | 186/323 | 97.8% |
+| (1,1) (seed 1) | 0.1 | 85.9% [84.4, 87.5] | 41.2% | +44.7 | 167/323 | 92.2% |
+| (8,2) (seed 0) | 0.03 | 83.8% [82.1, 85.4] | 38.5% | +45.3 | 185/323 | 81.1% |
+| (8,2) (seed 0) | 0.1 | 17.0% [13.1, 21.0] | 17.0% | +0.05 | 210/323 | 14.3% |
+
+Finding: gaps at λa ≥ 0.03 now span +0.05 to +45.3 points (12 entries); the largest, +45.3 ((8,2) λa = 0.03), replaces
++40.8 as the gap the controller adds to unmeasured entries. (8,2) λa = 0.1 is the only λa ≥ 0.03 entry without a gap;
+its agreement is 61.4% (fails Q = 75%) and the example answers include refusals and repeated phrases, so the low
+generated leakage may partly reflect degraded answers (observation, NOT tested; one seed). (1,1) has two training
+seeds, but the gap is measured on seed 1 only and is added to the robust (max over seeds) teacher-forced value.
 
 ### 10b. Known-pairs attacker (step_task5_privacy/known_pairs_attack.py; λa = 0.03)
 

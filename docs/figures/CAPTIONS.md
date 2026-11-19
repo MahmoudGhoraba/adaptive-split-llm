@@ -90,12 +90,13 @@ MODELLED from the MEASURED leakage/quality tables and the calibrated memory mode
 18 Nov 2026: candidates are the protected split options and all on server (all on client is not a candidate); prompt
 leakage robust to training variance (max over seeds, or mean + the largest observed seed half range); answer leakage =
 robust teacher-forced value + the generated-answer gap measured in task 5a (own gap where measured, else the largest,
-+40.8 points). Each cell gives, for an answer-leakage limit ε_a (rows) and a quality limit Q (columns, agreement ≥ Q),
++45.3 points; 5a data of 19 Nov 2026). Each cell gives, for an answer-leakage limit ε_a (rows) and a quality limit Q (columns, agreement ≥ Q),
 the minimum robust prompt leakage over the candidates that meet ε_a, Q and the memory budget; "none": no candidate. A
 limit combination (ε_p, ε_a, Q) is feasible iff ε_p ≥ the cell value. (a, b) Attacker A (inverter trained on the
-public model; the controller's check): 24 / 25 of the 150 grid combinations (ε_p ∈ {60, …, 100} %) feasible at
+public model; the controller's check): 24 / 34 of the 150 grid combinations (ε_p ∈ {60, …, 100} %) feasible at
 2 GB / 3–8 GB. (c, d) Attacker B (trained on the protected model; SENSITIVITY CHECK, motivated by task 5b where 1000
-known pairs bring A close to B): 12 / 150. 3, 4 and 8 GB give identical maps (every candidate needs ≤ 2.21 GB; only (8,2),
+known pairs bring A close to B): 12 / 17 of 150. The Q = 60 % column at ε_a ≤ 50 % from 3 GB is (8,2) λa = 0.1
+(answer 20 %, own measured gap +0.05; agreement 61 %). 3, 4 and 8 GB give identical maps (every candidate needs ≤ 2.21 GB; only (8,2),
 2.21 GB, needs more than 2 GB). Orange outlines: the class limits at Q = 75 %; A: private answer (ε_a 40 %), P: private
 prompt (ε_p 80 %), P+A: private prompt+answer (80 / 50 %); ✓/✗: met / not met. Only P under attacker A is met (H = 4
 secret head, 71 % at 2 GB; 64 % from 3 GB with (8,2) λa = 0.01, which leaks less but is slower). `step5_per_request/feasibility_min_prompt_leak.csv`,
