@@ -118,3 +118,14 @@ share. The configuration follows the privacy class; the network changes in (a) c
 server in (b) moves 7 private-prompt requests from the secret head with T = 0 to T = 4 (more layers on the client),
 depending on the prompt length. `step5_per_request/task4_decisions.csv`, `task4_diversity.csv`.
 
+**Figure 10 — Policies on the real runtime, server-load trace** (`fig10_server_load_runtime.png`; 19 Nov 2026).
+MEASURED total time of the 200-request server-load trace of the modelled evaluation (unchanged: stable 4G; the
+EMULATED server share drops from 1.0 to 0.25 for requests 66–132, the server waits compute × (1/share − 1)), M2-4T,
+client and server on one Mac, current controller rule, answer length A = 128 as in the modelled traces (the mobile run
+of Figure 5 used A = 64), 3 repeats per policy; switching-aware was not run on this trace. Only the 122 servable
+requests are run and counted (82 open, 40 private prompt). Blue: request time including the PING of the adaptive
+policy; orange: weight reloads; error bars: ± 1 s.d. of the total over the 3 repeats; diamonds: predicted total
+(MODELLED: calibrated latency model + FITTED reload model). Decisions were identical in all repeats; adaptive and fixed
+per class differ on 15 private-prompt requests (H = 4 secret head with an 11-layer client tail instead of T = 0 while
+the server is slow), exactly as predicted by the model. Fixed per class 1757.8 ± 11.0 s, adaptive 1677.2 ± 16.3 s
+(−4.6%; every paired repeat ≥ 75 s faster). `runtime/check_out/task4_real_trace_server_load.csv`.

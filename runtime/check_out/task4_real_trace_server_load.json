@@ -1,0 +1,170 @@
+{
+ "env": {
+  "chip": "Apple M2",
+  "memory_gb": 8.0,
+  "macos": "26.6.2",
+  "python": "3.12.13",
+  "torch": "2.15.0",
+  "transformers": "5.23.0",
+  "safetensors": "0.8.0",
+  "git": "4b2797e"
+ },
+ "trace": "server_load",
+ "profile": "M2-4T",
+ "A": 128,
+ "n": 200,
+ "policies": [
+  "adaptive",
+  "fixed_per_class"
+ ],
+ "summary": {
+  "adaptive": {
+   "per_repeat": [
+    {
+     "measured": 1444.1111653540006,
+     "predicted": 1419.6290997480858,
+     "reload": 251.1686581740014,
+     "predicted_reload": 272.8694963670207,
+     "total": 1695.279823528002,
+     "predicted_total": 1692.4985961151065,
+     "ping": 7.499170036002852,
+     "changes": 58,
+     "mape": 3.4179869975242925,
+     "swap": 0,
+     "served": 122
+    },
+    {
+     "measured": 1436.797593423003,
+     "predicted": 1419.6290997480858,
+     "reload": 226.65112837500328,
+     "predicted_reload": 272.8694963670207,
+     "total": 1663.4487217980063,
+     "predicted_total": 1692.4985961151065,
+     "ping": 7.497257628001535,
+     "changes": 58,
+     "mape": 3.099630976765273,
+     "swap": 0,
+     "served": 122
+    },
+    {
+     "measured": 1439.5413628069757,
+     "predicted": 1419.6290997480858,
+     "reload": 233.42799059299796,
+     "predicted_reload": 272.8694963670207,
+     "total": 1672.9693533999737,
+     "predicted_total": 1692.4985961151065,
+     "ping": 7.494243786986772,
+     "changes": 58,
+     "mape": 3.2585704106413567,
+     "swap": 0,
+     "served": 122
+    }
+   ],
+   "measured_mean": 1440.150040527993,
+   "predicted_mean": 1419.6290997480858,
+   "reload_mean": 237.08259238066753,
+   "predicted_reload_mean": 272.8694963670207,
+   "total_mean": 1677.2326329086607,
+   "predicted_total_mean": 1692.4985961151065,
+   "ping_mean": 7.496890483663719,
+   "changes_mean": 58,
+   "mape_mean": 3.258729461643641,
+   "swap_mean": 0,
+   "served_mean": 122,
+   "measured_sd": 3.69458387690902,
+   "predicted_sd": 0.0,
+   "reload_sd": 12.660742574233883,
+   "predicted_reload_sd": 0.0,
+   "total_sd": 16.33818911211479,
+   "predicted_total_sd": 0.0,
+   "ping_sd": 0.002483561669397311,
+   "changes_sd": 0.0,
+   "mape_sd": 0.1591780699760344,
+   "swap_sd": 0.0,
+   "served_sd": 0.0
+  },
+  "fixed_per_class": {
+   "per_repeat": [
+    {
+     "measured": 1525.2978969020007,
+     "predicted": 1464.5617696458514,
+     "reload": 245.10587850200181,
+     "predicted_reload": 284.4308136353552,
+     "total": 1770.4037754040025,
+     "predicted_total": 1748.9925832812066,
+     "ping": 0.0,
+     "changes": 58,
+     "mape": 3.367005827366833,
+     "swap": 0,
+     "served": 122
+    },
+    {
+     "measured": 1521.6430184180008,
+     "predicted": 1464.5617696458514,
+     "reload": 228.59816837499875,
+     "predicted_reload": 284.4308136353552,
+     "total": 1750.2411867929995,
+     "predicted_total": 1748.9925832812066,
+     "ping": 0.0,
+     "changes": 58,
+     "mape": 3.1126852660692377,
+     "swap": 0,
+     "served": 122
+    },
+    {
+     "measured": 1520.4456294969925,
+     "predicted": 1464.5617696458514,
+     "reload": 232.31816862600135,
+     "predicted_reload": 284.4308136353552,
+     "total": 1752.7637981229939,
+     "predicted_total": 1748.9925832812066,
+     "ping": 0.0,
+     "changes": 58,
+     "mape": 3.1966539399778413,
+     "swap": 0,
+     "served": 122
+    }
+   ],
+   "measured_mean": 1522.4621816056647,
+   "predicted_mean": 1464.5617696458514,
+   "reload_mean": 235.34073850100063,
+   "predicted_reload_mean": 284.4308136353552,
+   "total_mean": 1757.8029201066654,
+   "predicted_total_mean": 1748.9925832812066,
+   "ping_mean": 0.0,
+   "changes_mean": 58,
+   "mape_mean": 3.225448344471304,
+   "swap_mean": 0,
+   "served_mean": 122,
+   "measured_sd": 2.527725457490195,
+   "predicted_sd": 0.0,
+   "reload_sd": 8.658987810144428,
+   "predicted_reload_sd": 0.0,
+   "total_sd": 10.98531099463632,
+   "predicted_total_sd": 0.0,
+   "ping_sd": 0.0,
+   "changes_sd": 0.0,
+   "mape_sd": 0.12958231080005037,
+   "swap_sd": 0.0,
+   "served_sd": 0.0
+  }
+ },
+ "system_start": {
+  "footprint": 278463352,
+  "peak_footprint": 278463352,
+  "rss": 338509824,
+  "mps_alloc": 0,
+  "mps_driver": 393216,
+  "sys_available": 3949821952,
+  "swap_used": 614137856
+ },
+ "system_end": {
+  "footprint": 684967256,
+  "peak_footprint": 2779744944,
+  "rss": 30523392,
+  "mps_alloc": 0,
+  "mps_driver": 393216,
+  "sys_available": 5558550528,
+  "swap_used": 1342177280
+ }
+}

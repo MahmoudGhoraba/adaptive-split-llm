@@ -874,6 +874,47 @@ configuration changes and its reloads were not shorter (16.6 vs 16.0 s), so its 
 off on this trace. On this
 trace (mobile network, no server-load change) the network did not change any decision (as predicted, 9l), so the
 adaptive policy cannot gain over fixed per class; the gain of adaptation remains MODELLED (server-load trace, 9l).
+(19 Nov: now also MEASURED on the server-load trace, §9n.)
+
+### 9n. Real-runtime SERVER-LOAD trace (MEASURED, 19 Nov 2026)
+
+Trace: the modelled server-load trace UNCHANGED (adaptive_eval.make_trace("server_load", 200, seed 11): stable 4G,
+server share 0.25 ± 3% for requests 66–132, else 1.0 ± 3%); prompt lengths mapped to {32, 128, 256, 512} as in 9m.
+ANSWER LENGTH A = 128, as in the modelled traces (adaptive_eval); the mobile run (9m, Figure 5) used A = 64. Reason
+(model check, runtime/check_server_load_model.py -> check_out/server_load_model_check.csv, MODELLED): with the runtime
+settings and A = 128 adaptive and fixed per class differ on exactly the 15 requests of task4_decisions.csv; with
+A = 64 only on 10 of them (the long private prompts 73, 77, 94, 102, 130 stay at T = 0). Server load: EMULATED
+(server.py: after every server computation the server waits compute x (1/share − 1), counted as server compute;
+the PING reply reports the share to the adaptive estimator). Policies: adaptive and fixed per class, 3 repeats each,
+interleaved (A, F, A, F, ...), fresh server per run; switching-aware NOT run on this trace (reported from 9m only).
+Setup as 9m (M2-4T, client CPU fp16, server MPS fp16 on one Mac, one configuration in memory at a time). Started
+after a reboot with other apps closed; before the start: no leftover runtime processes, about 4.2 GB available
+(memory_pressure 79% free). Run 08:36–11:30 (2 h 54 min), exit 0; no request with swap growth; available memory
+during the run 0.92–3.72 GB. Smoke run before (15-request version of the trace, 1 repeat, code check only, not data):
+runtime/check_out/task4_real_trace_smoke_server_load.*. Raw: runtime/check_out/task4_real_trace_server_load.*.
+Served: 122 of 200 requests per run (82 open, 40 private prompt; 78 private answer / private prompt+answer infeasible,
+not run). Decisions identical in all 3 repeats of each policy; adaptive and fixed per class differ on exactly the
+15 requests of the model check in every repeat (73, 74, 75, 77, 79, 81, 85, 86, 88, 94, 102, 107, 125, 130, 133:
+private prompt, H = 4 secret head T = 11 instead of T = 0; 14 in the slow phase, 133 right after it); 58
+configuration changes per run for both policies.
+
+| Policy | Requests (incl. PING), predicted (error) | Reloads (predicted) | Total (predicted, error) | MAPE |
+|---|---|---|---|---|
+| Adaptive | 1440.2 ± 3.7 s (PING 7.5 s), 1419.6 s (−1.4%) | 237.1 ± 12.7 s (272.9) | 1677.2 ± 16.3 s (1692.5, +0.9%) | 3.3% |
+| Fixed per class | 1522.5 ± 2.5 s, 1464.6 s (−3.8%) | 235.3 ± 8.7 s (284.4) | 1757.8 ± 11.0 s (1749.0, −0.5%) | 3.2% |
+
+(mean ± s.d. over 3 repeats; error = (predicted − measured) / measured.)
+Gain of adaptive over fixed per class: total −80.6 s (−4.6%; per repeat, paired by repeat index: 75.1 / 86.8 /
+79.8 s); request time −82.3 s (−5.4%); reloads +1.7 s (no reduction, same number of changes). The gain is about 5x
+the larger per-policy s.d. of the total (16.3 s) and every paired repeat shows a gain of ≥ 75 s, so it is larger than
+the run-to-run spread (3 repeats; no formal test). On the 15 differing requests the adaptive choice saves 90.8 s of
+request time (e.g. P = 32: 15.4 vs 23.6 s; P = 512: 26.2–28.0 vs 30.1–33.0 s; request 133, share back to 0.95: 15.9 vs
+15.8 s, no gain); the PING costs 7.5 s over 122 requests. Predicted gain (MODELLED): 56.5 s (3.2%); the measured gain
+is larger because the model under-predicts fixed per class's T = 0 split requests under the slow server (slow-phase
+request time −4.5 to −5.0% error vs −0.6 to +0.3% for adaptive). Reloads are over-predicted for both (predicted 15% / 21% above measured).
+Disturbed repeats: none clearly disturbed. Adaptive repeat 0 (the first run after the reboot, as in 9m) has the
+longest reloads (251.2 vs 226.7 / 233.4 s, +21 s) with normal request time (1444.1 vs 1436.8 / 1439.5 s); likely cold
+file cache (NOT tested); without it the paired gain is 83.3 s (repeats 1–2). No request has a prediction error above 15%.
 
 ## 10. Task 5: privacy on generated answers, known pairs and sessions (MEASURED, Colab T4, 16–18 Nov 2026)
 

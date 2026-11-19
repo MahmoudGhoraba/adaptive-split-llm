@@ -1,0 +1,1220 @@
+W1119 08:36:53.031000 5233 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+trace server_load, n = 200, A = 128, policies ('adaptive', 'fixed_per_class'), repeats 3
+{'chip': 'Apple M2', 'memory_gb': 8.0, 'macos': '26.6.2', 'python': '3.12.13', 'torch': '2.15.0', 'transformers': '5.23.0', 'safetensors': '0.8.0', 'git': '4b2797e'}
+system available 3.95 GB, swap 0.61 GB
+
+adaptive, repeat 0:
+  adaptive        r0  0 lte   open   P=128 All on server                   : measured   4.62 s, predicted   4.15 s (-10.2%) | reload client  0.0 s server  7.1 s (predicted  5.2) | swap grew False
+  adaptive        r0  1 lte   answer P=128 infeasible: not served
+  adaptive        r0  2 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  19.08 s, predicted  18.68 s ( -2.1%) | reload client  2.4 s server  1.5 s (predicted  4.4) | swap grew False
+  adaptive        r0  3 lte   both   P=256 infeasible: not served
+  adaptive        r0  4 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  16.79 s, predicted  16.66 s ( -0.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0  5 lte   open   P=256 All on server                   : measured   4.59 s, predicted   4.24 s ( -7.7%) | reload client  0.0 s server  4.9 s (predicted  5.2) | swap grew False
+  adaptive        r0  6 lte   open   P=256 All on server                   : measured   4.32 s, predicted   4.30 s ( -0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0  7 lte   open   P= 32 All on server                   : measured   4.09 s, predicted   4.02 s ( -1.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0  8 lte   both   P=256 infeasible: not served
+  adaptive        r0  9 lte   open   P=128 All on server                   : measured   4.12 s, predicted   4.08 s ( -0.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 10 lte   open   P=256 All on server                   : measured   4.39 s, predicted   4.38 s ( -0.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 11 lte   open   P=512 All on server                   : measured   4.48 s, predicted   4.52 s ( +0.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 12 lte   open   P=256 All on server                   : measured   4.25 s, predicted   4.26 s ( +0.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 13 lte   both   P= 32 infeasible: not served
+  adaptive        r0 14 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  18.75 s, predicted  17.99 s ( -4.0%) | reload client  2.8 s server  1.6 s (predicted  4.4) | swap grew False
+  adaptive        r0 15 lte   open   P=128 All on server                   : measured   4.35 s, predicted   4.12 s ( -5.2%) | reload client  0.0 s server  3.1 s (predicted  5.2) | swap grew False
+  adaptive        r0 16 lte   answer P=512 infeasible: not served
+  adaptive        r0 17 lte   open   P=512 All on server                   : measured   4.56 s, predicted   4.56 s ( +0.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 18 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  20.54 s, predicted  19.97 s ( -2.8%) | reload client  2.4 s server  1.2 s (predicted  4.4) | swap grew False
+  adaptive        r0 19 lte   open   P=256 All on server                   : measured   4.53 s, predicted   4.22 s ( -6.9%) | reload client  0.0 s server  4.2 s (predicted  5.2) | swap grew False
+  adaptive        r0 20 lte   open   P=512 All on server                   : measured   4.48 s, predicted   4.50 s ( +0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 21 lte   open   P=256 All on server                   : measured   4.22 s, predicted   4.23 s ( +0.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 22 lte   answer P=128 infeasible: not served
+  adaptive        r0 23 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  18.00 s, predicted  17.38 s ( -3.4%) | reload client  2.5 s server  1.4 s (predicted  4.4) | swap grew False
+  adaptive        r0 24 lte   open   P=256 All on server                   : measured   4.63 s, predicted   4.26 s ( -8.1%) | reload client  0.0 s server  5.6 s (predicted  5.2) | swap grew False
+  adaptive        r0 25 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  18.40 s, predicted  17.67 s ( -3.9%) | reload client  2.7 s server  2.1 s (predicted  4.4) | swap grew False
+  adaptive        r0 26 lte   open   P=512 All on server                   : measured   4.77 s, predicted   4.52 s ( -5.2%) | reload client  0.0 s server  5.8 s (predicted  5.2) | swap grew False
+  adaptive        r0 27 lte   open   P=128 All on server                   : measured   4.17 s, predicted   4.12 s ( -1.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 28 lte   open   P=512 All on server                   : measured   4.55 s, predicted   4.58 s ( +0.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 29 lte   open   P=128 All on server                   : measured   4.13 s, predicted   4.10 s ( -0.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 30 lte   both   P=256 infeasible: not served
+  adaptive        r0 31 lte   open   P=512 All on server                   : measured   4.47 s, predicted   4.51 s ( +0.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 32 lte   open   P=128 All on server                   : measured   4.17 s, predicted   4.13 s ( -1.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 33 lte   answer P=256 infeasible: not served
+  adaptive        r0 34 lte   both   P=256 infeasible: not served
+  adaptive        r0 35 lte   both   P=256 infeasible: not served
+  adaptive        r0 36 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  21.40 s, predicted  20.60 s ( -3.7%) | reload client  2.4 s server  1.4 s (predicted  4.4) | swap grew False
+  adaptive        r0 37 lte   open   P=512 All on server                   : measured   4.70 s, predicted   4.49 s ( -4.4%) | reload client  0.0 s server  4.3 s (predicted  5.2) | swap grew False
+  adaptive        r0 38 lte   both   P=512 infeasible: not served
+  adaptive        r0 39 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  19.21 s, predicted  18.04 s ( -6.1%) | reload client  2.1 s server  1.5 s (predicted  4.4) | swap grew False
+  adaptive        r0 40 lte   open   P=512 All on server                   : measured   4.75 s, predicted   4.50 s ( -5.1%) | reload client  0.0 s server  4.7 s (predicted  5.2) | swap grew False
+  adaptive        r0 41 lte   answer P=512 infeasible: not served
+  adaptive        r0 42 lte   open   P=128 All on server                   : measured   4.15 s, predicted   4.09 s ( -1.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 43 lte   both   P=128 infeasible: not served
+  adaptive        r0 44 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  14.29 s, predicted  13.97 s ( -2.3%) | reload client  1.5 s server  1.4 s (predicted  4.4) | swap grew False
+  adaptive        r0 45 lte   both   P=256 infeasible: not served
+  adaptive        r0 46 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  18.13 s, predicted  17.95 s ( -1.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 47 lte   open   P=256 All on server                   : measured   4.85 s, predicted   4.44 s ( -8.6%) | reload client  0.0 s server  4.5 s (predicted  5.2) | swap grew False
+  adaptive        r0 48 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  21.71 s, predicted  20.62 s ( -5.0%) | reload client  1.7 s server  1.2 s (predicted  4.4) | swap grew False
+  adaptive        r0 49 lte   open   P=256 All on server                   : measured   4.59 s, predicted   4.29 s ( -6.6%) | reload client  0.0 s server  4.8 s (predicted  5.2) | swap grew False
+  adaptive        r0 50 lte   open   P=512 All on server                   : measured   4.51 s, predicted   4.53 s ( +0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 51 lte   open   P=256 All on server                   : measured   4.26 s, predicted   4.25 s ( -0.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 52 lte   answer P=256 infeasible: not served
+  adaptive        r0 53 lte   open   P=128 All on server                   : measured   4.37 s, predicted   4.31 s ( -1.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 54 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  17.94 s, predicted  17.16 s ( -4.4%) | reload client  2.7 s server  2.3 s (predicted  4.4) | swap grew False
+  adaptive        r0 55 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  20.08 s, predicted  19.68 s ( -2.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 56 lte   open   P=512 All on server                   : measured   4.91 s, predicted   4.62 s ( -6.0%) | reload client  0.0 s server  4.9 s (predicted  5.2) | swap grew False
+  adaptive        r0 57 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  20.57 s, predicted  19.81 s ( -3.7%) | reload client  2.7 s server  1.4 s (predicted  4.4) | swap grew False
+  adaptive        r0 58 lte   open   P=512 All on server                   : measured   4.78 s, predicted   4.59 s ( -4.0%) | reload client  0.0 s server  4.6 s (predicted  5.2) | swap grew False
+  adaptive        r0 59 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  15.74 s, predicted  15.17 s ( -3.6%) | reload client  2.1 s server  1.4 s (predicted  4.4) | swap grew False
+  adaptive        r0 60 lte   open   P=512 All on server                   : measured   4.71 s, predicted   4.50 s ( -4.5%) | reload client  0.0 s server  4.6 s (predicted  5.2) | swap grew False
+  adaptive        r0 61 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  19.36 s, predicted  18.33 s ( -5.3%) | reload client  3.0 s server  1.7 s (predicted  4.4) | swap grew False
+  adaptive        r0 62 lte   answer P=256 infeasible: not served
+  adaptive        r0 63 lte   answer P=128 infeasible: not served
+  adaptive        r0 64 lte   prompt P= 32 H=4, T=0, secret head λp=0.2    : measured  16.55 s, predicted  15.95 s ( -3.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 65 lte   answer P= 32 infeasible: not served
+  adaptive        r0 66 slow  open   P=512 All on server                   : measured  19.54 s, predicted  18.40 s ( -5.8%) | reload client  0.0 s server  5.4 s (predicted  5.2) | swap grew False
+  adaptive        r0 67 slow  both   P=512 infeasible: not served
+  adaptive        r0 68 slow  open   P=128 All on server                   : measured  17.24 s, predicted  16.70 s ( -3.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 69 slow  open   P=256 All on server                   : measured  17.48 s, predicted  16.85 s ( -3.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 70 slow  answer P=128 infeasible: not served
+  adaptive        r0 71 slow  open   P=128 All on server                   : measured  16.32 s, predicted  15.77 s ( -3.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 72 slow  open   P=512 All on server                   : measured  17.82 s, predicted  17.59 s ( -1.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 73 slow  prompt P=256 H=4, T=11, secret head λp=0.2   : measured  22.77 s, predicted  23.79 s ( +4.5%) | reload client  4.6 s server  0.4 s (predicted  3.1) | swap grew False
+  adaptive        r0 74 slow  prompt P= 32 H=4, T=11, secret head λp=0.2   : measured  15.40 s, predicted  16.99 s (+10.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 75 slow  prompt P=128 H=4, T=11, secret head λp=0.2   : measured  20.34 s, predicted  21.87 s ( +7.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 76 slow  both   P=256 infeasible: not served
+  adaptive        r0 77 slow  prompt P=512 H=4, T=11, secret head λp=0.2   : measured  26.20 s, predicted  27.19 s ( +3.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 78 slow  open   P=512 All on server                   : measured  19.00 s, predicted  18.05 s ( -5.0%) | reload client  0.0 s server  6.6 s (predicted  5.2) | swap grew False
+  adaptive        r0 79 slow  prompt P=128 H=4, T=11, secret head λp=0.2   : measured  20.40 s, predicted  21.42 s ( +5.0%) | reload client  3.8 s server  0.3 s (predicted  3.1) | swap grew False
+  adaptive        r0 80 slow  open   P=256 All on server                   : measured  18.18 s, predicted  16.65 s ( -8.4%) | reload client  0.0 s server  5.6 s (predicted  5.2) | swap grew False
+  adaptive        r0 81 slow  prompt P= 32 H=4, T=11, secret head λp=0.2   : measured  16.80 s, predicted  17.84 s ( +6.2%) | reload client  2.9 s server  0.2 s (predicted  3.1) | swap grew False
+  adaptive        r0 82 slow  open   P=128 All on server                   : measured  17.20 s, predicted  15.95 s ( -7.3%) | reload client  0.0 s server  5.0 s (predicted  5.2) | swap grew False
+  adaptive        r0 83 slow  open   P=128 All on server                   : measured  18.15 s, predicted  15.91 s (-12.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 84 slow  both   P=256 infeasible: not served
+  adaptive        r0 85 slow  prompt P=256 H=4, T=11, secret head λp=0.2   : measured  22.09 s, predicted  23.10 s ( +4.6%) | reload client  4.0 s server  0.4 s (predicted  3.1) | swap grew False
+  adaptive        r0 86 slow  prompt P=256 H=4, T=11, secret head λp=0.2   : measured  22.08 s, predicted  23.56 s ( +6.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 87 slow  answer P=256 infeasible: not served
+  adaptive        r0 88 slow  prompt P=256 H=4, T=11, secret head λp=0.2   : measured  22.54 s, predicted  24.04 s ( +6.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 89 slow  answer P=512 infeasible: not served
+  adaptive        r0 90 slow  answer P=256 infeasible: not served
+  adaptive        r0 91 slow  open   P=256 All on server                   : measured  17.13 s, predicted  16.20 s ( -5.4%) | reload client  0.0 s server  5.2 s (predicted  5.2) | swap grew False
+  adaptive        r0 92 slow  answer P=512 infeasible: not served
+  adaptive        r0 93 slow  both   P=256 infeasible: not served
+  adaptive        r0 94 slow  prompt P=512 H=4, T=11, secret head λp=0.2   : measured  28.19 s, predicted  28.78 s ( +2.1%) | reload client  2.5 s server  0.4 s (predicted  3.1) | swap grew False
+  adaptive        r0 95 slow  both   P= 32 infeasible: not served
+  adaptive        r0 96 slow  answer P=128 infeasible: not served
+  adaptive        r0 97 slow  both   P=128 infeasible: not served
+  adaptive        r0 98 slow  open   P= 32 All on server                   : measured  16.74 s, predicted  15.42 s ( -7.9%) | reload client  0.0 s server  5.1 s (predicted  5.2) | swap grew False
+  adaptive        r0 99 slow  both   P=512 infeasible: not served
+  adaptive        r0 100 slow  open   P= 32 All on server                   : measured  17.50 s, predicted  15.66 s (-10.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 101 slow  open   P=256 All on server                   : measured  16.53 s, predicted  16.25 s ( -1.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 102 slow  prompt P=512 H=4, T=11, secret head λp=0.2   : measured  26.99 s, predicted  27.62 s ( +2.3%) | reload client  2.9 s server  0.2 s (predicted  3.1) | swap grew False
+  adaptive        r0 103 slow  answer P=256 infeasible: not served
+  adaptive        r0 104 slow  answer P=512 infeasible: not served
+  adaptive        r0 105 slow  both   P= 32 infeasible: not served
+  adaptive        r0 106 slow  open   P=256 All on server                   : measured  16.63 s, predicted  15.89 s ( -4.5%) | reload client  0.0 s server  5.3 s (predicted  5.2) | swap grew False
+  adaptive        r0 107 slow  prompt P= 32 H=4, T=11, secret head λp=0.2   : measured  18.50 s, predicted  19.24 s ( +4.0%) | reload client  2.4 s server  0.2 s (predicted  3.1) | swap grew False
+  adaptive        r0 108 slow  answer P=128 infeasible: not served
+  adaptive        r0 109 slow  answer P=512 infeasible: not served
+  adaptive        r0 110 slow  answer P= 32 infeasible: not served
+  adaptive        r0 111 slow  open   P=256 All on server                   : measured  17.92 s, predicted  17.00 s ( -5.2%) | reload client  0.0 s server  4.7 s (predicted  5.2) | swap grew False
+  adaptive        r0 112 slow  answer P= 32 infeasible: not served
+  adaptive        r0 113 slow  both   P=128 infeasible: not served
+  adaptive        r0 114 slow  open   P=512 All on server                   : measured  16.92 s, predicted  16.77 s ( -0.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 115 slow  open   P=128 All on server                   : measured  15.55 s, predicted  15.12 s ( -2.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 116 slow  open   P=128 All on server                   : measured  16.65 s, predicted  16.24 s ( -2.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 117 slow  answer P= 32 infeasible: not served
+  adaptive        r0 118 slow  both   P=512 infeasible: not served
+  adaptive        r0 119 slow  open   P=128 All on server                   : measured  16.18 s, predicted  15.77 s ( -2.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 120 slow  both   P=256 infeasible: not served
+  adaptive        r0 121 slow  answer P= 32 infeasible: not served
+  adaptive        r0 122 slow  open   P= 32 All on server                   : measured  15.80 s, predicted  15.38 s ( -2.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 123 slow  answer P=512 infeasible: not served
+  adaptive        r0 124 slow  open   P= 32 All on server                   : measured  16.28 s, predicted  15.76 s ( -3.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 125 slow  prompt P=256 H=4, T=11, secret head λp=0.2   : measured  22.51 s, predicted  23.12 s ( +2.7%) | reload client  2.7 s server  0.2 s (predicted  3.1) | swap grew False
+  adaptive        r0 126 slow  answer P=256 infeasible: not served
+  adaptive        r0 127 slow  open   P=128 All on server                   : measured  17.62 s, predicted  16.59 s ( -5.8%) | reload client  0.0 s server  4.8 s (predicted  5.2) | swap grew False
+  adaptive        r0 128 slow  open   P=256 All on server                   : measured  17.18 s, predicted  16.86 s ( -1.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 129 slow  both   P=512 infeasible: not served
+  adaptive        r0 130 slow  prompt P=512 H=4, T=11, secret head λp=0.2   : measured  28.15 s, predicted  28.73 s ( +2.1%) | reload client  2.0 s server  0.2 s (predicted  3.1) | swap grew False
+  adaptive        r0 131 slow  answer P=128 infeasible: not served
+  adaptive        r0 132 slow  answer P=512 infeasible: not served
+  adaptive        r0 133 lte   prompt P= 32 H=4, T=11, secret head λp=0.2   : measured  15.85 s, predicted  16.82 s ( +6.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 134 lte   both   P=128 infeasible: not served
+  adaptive        r0 135 lte   open   P=256 All on server                   : measured   4.36 s, predicted   4.29 s ( -1.6%) | reload client  0.0 s server  4.1 s (predicted  5.2) | swap grew False
+  adaptive        r0 136 lte   open   P=512 All on server                   : measured   4.64 s, predicted   4.66 s ( +0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 137 lte   open   P=512 All on server                   : measured   4.57 s, predicted   4.59 s ( +0.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 138 lte   answer P=512 infeasible: not served
+  adaptive        r0 139 lte   open   P= 32 All on server                   : measured   4.06 s, predicted   4.00 s ( -1.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 140 lte   open   P=256 All on server                   : measured   4.34 s, predicted   4.31 s ( -0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 141 lte   open   P=512 All on server                   : measured   4.58 s, predicted   4.60 s ( +0.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 142 lte   open   P=256 All on server                   : measured   4.29 s, predicted   4.26 s ( -0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 143 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  16.26 s, predicted  15.76 s ( -3.0%) | reload client  1.5 s server  0.5 s (predicted  4.4) | swap grew False
+  adaptive        r0 144 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  16.43 s, predicted  16.26 s ( -1.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 145 lte   open   P= 32 All on server                   : measured   4.45 s, predicted   4.08 s ( -8.3%) | reload client  0.0 s server  6.6 s (predicted  5.2) | swap grew False
+  adaptive        r0 146 lte   open   P=256 All on server                   : measured   4.37 s, predicted   4.34 s ( -0.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 147 lte   answer P= 32 infeasible: not served
+  adaptive        r0 148 lte   both   P=256 infeasible: not served
+  adaptive        r0 149 lte   both   P=128 infeasible: not served
+  adaptive        r0 150 lte   open   P=512 All on server                   : measured   4.51 s, predicted   4.52 s ( +0.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 151 lte   both   P=256 infeasible: not served
+  adaptive        r0 152 lte   both   P=256 infeasible: not served
+  adaptive        r0 153 lte   answer P=256 infeasible: not served
+  adaptive        r0 154 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  15.62 s, predicted  15.16 s ( -2.9%) | reload client  1.6 s server  1.1 s (predicted  4.4) | swap grew False
+  adaptive        r0 155 lte   open   P=512 All on server                   : measured   4.88 s, predicted   4.57 s ( -6.4%) | reload client  0.0 s server  4.3 s (predicted  5.2) | swap grew False
+  adaptive        r0 156 lte   open   P=512 All on server                   : measured   4.50 s, predicted   4.52 s ( +0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 157 lte   answer P=128 infeasible: not served
+  adaptive        r0 158 lte   open   P=128 All on server                   : measured   4.25 s, predicted   4.20 s ( -1.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 159 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  15.09 s, predicted  14.80 s ( -1.9%) | reload client  1.8 s server  1.3 s (predicted  4.4) | swap grew False
+  adaptive        r0 160 lte   both   P=256 infeasible: not served
+  adaptive        r0 161 lte   both   P=128 infeasible: not served
+  adaptive        r0 162 lte   answer P=256 infeasible: not served
+  adaptive        r0 163 lte   open   P=512 All on server                   : measured   4.79 s, predicted   4.52 s ( -5.6%) | reload client  0.0 s server  4.2 s (predicted  5.2) | swap grew False
+  adaptive        r0 164 lte   both   P=256 infeasible: not served
+  adaptive        r0 165 lte   both   P=512 infeasible: not served
+  adaptive        r0 166 lte   both   P=256 infeasible: not served
+  adaptive        r0 167 lte   answer P=256 infeasible: not served
+  adaptive        r0 168 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  19.55 s, predicted  19.05 s ( -2.5%) | reload client  1.7 s server  1.4 s (predicted  4.4) | swap grew False
+  adaptive        r0 169 lte   open   P=256 All on server                   : measured   4.50 s, predicted   4.22 s ( -6.3%) | reload client  0.0 s server  4.2 s (predicted  5.2) | swap grew False
+  adaptive        r0 170 lte   open   P=512 All on server                   : measured   4.48 s, predicted   4.53 s ( +1.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 171 lte   open   P=128 All on server                   : measured   4.12 s, predicted   4.09 s ( -0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 172 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  20.62 s, predicted  19.87 s ( -3.6%) | reload client  1.8 s server  1.3 s (predicted  4.4) | swap grew False
+  adaptive        r0 173 lte   open   P=512 All on server                   : measured   4.76 s, predicted   4.57 s ( -3.9%) | reload client  0.0 s server  4.1 s (predicted  5.2) | swap grew False
+  adaptive        r0 174 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  18.13 s, predicted  17.71 s ( -2.3%) | reload client  2.3 s server  1.3 s (predicted  4.4) | swap grew False
+  adaptive        r0 175 lte   answer P= 32 infeasible: not served
+  adaptive        r0 176 lte   answer P=128 infeasible: not served
+  adaptive        r0 177 lte   both   P= 32 infeasible: not served
+  adaptive        r0 178 lte   open   P=256 All on server                   : measured   4.66 s, predicted   4.39 s ( -5.7%) | reload client  0.0 s server  4.4 s (predicted  5.2) | swap grew False
+  adaptive        r0 179 lte   answer P=256 infeasible: not served
+  adaptive        r0 180 lte   open   P=512 All on server                   : measured   4.77 s, predicted   4.80 s ( +0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 181 lte   both   P=128 infeasible: not served
+  adaptive        r0 182 lte   answer P=128 infeasible: not served
+  adaptive        r0 183 lte   open   P=512 All on server                   : measured   4.63 s, predicted   4.68 s ( +1.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 184 lte   open   P=128 All on server                   : measured   4.14 s, predicted   4.08 s ( -1.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 185 lte   answer P=512 infeasible: not served
+  adaptive        r0 186 lte   open   P=128 All on server                   : measured   4.27 s, predicted   4.22 s ( -1.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 187 lte   open   P=256 All on server                   : measured   4.25 s, predicted   4.25 s ( -0.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 188 lte   open   P= 32 All on server                   : measured   4.16 s, predicted   4.09 s ( -1.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 189 lte   open   P=256 All on server                   : measured   4.29 s, predicted   4.25 s ( -0.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r0 190 lte   answer P=512 infeasible: not served
+  adaptive        r0 191 lte   answer P=256 infeasible: not served
+  adaptive        r0 192 lte   both   P=512 infeasible: not served
+  adaptive        r0 193 lte   both   P=512 infeasible: not served
+  adaptive        r0 194 lte   both   P=256 infeasible: not served
+  adaptive        r0 195 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  18.53 s, predicted  17.85 s ( -3.7%) | reload client  2.5 s server  1.8 s (predicted  4.4) | swap grew False
+  adaptive        r0 196 lte   answer P=256 infeasible: not served
+  adaptive        r0 197 lte   answer P=128 infeasible: not served
+  adaptive        r0 198 lte   open   P=256 All on server                   : measured   4.65 s, predicted   4.37 s ( -6.0%) | reload client  0.0 s server  5.2 s (predicted  5.2) | swap grew False
+  adaptive        r0 199 lte   open   P=256 All on server                   : measured   4.24 s, predicted   4.22 s ( -0.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+
+fixed_per_class, repeat 0:
+  fixed_per_class r0  0 lte   open   P=128 All on server                   : measured   4.42 s, predicted   4.09 s ( -7.4%) | reload client  0.0 s server  5.7 s (predicted  5.2) | swap grew False
+  fixed_per_class r0  1 lte   answer P=128 infeasible: not served
+  fixed_per_class r0  2 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  19.11 s, predicted  18.63 s ( -2.5%) | reload client  2.6 s server  1.5 s (predicted  4.4) | swap grew False
+  fixed_per_class r0  3 lte   both   P=256 infeasible: not served
+  fixed_per_class r0  4 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  16.72 s, predicted  16.60 s ( -0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0  5 lte   open   P=256 All on server                   : measured   4.41 s, predicted   4.18 s ( -5.2%) | reload client  0.0 s server  5.0 s (predicted  5.2) | swap grew False
+  fixed_per_class r0  6 lte   open   P=256 All on server                   : measured   4.26 s, predicted   4.23 s ( -0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0  7 lte   open   P= 32 All on server                   : measured   4.00 s, predicted   3.95 s ( -1.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0  8 lte   both   P=256 infeasible: not served
+  fixed_per_class r0  9 lte   open   P=128 All on server                   : measured   4.08 s, predicted   4.03 s ( -1.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 10 lte   open   P=256 All on server                   : measured   4.40 s, predicted   4.31 s ( -2.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 11 lte   open   P=512 All on server                   : measured   4.41 s, predicted   4.46 s ( +0.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 12 lte   open   P=256 All on server                   : measured   4.20 s, predicted   4.19 s ( -0.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 13 lte   both   P= 32 infeasible: not served
+  fixed_per_class r0 14 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  18.75 s, predicted  17.92 s ( -4.4%) | reload client  1.7 s server  1.3 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 15 lte   open   P=128 All on server                   : measured   4.35 s, predicted   4.05 s ( -6.8%) | reload client  0.0 s server  4.7 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 16 lte   answer P=512 infeasible: not served
+  fixed_per_class r0 17 lte   open   P=512 All on server                   : measured   4.48 s, predicted   4.51 s ( +0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 18 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  20.65 s, predicted  19.90 s ( -3.6%) | reload client  1.5 s server  1.0 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 19 lte   open   P=256 All on server                   : measured   4.39 s, predicted   4.17 s ( -5.0%) | reload client  0.0 s server  4.6 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 20 lte   open   P=512 All on server                   : measured   4.41 s, predicted   4.45 s ( +0.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 21 lte   open   P=256 All on server                   : measured   4.18 s, predicted   4.17 s ( -0.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 22 lte   answer P=128 infeasible: not served
+  fixed_per_class r0 23 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  18.07 s, predicted  17.32 s ( -4.1%) | reload client  1.6 s server  1.2 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 24 lte   open   P=256 All on server                   : measured   4.47 s, predicted   4.19 s ( -6.3%) | reload client  0.0 s server  4.6 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 25 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  18.35 s, predicted  17.60 s ( -4.1%) | reload client  2.4 s server  1.4 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 26 lte   open   P=512 All on server                   : measured   4.60 s, predicted   4.46 s ( -3.1%) | reload client  0.0 s server  4.2 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 27 lte   open   P=128 All on server                   : measured   4.10 s, predicted   4.05 s ( -1.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 28 lte   open   P=512 All on server                   : measured   4.52 s, predicted   4.53 s ( +0.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 29 lte   open   P=128 All on server                   : measured   4.07 s, predicted   4.04 s ( -0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 30 lte   both   P=256 infeasible: not served
+  fixed_per_class r0 31 lte   open   P=512 All on server                   : measured   4.41 s, predicted   4.45 s ( +1.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 32 lte   open   P=128 All on server                   : measured   4.12 s, predicted   4.07 s ( -1.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 33 lte   answer P=256 infeasible: not served
+  fixed_per_class r0 34 lte   both   P=256 infeasible: not served
+  fixed_per_class r0 35 lte   both   P=256 infeasible: not served
+  fixed_per_class r0 36 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  21.10 s, predicted  20.54 s ( -2.6%) | reload client  1.4 s server  1.4 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 37 lte   open   P=512 All on server                   : measured   4.63 s, predicted   4.44 s ( -4.1%) | reload client  0.0 s server  4.2 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 38 lte   both   P=512 infeasible: not served
+  fixed_per_class r0 39 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  18.94 s, predicted  17.97 s ( -5.1%) | reload client  2.2 s server  1.3 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 40 lte   open   P=512 All on server                   : measured   4.81 s, predicted   4.45 s ( -7.5%) | reload client  0.0 s server  4.4 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 41 lte   answer P=512 infeasible: not served
+  fixed_per_class r0 42 lte   open   P=128 All on server                   : measured   4.17 s, predicted   4.04 s ( -3.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 43 lte   both   P=128 infeasible: not served
+  fixed_per_class r0 44 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  14.43 s, predicted  13.92 s ( -3.6%) | reload client  2.3 s server  1.5 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 45 lte   both   P=256 infeasible: not served
+  fixed_per_class r0 46 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  18.15 s, predicted  17.90 s ( -1.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 47 lte   open   P=256 All on server                   : measured   4.84 s, predicted   4.37 s ( -9.7%) | reload client  0.0 s server  6.2 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 48 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  21.50 s, predicted  20.54 s ( -4.4%) | reload client  2.4 s server  1.5 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 49 lte   open   P=256 All on server                   : measured   4.53 s, predicted   4.23 s ( -6.6%) | reload client  0.0 s server  6.0 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 50 lte   open   P=512 All on server                   : measured   4.45 s, predicted   4.47 s ( +0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 51 lte   open   P=256 All on server                   : measured   4.19 s, predicted   4.18 s ( -0.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 52 lte   answer P=256 infeasible: not served
+  fixed_per_class r0 53 lte   open   P=128 All on server                   : measured   4.30 s, predicted   4.24 s ( -1.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 54 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  17.78 s, predicted  17.09 s ( -3.9%) | reload client  2.3 s server  1.3 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 55 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  20.06 s, predicted  19.62 s ( -2.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 56 lte   open   P=512 All on server                   : measured   4.82 s, predicted   4.56 s ( -5.4%) | reload client  0.0 s server  4.4 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 57 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  20.45 s, predicted  19.74 s ( -3.5%) | reload client  2.3 s server  1.3 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 58 lte   open   P=512 All on server                   : measured   4.80 s, predicted   4.52 s ( -5.7%) | reload client  0.0 s server  4.1 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 59 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  15.85 s, predicted  15.12 s ( -4.6%) | reload client  2.5 s server  1.6 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 60 lte   open   P=512 All on server                   : measured   4.62 s, predicted   4.45 s ( -3.8%) | reload client  0.0 s server  4.5 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 61 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  19.08 s, predicted  18.26 s ( -4.3%) | reload client  1.7 s server  1.4 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 62 lte   answer P=256 infeasible: not served
+  fixed_per_class r0 63 lte   answer P=128 infeasible: not served
+  fixed_per_class r0 64 lte   prompt P= 32 H=4, T=0, secret head λp=0.2    : measured  16.57 s, predicted  15.88 s ( -4.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 65 lte   answer P= 32 infeasible: not served
+  fixed_per_class r0 66 slow  open   P=512 All on server                   : measured  19.01 s, predicted  18.33 s ( -3.6%) | reload client  0.0 s server  3.6 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 67 slow  both   P=512 infeasible: not served
+  fixed_per_class r0 68 slow  open   P=128 All on server                   : measured  17.08 s, predicted  16.63 s ( -2.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 69 slow  open   P=256 All on server                   : measured  17.20 s, predicted  16.79 s ( -2.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 70 slow  answer P=128 infeasible: not served
+  fixed_per_class r0 71 slow  open   P=128 All on server                   : measured  16.13 s, predicted  15.71 s ( -2.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 72 slow  open   P=512 All on server                   : measured  17.56 s, predicted  17.52 s ( -0.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 73 slow  prompt P=256 H=4, T=0, secret head λp=0.2    : measured  30.13 s, predicted  27.67 s ( -8.2%) | reload client  1.8 s server  1.2 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 74 slow  prompt P= 32 H=4, T=0, secret head λp=0.2    : measured  23.51 s, predicted  22.30 s ( -5.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 75 slow  prompt P=128 H=4, T=0, secret head λp=0.2    : measured  27.42 s, predicted  26.69 s ( -2.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 76 slow  both   P=256 infeasible: not served
+  fixed_per_class r0 77 slow  prompt P=512 H=4, T=0, secret head λp=0.2    : measured  30.06 s, predicted  28.72 s ( -4.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 78 slow  open   P=512 All on server                   : measured  19.16 s, predicted  17.99 s ( -6.1%) | reload client  0.0 s server  5.7 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 79 slow  prompt P=128 H=4, T=0, secret head λp=0.2    : measured  27.61 s, predicted  26.66 s ( -3.4%) | reload client  1.2 s server  1.2 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 80 slow  open   P=256 All on server                   : measured  17.41 s, predicted  16.59 s ( -4.7%) | reload client  0.0 s server  4.2 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 81 slow  prompt P= 32 H=4, T=0, secret head λp=0.2    : measured  25.27 s, predicted  23.51 s ( -7.0%) | reload client  1.7 s server  1.1 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 82 slow  open   P=128 All on server                   : measured  17.05 s, predicted  15.89 s ( -6.8%) | reload client  0.0 s server  5.4 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 83 slow  open   P=128 All on server                   : measured  16.26 s, predicted  15.86 s ( -2.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 84 slow  both   P=256 infeasible: not served
+  fixed_per_class r0 85 slow  prompt P=256 H=4, T=0, secret head λp=0.2    : measured  28.71 s, predicted  26.87 s ( -6.4%) | reload client  1.5 s server  1.1 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 86 slow  prompt P=256 H=4, T=0, secret head λp=0.2    : measured  28.32 s, predicted  27.46 s ( -3.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 87 slow  answer P=256 infeasible: not served
+  fixed_per_class r0 88 slow  prompt P=256 H=4, T=0, secret head λp=0.2    : measured  28.39 s, predicted  27.51 s ( -3.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 89 slow  answer P=512 infeasible: not served
+  fixed_per_class r0 90 slow  answer P=256 infeasible: not served
+  fixed_per_class r0 91 slow  open   P=256 All on server                   : measured  17.31 s, predicted  16.14 s ( -6.8%) | reload client  0.0 s server  5.3 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 92 slow  answer P=512 infeasible: not served
+  fixed_per_class r0 93 slow  both   P=256 infeasible: not served
+  fixed_per_class r0 94 slow  prompt P=512 H=4, T=0, secret head λp=0.2    : measured  31.84 s, predicted  30.33 s ( -4.7%) | reload client  1.9 s server  1.1 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 95 slow  both   P= 32 infeasible: not served
+  fixed_per_class r0 96 slow  answer P=128 infeasible: not served
+  fixed_per_class r0 97 slow  both   P=128 infeasible: not served
+  fixed_per_class r0 98 slow  open   P= 32 All on server                   : measured  16.43 s, predicted  15.35 s ( -6.6%) | reload client  0.0 s server  5.0 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 99 slow  both   P=512 infeasible: not served
+  fixed_per_class r0 100 slow  open   P= 32 All on server                   : measured  15.95 s, predicted  15.59 s ( -2.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 101 slow  open   P=256 All on server                   : measured  16.41 s, predicted  16.19 s ( -1.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 102 slow  prompt P=512 H=4, T=0, secret head λp=0.2    : measured  32.02 s, predicted  29.70 s ( -7.3%) | reload client  1.7 s server  1.1 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 103 slow  answer P=256 infeasible: not served
+  fixed_per_class r0 104 slow  answer P=512 infeasible: not served
+  fixed_per_class r0 105 slow  both   P= 32 infeasible: not served
+  fixed_per_class r0 106 slow  open   P=256 All on server                   : measured  16.90 s, predicted  15.83 s ( -6.3%) | reload client  0.0 s server  5.8 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 107 slow  prompt P= 32 H=4, T=0, secret head λp=0.2    : measured  26.64 s, predicted  24.83 s ( -6.8%) | reload client  1.8 s server  1.3 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 108 slow  answer P=128 infeasible: not served
+  fixed_per_class r0 109 slow  answer P=512 infeasible: not served
+  fixed_per_class r0 110 slow  answer P= 32 infeasible: not served
+  fixed_per_class r0 111 slow  open   P=256 All on server                   : measured  17.92 s, predicted  16.95 s ( -5.4%) | reload client  0.0 s server  5.5 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 112 slow  answer P= 32 infeasible: not served
+  fixed_per_class r0 113 slow  both   P=128 infeasible: not served
+  fixed_per_class r0 114 slow  open   P=512 All on server                   : measured  16.89 s, predicted  16.71 s ( -1.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 115 slow  open   P=128 All on server                   : measured  15.69 s, predicted  15.05 s ( -4.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 116 slow  open   P=128 All on server                   : measured  16.54 s, predicted  16.18 s ( -2.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 117 slow  answer P= 32 infeasible: not served
+  fixed_per_class r0 118 slow  both   P=512 infeasible: not served
+  fixed_per_class r0 119 slow  open   P=128 All on server                   : measured  16.31 s, predicted  15.70 s ( -3.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 120 slow  both   P=256 infeasible: not served
+  fixed_per_class r0 121 slow  answer P= 32 infeasible: not served
+  fixed_per_class r0 122 slow  open   P= 32 All on server                   : measured  16.64 s, predicted  15.31 s ( -8.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 123 slow  answer P=512 infeasible: not served
+  fixed_per_class r0 124 slow  open   P= 32 All on server                   : measured  16.20 s, predicted  15.70 s ( -3.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 125 slow  prompt P=256 H=4, T=0, secret head λp=0.2    : measured  30.02 s, predicted  27.25 s ( -9.2%) | reload client  3.2 s server  2.7 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 126 slow  answer P=256 infeasible: not served
+  fixed_per_class r0 127 slow  open   P=128 All on server                   : measured  17.78 s, predicted  16.54 s ( -7.0%) | reload client  0.0 s server  5.1 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 128 slow  open   P=256 All on server                   : measured  17.66 s, predicted  16.80 s ( -4.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 129 slow  both   P=512 infeasible: not served
+  fixed_per_class r0 130 slow  prompt P=512 H=4, T=0, secret head λp=0.2    : measured  33.52 s, predicted  30.66 s ( -8.5%) | reload client  2.5 s server  1.4 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 131 slow  answer P=128 infeasible: not served
+  fixed_per_class r0 132 slow  answer P=512 infeasible: not served
+  fixed_per_class r0 133 lte   prompt P= 32 H=4, T=0, secret head λp=0.2    : measured  15.75 s, predicted  15.42 s ( -2.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 134 lte   both   P=128 infeasible: not served
+  fixed_per_class r0 135 lte   open   P=256 All on server                   : measured   4.48 s, predicted   4.23 s ( -5.5%) | reload client  0.0 s server  4.9 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 136 lte   open   P=512 All on server                   : measured   4.59 s, predicted   4.61 s ( +0.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 137 lte   open   P=512 All on server                   : measured   4.50 s, predicted   4.52 s ( +0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 138 lte   answer P=512 infeasible: not served
+  fixed_per_class r0 139 lte   open   P= 32 All on server                   : measured   4.01 s, predicted   3.94 s ( -1.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 140 lte   open   P=256 All on server                   : measured   4.26 s, predicted   4.24 s ( -0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 141 lte   open   P=512 All on server                   : measured   4.54 s, predicted   4.54 s ( +0.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 142 lte   open   P=256 All on server                   : measured   4.21 s, predicted   4.19 s ( -0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 143 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  15.98 s, predicted  15.70 s ( -1.8%) | reload client  1.9 s server  1.6 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 144 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  16.29 s, predicted  16.21 s ( -0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 145 lte   open   P= 32 All on server                   : measured   4.31 s, predicted   4.02 s ( -6.8%) | reload client  0.0 s server  6.4 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 146 lte   open   P=256 All on server                   : measured   4.32 s, predicted   4.29 s ( -0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 147 lte   answer P= 32 infeasible: not served
+  fixed_per_class r0 148 lte   both   P=256 infeasible: not served
+  fixed_per_class r0 149 lte   both   P=128 infeasible: not served
+  fixed_per_class r0 150 lte   open   P=512 All on server                   : measured   4.43 s, predicted   4.46 s ( +0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 151 lte   both   P=256 infeasible: not served
+  fixed_per_class r0 152 lte   both   P=256 infeasible: not served
+  fixed_per_class r0 153 lte   answer P=256 infeasible: not served
+  fixed_per_class r0 154 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  15.57 s, predicted  15.10 s ( -3.0%) | reload client  1.3 s server  1.0 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 155 lte   open   P=512 All on server                   : measured   4.67 s, predicted   4.50 s ( -3.7%) | reload client  0.0 s server  5.4 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 156 lte   open   P=512 All on server                   : measured   4.45 s, predicted   4.47 s ( +0.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 157 lte   answer P=128 infeasible: not served
+  fixed_per_class r0 158 lte   open   P=128 All on server                   : measured   4.19 s, predicted   4.13 s ( -1.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 159 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  15.33 s, predicted  14.75 s ( -3.8%) | reload client  2.3 s server  1.6 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 160 lte   both   P=256 infeasible: not served
+  fixed_per_class r0 161 lte   both   P=128 infeasible: not served
+  fixed_per_class r0 162 lte   answer P=256 infeasible: not served
+  fixed_per_class r0 163 lte   open   P=512 All on server                   : measured   4.70 s, predicted   4.46 s ( -5.1%) | reload client  0.0 s server  5.6 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 164 lte   both   P=256 infeasible: not served
+  fixed_per_class r0 165 lte   both   P=512 infeasible: not served
+  fixed_per_class r0 166 lte   both   P=256 infeasible: not served
+  fixed_per_class r0 167 lte   answer P=256 infeasible: not served
+  fixed_per_class r0 168 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  19.53 s, predicted  18.99 s ( -2.7%) | reload client  2.3 s server  1.4 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 169 lte   open   P=256 All on server                   : measured   4.45 s, predicted   4.17 s ( -6.4%) | reload client  0.0 s server  4.8 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 170 lte   open   P=512 All on server                   : measured   4.42 s, predicted   4.46 s ( +0.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 171 lte   open   P=128 All on server                   : measured   4.07 s, predicted   4.04 s ( -0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 172 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  20.47 s, predicted  19.81 s ( -3.2%) | reload client  1.5 s server  1.3 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 173 lte   open   P=512 All on server                   : measured   4.70 s, predicted   4.52 s ( -3.8%) | reload client  0.0 s server  5.3 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 174 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  18.00 s, predicted  17.66 s ( -1.9%) | reload client  1.5 s server  0.8 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 175 lte   answer P= 32 infeasible: not served
+  fixed_per_class r0 176 lte   answer P=128 infeasible: not served
+  fixed_per_class r0 177 lte   both   P= 32 infeasible: not served
+  fixed_per_class r0 178 lte   open   P=256 All on server                   : measured   4.58 s, predicted   4.32 s ( -5.6%) | reload client  0.0 s server  3.8 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 179 lte   answer P=256 infeasible: not served
+  fixed_per_class r0 180 lte   open   P=512 All on server                   : measured   4.71 s, predicted   4.73 s ( +0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 181 lte   both   P=128 infeasible: not served
+  fixed_per_class r0 182 lte   answer P=128 infeasible: not served
+  fixed_per_class r0 183 lte   open   P=512 All on server                   : measured   4.60 s, predicted   4.62 s ( +0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 184 lte   open   P=128 All on server                   : measured   4.10 s, predicted   4.03 s ( -1.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 185 lte   answer P=512 infeasible: not served
+  fixed_per_class r0 186 lte   open   P=128 All on server                   : measured   4.21 s, predicted   4.17 s ( -1.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 187 lte   open   P=256 All on server                   : measured   4.19 s, predicted   4.18 s ( -0.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 188 lte   open   P= 32 All on server                   : measured   4.12 s, predicted   4.04 s ( -1.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 189 lte   open   P=256 All on server                   : measured   4.23 s, predicted   4.19 s ( -0.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r0 190 lte   answer P=512 infeasible: not served
+  fixed_per_class r0 191 lte   answer P=256 infeasible: not served
+  fixed_per_class r0 192 lte   both   P=512 infeasible: not served
+  fixed_per_class r0 193 lte   both   P=512 infeasible: not served
+  fixed_per_class r0 194 lte   both   P=256 infeasible: not served
+  fixed_per_class r0 195 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  18.54 s, predicted  17.79 s ( -4.0%) | reload client  2.1 s server  1.3 s (predicted  4.4) | swap grew False
+  fixed_per_class r0 196 lte   answer P=256 infeasible: not served
+  fixed_per_class r0 197 lte   answer P=128 infeasible: not served
+  fixed_per_class r0 198 lte   open   P=256 All on server                   : measured   4.65 s, predicted   4.30 s ( -7.5%) | reload client  0.0 s server  4.7 s (predicted  5.2) | swap grew False
+  fixed_per_class r0 199 lte   open   P=256 All on server                   : measured   4.19 s, predicted   4.17 s ( -0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+
+adaptive, repeat 1:
+  adaptive        r1  0 lte   open   P=128 All on server                   : measured   4.47 s, predicted   4.15 s ( -7.2%) | reload client  0.0 s server  4.7 s (predicted  5.2) | swap grew False
+  adaptive        r1  1 lte   answer P=128 infeasible: not served
+  adaptive        r1  2 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  19.04 s, predicted  18.68 s ( -1.9%) | reload client  2.1 s server  1.5 s (predicted  4.4) | swap grew False
+  adaptive        r1  3 lte   both   P=256 infeasible: not served
+  adaptive        r1  4 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  16.78 s, predicted  16.66 s ( -0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1  5 lte   open   P=256 All on server                   : measured   4.63 s, predicted   4.24 s ( -8.5%) | reload client  0.0 s server  4.6 s (predicted  5.2) | swap grew False
+  adaptive        r1  6 lte   open   P=256 All on server                   : measured   4.31 s, predicted   4.30 s ( -0.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1  7 lte   open   P= 32 All on server                   : measured   4.08 s, predicted   4.02 s ( -1.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1  8 lte   both   P=256 infeasible: not served
+  adaptive        r1  9 lte   open   P=128 All on server                   : measured   4.14 s, predicted   4.08 s ( -1.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 10 lte   open   P=256 All on server                   : measured   4.43 s, predicted   4.38 s ( -1.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 11 lte   open   P=512 All on server                   : measured   4.50 s, predicted   4.52 s ( +0.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 12 lte   open   P=256 All on server                   : measured   4.26 s, predicted   4.26 s ( +0.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 13 lte   both   P= 32 infeasible: not served
+  adaptive        r1 14 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  18.79 s, predicted  17.99 s ( -4.2%) | reload client  1.9 s server  1.4 s (predicted  4.4) | swap grew False
+  adaptive        r1 15 lte   open   P=128 All on server                   : measured   4.33 s, predicted   4.12 s ( -4.8%) | reload client  0.0 s server  4.2 s (predicted  5.2) | swap grew False
+  adaptive        r1 16 lte   answer P=512 infeasible: not served
+  adaptive        r1 17 lte   open   P=512 All on server                   : measured   4.53 s, predicted   4.56 s ( +0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 18 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  20.77 s, predicted  19.97 s ( -3.9%) | reload client  1.5 s server  0.9 s (predicted  4.4) | swap grew False
+  adaptive        r1 19 lte   open   P=256 All on server                   : measured   4.33 s, predicted   4.22 s ( -2.7%) | reload client  0.0 s server  3.7 s (predicted  5.2) | swap grew False
+  adaptive        r1 20 lte   open   P=512 All on server                   : measured   4.46 s, predicted   4.50 s ( +1.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 21 lte   open   P=256 All on server                   : measured   4.22 s, predicted   4.23 s ( +0.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 22 lte   answer P=128 infeasible: not served
+  adaptive        r1 23 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  18.13 s, predicted  17.38 s ( -4.1%) | reload client  2.3 s server  1.5 s (predicted  4.4) | swap grew False
+  adaptive        r1 24 lte   open   P=256 All on server                   : measured   4.50 s, predicted   4.26 s ( -5.3%) | reload client  0.0 s server  4.2 s (predicted  5.2) | swap grew False
+  adaptive        r1 25 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  18.17 s, predicted  17.67 s ( -2.7%) | reload client  1.8 s server  1.2 s (predicted  4.4) | swap grew False
+  adaptive        r1 26 lte   open   P=512 All on server                   : measured   4.67 s, predicted   4.52 s ( -3.2%) | reload client  0.0 s server  3.6 s (predicted  5.2) | swap grew False
+  adaptive        r1 27 lte   open   P=128 All on server                   : measured   4.20 s, predicted   4.12 s ( -2.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 28 lte   open   P=512 All on server                   : measured   4.55 s, predicted   4.58 s ( +0.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 29 lte   open   P=128 All on server                   : measured   4.13 s, predicted   4.10 s ( -0.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 30 lte   both   P=256 infeasible: not served
+  adaptive        r1 31 lte   open   P=512 All on server                   : measured   4.46 s, predicted   4.51 s ( +1.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 32 lte   open   P=128 All on server                   : measured   4.21 s, predicted   4.13 s ( -2.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 33 lte   answer P=256 infeasible: not served
+  adaptive        r1 34 lte   both   P=256 infeasible: not served
+  adaptive        r1 35 lte   both   P=256 infeasible: not served
+  adaptive        r1 36 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  21.42 s, predicted  20.60 s ( -3.8%) | reload client  2.2 s server  1.5 s (predicted  4.4) | swap grew False
+  adaptive        r1 37 lte   open   P=512 All on server                   : measured   4.71 s, predicted   4.49 s ( -4.6%) | reload client  0.0 s server  5.1 s (predicted  5.2) | swap grew False
+  adaptive        r1 38 lte   both   P=512 infeasible: not served
+  adaptive        r1 39 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  18.96 s, predicted  18.04 s ( -4.9%) | reload client  1.6 s server  1.0 s (predicted  4.4) | swap grew False
+  adaptive        r1 40 lte   open   P=512 All on server                   : measured   4.66 s, predicted   4.50 s ( -3.4%) | reload client  0.0 s server  4.4 s (predicted  5.2) | swap grew False
+  adaptive        r1 41 lte   answer P=512 infeasible: not served
+  adaptive        r1 42 lte   open   P=128 All on server                   : measured   4.11 s, predicted   4.09 s ( -0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 43 lte   both   P=128 infeasible: not served
+  adaptive        r1 44 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  14.16 s, predicted  13.97 s ( -1.3%) | reload client  1.5 s server  1.1 s (predicted  4.4) | swap grew False
+  adaptive        r1 45 lte   both   P=256 infeasible: not served
+  adaptive        r1 46 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  18.11 s, predicted  17.95 s ( -0.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 47 lte   open   P=256 All on server                   : measured   4.79 s, predicted   4.44 s ( -7.3%) | reload client  0.0 s server  5.0 s (predicted  5.2) | swap grew False
+  adaptive        r1 48 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  21.66 s, predicted  20.62 s ( -4.8%) | reload client  1.9 s server  1.5 s (predicted  4.4) | swap grew False
+  adaptive        r1 49 lte   open   P=256 All on server                   : measured   4.57 s, predicted   4.29 s ( -6.3%) | reload client  0.0 s server  5.3 s (predicted  5.2) | swap grew False
+  adaptive        r1 50 lte   open   P=512 All on server                   : measured   4.49 s, predicted   4.53 s ( +1.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 51 lte   open   P=256 All on server                   : measured   4.25 s, predicted   4.25 s ( +0.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 52 lte   answer P=256 infeasible: not served
+  adaptive        r1 53 lte   open   P=128 All on server                   : measured   4.37 s, predicted   4.31 s ( -1.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 54 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  17.97 s, predicted  17.16 s ( -4.5%) | reload client  2.2 s server  1.5 s (predicted  4.4) | swap grew False
+  adaptive        r1 55 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  20.17 s, predicted  19.68 s ( -2.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 56 lte   open   P=512 All on server                   : measured   4.89 s, predicted   4.62 s ( -5.7%) | reload client  0.0 s server  4.7 s (predicted  5.2) | swap grew False
+  adaptive        r1 57 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  20.45 s, predicted  19.81 s ( -3.1%) | reload client  1.1 s server  1.3 s (predicted  4.4) | swap grew False
+  adaptive        r1 58 lte   open   P=512 All on server                   : measured   4.84 s, predicted   4.59 s ( -5.1%) | reload client  0.0 s server  4.4 s (predicted  5.2) | swap grew False
+  adaptive        r1 59 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  15.96 s, predicted  15.17 s ( -4.9%) | reload client  2.0 s server  1.1 s (predicted  4.4) | swap grew False
+  adaptive        r1 60 lte   open   P=512 All on server                   : measured   4.74 s, predicted   4.50 s ( -5.1%) | reload client  0.0 s server  4.4 s (predicted  5.2) | swap grew False
+  adaptive        r1 61 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  19.32 s, predicted  18.33 s ( -5.1%) | reload client  1.8 s server  1.0 s (predicted  4.4) | swap grew False
+  adaptive        r1 62 lte   answer P=256 infeasible: not served
+  adaptive        r1 63 lte   answer P=128 infeasible: not served
+  adaptive        r1 64 lte   prompt P= 32 H=4, T=0, secret head λp=0.2    : measured  16.62 s, predicted  15.95 s ( -4.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 65 lte   answer P= 32 infeasible: not served
+  adaptive        r1 66 slow  open   P=512 All on server                   : measured  19.08 s, predicted  18.40 s ( -3.6%) | reload client  0.0 s server  4.2 s (predicted  5.2) | swap grew False
+  adaptive        r1 67 slow  both   P=512 infeasible: not served
+  adaptive        r1 68 slow  open   P=128 All on server                   : measured  17.70 s, predicted  16.70 s ( -5.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 69 slow  open   P=256 All on server                   : measured  17.20 s, predicted  16.85 s ( -2.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 70 slow  answer P=128 infeasible: not served
+  adaptive        r1 71 slow  open   P=128 All on server                   : measured  16.16 s, predicted  15.77 s ( -2.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 72 slow  open   P=512 All on server                   : measured  17.64 s, predicted  17.59 s ( -0.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 73 slow  prompt P=256 H=4, T=11, secret head λp=0.2   : measured  22.88 s, predicted  23.79 s ( +4.0%) | reload client  2.6 s server  0.2 s (predicted  3.1) | swap grew False
+  adaptive        r1 74 slow  prompt P= 32 H=4, T=11, secret head λp=0.2   : measured  15.42 s, predicted  16.99 s (+10.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 75 slow  prompt P=128 H=4, T=11, secret head λp=0.2   : measured  20.36 s, predicted  21.87 s ( +7.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 76 slow  both   P=256 infeasible: not served
+  adaptive        r1 77 slow  prompt P=512 H=4, T=11, secret head λp=0.2   : measured  26.12 s, predicted  27.19 s ( +4.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 78 slow  open   P=512 All on server                   : measured  18.80 s, predicted  18.05 s ( -4.0%) | reload client  0.0 s server  4.7 s (predicted  5.2) | swap grew False
+  adaptive        r1 79 slow  prompt P=128 H=4, T=11, secret head λp=0.2   : measured  20.43 s, predicted  21.42 s ( +4.9%) | reload client  2.8 s server  0.3 s (predicted  3.1) | swap grew False
+  adaptive        r1 80 slow  open   P=256 All on server                   : measured  17.60 s, predicted  16.65 s ( -5.4%) | reload client  0.0 s server  5.0 s (predicted  5.2) | swap grew False
+  adaptive        r1 81 slow  prompt P= 32 H=4, T=11, secret head λp=0.2   : measured  16.84 s, predicted  17.84 s ( +5.9%) | reload client  2.3 s server  0.2 s (predicted  3.1) | swap grew False
+  adaptive        r1 82 slow  open   P=128 All on server                   : measured  16.74 s, predicted  15.95 s ( -4.7%) | reload client  0.0 s server  4.9 s (predicted  5.2) | swap grew False
+  adaptive        r1 83 slow  open   P=128 All on server                   : measured  16.28 s, predicted  15.91 s ( -2.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 84 slow  both   P=256 infeasible: not served
+  adaptive        r1 85 slow  prompt P=256 H=4, T=11, secret head λp=0.2   : measured  22.15 s, predicted  23.10 s ( +4.3%) | reload client  2.4 s server  0.2 s (predicted  3.1) | swap grew False
+  adaptive        r1 86 slow  prompt P=256 H=4, T=11, secret head λp=0.2   : measured  22.18 s, predicted  23.56 s ( +6.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 87 slow  answer P=256 infeasible: not served
+  adaptive        r1 88 slow  prompt P=256 H=4, T=11, secret head λp=0.2   : measured  22.60 s, predicted  24.04 s ( +6.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 89 slow  answer P=512 infeasible: not served
+  adaptive        r1 90 slow  answer P=256 infeasible: not served
+  adaptive        r1 91 slow  open   P=256 All on server                   : measured  17.17 s, predicted  16.20 s ( -5.6%) | reload client  0.0 s server  5.2 s (predicted  5.2) | swap grew False
+  adaptive        r1 92 slow  answer P=512 infeasible: not served
+  adaptive        r1 93 slow  both   P=256 infeasible: not served
+  adaptive        r1 94 slow  prompt P=512 H=4, T=11, secret head λp=0.2   : measured  27.84 s, predicted  28.78 s ( +3.4%) | reload client  2.3 s server  0.2 s (predicted  3.1) | swap grew False
+  adaptive        r1 95 slow  both   P= 32 infeasible: not served
+  adaptive        r1 96 slow  answer P=128 infeasible: not served
+  adaptive        r1 97 slow  both   P=128 infeasible: not served
+  adaptive        r1 98 slow  open   P= 32 All on server                   : measured  15.75 s, predicted  15.42 s ( -2.1%) | reload client  0.0 s server  4.5 s (predicted  5.2) | swap grew False
+  adaptive        r1 99 slow  both   P=512 infeasible: not served
+  adaptive        r1 100 slow  open   P= 32 All on server                   : measured  16.07 s, predicted  15.66 s ( -2.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 101 slow  open   P=256 All on server                   : measured  16.48 s, predicted  16.25 s ( -1.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 102 slow  prompt P=512 H=4, T=11, secret head λp=0.2   : measured  26.71 s, predicted  27.62 s ( +3.4%) | reload client  2.7 s server  0.2 s (predicted  3.1) | swap grew False
+  adaptive        r1 103 slow  answer P=256 infeasible: not served
+  adaptive        r1 104 slow  answer P=512 infeasible: not served
+  adaptive        r1 105 slow  both   P= 32 infeasible: not served
+  adaptive        r1 106 slow  open   P=256 All on server                   : measured  16.71 s, predicted  15.89 s ( -4.9%) | reload client  0.0 s server  4.5 s (predicted  5.2) | swap grew False
+  adaptive        r1 107 slow  prompt P= 32 H=4, T=11, secret head λp=0.2   : measured  18.21 s, predicted  19.24 s ( +5.7%) | reload client  2.0 s server  0.2 s (predicted  3.1) | swap grew False
+  adaptive        r1 108 slow  answer P=128 infeasible: not served
+  adaptive        r1 109 slow  answer P=512 infeasible: not served
+  adaptive        r1 110 slow  answer P= 32 infeasible: not served
+  adaptive        r1 111 slow  open   P=256 All on server                   : measured  18.24 s, predicted  17.00 s ( -6.8%) | reload client  0.0 s server  5.0 s (predicted  5.2) | swap grew False
+  adaptive        r1 112 slow  answer P= 32 infeasible: not served
+  adaptive        r1 113 slow  both   P=128 infeasible: not served
+  adaptive        r1 114 slow  open   P=512 All on server                   : measured  16.95 s, predicted  16.77 s ( -1.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 115 slow  open   P=128 All on server                   : measured  15.50 s, predicted  15.12 s ( -2.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 116 slow  open   P=128 All on server                   : measured  16.68 s, predicted  16.24 s ( -2.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 117 slow  answer P= 32 infeasible: not served
+  adaptive        r1 118 slow  both   P=512 infeasible: not served
+  adaptive        r1 119 slow  open   P=128 All on server                   : measured  16.14 s, predicted  15.77 s ( -2.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 120 slow  both   P=256 infeasible: not served
+  adaptive        r1 121 slow  answer P= 32 infeasible: not served
+  adaptive        r1 122 slow  open   P= 32 All on server                   : measured  15.80 s, predicted  15.38 s ( -2.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 123 slow  answer P=512 infeasible: not served
+  adaptive        r1 124 slow  open   P= 32 All on server                   : measured  16.11 s, predicted  15.76 s ( -2.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 125 slow  prompt P=256 H=4, T=11, secret head λp=0.2   : measured  22.22 s, predicted  23.12 s ( +4.0%) | reload client  2.9 s server  0.2 s (predicted  3.1) | swap grew False
+  adaptive        r1 126 slow  answer P=256 infeasible: not served
+  adaptive        r1 127 slow  open   P=128 All on server                   : measured  17.87 s, predicted  16.59 s ( -7.2%) | reload client  0.0 s server  6.3 s (predicted  5.2) | swap grew False
+  adaptive        r1 128 slow  open   P=256 All on server                   : measured  17.11 s, predicted  16.86 s ( -1.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 129 slow  both   P=512 infeasible: not served
+  adaptive        r1 130 slow  prompt P=512 H=4, T=11, secret head λp=0.2   : measured  27.94 s, predicted  28.73 s ( +2.8%) | reload client  2.0 s server  0.2 s (predicted  3.1) | swap grew False
+  adaptive        r1 131 slow  answer P=128 infeasible: not served
+  adaptive        r1 132 slow  answer P=512 infeasible: not served
+  adaptive        r1 133 lte   prompt P= 32 H=4, T=11, secret head λp=0.2   : measured  15.86 s, predicted  16.82 s ( +6.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 134 lte   both   P=128 infeasible: not served
+  adaptive        r1 135 lte   open   P=256 All on server                   : measured   4.53 s, predicted   4.29 s ( -5.3%) | reload client  0.0 s server  5.1 s (predicted  5.2) | swap grew False
+  adaptive        r1 136 lte   open   P=512 All on server                   : measured   4.66 s, predicted   4.66 s ( -0.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 137 lte   open   P=512 All on server                   : measured   4.59 s, predicted   4.59 s ( +0.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 138 lte   answer P=512 infeasible: not served
+  adaptive        r1 139 lte   open   P= 32 All on server                   : measured   4.06 s, predicted   4.00 s ( -1.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 140 lte   open   P=256 All on server                   : measured   4.37 s, predicted   4.31 s ( -1.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 141 lte   open   P=512 All on server                   : measured   4.57 s, predicted   4.60 s ( +0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 142 lte   open   P=256 All on server                   : measured   4.27 s, predicted   4.26 s ( -0.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 143 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  16.08 s, predicted  15.76 s ( -2.0%) | reload client  2.1 s server  1.4 s (predicted  4.4) | swap grew False
+  adaptive        r1 144 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  16.36 s, predicted  16.26 s ( -0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 145 lte   open   P= 32 All on server                   : measured   4.50 s, predicted   4.08 s ( -9.3%) | reload client  0.0 s server  4.8 s (predicted  5.2) | swap grew False
+  adaptive        r1 146 lte   open   P=256 All on server                   : measured   4.37 s, predicted   4.34 s ( -0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 147 lte   answer P= 32 infeasible: not served
+  adaptive        r1 148 lte   both   P=256 infeasible: not served
+  adaptive        r1 149 lte   both   P=128 infeasible: not served
+  adaptive        r1 150 lte   open   P=512 All on server                   : measured   4.49 s, predicted   4.52 s ( +0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 151 lte   both   P=256 infeasible: not served
+  adaptive        r1 152 lte   both   P=256 infeasible: not served
+  adaptive        r1 153 lte   answer P=256 infeasible: not served
+  adaptive        r1 154 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  15.50 s, predicted  15.16 s ( -2.2%) | reload client  1.4 s server  1.3 s (predicted  4.4) | swap grew False
+  adaptive        r1 155 lte   open   P=512 All on server                   : measured   4.79 s, predicted   4.57 s ( -4.5%) | reload client  0.0 s server  3.9 s (predicted  5.2) | swap grew False
+  adaptive        r1 156 lte   open   P=512 All on server                   : measured   4.51 s, predicted   4.52 s ( +0.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 157 lte   answer P=128 infeasible: not served
+  adaptive        r1 158 lte   open   P=128 All on server                   : measured   4.23 s, predicted   4.20 s ( -0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 159 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  15.23 s, predicted  14.80 s ( -2.8%) | reload client  1.6 s server  1.2 s (predicted  4.4) | swap grew False
+  adaptive        r1 160 lte   both   P=256 infeasible: not served
+  adaptive        r1 161 lte   both   P=128 infeasible: not served
+  adaptive        r1 162 lte   answer P=256 infeasible: not served
+  adaptive        r1 163 lte   open   P=512 All on server                   : measured   4.72 s, predicted   4.52 s ( -4.1%) | reload client  0.0 s server  4.1 s (predicted  5.2) | swap grew False
+  adaptive        r1 164 lte   both   P=256 infeasible: not served
+  adaptive        r1 165 lte   both   P=512 infeasible: not served
+  adaptive        r1 166 lte   both   P=256 infeasible: not served
+  adaptive        r1 167 lte   answer P=256 infeasible: not served
+  adaptive        r1 168 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  19.66 s, predicted  19.05 s ( -3.1%) | reload client  2.5 s server  1.5 s (predicted  4.4) | swap grew False
+  adaptive        r1 169 lte   open   P=256 All on server                   : measured   4.53 s, predicted   4.22 s ( -6.9%) | reload client  0.0 s server  5.1 s (predicted  5.2) | swap grew False
+  adaptive        r1 170 lte   open   P=512 All on server                   : measured   4.49 s, predicted   4.53 s ( +0.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 171 lte   open   P=128 All on server                   : measured   4.13 s, predicted   4.09 s ( -0.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 172 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  20.78 s, predicted  19.87 s ( -4.4%) | reload client  2.2 s server  1.5 s (predicted  4.4) | swap grew False
+  adaptive        r1 173 lte   open   P=512 All on server                   : measured   4.75 s, predicted   4.57 s ( -3.8%) | reload client  0.0 s server  4.2 s (predicted  5.2) | swap grew False
+  adaptive        r1 174 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  18.13 s, predicted  17.71 s ( -2.3%) | reload client  2.4 s server  1.6 s (predicted  4.4) | swap grew False
+  adaptive        r1 175 lte   answer P= 32 infeasible: not served
+  adaptive        r1 176 lte   answer P=128 infeasible: not served
+  adaptive        r1 177 lte   both   P= 32 infeasible: not served
+  adaptive        r1 178 lte   open   P=256 All on server                   : measured   4.70 s, predicted   4.39 s ( -6.5%) | reload client  0.0 s server  4.4 s (predicted  5.2) | swap grew False
+  adaptive        r1 179 lte   answer P=256 infeasible: not served
+  adaptive        r1 180 lte   open   P=512 All on server                   : measured   4.81 s, predicted   4.80 s ( -0.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 181 lte   both   P=128 infeasible: not served
+  adaptive        r1 182 lte   answer P=128 infeasible: not served
+  adaptive        r1 183 lte   open   P=512 All on server                   : measured   4.65 s, predicted   4.68 s ( +0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 184 lte   open   P=128 All on server                   : measured   4.14 s, predicted   4.08 s ( -1.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 185 lte   answer P=512 infeasible: not served
+  adaptive        r1 186 lte   open   P=128 All on server                   : measured   4.26 s, predicted   4.22 s ( -0.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 187 lte   open   P=256 All on server                   : measured   4.28 s, predicted   4.25 s ( -0.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 188 lte   open   P= 32 All on server                   : measured   4.16 s, predicted   4.09 s ( -1.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 189 lte   open   P=256 All on server                   : measured   4.27 s, predicted   4.25 s ( -0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r1 190 lte   answer P=512 infeasible: not served
+  adaptive        r1 191 lte   answer P=256 infeasible: not served
+  adaptive        r1 192 lte   both   P=512 infeasible: not served
+  adaptive        r1 193 lte   both   P=512 infeasible: not served
+  adaptive        r1 194 lte   both   P=256 infeasible: not served
+  adaptive        r1 195 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  18.49 s, predicted  17.85 s ( -3.5%) | reload client  1.8 s server  1.4 s (predicted  4.4) | swap grew False
+  adaptive        r1 196 lte   answer P=256 infeasible: not served
+  adaptive        r1 197 lte   answer P=128 infeasible: not served
+  adaptive        r1 198 lte   open   P=256 All on server                   : measured   4.60 s, predicted   4.37 s ( -5.0%) | reload client  0.0 s server  3.9 s (predicted  5.2) | swap grew False
+  adaptive        r1 199 lte   open   P=256 All on server                   : measured   4.24 s, predicted   4.22 s ( -0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+
+fixed_per_class, repeat 1:
+  fixed_per_class r1  0 lte   open   P=128 All on server                   : measured   4.41 s, predicted   4.09 s ( -7.1%) | reload client  0.0 s server  5.7 s (predicted  5.2) | swap grew False
+  fixed_per_class r1  1 lte   answer P=128 infeasible: not served
+  fixed_per_class r1  2 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  18.90 s, predicted  18.63 s ( -1.4%) | reload client  1.5 s server  1.2 s (predicted  4.4) | swap grew False
+  fixed_per_class r1  3 lte   both   P=256 infeasible: not served
+  fixed_per_class r1  4 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  16.70 s, predicted  16.60 s ( -0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1  5 lte   open   P=256 All on server                   : measured   4.49 s, predicted   4.18 s ( -7.0%) | reload client  0.0 s server  4.8 s (predicted  5.2) | swap grew False
+  fixed_per_class r1  6 lte   open   P=256 All on server                   : measured   4.24 s, predicted   4.23 s ( -0.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1  7 lte   open   P= 32 All on server                   : measured   4.00 s, predicted   3.95 s ( -1.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1  8 lte   both   P=256 infeasible: not served
+  fixed_per_class r1  9 lte   open   P=128 All on server                   : measured   4.10 s, predicted   4.03 s ( -1.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 10 lte   open   P=256 All on server                   : measured   4.32 s, predicted   4.31 s ( -0.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 11 lte   open   P=512 All on server                   : measured   4.45 s, predicted   4.46 s ( +0.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 12 lte   open   P=256 All on server                   : measured   4.19 s, predicted   4.19 s ( -0.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 13 lte   both   P= 32 infeasible: not served
+  fixed_per_class r1 14 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  18.73 s, predicted  17.92 s ( -4.3%) | reload client  1.8 s server  1.3 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 15 lte   open   P=128 All on server                   : measured   4.27 s, predicted   4.05 s ( -5.1%) | reload client  0.0 s server  4.3 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 16 lte   answer P=512 infeasible: not served
+  fixed_per_class r1 17 lte   open   P=512 All on server                   : measured   4.48 s, predicted   4.51 s ( +0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 18 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  20.70 s, predicted  19.90 s ( -3.9%) | reload client  2.3 s server  1.4 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 19 lte   open   P=256 All on server                   : measured   4.40 s, predicted   4.17 s ( -5.4%) | reload client  0.0 s server  4.6 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 20 lte   open   P=512 All on server                   : measured   4.40 s, predicted   4.45 s ( +1.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 21 lte   open   P=256 All on server                   : measured   4.18 s, predicted   4.17 s ( -0.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 22 lte   answer P=128 infeasible: not served
+  fixed_per_class r1 23 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  18.00 s, predicted  17.32 s ( -3.8%) | reload client  2.4 s server  1.4 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 24 lte   open   P=256 All on server                   : measured   4.65 s, predicted   4.19 s ( -9.9%) | reload client  0.0 s server  5.8 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 25 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  18.35 s, predicted  17.60 s ( -4.1%) | reload client  2.7 s server  1.5 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 26 lte   open   P=512 All on server                   : measured   4.70 s, predicted   4.46 s ( -5.1%) | reload client  0.0 s server  4.6 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 27 lte   open   P=128 All on server                   : measured   4.09 s, predicted   4.05 s ( -0.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 28 lte   open   P=512 All on server                   : measured   4.52 s, predicted   4.53 s ( +0.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 29 lte   open   P=128 All on server                   : measured   4.07 s, predicted   4.04 s ( -0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 30 lte   both   P=256 infeasible: not served
+  fixed_per_class r1 31 lte   open   P=512 All on server                   : measured   4.43 s, predicted   4.45 s ( +0.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 32 lte   open   P=128 All on server                   : measured   4.14 s, predicted   4.07 s ( -1.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 33 lte   answer P=256 infeasible: not served
+  fixed_per_class r1 34 lte   both   P=256 infeasible: not served
+  fixed_per_class r1 35 lte   both   P=256 infeasible: not served
+  fixed_per_class r1 36 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  21.25 s, predicted  20.54 s ( -3.4%) | reload client  1.7 s server  1.3 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 37 lte   open   P=512 All on server                   : measured   4.69 s, predicted   4.44 s ( -5.2%) | reload client  0.0 s server  4.0 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 38 lte   both   P=512 infeasible: not served
+  fixed_per_class r1 39 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  18.73 s, predicted  17.97 s ( -4.0%) | reload client  1.7 s server  1.3 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 40 lte   open   P=512 All on server                   : measured   4.60 s, predicted   4.45 s ( -3.3%) | reload client  0.0 s server  3.7 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 41 lte   answer P=512 infeasible: not served
+  fixed_per_class r1 42 lte   open   P=128 All on server                   : measured   4.07 s, predicted   4.04 s ( -0.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 43 lte   both   P=128 infeasible: not served
+  fixed_per_class r1 44 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  14.15 s, predicted  13.92 s ( -1.7%) | reload client  1.5 s server  1.1 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 45 lte   both   P=256 infeasible: not served
+  fixed_per_class r1 46 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  17.93 s, predicted  17.90 s ( -0.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 47 lte   open   P=256 All on server                   : measured   4.50 s, predicted   4.37 s ( -3.0%) | reload client  0.0 s server  3.4 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 48 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  21.53 s, predicted  20.54 s ( -4.6%) | reload client  2.6 s server  1.4 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 49 lte   open   P=256 All on server                   : measured   4.45 s, predicted   4.23 s ( -4.8%) | reload client  0.0 s server  3.4 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 50 lte   open   P=512 All on server                   : measured   4.45 s, predicted   4.47 s ( +0.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 51 lte   open   P=256 All on server                   : measured   4.19 s, predicted   4.18 s ( -0.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 52 lte   answer P=256 infeasible: not served
+  fixed_per_class r1 53 lte   open   P=128 All on server                   : measured   4.32 s, predicted   4.24 s ( -1.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 54 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  17.68 s, predicted  17.09 s ( -3.3%) | reload client  1.6 s server  1.0 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 55 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  20.07 s, predicted  19.62 s ( -2.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 56 lte   open   P=512 All on server                   : measured   4.77 s, predicted   4.56 s ( -4.5%) | reload client  0.0 s server  4.8 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 57 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  20.46 s, predicted  19.74 s ( -3.5%) | reload client  1.4 s server  1.0 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 58 lte   open   P=512 All on server                   : measured   4.76 s, predicted   4.52 s ( -4.9%) | reload client  0.0 s server  4.5 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 59 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  15.67 s, predicted  15.12 s ( -3.5%) | reload client  1.6 s server  1.1 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 60 lte   open   P=512 All on server                   : measured   4.70 s, predicted   4.45 s ( -5.5%) | reload client  0.0 s server  5.5 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 61 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  19.15 s, predicted  18.26 s ( -4.7%) | reload client  2.7 s server  1.3 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 62 lte   answer P=256 infeasible: not served
+  fixed_per_class r1 63 lte   answer P=128 infeasible: not served
+  fixed_per_class r1 64 lte   prompt P= 32 H=4, T=0, secret head λp=0.2    : measured  16.54 s, predicted  15.88 s ( -4.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 65 lte   answer P= 32 infeasible: not served
+  fixed_per_class r1 66 slow  open   P=512 All on server                   : measured  19.38 s, predicted  18.33 s ( -5.4%) | reload client  0.0 s server  6.1 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 67 slow  both   P=512 infeasible: not served
+  fixed_per_class r1 68 slow  open   P=128 All on server                   : measured  17.03 s, predicted  16.63 s ( -2.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 69 slow  open   P=256 All on server                   : measured  17.18 s, predicted  16.79 s ( -2.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 70 slow  answer P=128 infeasible: not served
+  fixed_per_class r1 71 slow  open   P=128 All on server                   : measured  16.10 s, predicted  15.71 s ( -2.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 72 slow  open   P=512 All on server                   : measured  17.64 s, predicted  17.52 s ( -0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 73 slow  prompt P=256 H=4, T=0, secret head λp=0.2    : measured  30.66 s, predicted  27.67 s ( -9.7%) | reload client  2.6 s server  1.6 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 74 slow  prompt P= 32 H=4, T=0, secret head λp=0.2    : measured  23.57 s, predicted  22.30 s ( -5.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 75 slow  prompt P=128 H=4, T=0, secret head λp=0.2    : measured  27.45 s, predicted  26.69 s ( -2.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 76 slow  both   P=256 infeasible: not served
+  fixed_per_class r1 77 slow  prompt P=512 H=4, T=0, secret head λp=0.2    : measured  30.03 s, predicted  28.72 s ( -4.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 78 slow  open   P=512 All on server                   : measured  18.82 s, predicted  17.99 s ( -4.4%) | reload client  0.0 s server  3.9 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 79 slow  prompt P=128 H=4, T=0, secret head λp=0.2    : measured  27.53 s, predicted  26.66 s ( -3.2%) | reload client  1.8 s server  1.0 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 80 slow  open   P=256 All on server                   : measured  17.65 s, predicted  16.59 s ( -6.0%) | reload client  0.0 s server  5.6 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 81 slow  prompt P= 32 H=4, T=0, secret head λp=0.2    : measured  25.00 s, predicted  23.51 s ( -6.0%) | reload client  1.8 s server  1.2 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 82 slow  open   P=128 All on server                   : measured  16.99 s, predicted  15.89 s ( -6.5%) | reload client  0.0 s server  5.2 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 83 slow  open   P=128 All on server                   : measured  16.07 s, predicted  15.86 s ( -1.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 84 slow  both   P=256 infeasible: not served
+  fixed_per_class r1 85 slow  prompt P=256 H=4, T=0, secret head λp=0.2    : measured  28.72 s, predicted  26.87 s ( -6.5%) | reload client  1.5 s server  1.1 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 86 slow  prompt P=256 H=4, T=0, secret head λp=0.2    : measured  28.24 s, predicted  27.46 s ( -2.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 87 slow  answer P=256 infeasible: not served
+  fixed_per_class r1 88 slow  prompt P=256 H=4, T=0, secret head λp=0.2    : measured  28.44 s, predicted  27.51 s ( -3.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 89 slow  answer P=512 infeasible: not served
+  fixed_per_class r1 90 slow  answer P=256 infeasible: not served
+  fixed_per_class r1 91 slow  open   P=256 All on server                   : measured  17.22 s, predicted  16.14 s ( -6.3%) | reload client  0.0 s server  5.6 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 92 slow  answer P=512 infeasible: not served
+  fixed_per_class r1 93 slow  both   P=256 infeasible: not served
+  fixed_per_class r1 94 slow  prompt P=512 H=4, T=0, secret head λp=0.2    : measured  33.37 s, predicted  30.33 s ( -9.1%) | reload client  1.4 s server  0.9 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 95 slow  both   P= 32 infeasible: not served
+  fixed_per_class r1 96 slow  answer P=128 infeasible: not served
+  fixed_per_class r1 97 slow  both   P=128 infeasible: not served
+  fixed_per_class r1 98 slow  open   P= 32 All on server                   : measured  16.47 s, predicted  15.35 s ( -6.8%) | reload client  0.0 s server  4.5 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 99 slow  both   P=512 infeasible: not served
+  fixed_per_class r1 100 slow  open   P= 32 All on server                   : measured  15.94 s, predicted  15.59 s ( -2.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 101 slow  open   P=256 All on server                   : measured  16.40 s, predicted  16.19 s ( -1.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 102 slow  prompt P=512 H=4, T=0, secret head λp=0.2    : measured  31.95 s, predicted  29.70 s ( -7.0%) | reload client  2.4 s server  1.7 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 103 slow  answer P=256 infeasible: not served
+  fixed_per_class r1 104 slow  answer P=512 infeasible: not served
+  fixed_per_class r1 105 slow  both   P= 32 infeasible: not served
+  fixed_per_class r1 106 slow  open   P=256 All on server                   : measured  16.62 s, predicted  15.83 s ( -4.8%) | reload client  0.0 s server  4.3 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 107 slow  prompt P= 32 H=4, T=0, secret head λp=0.2    : measured  25.97 s, predicted  24.83 s ( -4.4%) | reload client  1.6 s server  1.0 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 108 slow  answer P=128 infeasible: not served
+  fixed_per_class r1 109 slow  answer P=512 infeasible: not served
+  fixed_per_class r1 110 slow  answer P= 32 infeasible: not served
+  fixed_per_class r1 111 slow  open   P=256 All on server                   : measured  17.80 s, predicted  16.95 s ( -4.8%) | reload client  0.0 s server  4.9 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 112 slow  answer P= 32 infeasible: not served
+  fixed_per_class r1 113 slow  both   P=128 infeasible: not served
+  fixed_per_class r1 114 slow  open   P=512 All on server                   : measured  16.76 s, predicted  16.71 s ( -0.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 115 slow  open   P=128 All on server                   : measured  15.39 s, predicted  15.05 s ( -2.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 116 slow  open   P=128 All on server                   : measured  16.54 s, predicted  16.18 s ( -2.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 117 slow  answer P= 32 infeasible: not served
+  fixed_per_class r1 118 slow  both   P=512 infeasible: not served
+  fixed_per_class r1 119 slow  open   P=128 All on server                   : measured  16.02 s, predicted  15.70 s ( -2.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 120 slow  both   P=256 infeasible: not served
+  fixed_per_class r1 121 slow  answer P= 32 infeasible: not served
+  fixed_per_class r1 122 slow  open   P= 32 All on server                   : measured  15.71 s, predicted  15.31 s ( -2.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 123 slow  answer P=512 infeasible: not served
+  fixed_per_class r1 124 slow  open   P= 32 All on server                   : measured  16.08 s, predicted  15.70 s ( -2.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 125 slow  prompt P=256 H=4, T=0, secret head λp=0.2    : measured  30.04 s, predicted  27.25 s ( -9.3%) | reload client  2.6 s server  2.5 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 126 slow  answer P=256 infeasible: not served
+  fixed_per_class r1 127 slow  open   P=128 All on server                   : measured  17.57 s, predicted  16.54 s ( -5.9%) | reload client  0.0 s server  4.6 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 128 slow  open   P=256 All on server                   : measured  17.00 s, predicted  16.80 s ( -1.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 129 slow  both   P=512 infeasible: not served
+  fixed_per_class r1 130 slow  prompt P=512 H=4, T=0, secret head λp=0.2    : measured  33.25 s, predicted  30.66 s ( -7.8%) | reload client  2.1 s server  1.4 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 131 slow  answer P=128 infeasible: not served
+  fixed_per_class r1 132 slow  answer P=512 infeasible: not served
+  fixed_per_class r1 133 lte   prompt P= 32 H=4, T=0, secret head λp=0.2    : measured  15.83 s, predicted  15.42 s ( -2.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 134 lte   both   P=128 infeasible: not served
+  fixed_per_class r1 135 lte   open   P=256 All on server                   : measured   4.45 s, predicted   4.23 s ( -4.9%) | reload client  0.0 s server  5.0 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 136 lte   open   P=512 All on server                   : measured   4.57 s, predicted   4.61 s ( +0.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 137 lte   open   P=512 All on server                   : measured   4.49 s, predicted   4.52 s ( +0.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 138 lte   answer P=512 infeasible: not served
+  fixed_per_class r1 139 lte   open   P= 32 All on server                   : measured   4.01 s, predicted   3.94 s ( -1.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 140 lte   open   P=256 All on server                   : measured   4.26 s, predicted   4.24 s ( -0.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 141 lte   open   P=512 All on server                   : measured   4.52 s, predicted   4.54 s ( +0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 142 lte   open   P=256 All on server                   : measured   4.25 s, predicted   4.19 s ( -1.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 143 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  15.95 s, predicted  15.70 s ( -1.6%) | reload client  1.6 s server  0.8 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 144 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  16.31 s, predicted  16.21 s ( -0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 145 lte   open   P= 32 All on server                   : measured   4.36 s, predicted   4.02 s ( -7.8%) | reload client  0.0 s server  5.7 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 146 lte   open   P=256 All on server                   : measured   4.32 s, predicted   4.29 s ( -0.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 147 lte   answer P= 32 infeasible: not served
+  fixed_per_class r1 148 lte   both   P=256 infeasible: not served
+  fixed_per_class r1 149 lte   both   P=128 infeasible: not served
+  fixed_per_class r1 150 lte   open   P=512 All on server                   : measured   4.44 s, predicted   4.46 s ( +0.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 151 lte   both   P=256 infeasible: not served
+  fixed_per_class r1 152 lte   both   P=256 infeasible: not served
+  fixed_per_class r1 153 lte   answer P=256 infeasible: not served
+  fixed_per_class r1 154 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  15.46 s, predicted  15.10 s ( -2.3%) | reload client  1.2 s server  1.1 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 155 lte   open   P=512 All on server                   : measured   4.73 s, predicted   4.50 s ( -4.9%) | reload client  0.0 s server  4.2 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 156 lte   open   P=512 All on server                   : measured   4.45 s, predicted   4.47 s ( +0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 157 lte   answer P=128 infeasible: not served
+  fixed_per_class r1 158 lte   open   P=128 All on server                   : measured   4.17 s, predicted   4.13 s ( -1.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 159 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  15.02 s, predicted  14.75 s ( -1.8%) | reload client  1.8 s server  1.3 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 160 lte   both   P=256 infeasible: not served
+  fixed_per_class r1 161 lte   both   P=128 infeasible: not served
+  fixed_per_class r1 162 lte   answer P=256 infeasible: not served
+  fixed_per_class r1 163 lte   open   P=512 All on server                   : measured   4.70 s, predicted   4.46 s ( -5.1%) | reload client  0.0 s server  3.8 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 164 lte   both   P=256 infeasible: not served
+  fixed_per_class r1 165 lte   both   P=512 infeasible: not served
+  fixed_per_class r1 166 lte   both   P=256 infeasible: not served
+  fixed_per_class r1 167 lte   answer P=256 infeasible: not served
+  fixed_per_class r1 168 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  19.59 s, predicted  18.99 s ( -3.1%) | reload client  1.5 s server  0.7 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 169 lte   open   P=256 All on server                   : measured   4.40 s, predicted   4.17 s ( -5.2%) | reload client  0.0 s server  4.4 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 170 lte   open   P=512 All on server                   : measured   4.43 s, predicted   4.46 s ( +0.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 171 lte   open   P=128 All on server                   : measured   4.07 s, predicted   4.04 s ( -0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 172 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  20.79 s, predicted  19.81 s ( -4.7%) | reload client  2.0 s server  1.1 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 173 lte   open   P=512 All on server                   : measured   4.75 s, predicted   4.52 s ( -4.8%) | reload client  0.0 s server  4.2 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 174 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  18.18 s, predicted  17.66 s ( -2.9%) | reload client  1.3 s server  1.2 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 175 lte   answer P= 32 infeasible: not served
+  fixed_per_class r1 176 lte   answer P=128 infeasible: not served
+  fixed_per_class r1 177 lte   both   P= 32 infeasible: not served
+  fixed_per_class r1 178 lte   open   P=256 All on server                   : measured   4.57 s, predicted   4.32 s ( -5.3%) | reload client  0.0 s server  2.9 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 179 lte   answer P=256 infeasible: not served
+  fixed_per_class r1 180 lte   open   P=512 All on server                   : measured   4.72 s, predicted   4.73 s ( +0.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 181 lte   both   P=128 infeasible: not served
+  fixed_per_class r1 182 lte   answer P=128 infeasible: not served
+  fixed_per_class r1 183 lte   open   P=512 All on server                   : measured   4.59 s, predicted   4.62 s ( +0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 184 lte   open   P=128 All on server                   : measured   4.09 s, predicted   4.03 s ( -1.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 185 lte   answer P=512 infeasible: not served
+  fixed_per_class r1 186 lte   open   P=128 All on server                   : measured   4.22 s, predicted   4.17 s ( -1.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 187 lte   open   P=256 All on server                   : measured   4.22 s, predicted   4.18 s ( -0.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 188 lte   open   P= 32 All on server                   : measured   4.12 s, predicted   4.04 s ( -1.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 189 lte   open   P=256 All on server                   : measured   4.24 s, predicted   4.19 s ( -1.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r1 190 lte   answer P=512 infeasible: not served
+  fixed_per_class r1 191 lte   answer P=256 infeasible: not served
+  fixed_per_class r1 192 lte   both   P=512 infeasible: not served
+  fixed_per_class r1 193 lte   both   P=512 infeasible: not served
+  fixed_per_class r1 194 lte   both   P=256 infeasible: not served
+  fixed_per_class r1 195 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  18.43 s, predicted  17.79 s ( -3.5%) | reload client  1.4 s server  1.0 s (predicted  4.4) | swap grew False
+  fixed_per_class r1 196 lte   answer P=256 infeasible: not served
+  fixed_per_class r1 197 lte   answer P=128 infeasible: not served
+  fixed_per_class r1 198 lte   open   P=256 All on server                   : measured   4.61 s, predicted   4.30 s ( -6.7%) | reload client  0.0 s server  4.6 s (predicted  5.2) | swap grew False
+  fixed_per_class r1 199 lte   open   P=256 All on server                   : measured   4.19 s, predicted   4.17 s ( -0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+
+adaptive, repeat 2:
+  adaptive        r2  0 lte   open   P=128 All on server                   : measured   4.40 s, predicted   4.15 s ( -5.8%) | reload client  0.0 s server  3.7 s (predicted  5.2) | swap grew False
+  adaptive        r2  1 lte   answer P=128 infeasible: not served
+  adaptive        r2  2 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  19.05 s, predicted  18.68 s ( -2.0%) | reload client  1.7 s server  1.1 s (predicted  4.4) | swap grew False
+  adaptive        r2  3 lte   both   P=256 infeasible: not served
+  adaptive        r2  4 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  16.79 s, predicted  16.66 s ( -0.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2  5 lte   open   P=256 All on server                   : measured   4.52 s, predicted   4.24 s ( -6.4%) | reload client  0.0 s server  5.1 s (predicted  5.2) | swap grew False
+  adaptive        r2  6 lte   open   P=256 All on server                   : measured   4.32 s, predicted   4.30 s ( -0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2  7 lte   open   P= 32 All on server                   : measured   4.08 s, predicted   4.02 s ( -1.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2  8 lte   both   P=256 infeasible: not served
+  adaptive        r2  9 lte   open   P=128 All on server                   : measured   4.12 s, predicted   4.08 s ( -1.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 10 lte   open   P=256 All on server                   : measured   4.40 s, predicted   4.38 s ( -0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 11 lte   open   P=512 All on server                   : measured   4.49 s, predicted   4.52 s ( +0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 12 lte   open   P=256 All on server                   : measured   4.34 s, predicted   4.26 s ( -2.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 13 lte   both   P= 32 infeasible: not served
+  adaptive        r2 14 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  18.88 s, predicted  17.99 s ( -4.7%) | reload client  2.3 s server  1.5 s (predicted  4.4) | swap grew False
+  adaptive        r2 15 lte   open   P=128 All on server                   : measured   4.35 s, predicted   4.12 s ( -5.3%) | reload client  0.0 s server  5.2 s (predicted  5.2) | swap grew False
+  adaptive        r2 16 lte   answer P=512 infeasible: not served
+  adaptive        r2 17 lte   open   P=512 All on server                   : measured   4.52 s, predicted   4.56 s ( +0.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 18 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  20.68 s, predicted  19.97 s ( -3.4%) | reload client  1.5 s server  1.0 s (predicted  4.4) | swap grew False
+  adaptive        r2 19 lte   open   P=256 All on server                   : measured   4.44 s, predicted   4.22 s ( -5.1%) | reload client  0.0 s server  3.9 s (predicted  5.2) | swap grew False
+  adaptive        r2 20 lte   open   P=512 All on server                   : measured   4.46 s, predicted   4.50 s ( +1.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 21 lte   open   P=256 All on server                   : measured   4.25 s, predicted   4.23 s ( -0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 22 lte   answer P=128 infeasible: not served
+  adaptive        r2 23 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  17.86 s, predicted  17.38 s ( -2.7%) | reload client  2.0 s server  1.3 s (predicted  4.4) | swap grew False
+  adaptive        r2 24 lte   open   P=256 All on server                   : measured   4.64 s, predicted   4.26 s ( -8.2%) | reload client  0.0 s server  3.8 s (predicted  5.2) | swap grew False
+  adaptive        r2 25 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  18.47 s, predicted  17.67 s ( -4.3%) | reload client  2.4 s server  1.8 s (predicted  4.4) | swap grew False
+  adaptive        r2 26 lte   open   P=512 All on server                   : measured   4.71 s, predicted   4.52 s ( -4.1%) | reload client  0.0 s server  3.8 s (predicted  5.2) | swap grew False
+  adaptive        r2 27 lte   open   P=128 All on server                   : measured   4.15 s, predicted   4.12 s ( -0.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 28 lte   open   P=512 All on server                   : measured   4.54 s, predicted   4.58 s ( +1.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 29 lte   open   P=128 All on server                   : measured   4.14 s, predicted   4.10 s ( -1.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 30 lte   both   P=256 infeasible: not served
+  adaptive        r2 31 lte   open   P=512 All on server                   : measured   4.47 s, predicted   4.51 s ( +0.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 32 lte   open   P=128 All on server                   : measured   4.18 s, predicted   4.13 s ( -1.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 33 lte   answer P=256 infeasible: not served
+  adaptive        r2 34 lte   both   P=256 infeasible: not served
+  adaptive        r2 35 lte   both   P=256 infeasible: not served
+  adaptive        r2 36 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  21.24 s, predicted  20.60 s ( -3.0%) | reload client  1.6 s server  0.9 s (predicted  4.4) | swap grew False
+  adaptive        r2 37 lte   open   P=512 All on server                   : measured   4.69 s, predicted   4.49 s ( -4.2%) | reload client  0.0 s server  4.6 s (predicted  5.2) | swap grew False
+  adaptive        r2 38 lte   both   P=512 infeasible: not served
+  adaptive        r2 39 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  18.90 s, predicted  18.04 s ( -4.6%) | reload client  1.7 s server  1.5 s (predicted  4.4) | swap grew False
+  adaptive        r2 40 lte   open   P=512 All on server                   : measured   4.78 s, predicted   4.50 s ( -5.9%) | reload client  0.0 s server  4.2 s (predicted  5.2) | swap grew False
+  adaptive        r2 41 lte   answer P=512 infeasible: not served
+  adaptive        r2 42 lte   open   P=128 All on server                   : measured   4.15 s, predicted   4.09 s ( -1.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 43 lte   both   P=128 infeasible: not served
+  adaptive        r2 44 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  14.16 s, predicted  13.97 s ( -1.4%) | reload client  1.5 s server  1.3 s (predicted  4.4) | swap grew False
+  adaptive        r2 45 lte   both   P=256 infeasible: not served
+  adaptive        r2 46 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  18.13 s, predicted  17.95 s ( -1.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 47 lte   open   P=256 All on server                   : measured   4.79 s, predicted   4.44 s ( -7.4%) | reload client  0.0 s server  5.0 s (predicted  5.2) | swap grew False
+  adaptive        r2 48 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  21.48 s, predicted  20.62 s ( -4.0%) | reload client  2.1 s server  1.4 s (predicted  4.4) | swap grew False
+  adaptive        r2 49 lte   open   P=256 All on server                   : measured   4.57 s, predicted   4.29 s ( -6.2%) | reload client  0.0 s server  4.0 s (predicted  5.2) | swap grew False
+  adaptive        r2 50 lte   open   P=512 All on server                   : measured   4.50 s, predicted   4.53 s ( +0.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 51 lte   open   P=256 All on server                   : measured   4.25 s, predicted   4.25 s ( +0.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 52 lte   answer P=256 infeasible: not served
+  adaptive        r2 53 lte   open   P=128 All on server                   : measured   4.37 s, predicted   4.31 s ( -1.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 54 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  17.92 s, predicted  17.16 s ( -4.3%) | reload client  2.4 s server  1.7 s (predicted  4.4) | swap grew False
+  adaptive        r2 55 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  20.10 s, predicted  19.68 s ( -2.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 56 lte   open   P=512 All on server                   : measured   4.86 s, predicted   4.62 s ( -5.0%) | reload client  0.0 s server  4.6 s (predicted  5.2) | swap grew False
+  adaptive        r2 57 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  20.49 s, predicted  19.81 s ( -3.3%) | reload client  1.6 s server  1.3 s (predicted  4.4) | swap grew False
+  adaptive        r2 58 lte   open   P=512 All on server                   : measured   4.78 s, predicted   4.59 s ( -3.9%) | reload client  0.0 s server  4.6 s (predicted  5.2) | swap grew False
+  adaptive        r2 59 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  15.66 s, predicted  15.17 s ( -3.1%) | reload client  1.9 s server  1.2 s (predicted  4.4) | swap grew False
+  adaptive        r2 60 lte   open   P=512 All on server                   : measured   4.80 s, predicted   4.50 s ( -6.2%) | reload client  0.0 s server  4.2 s (predicted  5.2) | swap grew False
+  adaptive        r2 61 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  19.13 s, predicted  18.33 s ( -4.2%) | reload client  2.2 s server  1.0 s (predicted  4.4) | swap grew False
+  adaptive        r2 62 lte   answer P=256 infeasible: not served
+  adaptive        r2 63 lte   answer P=128 infeasible: not served
+  adaptive        r2 64 lte   prompt P= 32 H=4, T=0, secret head λp=0.2    : measured  16.59 s, predicted  15.95 s ( -3.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 65 lte   answer P= 32 infeasible: not served
+  adaptive        r2 66 slow  open   P=512 All on server                   : measured  19.51 s, predicted  18.40 s ( -5.7%) | reload client  0.0 s server  5.4 s (predicted  5.2) | swap grew False
+  adaptive        r2 67 slow  both   P=512 infeasible: not served
+  adaptive        r2 68 slow  open   P=128 All on server                   : measured  17.17 s, predicted  16.70 s ( -2.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 69 slow  open   P=256 All on server                   : measured  17.24 s, predicted  16.85 s ( -2.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 70 slow  answer P=128 infeasible: not served
+  adaptive        r2 71 slow  open   P=128 All on server                   : measured  16.18 s, predicted  15.77 s ( -2.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 72 slow  open   P=512 All on server                   : measured  17.68 s, predicted  17.59 s ( -0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 73 slow  prompt P=256 H=4, T=11, secret head λp=0.2   : measured  22.80 s, predicted  23.79 s ( +4.3%) | reload client  3.5 s server  0.2 s (predicted  3.1) | swap grew False
+  adaptive        r2 74 slow  prompt P= 32 H=4, T=11, secret head λp=0.2   : measured  15.42 s, predicted  16.99 s (+10.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 75 slow  prompt P=128 H=4, T=11, secret head λp=0.2   : measured  20.41 s, predicted  21.87 s ( +7.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 76 slow  both   P=256 infeasible: not served
+  adaptive        r2 77 slow  prompt P=512 H=4, T=11, secret head λp=0.2   : measured  26.22 s, predicted  27.19 s ( +3.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 78 slow  open   P=512 All on server                   : measured  19.21 s, predicted  18.05 s ( -6.0%) | reload client  0.0 s server  5.7 s (predicted  5.2) | swap grew False
+  adaptive        r2 79 slow  prompt P=128 H=4, T=11, secret head λp=0.2   : measured  20.71 s, predicted  21.42 s ( +3.5%) | reload client  2.4 s server  0.2 s (predicted  3.1) | swap grew False
+  adaptive        r2 80 slow  open   P=256 All on server                   : measured  17.07 s, predicted  16.65 s ( -2.5%) | reload client  0.0 s server  4.3 s (predicted  5.2) | swap grew False
+  adaptive        r2 81 slow  prompt P= 32 H=4, T=11, secret head λp=0.2   : measured  16.84 s, predicted  17.84 s ( +6.0%) | reload client  2.9 s server  0.2 s (predicted  3.1) | swap grew False
+  adaptive        r2 82 slow  open   P=128 All on server                   : measured  16.92 s, predicted  15.95 s ( -5.7%) | reload client  0.0 s server  4.8 s (predicted  5.2) | swap grew False
+  adaptive        r2 83 slow  open   P=128 All on server                   : measured  16.32 s, predicted  15.91 s ( -2.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 84 slow  both   P=256 infeasible: not served
+  adaptive        r2 85 slow  prompt P=256 H=4, T=11, secret head λp=0.2   : measured  22.29 s, predicted  23.10 s ( +3.7%) | reload client  2.7 s server  0.3 s (predicted  3.1) | swap grew False
+  adaptive        r2 86 slow  prompt P=256 H=4, T=11, secret head λp=0.2   : measured  22.15 s, predicted  23.56 s ( +6.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 87 slow  answer P=256 infeasible: not served
+  adaptive        r2 88 slow  prompt P=256 H=4, T=11, secret head λp=0.2   : measured  22.57 s, predicted  24.04 s ( +6.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 89 slow  answer P=512 infeasible: not served
+  adaptive        r2 90 slow  answer P=256 infeasible: not served
+  adaptive        r2 91 slow  open   P=256 All on server                   : measured  17.14 s, predicted  16.20 s ( -5.5%) | reload client  0.0 s server  5.9 s (predicted  5.2) | swap grew False
+  adaptive        r2 92 slow  answer P=512 infeasible: not served
+  adaptive        r2 93 slow  both   P=256 infeasible: not served
+  adaptive        r2 94 slow  prompt P=512 H=4, T=11, secret head λp=0.2   : measured  28.05 s, predicted  28.78 s ( +2.6%) | reload client  2.7 s server  0.3 s (predicted  3.1) | swap grew False
+  adaptive        r2 95 slow  both   P= 32 infeasible: not served
+  adaptive        r2 96 slow  answer P=128 infeasible: not served
+  adaptive        r2 97 slow  both   P=128 infeasible: not served
+  adaptive        r2 98 slow  open   P= 32 All on server                   : measured  16.83 s, predicted  15.42 s ( -8.4%) | reload client  0.0 s server  5.0 s (predicted  5.2) | swap grew False
+  adaptive        r2 99 slow  both   P=512 infeasible: not served
+  adaptive        r2 100 slow  open   P= 32 All on server                   : measured  17.23 s, predicted  15.66 s ( -9.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 101 slow  open   P=256 All on server                   : measured  16.50 s, predicted  16.25 s ( -1.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 102 slow  prompt P=512 H=4, T=11, secret head λp=0.2   : measured  26.61 s, predicted  27.62 s ( +3.8%) | reload client  4.6 s server  0.3 s (predicted  3.1) | swap grew False
+  adaptive        r2 103 slow  answer P=256 infeasible: not served
+  adaptive        r2 104 slow  answer P=512 infeasible: not served
+  adaptive        r2 105 slow  both   P= 32 infeasible: not served
+  adaptive        r2 106 slow  open   P=256 All on server                   : measured  16.83 s, predicted  15.89 s ( -5.6%) | reload client  0.0 s server  5.1 s (predicted  5.2) | swap grew False
+  adaptive        r2 107 slow  prompt P= 32 H=4, T=11, secret head λp=0.2   : measured  18.58 s, predicted  19.24 s ( +3.6%) | reload client  2.4 s server  0.2 s (predicted  3.1) | swap grew False
+  adaptive        r2 108 slow  answer P=128 infeasible: not served
+  adaptive        r2 109 slow  answer P=512 infeasible: not served
+  adaptive        r2 110 slow  answer P= 32 infeasible: not served
+  adaptive        r2 111 slow  open   P=256 All on server                   : measured  17.92 s, predicted  17.00 s ( -5.2%) | reload client  0.0 s server  4.9 s (predicted  5.2) | swap grew False
+  adaptive        r2 112 slow  answer P= 32 infeasible: not served
+  adaptive        r2 113 slow  both   P=128 infeasible: not served
+  adaptive        r2 114 slow  open   P=512 All on server                   : measured  17.35 s, predicted  16.77 s ( -3.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 115 slow  open   P=128 All on server                   : measured  15.57 s, predicted  15.12 s ( -2.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 116 slow  open   P=128 All on server                   : measured  16.67 s, predicted  16.24 s ( -2.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 117 slow  answer P= 32 infeasible: not served
+  adaptive        r2 118 slow  both   P=512 infeasible: not served
+  adaptive        r2 119 slow  open   P=128 All on server                   : measured  16.36 s, predicted  15.77 s ( -3.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 120 slow  both   P=256 infeasible: not served
+  adaptive        r2 121 slow  answer P= 32 infeasible: not served
+  adaptive        r2 122 slow  open   P= 32 All on server                   : measured  15.78 s, predicted  15.38 s ( -2.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 123 slow  answer P=512 infeasible: not served
+  adaptive        r2 124 slow  open   P= 32 All on server                   : measured  16.15 s, predicted  15.76 s ( -2.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 125 slow  prompt P=256 H=4, T=11, secret head λp=0.2   : measured  22.14 s, predicted  23.12 s ( +4.4%) | reload client  4.1 s server  0.3 s (predicted  3.1) | swap grew False
+  adaptive        r2 126 slow  answer P=256 infeasible: not served
+  adaptive        r2 127 slow  open   P=128 All on server                   : measured  17.63 s, predicted  16.59 s ( -5.9%) | reload client  0.0 s server  5.3 s (predicted  5.2) | swap grew False
+  adaptive        r2 128 slow  open   P=256 All on server                   : measured  17.36 s, predicted  16.86 s ( -2.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 129 slow  both   P=512 infeasible: not served
+  adaptive        r2 130 slow  prompt P=512 H=4, T=11, secret head λp=0.2   : measured  27.75 s, predicted  28.73 s ( +3.6%) | reload client  2.9 s server  0.3 s (predicted  3.1) | swap grew False
+  adaptive        r2 131 slow  answer P=128 infeasible: not served
+  adaptive        r2 132 slow  answer P=512 infeasible: not served
+  adaptive        r2 133 lte   prompt P= 32 H=4, T=11, secret head λp=0.2   : measured  15.85 s, predicted  16.82 s ( +6.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 134 lte   both   P=128 infeasible: not served
+  adaptive        r2 135 lte   open   P=256 All on server                   : measured   4.55 s, predicted   4.29 s ( -5.8%) | reload client  0.0 s server  4.6 s (predicted  5.2) | swap grew False
+  adaptive        r2 136 lte   open   P=512 All on server                   : measured   4.65 s, predicted   4.66 s ( +0.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 137 lte   open   P=512 All on server                   : measured   4.58 s, predicted   4.59 s ( +0.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 138 lte   answer P=512 infeasible: not served
+  adaptive        r2 139 lte   open   P= 32 All on server                   : measured   4.06 s, predicted   4.00 s ( -1.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 140 lte   open   P=256 All on server                   : measured   4.34 s, predicted   4.31 s ( -0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 141 lte   open   P=512 All on server                   : measured   4.57 s, predicted   4.60 s ( +0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 142 lte   open   P=256 All on server                   : measured   4.27 s, predicted   4.26 s ( -0.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 143 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  16.28 s, predicted  15.76 s ( -3.2%) | reload client  2.3 s server  1.4 s (predicted  4.4) | swap grew False
+  adaptive        r2 144 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  16.38 s, predicted  16.26 s ( -0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 145 lte   open   P= 32 All on server                   : measured   4.44 s, predicted   4.08 s ( -7.9%) | reload client  0.0 s server  4.9 s (predicted  5.2) | swap grew False
+  adaptive        r2 146 lte   open   P=256 All on server                   : measured   4.36 s, predicted   4.34 s ( -0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 147 lte   answer P= 32 infeasible: not served
+  adaptive        r2 148 lte   both   P=256 infeasible: not served
+  adaptive        r2 149 lte   both   P=128 infeasible: not served
+  adaptive        r2 150 lte   open   P=512 All on server                   : measured   4.49 s, predicted   4.52 s ( +0.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 151 lte   both   P=256 infeasible: not served
+  adaptive        r2 152 lte   both   P=256 infeasible: not served
+  adaptive        r2 153 lte   answer P=256 infeasible: not served
+  adaptive        r2 154 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  15.62 s, predicted  15.16 s ( -3.0%) | reload client  1.4 s server  1.0 s (predicted  4.4) | swap grew False
+  adaptive        r2 155 lte   open   P=512 All on server                   : measured   4.84 s, predicted   4.57 s ( -5.5%) | reload client  0.0 s server  4.1 s (predicted  5.2) | swap grew False
+  adaptive        r2 156 lte   open   P=512 All on server                   : measured   4.50 s, predicted   4.52 s ( +0.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 157 lte   answer P=128 infeasible: not served
+  adaptive        r2 158 lte   open   P=128 All on server                   : measured   4.24 s, predicted   4.20 s ( -1.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 159 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  15.26 s, predicted  14.80 s ( -3.0%) | reload client  2.0 s server  1.3 s (predicted  4.4) | swap grew False
+  adaptive        r2 160 lte   both   P=256 infeasible: not served
+  adaptive        r2 161 lte   both   P=128 infeasible: not served
+  adaptive        r2 162 lte   answer P=256 infeasible: not served
+  adaptive        r2 163 lte   open   P=512 All on server                   : measured   4.79 s, predicted   4.52 s ( -5.5%) | reload client  0.0 s server  4.4 s (predicted  5.2) | swap grew False
+  adaptive        r2 164 lte   both   P=256 infeasible: not served
+  adaptive        r2 165 lte   both   P=512 infeasible: not served
+  adaptive        r2 166 lte   both   P=256 infeasible: not served
+  adaptive        r2 167 lte   answer P=256 infeasible: not served
+  adaptive        r2 168 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  19.34 s, predicted  19.05 s ( -1.5%) | reload client  1.7 s server  1.1 s (predicted  4.4) | swap grew False
+  adaptive        r2 169 lte   open   P=256 All on server                   : measured   4.51 s, predicted   4.22 s ( -6.5%) | reload client  0.0 s server  4.7 s (predicted  5.2) | swap grew False
+  adaptive        r2 170 lte   open   P=512 All on server                   : measured   4.49 s, predicted   4.53 s ( +0.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 171 lte   open   P=128 All on server                   : measured   4.12 s, predicted   4.09 s ( -0.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 172 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  20.61 s, predicted  19.87 s ( -3.6%) | reload client  2.0 s server  1.2 s (predicted  4.4) | swap grew False
+  adaptive        r2 173 lte   open   P=512 All on server                   : measured   4.79 s, predicted   4.57 s ( -4.5%) | reload client  0.0 s server  4.0 s (predicted  5.2) | swap grew False
+  adaptive        r2 174 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  18.10 s, predicted  17.71 s ( -2.2%) | reload client  1.4 s server  0.8 s (predicted  4.4) | swap grew False
+  adaptive        r2 175 lte   answer P= 32 infeasible: not served
+  adaptive        r2 176 lte   answer P=128 infeasible: not served
+  adaptive        r2 177 lte   both   P= 32 infeasible: not served
+  adaptive        r2 178 lte   open   P=256 All on server                   : measured   4.77 s, predicted   4.39 s ( -7.8%) | reload client  0.0 s server  4.7 s (predicted  5.2) | swap grew False
+  adaptive        r2 179 lte   answer P=256 infeasible: not served
+  adaptive        r2 180 lte   open   P=512 All on server                   : measured   4.77 s, predicted   4.80 s ( +0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 181 lte   both   P=128 infeasible: not served
+  adaptive        r2 182 lte   answer P=128 infeasible: not served
+  adaptive        r2 183 lte   open   P=512 All on server                   : measured   4.64 s, predicted   4.68 s ( +0.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 184 lte   open   P=128 All on server                   : measured   4.14 s, predicted   4.08 s ( -1.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 185 lte   answer P=512 infeasible: not served
+  adaptive        r2 186 lte   open   P=128 All on server                   : measured   4.30 s, predicted   4.22 s ( -1.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 187 lte   open   P=256 All on server                   : measured   4.24 s, predicted   4.25 s ( +0.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 188 lte   open   P= 32 All on server                   : measured   4.15 s, predicted   4.09 s ( -1.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 189 lte   open   P=256 All on server                   : measured   4.27 s, predicted   4.25 s ( -0.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  adaptive        r2 190 lte   answer P=512 infeasible: not served
+  adaptive        r2 191 lte   answer P=256 infeasible: not served
+  adaptive        r2 192 lte   both   P=512 infeasible: not served
+  adaptive        r2 193 lte   both   P=512 infeasible: not served
+  adaptive        r2 194 lte   both   P=256 infeasible: not served
+  adaptive        r2 195 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  18.49 s, predicted  17.85 s ( -3.5%) | reload client  2.2 s server  1.3 s (predicted  4.4) | swap grew False
+  adaptive        r2 196 lte   answer P=256 infeasible: not served
+  adaptive        r2 197 lte   answer P=128 infeasible: not served
+  adaptive        r2 198 lte   open   P=256 All on server                   : measured   4.72 s, predicted   4.37 s ( -7.4%) | reload client  0.0 s server  5.4 s (predicted  5.2) | swap grew False
+  adaptive        r2 199 lte   open   P=256 All on server                   : measured   4.24 s, predicted   4.22 s ( -0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+
+fixed_per_class, repeat 2:
+  fixed_per_class r2  0 lte   open   P=128 All on server                   : measured   4.44 s, predicted   4.09 s ( -7.8%) | reload client  0.0 s server  5.6 s (predicted  5.2) | swap grew False
+  fixed_per_class r2  1 lte   answer P=128 infeasible: not served
+  fixed_per_class r2  2 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  19.06 s, predicted  18.63 s ( -2.3%) | reload client  2.8 s server  1.6 s (predicted  4.4) | swap grew False
+  fixed_per_class r2  3 lte   both   P=256 infeasible: not served
+  fixed_per_class r2  4 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  16.67 s, predicted  16.60 s ( -0.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2  5 lte   open   P=256 All on server                   : measured   4.40 s, predicted   4.18 s ( -5.0%) | reload client  0.0 s server  4.6 s (predicted  5.2) | swap grew False
+  fixed_per_class r2  6 lte   open   P=256 All on server                   : measured   4.24 s, predicted   4.23 s ( -0.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2  7 lte   open   P= 32 All on server                   : measured   4.00 s, predicted   3.95 s ( -1.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2  8 lte   both   P=256 infeasible: not served
+  fixed_per_class r2  9 lte   open   P=128 All on server                   : measured   4.10 s, predicted   4.03 s ( -1.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 10 lte   open   P=256 All on server                   : measured   4.34 s, predicted   4.31 s ( -0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 11 lte   open   P=512 All on server                   : measured   4.41 s, predicted   4.46 s ( +1.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 12 lte   open   P=256 All on server                   : measured   4.19 s, predicted   4.19 s ( +0.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 13 lte   both   P= 32 infeasible: not served
+  fixed_per_class r2 14 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  18.78 s, predicted  17.92 s ( -4.6%) | reload client  2.7 s server  2.1 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 15 lte   open   P=128 All on server                   : measured   4.38 s, predicted   4.05 s ( -7.6%) | reload client  0.0 s server  4.3 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 16 lte   answer P=512 infeasible: not served
+  fixed_per_class r2 17 lte   open   P=512 All on server                   : measured   4.47 s, predicted   4.51 s ( +0.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 18 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  20.49 s, predicted  19.90 s ( -2.9%) | reload client  1.6 s server  1.3 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 19 lte   open   P=256 All on server                   : measured   4.48 s, predicted   4.17 s ( -7.0%) | reload client  0.0 s server  3.9 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 20 lte   open   P=512 All on server                   : measured   4.43 s, predicted   4.45 s ( +0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 21 lte   open   P=256 All on server                   : measured   4.16 s, predicted   4.17 s ( +0.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 22 lte   answer P=128 infeasible: not served
+  fixed_per_class r2 23 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  17.93 s, predicted  17.32 s ( -3.4%) | reload client  1.6 s server  1.5 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 24 lte   open   P=256 All on server                   : measured   4.48 s, predicted   4.19 s ( -6.6%) | reload client  0.0 s server  5.0 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 25 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  18.28 s, predicted  17.60 s ( -3.7%) | reload client  1.9 s server  1.3 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 26 lte   open   P=512 All on server                   : measured   4.60 s, predicted   4.46 s ( -3.2%) | reload client  0.0 s server  5.0 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 27 lte   open   P=128 All on server                   : measured   4.08 s, predicted   4.05 s ( -0.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 28 lte   open   P=512 All on server                   : measured   4.51 s, predicted   4.53 s ( +0.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 29 lte   open   P=128 All on server                   : measured   4.09 s, predicted   4.04 s ( -1.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 30 lte   both   P=256 infeasible: not served
+  fixed_per_class r2 31 lte   open   P=512 All on server                   : measured   4.45 s, predicted   4.45 s ( +0.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 32 lte   open   P=128 All on server                   : measured   4.17 s, predicted   4.07 s ( -2.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 33 lte   answer P=256 infeasible: not served
+  fixed_per_class r2 34 lte   both   P=256 infeasible: not served
+  fixed_per_class r2 35 lte   both   P=256 infeasible: not served
+  fixed_per_class r2 36 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  21.32 s, predicted  20.54 s ( -3.7%) | reload client  2.4 s server  1.6 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 37 lte   open   P=512 All on server                   : measured   4.69 s, predicted   4.44 s ( -5.3%) | reload client  0.0 s server  4.3 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 38 lte   both   P=512 infeasible: not served
+  fixed_per_class r2 39 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  18.86 s, predicted  17.97 s ( -4.7%) | reload client  1.6 s server  1.5 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 40 lte   open   P=512 All on server                   : measured   4.68 s, predicted   4.45 s ( -5.0%) | reload client  0.0 s server  4.1 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 41 lte   answer P=512 infeasible: not served
+  fixed_per_class r2 42 lte   open   P=128 All on server                   : measured   4.09 s, predicted   4.04 s ( -1.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 43 lte   both   P=128 infeasible: not served
+  fixed_per_class r2 44 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  14.46 s, predicted  13.92 s ( -3.7%) | reload client  2.4 s server  1.3 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 45 lte   both   P=256 infeasible: not served
+  fixed_per_class r2 46 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  18.13 s, predicted  17.90 s ( -1.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 47 lte   open   P=256 All on server                   : measured   4.60 s, predicted   4.37 s ( -4.9%) | reload client  0.0 s server  4.6 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 48 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  21.39 s, predicted  20.54 s ( -4.0%) | reload client  2.0 s server  1.1 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 49 lte   open   P=256 All on server                   : measured   4.56 s, predicted   4.23 s ( -7.2%) | reload client  0.0 s server  5.1 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 50 lte   open   P=512 All on server                   : measured   4.43 s, predicted   4.47 s ( +0.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 51 lte   open   P=256 All on server                   : measured   4.20 s, predicted   4.18 s ( -0.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 52 lte   answer P=256 infeasible: not served
+  fixed_per_class r2 53 lte   open   P=128 All on server                   : measured   4.31 s, predicted   4.24 s ( -1.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 54 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  17.75 s, predicted  17.09 s ( -3.7%) | reload client  2.3 s server  1.4 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 55 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  20.02 s, predicted  19.62 s ( -2.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 56 lte   open   P=512 All on server                   : measured   4.72 s, predicted   4.56 s ( -3.5%) | reload client  0.0 s server  4.0 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 57 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  20.59 s, predicted  19.74 s ( -4.1%) | reload client  1.3 s server  1.2 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 58 lte   open   P=512 All on server                   : measured   4.81 s, predicted   4.52 s ( -5.9%) | reload client  0.0 s server  4.6 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 59 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  15.76 s, predicted  15.12 s ( -4.1%) | reload client  1.4 s server  1.0 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 60 lte   open   P=512 All on server                   : measured   4.75 s, predicted   4.45 s ( -6.5%) | reload client  0.0 s server  3.8 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 61 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  19.34 s, predicted  18.26 s ( -5.6%) | reload client  2.0 s server  1.3 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 62 lte   answer P=256 infeasible: not served
+  fixed_per_class r2 63 lte   answer P=128 infeasible: not served
+  fixed_per_class r2 64 lte   prompt P= 32 H=4, T=0, secret head λp=0.2    : measured  16.52 s, predicted  15.88 s ( -3.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 65 lte   answer P= 32 infeasible: not served
+  fixed_per_class r2 66 slow  open   P=512 All on server                   : measured  19.29 s, predicted  18.33 s ( -5.0%) | reload client  0.0 s server  5.3 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 67 slow  both   P=512 infeasible: not served
+  fixed_per_class r2 68 slow  open   P=128 All on server                   : measured  17.08 s, predicted  16.63 s ( -2.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 69 slow  open   P=256 All on server                   : measured  17.07 s, predicted  16.79 s ( -1.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 70 slow  answer P=128 infeasible: not served
+  fixed_per_class r2 71 slow  open   P=128 All on server                   : measured  16.08 s, predicted  15.71 s ( -2.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 72 slow  open   P=512 All on server                   : measured  17.64 s, predicted  17.52 s ( -0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 73 slow  prompt P=256 H=4, T=0, secret head λp=0.2    : measured  30.33 s, predicted  27.67 s ( -8.8%) | reload client  2.3 s server  1.4 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 74 slow  prompt P= 32 H=4, T=0, secret head λp=0.2    : measured  23.58 s, predicted  22.30 s ( -5.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 75 slow  prompt P=128 H=4, T=0, secret head λp=0.2    : measured  27.50 s, predicted  26.69 s ( -2.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 76 slow  both   P=256 infeasible: not served
+  fixed_per_class r2 77 slow  prompt P=512 H=4, T=0, secret head λp=0.2    : measured  30.07 s, predicted  28.72 s ( -4.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 78 slow  open   P=512 All on server                   : measured  18.93 s, predicted  17.99 s ( -5.0%) | reload client  0.0 s server  5.4 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 79 slow  prompt P=128 H=4, T=0, secret head λp=0.2    : measured  28.67 s, predicted  26.66 s ( -7.0%) | reload client  1.7 s server  1.3 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 80 slow  open   P=256 All on server                   : measured  17.42 s, predicted  16.59 s ( -4.8%) | reload client  0.0 s server  4.4 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 81 slow  prompt P= 32 H=4, T=0, secret head λp=0.2    : measured  25.08 s, predicted  23.51 s ( -6.3%) | reload client  1.2 s server  1.2 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 82 slow  open   P=128 All on server                   : measured  16.83 s, predicted  15.89 s ( -5.6%) | reload client  0.0 s server  3.6 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 83 slow  open   P=128 All on server                   : measured  16.27 s, predicted  15.86 s ( -2.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 84 slow  both   P=256 infeasible: not served
+  fixed_per_class r2 85 slow  prompt P=256 H=4, T=0, secret head λp=0.2    : measured  28.82 s, predicted  26.87 s ( -6.8%) | reload client  1.6 s server  1.2 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 86 slow  prompt P=256 H=4, T=0, secret head λp=0.2    : measured  28.26 s, predicted  27.46 s ( -2.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 87 slow  answer P=256 infeasible: not served
+  fixed_per_class r2 88 slow  prompt P=256 H=4, T=0, secret head λp=0.2    : measured  28.44 s, predicted  27.51 s ( -3.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 89 slow  answer P=512 infeasible: not served
+  fixed_per_class r2 90 slow  answer P=256 infeasible: not served
+  fixed_per_class r2 91 slow  open   P=256 All on server                   : measured  17.19 s, predicted  16.14 s ( -6.1%) | reload client  0.0 s server  5.3 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 92 slow  answer P=512 infeasible: not served
+  fixed_per_class r2 93 slow  both   P=256 infeasible: not served
+  fixed_per_class r2 94 slow  prompt P=512 H=4, T=0, secret head λp=0.2    : measured  31.53 s, predicted  30.33 s ( -3.8%) | reload client  1.8 s server  1.1 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 95 slow  both   P= 32 infeasible: not served
+  fixed_per_class r2 96 slow  answer P=128 infeasible: not served
+  fixed_per_class r2 97 slow  both   P=128 infeasible: not served
+  fixed_per_class r2 98 slow  open   P= 32 All on server                   : measured  16.52 s, predicted  15.35 s ( -7.1%) | reload client  0.0 s server  4.6 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 99 slow  both   P=512 infeasible: not served
+  fixed_per_class r2 100 slow  open   P= 32 All on server                   : measured  16.01 s, predicted  15.59 s ( -2.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 101 slow  open   P=256 All on server                   : measured  16.38 s, predicted  16.19 s ( -1.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 102 slow  prompt P=512 H=4, T=0, secret head λp=0.2    : measured  32.04 s, predicted  29.70 s ( -7.3%) | reload client  2.0 s server  1.3 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 103 slow  answer P=256 infeasible: not served
+  fixed_per_class r2 104 slow  answer P=512 infeasible: not served
+  fixed_per_class r2 105 slow  both   P= 32 infeasible: not served
+  fixed_per_class r2 106 slow  open   P=256 All on server                   : measured  16.86 s, predicted  15.83 s ( -6.1%) | reload client  0.0 s server  5.4 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 107 slow  prompt P= 32 H=4, T=0, secret head λp=0.2    : measured  26.11 s, predicted  24.83 s ( -4.9%) | reload client  1.9 s server  1.3 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 108 slow  answer P=128 infeasible: not served
+  fixed_per_class r2 109 slow  answer P=512 infeasible: not served
+  fixed_per_class r2 110 slow  answer P= 32 infeasible: not served
+  fixed_per_class r2 111 slow  open   P=256 All on server                   : measured  17.81 s, predicted  16.95 s ( -4.8%) | reload client  0.0 s server  4.0 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 112 slow  answer P= 32 infeasible: not served
+  fixed_per_class r2 113 slow  both   P=128 infeasible: not served
+  fixed_per_class r2 114 slow  open   P=512 All on server                   : measured  16.79 s, predicted  16.71 s ( -0.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 115 slow  open   P=128 All on server                   : measured  15.43 s, predicted  15.05 s ( -2.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 116 slow  open   P=128 All on server                   : measured  16.58 s, predicted  16.18 s ( -2.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 117 slow  answer P= 32 infeasible: not served
+  fixed_per_class r2 118 slow  both   P=512 infeasible: not served
+  fixed_per_class r2 119 slow  open   P=128 All on server                   : measured  16.05 s, predicted  15.70 s ( -2.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 120 slow  both   P=256 infeasible: not served
+  fixed_per_class r2 121 slow  answer P= 32 infeasible: not served
+  fixed_per_class r2 122 slow  open   P= 32 All on server                   : measured  15.70 s, predicted  15.31 s ( -2.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 123 slow  answer P=512 infeasible: not served
+  fixed_per_class r2 124 slow  open   P= 32 All on server                   : measured  16.05 s, predicted  15.70 s ( -2.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 125 slow  prompt P=256 H=4, T=0, secret head λp=0.2    : measured  29.61 s, predicted  27.25 s ( -8.0%) | reload client  2.3 s server  1.9 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 126 slow  answer P=256 infeasible: not served
+  fixed_per_class r2 127 slow  open   P=128 All on server                   : measured  17.74 s, predicted  16.54 s ( -6.8%) | reload client  0.0 s server  4.8 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 128 slow  open   P=256 All on server                   : measured  16.97 s, predicted  16.80 s ( -1.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 129 slow  both   P=512 infeasible: not served
+  fixed_per_class r2 130 slow  prompt P=512 H=4, T=0, secret head λp=0.2    : measured  32.24 s, predicted  30.66 s ( -4.9%) | reload client  1.1 s server  1.2 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 131 slow  answer P=128 infeasible: not served
+  fixed_per_class r2 132 slow  answer P=512 infeasible: not served
+  fixed_per_class r2 133 lte   prompt P= 32 H=4, T=0, secret head λp=0.2    : measured  15.77 s, predicted  15.42 s ( -2.3%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 134 lte   both   P=128 infeasible: not served
+  fixed_per_class r2 135 lte   open   P=256 All on server                   : measured   4.49 s, predicted   4.23 s ( -5.8%) | reload client  0.0 s server  4.3 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 136 lte   open   P=512 All on server                   : measured   4.59 s, predicted   4.61 s ( +0.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 137 lte   open   P=512 All on server                   : measured   4.50 s, predicted   4.52 s ( +0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 138 lte   answer P=512 infeasible: not served
+  fixed_per_class r2 139 lte   open   P= 32 All on server                   : measured   4.01 s, predicted   3.94 s ( -1.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 140 lte   open   P=256 All on server                   : measured   4.26 s, predicted   4.24 s ( -0.5%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 141 lte   open   P=512 All on server                   : measured   4.54 s, predicted   4.54 s ( +0.0%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 142 lte   open   P=256 All on server                   : measured   4.22 s, predicted   4.19 s ( -0.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 143 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  15.95 s, predicted  15.70 s ( -1.6%) | reload client  1.7 s server  1.3 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 144 lte   prompt P=256 H=4, T=0, secret head λp=0.2    : measured  16.31 s, predicted  16.21 s ( -0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 145 lte   open   P= 32 All on server                   : measured   4.37 s, predicted   4.02 s ( -8.0%) | reload client  0.0 s server  4.6 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 146 lte   open   P=256 All on server                   : measured   4.31 s, predicted   4.29 s ( -0.4%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 147 lte   answer P= 32 infeasible: not served
+  fixed_per_class r2 148 lte   both   P=256 infeasible: not served
+  fixed_per_class r2 149 lte   both   P=128 infeasible: not served
+  fixed_per_class r2 150 lte   open   P=512 All on server                   : measured   4.42 s, predicted   4.46 s ( +0.8%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 151 lte   both   P=256 infeasible: not served
+  fixed_per_class r2 152 lte   both   P=256 infeasible: not served
+  fixed_per_class r2 153 lte   answer P=256 infeasible: not served
+  fixed_per_class r2 154 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  15.24 s, predicted  15.10 s ( -0.9%) | reload client  1.4 s server  1.4 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 155 lte   open   P=512 All on server                   : measured   4.72 s, predicted   4.50 s ( -4.7%) | reload client  0.0 s server  3.5 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 156 lte   open   P=512 All on server                   : measured   4.44 s, predicted   4.47 s ( +0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 157 lte   answer P=128 infeasible: not served
+  fixed_per_class r2 158 lte   open   P=128 All on server                   : measured   4.20 s, predicted   4.13 s ( -1.7%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 159 lte   prompt P=128 H=4, T=0, secret head λp=0.2    : measured  15.10 s, predicted  14.75 s ( -2.3%) | reload client  2.0 s server  1.2 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 160 lte   both   P=256 infeasible: not served
+  fixed_per_class r2 161 lte   both   P=128 infeasible: not served
+  fixed_per_class r2 162 lte   answer P=256 infeasible: not served
+  fixed_per_class r2 163 lte   open   P=512 All on server                   : measured   4.76 s, predicted   4.46 s ( -6.3%) | reload client  0.0 s server  5.1 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 164 lte   both   P=256 infeasible: not served
+  fixed_per_class r2 165 lte   both   P=512 infeasible: not served
+  fixed_per_class r2 166 lte   both   P=256 infeasible: not served
+  fixed_per_class r2 167 lte   answer P=256 infeasible: not served
+  fixed_per_class r2 168 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  19.48 s, predicted  18.99 s ( -2.5%) | reload client  2.3 s server  1.4 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 169 lte   open   P=256 All on server                   : measured   4.46 s, predicted   4.17 s ( -6.6%) | reload client  0.0 s server  5.3 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 170 lte   open   P=512 All on server                   : measured   4.42 s, predicted   4.46 s ( +0.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 171 lte   open   P=128 All on server                   : measured   4.12 s, predicted   4.04 s ( -1.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 172 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  20.55 s, predicted  19.81 s ( -3.6%) | reload client  1.7 s server  1.1 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 173 lte   open   P=512 All on server                   : measured   4.78 s, predicted   4.52 s ( -5.4%) | reload client  0.0 s server  5.1 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 174 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  17.92 s, predicted  17.66 s ( -1.5%) | reload client  2.0 s server  1.3 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 175 lte   answer P= 32 infeasible: not served
+  fixed_per_class r2 176 lte   answer P=128 infeasible: not served
+  fixed_per_class r2 177 lte   both   P= 32 infeasible: not served
+  fixed_per_class r2 178 lte   open   P=256 All on server                   : measured   4.56 s, predicted   4.32 s ( -5.2%) | reload client  0.0 s server  4.3 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 179 lte   answer P=256 infeasible: not served
+  fixed_per_class r2 180 lte   open   P=512 All on server                   : measured   4.71 s, predicted   4.73 s ( +0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 181 lte   both   P=128 infeasible: not served
+  fixed_per_class r2 182 lte   answer P=128 infeasible: not served
+  fixed_per_class r2 183 lte   open   P=512 All on server                   : measured   4.60 s, predicted   4.62 s ( +0.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 184 lte   open   P=128 All on server                   : measured   4.10 s, predicted   4.03 s ( -1.6%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 185 lte   answer P=512 infeasible: not served
+  fixed_per_class r2 186 lte   open   P=128 All on server                   : measured   4.26 s, predicted   4.17 s ( -2.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 187 lte   open   P=256 All on server                   : measured   4.19 s, predicted   4.18 s ( -0.2%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 188 lte   open   P= 32 All on server                   : measured   4.13 s, predicted   4.04 s ( -2.1%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 189 lte   open   P=256 All on server                   : measured   4.23 s, predicted   4.19 s ( -0.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+  fixed_per_class r2 190 lte   answer P=512 infeasible: not served
+  fixed_per_class r2 191 lte   answer P=256 infeasible: not served
+  fixed_per_class r2 192 lte   both   P=512 infeasible: not served
+  fixed_per_class r2 193 lte   both   P=512 infeasible: not served
+  fixed_per_class r2 194 lte   both   P=256 infeasible: not served
+  fixed_per_class r2 195 lte   prompt P=512 H=4, T=0, secret head λp=0.2    : measured  18.33 s, predicted  17.79 s ( -2.9%) | reload client  1.5 s server  1.2 s (predicted  4.4) | swap grew False
+  fixed_per_class r2 196 lte   answer P=256 infeasible: not served
+  fixed_per_class r2 197 lte   answer P=128 infeasible: not served
+  fixed_per_class r2 198 lte   open   P=256 All on server                   : measured   4.61 s, predicted   4.30 s ( -6.5%) | reload client  0.0 s server  4.9 s (predicted  5.2) | swap grew False
+  fixed_per_class r2 199 lte   open   P=256 All on server                   : measured   4.21 s, predicted   4.17 s ( -0.9%) | reload client  0.0 s server  0.0 s (predicted  0.0) | swap grew False
+
+adaptive (3 repeats): measured 1440.2 ± 3.7 s (incl. PING 7.5 s), predicted 1419.6 s (-1.4%) | reload 237.1 ± 12.7 s (predicted 272.9) | total 1677.2 ± 16.3 s (predicted 1692.5) | changes 58.0 | per-request MAPE 3.3% | requests with swap growth 0.0
+
+fixed_per_class (3 repeats): measured 1522.5 ± 2.5 s (incl. PING 0.0 s), predicted 1464.6 s (-3.8%) | reload 235.3 ± 8.7 s (predicted 284.4) | total 1757.8 ± 11.0 s (predicted 1749.0) | changes 58.0 | per-request MAPE 3.2% | requests with swap growth 0.0

@@ -1,0 +1,118 @@
+{
+ "env": {
+  "chip": "Apple M2",
+  "memory_gb": 8.0,
+  "macos": "26.6.2",
+  "python": "3.12.13",
+  "torch": "2.15.0",
+  "transformers": "5.23.0",
+  "safetensors": "0.8.0",
+  "git": "5c9c2ae"
+ },
+ "trace": "server_load",
+ "profile": "M2-4T",
+ "A": 128,
+ "n": 15,
+ "policies": [
+  "adaptive",
+  "fixed_per_class"
+ ],
+ "summary": {
+  "adaptive": {
+   "per_repeat": [
+    {
+     "measured": 126.87161942099966,
+     "predicted": 119.80776755856812,
+     "reload": 37.75507704099982,
+     "predicted_reload": 31.98673066274385,
+     "total": 164.62669646199947,
+     "predicted_total": 151.79449822131195,
+     "ping": 0.5208079989997714,
+     "changes": 6,
+     "mape": 7.321268208069643,
+     "swap": 0,
+     "served": 8
+    }
+   ],
+   "measured_mean": 126.87161942099966,
+   "predicted_mean": 119.80776755856812,
+   "reload_mean": 37.75507704099982,
+   "predicted_reload_mean": 31.98673066274385,
+   "total_mean": 164.62669646199947,
+   "predicted_total_mean": 151.79449822131195,
+   "ping_mean": 0.5208079989997714,
+   "changes_mean": 6,
+   "mape_mean": 7.321268208069643,
+   "swap_mean": 0,
+   "served_mean": 8,
+   "measured_sd": 0.0,
+   "predicted_sd": 0.0,
+   "reload_sd": 0.0,
+   "predicted_reload_sd": 0.0,
+   "total_sd": 0.0,
+   "predicted_total_sd": 0.0,
+   "ping_sd": 0.0,
+   "changes_sd": 0.0,
+   "mape_sd": 0.0,
+   "swap_sd": 0.0,
+   "served_sd": 0.0
+  },
+  "fixed_per_class": {
+   "per_repeat": [
+    {
+     "measured": 137.1759602129998,
+     "predicted": 124.86648203916074,
+     "reload": 28.498263373999407,
+     "predicted_reload": 28.882012282335616,
+     "total": 165.6742235869992,
+     "predicted_total": 153.74849432149637,
+     "ping": 0.0,
+     "changes": 5,
+     "mape": 8.248193879989874,
+     "swap": 0,
+     "served": 8
+    }
+   ],
+   "measured_mean": 137.1759602129998,
+   "predicted_mean": 124.86648203916074,
+   "reload_mean": 28.498263373999407,
+   "predicted_reload_mean": 28.882012282335616,
+   "total_mean": 165.6742235869992,
+   "predicted_total_mean": 153.74849432149637,
+   "ping_mean": 0.0,
+   "changes_mean": 5,
+   "mape_mean": 8.248193879989874,
+   "swap_mean": 0,
+   "served_mean": 8,
+   "measured_sd": 0.0,
+   "predicted_sd": 0.0,
+   "reload_sd": 0.0,
+   "predicted_reload_sd": 0.0,
+   "total_sd": 0.0,
+   "predicted_total_sd": 0.0,
+   "ping_sd": 0.0,
+   "changes_sd": 0.0,
+   "mape_sd": 0.0,
+   "swap_sd": 0.0,
+   "served_sd": 0.0
+  }
+ },
+ "system_start": {
+  "footprint": 278725472,
+  "peak_footprint": 278725472,
+  "rss": 338788352,
+  "mps_alloc": 0,
+  "mps_driver": 393216,
+  "sys_available": 3262234624,
+  "swap_used": 660537344
+ },
+ "system_end": {
+  "footprint": 277939160,
+  "peak_footprint": 2663451192,
+  "rss": 22577152,
+  "mps_alloc": 0,
+  "mps_driver": 393216,
+  "sys_available": 2374746112,
+  "swap_used": 773521408
+ }
+}

@@ -181,11 +181,10 @@ def fig4():
     return {(r["config"], r["side"]): r for r in rows}
 
 
-def fig5():
-    # 19 Nov 2026: rerun under the current controller rule (RESULTS_SUMMARY 9m); requests no candidate can serve are
-    # logged as infeasible and not run (served == False) -> excluded. Earlier run: task4_real_trace.csv (superseded).
-    rows = [r for r in csv.DictReader(open(os.path.join(CO, "task4_real_trace_protected.csv"))) if r["served"] == "True"]
-    pols = [("switch_aware", "Switching-aware"), ("fixed_per_class", "Fixed per class"), ("adaptive", "Adaptive")]
+def runtime_bars(csv_name, pols, ylabel, ylim, pad, out):
+    """Stacked bars (request time + reloads, served requests only) with +-1 s.d. of the total and the predicted
+    total, from a real-runtime trace csv (runtime/check_out). Used by Figures 5 and 10."""
+    rows = [r for r in csv.DictReader(open(os.path.join(CO, csv_name))) if r.get("served", "True") == "True"]
     stats = {}
     for p, _ in pols:
         per = []
@@ -209,14 +208,30 @@ def fig5():
             label="Predicted total (calibrated model + reload model)")
     for xi, (p, _) in zip(x, pols):
         s = stats[p]
-        ax.text(xi, max(s["tot"] + s["tot_sd"], s["pred"]) + 2.5, f"{s['tot']:.1f} ± {s['tot_sd']:.1f} s", ha="center", va="bottom", fontsize=8, color=INK)
+        ax.text(xi, max(s["tot"] + s["tot_sd"], s["pred"]) + pad, f"{s['tot']:.1f} ± {s['tot_sd']:.1f} s", ha="center", va="bottom", fontsize=8, color=INK)
         ax.text(xi, s["req"] / 2, f"{s['req']:.1f}", ha="center", va="center", fontsize=7.5, color="white")
         ax.text(xi, s["req"] + s["rel"] / 2, f"{s['rel']:.1f}", ha="center", va="center", fontsize=7.5, color="white")
-    ax.set_xticks(x); ax.set_xticklabels([l for _, l in pols]); ax.set_xlim(-0.5, 2.5)
-    ax.set_ylabel("Total time, 15 served requests [s]"); ax.set_ylim(0, 95); ax.grid(axis="x", visible=False)
+    ax.set_xticks(x); ax.set_xticklabels([l for _, l in pols]); ax.set_xlim(-0.5, len(pols) - 0.5)
+    ax.set_ylabel(ylabel); ax.set_ylim(0, ylim); ax.grid(axis="x", visible=False)
     ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.12), frameon=False, fontsize=7.5, ncol=2)
-    save(fig, "fig5_policies_runtime.png")
+    save(fig, out)
     return stats
+
+
+def fig5():
+    # 19 Nov 2026: rerun under the current controller rule (RESULTS_SUMMARY 9m); requests no candidate can serve are
+    # logged as infeasible and not run (served == False) -> excluded. Earlier run: task4_real_trace.csv (superseded).
+    return runtime_bars("task4_real_trace_protected.csv",
+                        [("switch_aware", "Switching-aware"), ("fixed_per_class", "Fixed per class"), ("adaptive", "Adaptive")],
+                        "Total time, 15 served requests [s]", 95, 2.5, "fig5_policies_runtime.png")
+
+
+def fig10():
+    # 19 Nov 2026: real-runtime SERVER-LOAD trace (RESULTS_SUMMARY 9n): adaptive_eval.make_trace("server_load", 200),
+    # A = 128 (mobile run, Figure 5: A = 64); 122 of 200 requests served; switching-aware not run on this trace.
+    return runtime_bars("task4_real_trace_server_load.csv",
+                        [("fixed_per_class", "Fixed per class"), ("adaptive", "Adaptive")],
+                        "Total time, 122 served requests [s]", 2000, 40, "fig10_server_load_runtime.png")
 
 
 PROFILE_LABEL = {"M2-4T": "M2, 4 threads, 4 GB\n(vs assumed laptop)", "M2-2T": "M2, 2 threads, 2 GB\n(vs assumed phone)",
@@ -418,6 +433,6 @@ def fig9():
 
 
 if __name__ == "__main__":
-    fig1(); c = fig2(); fig3(); fig4(); s = fig5(); fig6(); fig7(); fig8(); fig9()
+    fig1(); c = fig2(); fig3(); fig4(); s = fig5(); fig6(); fig7(); fig8(); fig9(); fig10()
     print({k: {kk: round(vv, 1) for kk, vv in v.items()} for k, v in c.items()})
     print({k: {kk: round(float(vv), 1) for kk, vv in v.items()} for k, v in s.items()})

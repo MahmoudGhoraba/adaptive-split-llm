@@ -31,7 +31,9 @@ Statuses: IMPLEMENTED AND VERIFIED · IMPLEMENTED BUT NOT VALIDATED · PARTIALLY
   prediction error −2.9%). Switching cost modelled (in-situ fit) + switching-aware policy; 3-repeat real check: switching-
   aware fastest incl. reloads (208.4 s vs 216.6 fixed, 238.1 adaptive; earlier rule). Rerun under the current rule
   (19 Nov, RESULTS_SUMMARY 9m; 15 of 30 requests servable): fixed per class 63.4 s, adaptive 66.4 s (same decisions,
-  + PING), switching-aware 78.2 s; request-time prediction −2.2 to −2.8%. Server load: server-REPORTED in PING (timing probe
+  + PING), switching-aware 78.2 s; request-time prediction −2.2 to −2.8%. Server-load trace on the runtime (19 Nov,
+  9n; emulated share 0.25, A = 128): adaptive −4.6% vs fixed per class (1677 vs 1758 s, 3 repeats, gain > spread),
+  the 15 differing requests exactly as modelled. Server load: server-REPORTED in PING (timing probe
   fails on MPS). Open: reload model from few samples; myopic switching rule; one machine; budgets ASSUMED |
 
 Controller verdict: per-request re-optimisation over a measured configuration table (like ILLCO in Zamzam et al.),
