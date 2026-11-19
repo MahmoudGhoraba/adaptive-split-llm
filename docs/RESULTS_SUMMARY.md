@@ -791,7 +791,7 @@ budget unless stated; memory never helps: every candidate needs ≤ 2.21 GB):
 - private prompt+answer: Q 75% -> 61.3% at 2 GB ((4,2) λa = 0.1: prompt 78.5% max over seeds, answer 46.2%) and
   (19 Nov) 61.4% at ≥ 3 GB ((8,2) λa = 0.1); or ε_a -> 100% (= the private-prompt option); no relaxation of ε_p alone
   helps.
-- attacker B, private prompt: ε_p 80% -> 82.0% ((8,2) λa = 0.01, B 82.0%, agreement 77.3%; needs ≥ 3 GB) or 86.4% at
+- attacker B, private prompt: ε_p 80% -> 82.0% ((8,2) λa = 0.01, B 82.0%, agreement 77.3%; needs ≥ 3 GB) or 86.3% at
   2 GB ((6,2) λa = 0, 1 seed); a Q relaxation helps only down to 6.1% (noise σ = 2), i.e. not usefully.
 - attacker B, private answer: as for A (ε_a -> 68.1%; 19 Nov: at ≥ 3 GB also Q -> 61.4%, (8,2) λa = 0.1, B 86.3%);
   private prompt+answer: no single relaxation helps.
@@ -960,7 +960,7 @@ teacher-forced values reproduce the multisplit per-seed values ((1,1) seed 1: 68
 
 | Split (seed) | λa | Generated | Teacher-forced | Gap | Details appearing | Fully recovered |
 |---|---|---|---|---|---|---|
-| (1,1) (seed 1) | 0.03 | 87.6% [86.5, 89.0] | 68.2% | +19.4 | 186/323 | 97.8% |
+| (1,1) (seed 1) | 0.03 | 87.6% [86.5, 89.0] | 68.2% | +19.5 | 186/323 | 97.8% |
 | (1,1) (seed 1) | 0.1 | 85.9% [84.4, 87.5] | 41.2% | +44.7 | 167/323 | 92.2% |
 | (8,2) (seed 0) | 0.03 | 83.8% [82.1, 85.4] | 38.5% | +45.3 | 185/323 | 81.1% |
 | (8,2) (seed 0) | 0.1 | 17.0% [13.1, 21.0] | 17.0% | +0.05 | 210/323 | 14.3% |
