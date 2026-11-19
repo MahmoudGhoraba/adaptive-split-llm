@@ -20,6 +20,9 @@ Reconfigurable mode (one configuration in memory at a time, so client + server f
                       2-7x slower with no load (share estimates 0.14-0.62 for an idle server); kept for documentation.
   PING b"load"        server-REPORTED load: reply JSON {share} (the server's current free share; here the emulated
                       value set by HELLO {load_share}, default 1.0). Default estimator input (task 4 follow-up).
+  Server-load emulation (19 Nov 2026): with load_share s < 1 the server waits compute x (1/s - 1) after every
+  PREFILL/DECODE/GENERATE computation, so the reply comes 1/s times later; the wait is COUNTED in server_compute_ns
+  (as in calibrated_model.latency_cal, which divides server compute by the share). s = 1: no wait (unchanged).
 """
 import argparse
 import gc
@@ -35,6 +38,15 @@ import protocol as pr
 from netem import NetEm
 
 DTYPE = dict(fp16=torch.float16, bf16=torch.bfloat16, fp32=torch.float32)
+
+
+def emulate_load(st, tc0):
+    """Server-load emulation: wait compute x (1/share - 1); returns the end time (ns) incl. the wait."""
+    tc1 = time.perf_counter_ns()
+    if st.load_share < 1.0:
+        time.sleep((tc1 - tc0) / 1e9 * (1.0 / max(st.load_share, 1e-3) - 1.0))
+        tc1 = time.perf_counter_ns()
+    return tc1
 
 
 class State:
@@ -93,7 +105,7 @@ def serve_conn(conn, st, reconfigurable):
                 tc0 = time.perf_counter_ns()
                 out = st.m.run("mid", req.tensor(), req.pos_start, caches)
                 out = out.to("cpu")                                      # includes the device synchronisation
-                tc1 = time.perf_counter_ns()
+                tc1 = emulate_load(st, tc0)                              # emulated server load (share < 1)
                 rep = pr.tensor_msg(req.type, out, session=req.session, step=req.step, pos_start=req.pos_start)
                 rep.server_compute_ns, rep.server_total_ns = tc1 - tc0, time.perf_counter_ns() - t0
             except AssertionError as e:                                  # position mismatch: report, keep serving
@@ -117,7 +129,7 @@ def serve_conn(conn, st, reconfigurable):
             j = req.json()
             tc0 = time.perf_counter_ns()
             g = pm.generate_local(st.m, torch.tensor([j["ids"]]), j["A"], st.a.device)
-            tc1 = time.perf_counter_ns()
+            tc1 = emulate_load(st, tc0)                                  # emulated server load (share < 1)
             rep = pr.json_msg(pr.GENERATE, dict(tokens=g["tokens"]))
             rep.server_compute_ns, rep.server_total_ns = tc1 - tc0, time.perf_counter_ns() - t0
             conn.send(rep)

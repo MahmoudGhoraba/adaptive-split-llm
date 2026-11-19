@@ -23,7 +23,15 @@ Secret adapters are the untrained ones (seeds 2000/2001): latency only; leakage/
 (per_request_controller); a request no candidate can serve is logged as "infeasible" and not run (no PING, no
 observation). --tag writes check_out/task4_real_trace<tag>.csv/json, so earlier MEASURED runs are kept.
 
-Run:  python run_trace_real.py [--n 30] [--repeats R] [--tag _x]  ->  check_out/task4_real_trace<tag>.csv, .json
+19 Nov 2026: --trace server_load = adaptive_eval.make_trace("server_load", n, seed 11) UNCHANGED (stable 4G, server
+share 0.25 +-3% for requests n//3 .. 2n//3-1, else 1.0 +-3%; default n = 200); the true share is sent per request
+(HELLO load_share) and the server emulates it (server.py: waits compute x (1/share - 1), counted as server compute);
+the PING reply reports it to the estimating policies. --A sets the answer length (default 64 for mobile, 128 for
+server_load = adaptive_eval's A; at A = 64 only 10 of the 15 modelled adaptive/fixed differences remain,
+check_server_load_model.py). --policies selects the policies. Mobile runs are unchanged (share 1.0: no wait).
+
+Run:  python run_trace_real.py [--trace mobile|server_load] [--n N] [--A A] [--repeats R] [--policies a,b] [--tag _x]
+        ->  check_out/task4_real_trace<tag>.csv, .json
 """
 import argparse
 import csv
@@ -54,7 +62,7 @@ prc.load_multisplit(os.path.join(STEP5, "measured_multisplit.txt"))
 import calibrated_model as cm                                                   # noqa: E402
 
 OUT = os.path.join(HERE, "check_out")
-PROF, A, BUCKETS = "M2-4T", 64, [32, 128, 256, 512]
+PROF, A, BUCKETS = "M2-4T", 64, [32, 128, 256, 512]           # A: set by --A in main()
 OPTS = [o for o in prc.options() if o["kind"] != "noise"]        # noise: never feasible for the classes; not in runtime
 CL = {c["key"]: c for c in prc.CLASSES}
 NOMINAL = dict(rate_up=prc.PHASES["lte"][1], rate_down=2.5 * prc.PHASES["lte"][1], rtt=prc.PHASES["lte"][2], server_share=1.0)
@@ -92,7 +100,8 @@ class ReconfigClient:
         c_load = 0.0
         if layers != self.layers:                     # free first (memory), then the server, then load
             self.m = None; gc.collect()
-        srv = self._call(pr.json_msg(pr.HELLO, dict(H=HT[0], T=HT[1], netem=self.set_network(cond))), pr.HELLO).json()
+        srv = self._call(pr.json_msg(pr.HELLO, dict(H=HT[0], T=HT[1], netem=self.set_network(cond),
+                                                    load_share=cond["server_share"])), pr.HELLO).json()
         if layers != self.layers:
             t0 = time.perf_counter()
             if layers == ("all",):
@@ -153,7 +162,7 @@ def run_policy(policy, trace, log, rep=0):
             o = fixed[r["cls"]]
         if o is None:                                             # no candidate meets the class limits: not served
             rows.append(dict(policy=policy, rep=rep, i=r["i"], phase=r["phase"], cls=r["cls"], P=P, choice="infeasible",
-                             served=False, rate_up_mbit=true["rate_up"] / 1e6, rtt_ms=true["rtt"] * 1e3,
+                             served=False, rate_up_mbit=true["rate_up"] / 1e6, rtt_ms=true["rtt"] * 1e3, server_share=true["server_share"],
                              est_rtt_ms=est.rtt * 1e3, est_rate_mbit=est.rate / 1e6, est_share=est.share))
             print(f"  {policy:15s} r{rep} {r['i']:2d} {r['phase']:5s} {r['cls']:6s} P={P:3d} infeasible: not served", flush=True)
             continue
@@ -187,7 +196,7 @@ def run_policy(policy, trace, log, rep=0):
         meas = res["total"] + ping_s
         row = dict(policy=policy, rep=rep, i=r["i"], phase=r["phase"], cls=r["cls"], P=P, choice=prc.short2(o), served=True,
                    cold=cold,
-                   rate_up_mbit=true["rate_up"] / 1e6, rtt_ms=true["rtt"] * 1e3, measured_s=meas, ping_s=ping_s,
+                   rate_up_mbit=true["rate_up"] / 1e6, rtt_ms=true["rtt"] * 1e3, server_share=true["server_share"], measured_s=meas, ping_s=ping_s,
                    predicted_reload_s=pred_reload,
                    measured_ttft_s=res["ttft"], predicted_true_s=pred_true, err_pct=100 * (pred_true - meas) / meas,
                    predicted_used_s=pred_used, predicted_ttft_s=det.get("ttft"), client_load_s=c_load, server_load_s=s_load,
@@ -206,19 +215,33 @@ def run_policy(policy, trace, log, rep=0):
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--n", type=int, default=30); ap.add_argument("--repeats", type=int, default=1)
-    ap.add_argument("--tag", default="")
+    global A
+    ap = argparse.ArgumentParser(); ap.add_argument("--n", type=int); ap.add_argument("--repeats", type=int, default=1)
+    ap.add_argument("--tag", default=""); ap.add_argument("--trace", choices=["mobile", "server_load"], default="mobile")
+    ap.add_argument("--A", type=int); ap.add_argument("--policies", default="adaptive,switch_aware,fixed_per_class")
     a = ap.parse_args()
-    trace = prc.make_stream(a.n, prc.NETWORKS[1])
-    phases = prc.NETWORKS[1]["phases"]
+    if a.trace == "mobile":
+        a.n, A = a.n or 30, a.A or 64
+        trace = prc.make_stream(a.n, prc.NETWORKS[1])
+        phases = prc.NETWORKS[1]["phases"]
+        for r in trace:
+            r["server_share"] = 1.0
+            r["phase"] = phases[min(r["i"] * len(phases) // a.n, len(phases) - 1)]
+    else:
+        import adaptive_eval as ae                                # the modelled trace, unchanged
+        a.n, A = a.n or 200, a.A or ae.A
+        trace = ae.make_trace("server_load", a.n, 11)
+        for r in trace:
+            r["phase"] = "slow" if a.n // 3 <= r["i"] < 2 * a.n // 3 else "lte"
     for r in trace:
-        r["Pb"] = min(BUCKETS, key=lambda b: abs(b - r["P"])); r["server_share"] = 1.0
-        r["phase"] = phases[min(r["i"] * len(phases) // a.n, len(phases) - 1)]
+        r["Pb"] = min(BUCKETS, key=lambda b: abs(b - r["P"]))
+    POLS = tuple(a.policies.split(","))
+    assert all(p in ("adaptive", "switch_aware", "fixed_per_class") for p in POLS), POLS
+    print(f"trace {a.trace}, n = {a.n}, A = {A}, policies {POLS}, repeats {a.repeats}")
     s0 = memstat.snapshot()
     print(f"{env_info()}\nsystem available {s0['sys_available']/1e9:.2f} GB, swap {s0['swap_used']/1e9:.2f} GB")
     log = open(os.path.join(OUT, f"task4_real_server{a.tag}.log"), "w")
     rows = []
-    POLS = ("adaptive", "switch_aware", "fixed_per_class")
     for rep in range(a.repeats):
         for pol in POLS:
             print(f"\n{pol}, repeat {rep}:", flush=True)
@@ -248,7 +271,7 @@ def main():
               f"{s['total_mean']:.1f} ± {s['total_sd']:.1f} s (predicted {s['predicted_total_mean']:.1f}) | changes {s['changes_mean']:.1f} | "
               f"per-request MAPE {s['mape_mean']:.1f}% | requests with swap growth {s['swap_mean']:.1f}")
     s1 = memstat.snapshot()
-    json.dump(dict(env=env_info(), profile=PROF, A=A, n=a.n, summary=summ, system_start=s0, system_end=s1),
+    json.dump(dict(env=env_info(), trace=a.trace, profile=PROF, A=A, n=a.n, policies=POLS, summary=summ, system_start=s0, system_end=s1),
               open(os.path.join(OUT, f"task4_real_trace{a.tag}.json"), "w"), indent=1, default=str)
 
 
