@@ -1,9 +1,2 @@
-# analytical steps
-numpy
-matplotlib
-# GPU / model experiments
-torch
-transformers
-datasets
-huggingface_hub
-accelerate
+# Laptop setup (runtime + analysis). For the Colab notebooks see requirements-colab.txt.
+-r requirements-runtime.txt

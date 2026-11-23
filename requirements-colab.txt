@@ -1,0 +1,9 @@
+# Google Colab (T4 GPU): adapter training, attacks, task 5. Python 3.13.16.
+# torch and transformers are the versions recorded in the Colab runs (preinstalled on Colab at the time).
+torch==2.14.1
+transformers==5.22.1
+# Not recorded (Colab preinstalled / installed by the notebooks with `pip install -q datasets`):
+datasets
+huggingface_hub
+numpy
+matplotlib
